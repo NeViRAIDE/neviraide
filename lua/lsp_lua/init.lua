@@ -1,8 +1,13 @@
 -- Border {{{
 local border = {
-    {"╭", "FloatBorder"}, {"─", "FloatBorder"}, {"╮", "FloatBorder"},
-    {"│", "FloatBorder"}, {"╯", "FloatBorder"}, {"─", "FloatBorder"},
-    {"╰", "FloatBorder"}, {"│", "FloatBorder"}
+    {"╭", "FloatBorder"},
+    {"─", "FloatBorder"},
+    {"╮", "FloatBorder"},
+    {"│", "FloatBorder"},
+    {"╯", "FloatBorder"},
+    {"─", "FloatBorder"},
+    {"╰", "FloatBorder"},
+    {"│", "FloatBorder"}
 }
 -- }}}
 vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=none]] -- {{{
@@ -35,18 +40,23 @@ M.icons = {
 }
 function M.setup()
     local kinds = vim.lsp.protocol.CompletionItemKind
-    for i, kind in ipairs(kinds) do kinds[i] = M.icons[kind] or kind end
+    for i, kind in ipairs(kinds) do
+        kinds[i] = M.icons[kind] or kind
+    end
 end
 -- }}}
 
 -- Diagnostics {{{
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
-    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics,
+    {
         virtual_text = false,
         signs = true,
         underline = true,
         update_in_insert = true
-    })
+    }
+)
 
 -- Signs foe diagnostics {{{
 local signs = {
@@ -69,7 +79,9 @@ local function goto_definition(split_cmd)
             local _ = log.info() and log.info(method, "No location found")
             return nil
         end
-        if split_cmd then vim.cmd(split_cmd) end
+        if split_cmd then
+            vim.cmd(split_cmd)
+        end
 
         if vim.tbl_islist(result) then
             util.jump_to_location(result[1])
@@ -93,15 +105,15 @@ vim.lsp.handlers["textDocument/definition"] = goto_definition("vsplit")
 -- test text for capabilites
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.documentationFormat = {
-    "markdown", "plaintext"
+    "markdown",
+    "plaintext"
 }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.preselectSupport = true
 capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
 capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
 capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-capabilities.textDocument.completion.completionItem.commitCharactersSupport =
-    true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
 capabilities.textDocument.completion.completionItem.tagSupport = {
     valueSet = {1}
 }
@@ -124,77 +136,70 @@ local on_attach = function(client, bufnr)
 
     -- LSP Mappings
     local opts = {noremap = true, silent = true}
-    buf_set_keymap("n", "<C-f>",
-                   "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>",
-                   opts)
-    buf_set_keymap("n", "<C-d>",
-                   "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>",
-                   opts)
+    buf_set_keymap("n", "<C-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
+    buf_set_keymap("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
 
     buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    buf_set_keymap("n", "gd",
-                   "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>",
-                   opts)
+    buf_set_keymap("n", "gd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
     buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    buf_set_keymap("n", "K",
-                   "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>",
-                   opts)
-    buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>",
-                   opts)
-    buf_set_keymap("n", "<space>ca",
-                   "<cmd>lua require('lspsaga.codeaction').code_action()<CR>",
-                   opts)
-    buf_set_keymap("n", "<space>D",
-                   "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+    buf_set_keymap("n", "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
+    buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+    buf_set_keymap("n", "<space>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
+    buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-                                                 vim.lsp.handlers.hover, {
+    vim.lsp.handlers["textDocument/hover"] =
+        vim.lsp.with(
+        vim.lsp.handlers.hover,
+        {
             border = border,
             focusable = false
-        })
+        }
+    )
     vim.lsp.handlers["textDocument/signatureHelp"] =
-        vim.lsp.with(vim.lsp.handlers.signature_help,
-                     {border = border, focusable = false})
+        vim.lsp.with(vim.lsp.handlers.signature_help, {border = border, focusable = false})
 
     require("lsp_signature").on_attach({hint_prefix = " "})
 
     -- Lspkind {{{
     -- lspkind descriotion
-    require("lspkind").init({
-        with_text = false,
-        preset = "default",
-        symbol_map = {
-            Text = "",
-            Method = "",
-            Function = "",
-            Constructor = "",
-            Field = "ﰠ",
-            Variable = "",
-            Class = "ﴯ",
-            Interface = "",
-            Module = "",
-            Property = "ﰠ",
-            Unit = "塞",
-            Value = "",
-            Enum = "",
-            Keyword = "",
-            Snippet = "",
-            Color = "",
-            File = "",
-            Reference = "",
-            Folder = "",
-            EnumMember = "",
-            Constant = "",
-            Struct = "פּ",
-            Event = "",
-            Operator = "",
-            TypeParameter = ""
+    require("lspkind").init(
+        {
+            with_text = false,
+            preset = "default",
+            symbol_map = {
+                Text = "",
+                Method = "",
+                Function = "",
+                Constructor = "",
+                Field = "ﰠ",
+                Variable = "",
+                Class = "ﴯ",
+                Interface = "",
+                Module = "",
+                Property = "ﰠ",
+                Unit = "塞",
+                Value = "",
+                Enum = "",
+                Keyword = "",
+                Snippet = "",
+                Color = "",
+                File = "",
+                Reference = "",
+                Folder = "",
+                EnumMember = "",
+                Constant = "",
+                Struct = "פּ",
+                Event = "",
+                Operator = "",
+                TypeParameter = ""
+            }
         }
-    })
+    )
     -- }}}
     if client.resolved_capabilities.document_highlight then
-        vim.api.nvim_exec([[
+        vim.api.nvim_exec(
+            [[
       hi LspReferenceRead  gui=bold guibg=#41495A
       hi LspReferenceText  gui=bold guibg=#41495A
       hi LspReferenceWrite gui=bold guibg=#41495A
@@ -203,9 +208,10 @@ local on_attach = function(client, bufnr)
       autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-      ]], false)
+      ]],
+            false
+        )
     end
-
 end
 
 -- }}}
@@ -223,30 +229,17 @@ lsp_installer.settings {
     }
 }
 
-lsp_installer.on_server_ready(function(server)
-    local opts = {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        flags = {debounce_text_changes = 150}
-    }
-
-    if server.name == "sumneko_lua" then
-        opts.settings = {
-            Lua = {
-                completion = {callSnippet = "Both"},
-                telemetry = {enable = false},
-                workspace = {
-                    checkThirdParty = false,
-                    maxPreload = 2000,
-                    preloadFileSize = 500000
-                },
-                diagnostics = {globals = {'vim'}}
-            }
+lsp_installer.on_server_ready(
+    function(server)
+        local opts = {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            flags = {debounce_text_changes = 150}
         }
-    end
 
-    server:setup(opts)
-    vim.cmd [[ do User LspAttachBuffers ]]
-end)
+        server:setup(opts)
+        vim.cmd [[ do User LspAttachBuffers ]]
+    end
+)
 
 -- }}}

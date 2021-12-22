@@ -1,8 +1,7 @@
 local g = vim.g
 g.mapleader = " "
 
-vim.api.nvim_set_keymap("n", "<F3>", "<cmd>WhichKey<CR>",
-                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<F3>", "<cmd>WhichKey<CR>", {noremap = true, silent = true})
 
 -- FIX: make toggle float terminal!!!
 -- vim.api.nvim_set_keymap("n", "<F4>", "<cmd>lua require('lspsaga.floaterm').open_float_terminal()",
@@ -34,12 +33,15 @@ vim.cmd [[
 	colorscheme onedark
 ]]
 
-vim.defer_fn(function()
-    vim.cmd [[
+vim.defer_fn(
+    function()
+        vim.cmd [[
 		set t_ut=
 		silent! bufdo e
 		PackerLoad impatient.nvim
 		PackerLoad nvim-treesitter
 		lua require'colorizer'.setup()
 	]]
-end, 15)
+    end,
+    15
+)

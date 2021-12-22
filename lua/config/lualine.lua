@@ -21,8 +21,8 @@ local config = {
     options = {
         icons_enabled = true,
         theme = "onedark",
-        section_separators = {"", ""},
-        component_separators = {"", ""},
+        component_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''},
         disabled_filetypes = {}
     },
     sections = {
@@ -32,7 +32,7 @@ local config = {
         lualine_x = {
             {
                 "diagnostics",
-                sources = {"nvim_lsp"},
+                sources = {"nvim_diagnostic"},
                 symbols = {
                     error = " ",
                     warn = " ",
