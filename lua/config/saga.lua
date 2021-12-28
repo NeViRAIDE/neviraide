@@ -25,7 +25,7 @@ lspsaga.setup {
         quit = '<Esc>',
         exec = '<CR>' -- quit can be a table
     },
-    definition_preview_icon = '  ',
+    definition_preview_icon = '✍  ',
     border_style = "round",
     rename_prompt_prefix = '➤'
 }

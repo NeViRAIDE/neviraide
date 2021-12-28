@@ -138,6 +138,11 @@ _G.packer_plugins = {
     path = "/home/ra/.local/share/nvim/site/pack/packer/opt/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["csv.vim"] = {
+    loaded = true,
+    path = "/home/ra/.local/share/nvim/site/pack/packer/start/csv.vim",
+    url = "https://github.com/chrisbra/csv.vim"
+  },
   ["dashboard-nvim"] = {
     loaded = true,
     path = "/home/ra/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
@@ -365,9 +370,9 @@ vim.cmd [[ packadd cmp-buffer ]]
 vim.cmd [[ packadd nvim-treesitter ]]
 vim.cmd [[ packadd nvim-treesitter-textobjects ]]
 vim.cmd [[ packadd nvim-treesitter-textsubjects ]]
-vim.cmd [[ packadd nvim-ts-rainbow ]]
-vim.cmd [[ packadd nvim-ts-context-commentstring ]]
 vim.cmd [[ packadd aniseed ]]
+vim.cmd [[ packadd nvim-ts-context-commentstring ]]
+vim.cmd [[ packadd nvim-ts-rainbow ]]
 time([[Sequenced loading]], false)
 
 -- Command lazy-loads

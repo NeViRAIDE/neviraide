@@ -1,5 +1,5 @@
 -- Setup {{{
-require('which-key').setup {
+require("which-key").setup {
     plugins = {
         marks = true,
         registers = true,
@@ -22,7 +22,7 @@ require('which-key').setup {
         ["<C>"] = "Ctrl"
     },
     icons = {breadcrumb = "»", separator = "➜", group = "+"},
-    popup_mappings = {scroll_down = '<c-j>', scroll_up = '<c-k>'},
+    popup_mappings = {scroll_down = "<c-j>", scroll_up = "<c-k>"},
     window = {
         border = "single",
         position = "bottom",
@@ -45,93 +45,95 @@ require('which-key').setup {
 -- }}}
 
 local wk = require("which-key")
-wk.register({
-    ['b'] = {name = "Previous/Next Buffer"},
-    ['b['] = {":bprev<CR>", "Previous Buffer"},
-    ['b]'] = {":bnext<CR>", "Next Buffer"},
-    ['<F2>'] = {":NvimTreeToggle<CR>", "Open/Close NvimTree"},
-    ['<C-s>'] = {":wall<CR>", "Save All Files"},
-    ["<leader>"] = {
-        name = "Leader Key Actions",
-        r = {
-            name = "Rename",
-            n = {
-                "<cmd>lua require('lspsaga.rename').rename()<CR>",
-                "Change Word Under Cursor"
-            }
-        },
-        f = {"<cmd>Neoformat<CR>", "Format File (by Neoformat)"},
-        -- Telescope {{{
-        t = {
-            name = 'Telescope',
+wk.register(
+    {
+        ["b"] = {name = "Previous/Next Buffer"},
+        ["b["] = {":bprev<CR>", "Previous Buffer"},
+        ["b]"] = {":bnext<CR>", "Next Buffer"},
+        ["<F2>"] = {":NvimTreeToggle<CR>", "Open/Close NvimTree"},
+        ["<C-s>"] = {":wall<CR>", "Save All Files"},
+        ["<leader>"] = {
+            name = "Leader Key Actions",
             r = {
-                "<cmd>lua require('telescope.builtin').oldfiles()<CR>",
-                "Open Recent Files"
+                name = "Rename",
+                n = {
+                    "<cmd>lua require('lspsaga.rename').rename()<CR>",
+                    "Change Word Under Cursor"
+                }
             },
-            b = {
-                "<cmd>lua require('telescope.builtin').buffers()<CR>",
-                "Open Current Buffers"
+            f = {"<cmd>Neoformat<CR>", "Format File (by Neoformat)"},
+            -- Telescope {{{
+            t = {
+                name = "Telescope",
+                r = {
+                    "<cmd>lua require('telescope.builtin').oldfiles()<CR>",
+                    "Open Recent Files"
+                },
+                b = {
+                    "<cmd>lua require('telescope.builtin').buffers()<CR>",
+                    "Open Current Buffers"
+                },
+                f = {
+                    "<cmd>lua require('telescope.builtin').find_files()<CR>",
+                    "Find Files"
+                },
+                w = {
+                    "<cmd>lua require('telescope.builtin').live_grep()<CR>",
+                    "Find Word"
+                },
+                h = {
+                    "<cmd>lua require('telescope.builtin').help_tags()<CR>",
+                    "Help Tags"
+                },
+                t = {"<cmd>lua require('telescope.builtin').tags()<CR>", "Tags"},
+                s = {
+                    "<cmd>lua require('telescope.builtin').grep_string()<CR>",
+                    "Find String"
+                },
+                o = {
+                    "<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>",
+                    "Tags (Only Current Buffers)"
+                }
             },
-            f = {
-                "<cmd>lua require('telescope.builtin').find_files()<CR>",
-                "Find Files"
+            -- }}}
+            -- Diagnostics {{{
+            d = {
+                name = "Diagnostics",
+                s = {
+                    "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>",
+                    "Show Diagnostic Line"
+                },
+                p = {
+                    "<cmd>Lspsaga diagnostic_jump_prev<CR>",
+                    "Jump To Previous Diagnostic Line"
+                },
+                n = {
+                    "<cmd>Lspsaga diagnostic_jump_next<CR>",
+                    "Jump To Next Diagnostic Line"
+                },
+                l = {
+                    "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>",
+                    "Location List"
+                }
             },
+            -- }}}
+            -- Workspaces {{{
             w = {
-                "<cmd>lua require('telescope.builtin').live_grep()<CR>",
-                "Find Word"
-            },
-            h = {
-                "<cmd>lua require('telescope.builtin').help_tags()<CR>",
-                "Help Tags"
-            },
-            t = {"<cmd>lua require('telescope.builtin').tags()<CR>", "Tags"},
-            s = {
-                "<cmd>lua require('telescope.builtin').grep_string()<CR>",
-                "Find String"
-            },
-            o = {
-                "<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>",
-                "Tags (Only Current Buffers)"
+                name = "Workspaces",
+                a = {
+                    "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>",
+                    "Add Workspace Folder"
+                },
+                r = {
+                    "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>",
+                    "Remove Workspace Folder"
+                },
+                l = {
+                    "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+                    "Workspace Folder's List"
+                }
             }
-        },
-        -- }}}
-        -- Diagnostics {{{
-        d = {
-            name = 'Diagnostics',
-            s = {
-                "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>",
-                "Show Diagnostic Line"
-            },
-            p = {
-                "<cmd>Lspsaga diagnostic_jump_prev<CR>",
-                "Jump To Previous Diagnostic Line"
-            },
-            n = {
-                "<cmd>Lspsaga diagnostic_jump_next<CR>",
-                "Jump To Next Diagnostic Line"
-            },
-            l = {
-                "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", "Location List"
-            }
-
-        },
-        -- }}}
-        -- Workspaces {{{
-        w = {
-            name = "Workspaces",
-            a = {
-                "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>",
-                "Add Workspace Folder"
-            },
-            r = {
-                "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>",
-                "Remove Workspace Folder"
-            },
-            l = {
-                "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-                "Workspace Folder's List"
-            }
+            -- }}}
         }
-        -- }}}
     }
-})
+)
