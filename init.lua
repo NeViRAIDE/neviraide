@@ -1,13 +1,10 @@
 local g = vim.g
+local utils = require("utils")
 g.mapleader = " "
 
-vim.api.nvim_set_keymap("n", "<F3>", "<cmd>WhichKey<CR>", {noremap = true, silent = true})
-
--- FIX: make toggle float terminal!!!
--- vim.api.nvim_set_keymap("n", "<F4>", "<cmd>lua require('lspsaga.floaterm').open_float_terminal()",
---                         {noremap = true, silent = true})
--- vim.api.nvim_set_keymap("n", "<F4>", "<C-\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>",
---                         {tnoremap = true, silent = true})
+utils.map("n", "<F3>", "<cmd>WhichKey<CR>", {noremap = true, silent = true})
+utils.map("n", "<F4>", ":Lspsaga open_floaterm<CR>", {silent = true})
+utils.map("t", "<F4>", [[<C-\><C-n>:Lspsaga close_floaterm<CR>]], {silent = true})
 
 g.loaded_gzip = false
 g.loaded_matchit = false
