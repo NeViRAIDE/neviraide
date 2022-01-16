@@ -30,12 +30,6 @@ local config = {
 			{
 				"diagnostics",
 				sections = { "error", "warn", "info", "hint" },
-				diagnostics_color = {
-					error = "DiagnosticError",
-					warn = "DiagnosticWarn",
-					info = "DiagnosticInfo",
-					hint = "DiagnosticHint",
-				},
 				symbols = { error = " ", warn = " ", info = " ", hint = " " },
 				colored = true,
 				update_in_insert = true,

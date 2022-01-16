@@ -30,7 +30,6 @@ return require("packer").startup({
 		use({ "nvim-lua/plenary.nvim" })
 		use("navarasu/onedark.nvim")
 		use("nvim-telescope/telescope.nvim")
-		use("folke/lsp-colors.nvim")
 		use("windwp/nvim-autopairs")
 		use({
 			"L3MON4D3/LuaSnip",
@@ -38,8 +37,14 @@ return require("packer").startup({
 				require("luasnip").config.setup({ history = false })
 			end,
 		})
+		-- lsp {{{
+		use({ "onsails/lspkind-nvim" })
 		use("neovim/nvim-lspconfig")
+		use("folke/lsp-colors.nvim")
 		use("williamboman/nvim-lsp-installer")
+		use("ray-x/lsp_signature.nvim")
+		-- }}}
+		-- nvim-cmp {{{
 		use({
 			"hrsh7th/nvim-cmp", --- Autocompletion
 			config = function()
@@ -102,6 +107,7 @@ return require("packer").startup({
 						winhighlight = "FloatBorder:TelescopeBorder",
 					},
 					sources = {
+						{ name = "latex_symbols" },
 						{ name = "luasnip" },
 						{ name = "nvim_lua" },
 						{ name = "nvim_lsp" },
@@ -134,11 +140,12 @@ return require("packer").startup({
 				{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
 				{ "hrsh7th/cmp-calc", after = "nvim-cmp" },
 				{ "hrsh7th/cmp-path", after = "nvim-cmp" },
+				{ "kdheepak/cmp-latex-symbols" },
 				{ "L3MON4D3/LuaSnip" },
 			},
 		})
-		use({ "onsails/lspkind-nvim" })
-		use("ray-x/lsp_signature.nvim")
+		-- }}}
+		-- GitSigns {{{
 		use({
 			"lewis6991/gitsigns.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
@@ -225,7 +232,7 @@ return require("packer").startup({
 				})
 			end,
 		})
-
+		-- }}}
 		use("lukas-reineke/indent-blankline.nvim")
 		use("hoob3rt/lualine.nvim")
 		use({ "kyazdani42/nvim-web-devicons" })

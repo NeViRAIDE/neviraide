@@ -6,8 +6,18 @@ require("config.nvim-tree")
 require("config.indent-blankline")
 require("config.which_key")
 
+require("bufferline").setup()
+require("nvim-autopairs").setup({})
+require("nvim_comment").setup()
+
+-- null-ls {{{
 local null_ls = require("null-ls")
 local my_sources = {
+	-- null_ls.builtins.formatting.djhtml,
+	null_ls.builtins.diagnostics.jsonlint,
+	null_ls.builtins.code_actions.eslint,
+	null_ls.builtins.diagnostics.stylelint,
+	null_ls.builtins.formatting.prettier,
 	null_ls.builtins.diagnostics.flake8,
 	null_ls.builtins.formatting.black,
 	null_ls.builtins.formatting.autopep8,
@@ -15,7 +25,8 @@ local my_sources = {
 	null_ls.builtins.formatting.stylua,
 }
 null_ls.setup({ sources = my_sources })
-
+-- }}}
+-- dashboard {{{
 vim.g.dashboard_preview_command = "cat"
 vim.g.dashboard_preview_pipeline = "lolcat"
 vim.g.dashboard_preview_file = "~/.config/nvim/lua/config/dash_preview"
@@ -35,6 +46,7 @@ vim.g.dashboard_custom_shortcut = {
 	find_word = "SPACE t w",
 	book_marks = "SPACE t m",
 }
+-- }}}
 
 require("lsp-colors").setup({
 	Error = "#db4b4b",
@@ -42,10 +54,6 @@ require("lsp-colors").setup({
 	Information = "#0db9d7",
 	Hint = "#10B981",
 })
-
-require("bufferline").setup()
-require("nvim-autopairs").setup({})
-require("nvim_comment").setup()
 
 require("config.lualine")
 vim.api.nvim_exec(
