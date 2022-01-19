@@ -9,7 +9,6 @@ require("lsp_lua")
 require("config")
 require("settings")
 
-vim.opt.shadafile = ""
 vim.opt.termguicolors = true
 vim.cmd([[
 	doautocmd BufRead
@@ -22,7 +21,6 @@ vim.defer_fn(function()
 	vim.cmd([[
 		set t_ut=
 		silent! bufdo e
-		PackerLoad impatient.nvim
 		PackerLoad nvim-treesitter
 		lua require'colorizer'.setup()
 	]])

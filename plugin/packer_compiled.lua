@@ -149,13 +149,6 @@ _G.packer_plugins = {
     path = "/home/ra/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["impatient.nvim"] = {
-    config = { "\27LJ\1\2)\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\14impatient\frequire\0" },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/ra/.local/share/nvim/site/pack/packer/opt/impatient.nvim",
-    url = "https://github.com/lewis6991/impatient.nvim"
-  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/home/ra/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
@@ -202,7 +195,7 @@ _G.packer_plugins = {
     url = "https://github.com/akinsho/nvim-bufferline.lua"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-nvim-lsp", "cmp-nvim-lua", "cmp-cmdline", "cmp_luasnip", "cmp-path", "cmp-buffer", "cmp-calc" },
+    after = { "cmp-nvim-lsp", "cmp-cmdline", "cmp-buffer", "cmp_luasnip", "cmp-nvim-lua", "cmp-calc", "cmp-path" },
     loaded = true,
     only_config = true
   },

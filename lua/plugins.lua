@@ -5,7 +5,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
 end
 vim.cmd([[packadd packer.nvim]])
-vim.cmd("autocmd BufWritePost plugins.lua PackerCompile") -- Auto compile when there are changes in plugins.lua
+vim.cmd("autocmd BufWritePost plugins.lua PackerCompile")
 vim.cmd([[packadd packer.nvim]])
 require("packer").init({
 	git = { clone_timeout = 350 },
@@ -20,22 +20,8 @@ return require("packer").startup({
 	function(use)
 		use({ "wbthomason/packer.nvim" })
 		use({
-			"lewis6991/impatient.nvim",
-			opt = true,
-			config = function()
-				require("impatient")
-			end,
-		})
-		use({ "nvim-lua/popup.nvim" })
-		use({ "nvim-lua/plenary.nvim" })
-		use("navarasu/onedark.nvim")
-		use("nvim-telescope/telescope.nvim")
-		use("windwp/nvim-autopairs")
-		use({
-			"L3MON4D3/LuaSnip",
-			config = function()
-				require("luasnip").config.setup({ history = false })
-			end,
+			"nvim-telescope/telescope.nvim",
+			requires = { { "nvim-lua/plenary.nvim" } },
 		})
 		-- lsp {{{
 		use({ "onsails/lspkind-nvim" })
@@ -43,8 +29,16 @@ return require("packer").startup({
 		use("folke/lsp-colors.nvim")
 		use("williamboman/nvim-lsp-installer")
 		use("ray-x/lsp_signature.nvim")
+		use("arkav/lualine-lsp-progress")
+		use("jose-elias-alvarez/null-ls.nvim")
 		-- }}}
 		-- nvim-cmp {{{
+		use({
+			"L3MON4D3/LuaSnip",
+			config = function()
+				require("luasnip").config.setup({ history = false })
+			end,
+		})
 		use({
 			"hrsh7th/nvim-cmp", --- Autocompletion
 			config = function()
@@ -233,26 +227,35 @@ return require("packer").startup({
 			end,
 		})
 		-- }}}
-		use("lukas-reineke/indent-blankline.nvim")
-		use("hoob3rt/lualine.nvim")
-		use({ "kyazdani42/nvim-web-devicons" })
-		use({ "norcalli/nvim-colorizer.lua" })
-		use("akinsho/nvim-bufferline.lua")
-		use("terrortylor/nvim-comment")
-		use("folke/todo-comments.nvim")
+		-- treesitter {{{
 		use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 		use({ "RRethy/nvim-treesitter-textsubjects", after = "nvim-treesitter" })
 		use({
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			after = "nvim-treesitter",
 		})
+		-- }}}
+		-- UI {{{
+		use({ "nvim-lua/popup.nvim" })
+		use({ "nvim-lua/plenary.nvim" })
+		use({ "kyazdani42/nvim-web-devicons" })
+		use("navarasu/onedark.nvim")
+		use("hoob3rt/lualine.nvim")
+		use("glepnir/dashboard-nvim")
+		use("lukas-reineke/indent-blankline.nvim")
+		use({ "norcalli/nvim-colorizer.lua" })
+		use("akinsho/nvim-bufferline.lua")
+		use("folke/todo-comments.nvim")
 		use({ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" })
 		use("kyazdani42/nvim-tree.lua")
 		use({ "SmiteshP/nvim-gps", requires = "nvim-treesitter/nvim-treesitter" })
+		use('sidebar-nvim/sidebar.nvim')
+		-- }}}
+		-- another helpers {{{
 		use("folke/which-key.nvim")
-		use("arkav/lualine-lsp-progress")
-		use("glepnir/dashboard-nvim")
-		use("jose-elias-alvarez/null-ls.nvim")
+		use("terrortylor/nvim-comment")
+		use("windwp/nvim-autopairs")
+		-- }}}
 	end,
 	config = {
 		display = {

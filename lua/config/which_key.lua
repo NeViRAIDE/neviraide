@@ -50,7 +50,7 @@ wk.register({
 	["b["] = { ":bprev<CR>", "Previous Buffer" },
 	["b]"] = { ":bnext<CR>", "Next Buffer" },
 	["<F2>"] = { ":NvimTreeToggle<CR>", "Open/Close NvimTree" },
-	["<C-s>"] = { ":wall<CR>", "Save All Files" },
+	["<C-s>"] = { ":wa!<CR>", "Save All Files" },
 	["<leader>"] = {
 		name = "Leader Key Actions",
 		r = {
@@ -83,8 +83,8 @@ wk.register({
 				"Open Git Files",
 			},
 			m = {
-				"<cmd>lua require('telescope.builtin').marks()<CR>",
-				"Open Marks",
+				"<cmd>lua require('telescope.builtin').man_pages()<CR>",
+				"Open Manual Pages",
 			},
 			r = {
 				"<cmd>lua require('telescope.builtin').oldfiles()<CR>",

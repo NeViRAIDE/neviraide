@@ -5,6 +5,7 @@ require("config.tree-sitter")
 require("config.nvim-tree")
 require("config.indent-blankline")
 require("config.which_key")
+require("config.sidebar")
 
 require("bufferline").setup()
 require("nvim-autopairs").setup({})
@@ -14,6 +15,7 @@ require("nvim_comment").setup()
 local null_ls = require("null-ls")
 local my_sources = {
 	-- null_ls.builtins.formatting.djhtml,
+	null_ls.builtins.diagnostics.luacheck,
 	null_ls.builtins.diagnostics.jsonlint,
 	null_ls.builtins.code_actions.eslint,
 	null_ls.builtins.diagnostics.stylelint,
