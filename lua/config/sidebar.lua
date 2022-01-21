@@ -23,5 +23,6 @@ local opts = {
 		icon = "",
 		format = "%A, %d %B %Y, %H:%M:%S",
 	},
+	section_separator = { "", "-----------------------------------", "" },
 }
 sidebar.setup(opts)
