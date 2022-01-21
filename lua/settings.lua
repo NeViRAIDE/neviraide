@@ -8,17 +8,18 @@ vim.opt.showmode = false
 vim.opt.conceallevel = 0
 vim.opt.listchars = "space:∙"
 vim.opt.virtualedit = "block"
-vim.opt.mousefocus = true
 vim.opt.ruler = true
 
 vim.opt.foldenable = true
 vim.opt.foldmethod = "marker"
 
 vim.opt.laststatus = 2
+vim.opt.softtabstop = 4
 
 vim.opt.undofile = false
 
 cmd("autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o")
+utils.opt("o", "wrap", false)
 utils.opt("o", "completeopt", "menuone,noselect,noinsert")
 utils.opt("o", "pumwidth", 15)
 utils.opt("o", "pumheight", 7)
@@ -35,7 +36,6 @@ utils.opt("o", "hidden", true)
 utils.opt("o", "ignorecase", true)
 utils.opt("o", "scrolloff", 7)
 utils.opt("o", "shiftround", true)
-vim.opt.softtabstop = 4
 utils.opt("o", "smartcase", true)
 utils.opt("o", "splitbelow", true)
 utils.opt("o", "splitright", true)

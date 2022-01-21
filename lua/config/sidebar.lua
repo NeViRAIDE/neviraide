@@ -1,32 +1,27 @@
 local sidebar = require("sidebar-nvim")
-  
+
 local opts = {
-	open = true,
+	open = false,
 	side = "right",
 	hide_statusline = true,
 	initial_width = 40,
 	sections = {
-		"datetime",
 		"files",
 		"git",
-		"diagnostics",
 		"todos",
 	},
-	disable_closing_promt = false,
+	disable_closing_prompt = true,
 	files = {
 		icon = "",
-		show_hidden = false,
+		show_hidden = true,
 	},
 	todos = {
 		icon = "",
-		initially_closed = true,
+		initially_closed = false,
 	},
 	datetime = {
 		icon = "",
 		format = "%A, %d %B %Y, %H:%M:%S",
-		clocks = {
-			{ name = "in korea" },
-		},
 	},
 }
 sidebar.setup(opts)

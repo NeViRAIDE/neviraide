@@ -1,5 +1,6 @@
+local wk = require("which-key")
 -- Setup {{{
-require("which-key").setup({
+wk.setup({
 	plugins = {
 		marks = true,
 		registers = true,
@@ -43,16 +44,23 @@ require("which-key").setup({
 	triggers_blacklist = { i = { "j", "k" }, v = { "j", "k" } },
 })
 -- }}}
-
-local wk = require("which-key")
+-- Mappings {{{
 wk.register({
 	["b"] = { name = "Previous/Next Buffer" },
 	["b["] = { ":bprev<CR>", "Previous Buffer" },
 	["b]"] = { ":bnext<CR>", "Next Buffer" },
-	["<F2>"] = { ":NvimTreeToggle<CR>", "Open/Close NvimTree" },
-	["<C-s>"] = { ":wa!<CR>", "Save All Files" },
+	["<C-s>"] = { ":wa<CR>", "Save All Files" },
+	["<F2>"] = { ":SidebarNvimToggle<CR>", "Show/Close Sidebar" },
+
 	["<leader>"] = {
 		name = "Leader Key Actions",
+		c = {
+			name = "Code Action",
+			a = {
+				":lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor())<CR>",
+				"Show available actions",
+			},
+		},
 		r = {
 			name = "Rename",
 			n = {
@@ -91,11 +99,11 @@ wk.register({
 				"Open Recent Files",
 			},
 			b = {
-				"<cmd>lua require('telescope.builtin').buffers()<CR>",
-				"Open Current Buffers",
+				"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({previewer = false}))<CR>",
+				"Show open buffers",
 			},
 			f = {
-				"<cmd>lua require('telescope.builtin').find_files()<CR>",
+				"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({previewer = false}))<CR>",
 				"Find Files",
 			},
 			w = {
@@ -107,7 +115,10 @@ wk.register({
 				"Help Tags",
 			},
 			t = { "<cmd>lua require('telescope.builtin').tags()<CR>", "Tags" },
-			d = { "<cmd>Telescope diagnostics<CR>", "Workspace Diagnostics" },
+			d = {
+				":lua require('telescope.builtin').diagnostics(require('telescope.themes').get_ivy({previewer = false, layout_config = {bottom_pane = {height = 12}}}))<CR>",
+				"Workspace Diagnostics",
+			},
 			s = {
 				"<cmd>lua require('telescope.builtin').grep_string()<CR>",
 				"Find String",
@@ -156,5 +167,21 @@ wk.register({
 			},
 		},
 		-- }}}
+		-- LSP {{{
+		l = {
+			name = "LSP",
+			h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "hover" },
+			["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "declaration" },
+			["gi"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "implementation" },
+			["gr"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "reference" },
+			-- buf_set_keymap("n", "<C-p>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
+			-- buf_set_keymap("n", "<C-n>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
+
+			-- buf_set_keymap("n", "gd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
+			-- buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+			["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "sign_help" },
+		},
+		-- }}}
 	},
 })
+-- }}}

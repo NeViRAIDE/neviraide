@@ -29,7 +29,6 @@ return require("packer").startup({
 		use("folke/lsp-colors.nvim")
 		use("williamboman/nvim-lsp-installer")
 		use("ray-x/lsp_signature.nvim")
-		use("arkav/lualine-lsp-progress")
 		use("jose-elias-alvarez/null-ls.nvim")
 		-- }}}
 		-- nvim-cmp {{{
@@ -240,16 +239,18 @@ return require("packer").startup({
 		use({ "nvim-lua/plenary.nvim" })
 		use({ "kyazdani42/nvim-web-devicons" })
 		use("navarasu/onedark.nvim")
-		use("hoob3rt/lualine.nvim")
-		use("glepnir/dashboard-nvim")
+		use("beauwilliams/statusline.lua")
+		use({
+			"goolord/alpha-nvim",
+			config = function()
+				require("config.alpha")
+			end,
+		})
 		use("lukas-reineke/indent-blankline.nvim")
 		use({ "norcalli/nvim-colorizer.lua" })
-		use("akinsho/nvim-bufferline.lua")
 		use("folke/todo-comments.nvim")
 		use({ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" })
-		use("kyazdani42/nvim-tree.lua")
-		use({ "SmiteshP/nvim-gps", requires = "nvim-treesitter/nvim-treesitter" })
-		use('sidebar-nvim/sidebar.nvim')
+		use("sidebar-nvim/sidebar.nvim")
 		-- }}}
 		-- another helpers {{{
 		use("folke/which-key.nvim")

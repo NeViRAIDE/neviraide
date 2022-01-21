@@ -43,7 +43,6 @@ function M.setup()
 end
 -- }}}
 -- Diagnostics {{{
-
 vim.diagnostic.config({
 	virtual_text = {
 		prefix = "⚫",
@@ -58,14 +57,12 @@ vim.diagnostic.config({
 		focus = false,
 	},
 })
-
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 	virtual_text = true,
 	signs = true,
 	underline = true,
 	update_in_insert = true,
 })
-
 -- Signs foe diagnostics {{{
 local signs = {
 	{ name = "DiagnosticSignError", text = "" },
@@ -73,7 +70,6 @@ local signs = {
 	{ name = "DiagnosticSignHint", text = "" },
 	{ name = "DiagnosticSignInfo", text = "" },
 }
-
 
 for _, sign in ipairs(signs) do
 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
@@ -109,8 +105,6 @@ vim.lsp.handlers["textDocument/definition"] = goto_definition("vsplit")
 -- }}}
 -- }}}
 -- Capabilities {{{
-
--- test text for capabilites
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.documentationFormat = {
 	"markdown",
@@ -132,28 +126,9 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 -- on_attach function {{{
 
 -- text for on attach function
-local on_attach = function(client, bufnr)
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
-	end
-	local function buf_set_option(...)
-		vim.api.nvim_buf_set_option(bufnr, ...)
-	end
-	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-	-- LSP Mappings
-	local opts = { noremap = true, silent = true }
-	-- buf_set_keymap("n", "<C-p>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
-	-- buf_set_keymap("n", "<C-n>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
-
-	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	-- buf_set_keymap("n", "gd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
-	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+local on_attach = function(client)
+	client.resolved_capabilities.document_formatting = false
+	client.resolved_capabilities.document_range_formatting = false
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 		border = border,
 		focusable = true,
@@ -162,11 +137,8 @@ local on_attach = function(client, bufnr)
 		vim.lsp.handlers.signature_help,
 		{ border = border, focusable = true }
 	)
-
 	require("lsp_signature").on_attach({ hint_prefix = " " })
 
-	-- Lspkind {{{
-	-- lspkind descriotion
 	require("lspkind").init({
 		with_text = false,
 		preset = "default",
@@ -198,7 +170,6 @@ local on_attach = function(client, bufnr)
 			TypeParameter = "",
 		},
 	})
-	-- }}}
 	if client.resolved_capabilities.document_highlight then
 		vim.api.nvim_exec(
 			[[
@@ -218,7 +189,6 @@ end
 
 -- }}}
 -- LSP Installer {{{
-
 local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.settings({
 	ui = {
@@ -229,7 +199,6 @@ lsp_installer.settings({
 		},
 	},
 })
-
 lsp_installer.on_server_ready(function(server)
 	local opts = {
 		on_attach = on_attach,
@@ -243,9 +212,7 @@ lsp_installer.on_server_ready(function(server)
 			},
 		}
 	end
-
 	server:setup(opts)
 	vim.cmd([[ do user lspattachbuffers ]])
 end)
-
 -- }}}
