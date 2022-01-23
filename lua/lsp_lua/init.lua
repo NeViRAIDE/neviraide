@@ -1,4 +1,3 @@
--- Border {{{
 local border = {
 	{ "╭", "FloatBorder" },
 	{ "─", "FloatBorder" },
@@ -9,8 +8,6 @@ local border = {
 	{ "╰", "FloatBorder" },
 	{ "│", "FloatBorder" },
 }
--- }}}
--- Icons in completion {{{
 local M = {}
 M.icons = {
 	Class = " ",
@@ -41,8 +38,6 @@ function M.setup()
 		kinds[i] = M.icons[kind] or kind
 	end
 end
--- }}}
--- Diagnostics {{{
 vim.diagnostic.config({
 	virtual_text = {
 		prefix = "⚫",
@@ -63,7 +58,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 	underline = true,
 	update_in_insert = true,
 })
--- Signs foe diagnostics {{{
 local signs = {
 	{ name = "DiagnosticSignError", text = "" },
 	{ name = "DiagnosticSignWarn", text = "" },
@@ -102,9 +96,12 @@ local function goto_definition(split_cmd)
 	return handler
 end
 vim.lsp.handlers["textDocument/definition"] = goto_definition("vsplit")
--- }}}
--- }}}
--- Capabilities {{{
+-- FIX: type_definition in float window
+-- vim.lsp.handlers["textDocument/typeDefinition"] = vim.lsp.with(
+-- 	vim.lsp.handlers.type_definition,
+-- 	{ border = border, focusable = true }
+-- )
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.documentationFormat = {
 	"markdown",
@@ -122,10 +119,7 @@ capabilities.textDocument.completion.completionItem.tagSupport = {
 capabilities.textDocument.completion.completionItem.resolveSupport = {
 	properties = { "documentation", "detail", "additionalTextEdits" },
 }
--- }}}
--- on_attach function {{{
 
--- text for on attach function
 local on_attach = function(client)
 	client.resolved_capabilities.document_formatting = false
 	client.resolved_capabilities.document_range_formatting = false
@@ -187,8 +181,6 @@ local on_attach = function(client)
 	end
 end
 
--- }}}
--- LSP Installer {{{
 local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.settings({
 	ui = {
@@ -215,4 +207,3 @@ lsp_installer.on_server_ready(function(server)
 	server:setup(opts)
 	vim.cmd([[ do user lspattachbuffers ]])
 end)
--- }}}

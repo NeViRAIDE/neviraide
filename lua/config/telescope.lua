@@ -20,7 +20,7 @@ require("telescope").setup({
 			bottom_pane = { prompt_position = "top" },
 			horizontal = { mirror = false, prompt_position = "top" },
 			vertical = { mirror = true },
-			cursor = { mirror = true },
+			cursor = { mirror = true, prompt_position = "bottom" },
 		},
 		dynamic_preview_title = true,
 		file_sorter = require("telescope.sorters").get_fuzzy_file,
