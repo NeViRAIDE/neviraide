@@ -79,7 +79,7 @@ wk.register({
 				"Recent Files",
 			},
 			b = {
-				"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({initial_mode = 'normal', previewer = false}))<CR>",
+				"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({initial_mode='normal',previewer=false,sort_lastused=true}))<CR>",
 				"Show open buffers",
 			},
 			f = {

@@ -14,7 +14,7 @@ vim.cmd([[
 	doautocmd BufRead
 	filetype on
 	filetype plugin indent on
-	syntax enable
+	syntax on
 ]])
 
 vim.defer_fn(function()

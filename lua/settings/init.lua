@@ -1,3 +1,4 @@
+require("settings.folding")
 local utils = require("utils")
 local indent = 4
 local cmd = vim.cmd
@@ -10,27 +11,28 @@ vim.opt.listchars = "space:∙"
 vim.opt.virtualedit = "block"
 vim.opt.ruler = true
 
-utils.opt("o", "foldmethod", "indent")
-cmd([[set fillchars=fold:\ ]])
-cmd([[
-set foldtext=CustomFoldText()
-function! CustomFoldText()
-# 'fs' minus 1 na prev string
-  let fs = v:foldstart
-  while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
-  endwhile
-  if fs > v:foldend
-      let line = getline(v:foldstart)
-  else
-      let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
-  endif
-  let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
-  let foldSize = 1 + v:foldend - v:foldstart
-  let foldSizeStr = " " . foldSize . " lines "
-  let expansionString = repeat(" ", w - strwidth(foldSizeStr.line." "))
-  return "▼" . line . "..." . expansionString . foldSizeStr
-endfunction
-]])
+-- ---------------------------------------------------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------------------
+-- utils.opt("o", "foldmethod", "indent")
+-- cmd([[
+-- set foldtext=CustomFoldText()
+-- function! CustomFoldText()
+--   let fs = v:foldstart
+--   while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+--   endwhile
+--   if fs > v:foldend
+--       let line = getline(v:foldstart)
+--   else
+--       let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+--   endif
+--   let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+--   let foldsize = 1 + v:foldend - v:foldstart
+--   let foldsizestr = " " . foldsize . " lines ▼"
+--   let expansionstring = repeat(" ", w - strwidth(foldsizestr.line." "))
+--   let result = line . "..." . expansionstring . foldsizestr
+--   return result
+-- endfunction
+-- ]])
 
 vim.opt.laststatus = 2
 vim.opt.softtabstop = 4
