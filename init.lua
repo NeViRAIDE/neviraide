@@ -14,7 +14,7 @@ vim.cmd([[
 	doautocmd BufRead
 	filetype on
 	filetype plugin indent on
-	syntax on
+	syntax enable
 ]])
 
 vim.defer_fn(function()
@@ -22,6 +22,7 @@ vim.defer_fn(function()
 		set t_ut=
 		silent! bufdo e
 		PackerLoad nvim-treesitter
+
 		lua require'colorizer'.setup()
 	]])
 end, 15)

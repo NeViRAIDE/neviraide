@@ -23,15 +23,12 @@ return require("packer").startup({
 			"nvim-telescope/telescope.nvim",
 			requires = { { "nvim-lua/plenary.nvim" } },
 		})
-		-- lsp {{{
 		use({ "onsails/lspkind-nvim" })
 		use("neovim/nvim-lspconfig")
 		use("folke/lsp-colors.nvim")
 		use("williamboman/nvim-lsp-installer")
 		use("ray-x/lsp_signature.nvim")
 		use("jose-elias-alvarez/null-ls.nvim")
-		-- }}}
-		-- nvim-cmp {{{
 		use({
 			"L3MON4D3/LuaSnip",
 			config = function()
@@ -137,8 +134,6 @@ return require("packer").startup({
 				{ "L3MON4D3/LuaSnip" },
 			},
 		})
-		-- }}}
-		-- GitSigns {{{
 		use({
 			"lewis6991/gitsigns.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
@@ -207,16 +202,12 @@ return require("packer").startup({
 				})
 			end,
 		})
-		-- }}}
-		-- treesitter {{{
 		use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 		use({ "RRethy/nvim-treesitter-textsubjects", after = "nvim-treesitter" })
 		use({
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			after = "nvim-treesitter",
 		})
-		-- }}}
-		-- UI {{{
 		use({ "nvim-lua/popup.nvim" })
 		use({ "nvim-lua/plenary.nvim" })
 		use({ "kyazdani42/nvim-web-devicons" })
@@ -233,12 +224,9 @@ return require("packer").startup({
 		use("folke/todo-comments.nvim")
 		use({ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" })
 		use("sidebar-nvim/sidebar.nvim")
-		-- }}}
-		-- another helpers {{{
 		use("folke/which-key.nvim")
 		use("terrortylor/nvim-comment")
 		use("windwp/nvim-autopairs")
-		-- }}}
 	end,
 	config = {
 		display = {
