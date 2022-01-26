@@ -48,17 +48,11 @@ wk.register({
 	["<leader>"] = {
 		name = "Leader Key Actions",
 		f = { ":lua vim.lsp.buf.formatting()<CR>", "Format File" },
+		g = { ":Neogit<CR>", "Git" },
 		s = {
 			name = "Session",
 			s = { "<cmd>SessionSave<CR>", "Save this session" },
 			l = { "<cmd>SessionLoad<CR>", "Load saved session" },
-		},
-		g = {
-		    name = 'Git',
-			f = {
-				"<cmd>lua require('telescope.builtin').git_files()<CR>",
-				"Git Files",
-			},
 		},
 		t = {
 			name = "Telescope",

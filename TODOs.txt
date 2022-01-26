@@ -1,4 +1,0 @@
-Customization NVIM:
-    1. UI:
-        
-    2. Functional

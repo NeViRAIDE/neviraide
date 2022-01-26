@@ -29,6 +29,7 @@ return require("packer").startup({
 		use("williamboman/nvim-lsp-installer")
 		use("ray-x/lsp_signature.nvim")
 		use("jose-elias-alvarez/null-ls.nvim")
+		use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
 		use({
 			"L3MON4D3/LuaSnip",
 			config = function()
