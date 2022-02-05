@@ -43,7 +43,7 @@ dashboard.section.buttons.val = {
 	button("SPC s l", " ▶ Open saved session"),
 	button("SPC t f", " ▶ Find file"),
 	button("SPC t w", " ▶ Find word"),
-	button("SPC t r", "⌚ ▶ Recently opened files"),
+	button("SPC t r", "⌚▶ Recently opened files"),
 	button("by 'Packer'", " ▶ Update plugins", "<Cmd>PackerUpdate<CR>"),
 	button("q", "⏻ ▶ Quit", "<Cmd>qa<CR>"),
 }

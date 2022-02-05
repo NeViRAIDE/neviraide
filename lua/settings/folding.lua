@@ -1,9 +1,7 @@
 local utils = require("utils")
 
-utils.opt("o", "foldcolumn", "auto")
 utils.opt("o", "foldmethod", "expr")
 utils.opt("o", "foldexpr", "nvim_treesitter#foldexpr()")
-utils.opt("o", "fillchars", "fold: ,foldopen:▲,foldclose:▼")
 utils.opt("o", "foldtext", "CustomFoldText()")
 
 vim.cmd([[

@@ -45,6 +45,7 @@ wk.setup({
 wk.register({
 	["<C-s>"] = { ":wa<CR>", "Save All Files" },
 	["<F2>"] = { ":SidebarNvimToggle<CR>", "Show/Close Sidebar" },
+	["<F3>"] = { ":WhichKey<CR>", "Show all keybindings" },
 	["<leader>"] = {
 		name = "Leader Key Actions",
 		f = { ":lua vim.lsp.buf.formatting()<CR>", "Format File" },

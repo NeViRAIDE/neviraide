@@ -5,12 +5,9 @@ require("config.telescope")
 require("config.todo-comments")
 require("config.tree-sitter")
 require("config.which_key")
--- require('config.alpha')
-
 require("nvim-autopairs").setup({})
 require("nvim_comment").setup()
 
--- null-ls {{{
 local null_ls = require("null-ls")
 local my_sources = {
 	null_ls.builtins.diagnostics.flake8,
@@ -32,7 +29,6 @@ local my_sources = {
 	}),
 }
 null_ls.setup({ sources = my_sources })
--- }}}
 
 require("lsp-colors").setup({
 	Error = "#db4b4b",

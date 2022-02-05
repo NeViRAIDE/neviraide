@@ -1,9 +1,3 @@
-local g = vim.g
-local utils = require("utils")
-g.mapleader = " "
-
-utils.map("n", "<F3>", "<cmd>WhichKey<CR>", { noremap = true, silent = true })
-
 require("plugins")
 require("lsp_lua")
 require("config")
@@ -22,7 +16,6 @@ vim.defer_fn(function()
 		set t_ut=
 		silent! bufdo e
 		PackerLoad nvim-treesitter
-
 		lua require'colorizer'.setup()
 	]])
 end, 15)

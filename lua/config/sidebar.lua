@@ -8,6 +8,7 @@ local opts = {
 	sections = {
 		"files",
 		"git",
+		"diagnostics",
 		"todos",
 	},
 	disable_closing_prompt = true,

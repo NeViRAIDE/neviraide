@@ -2,21 +2,28 @@ require("settings.folding")
 local utils = require("utils")
 local indent = 4
 local cmd = vim.cmd
+local vo = vim.opt
 
-vim.opt.path = "$PWD/**"
-vim.opt.cmdheight = 2
-vim.opt.showmode = false
-vim.opt.conceallevel = 0
-vim.opt.listchars = "space:∙"
-vim.opt.virtualedit = "block"
-vim.opt.ruler = true
+vim.g.mapleader = " "
+
+vo.path = "$PWD/**"
+vo.cmdheight = 2
+vo.showmode = false
+vo.conceallevel = 0
+vo.listchars = "space:∙"
+vo.virtualedit = "block"
+vo.ruler = true
 
 vim.opt.laststatus = 2
 vim.opt.softtabstop = 4
 
 vim.opt.undofile = false
+cmd([[
+    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+    let g:copilot_no_tab_map = v:true
+]])
 
-cmd("autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o")
 utils.opt("o", "wrap", false)
 utils.opt("o", "completeopt", "menuone,noselect,noinsert")
 utils.opt("o", "pumwidth", 15)

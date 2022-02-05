@@ -23,6 +23,8 @@ return require("packer").startup({
 			"nvim-telescope/telescope.nvim",
 			requires = { { "nvim-lua/plenary.nvim" } },
 		})
+		use("github/copilot.vim")
+
 		use({ "onsails/lspkind-nvim" })
 		use("neovim/nvim-lspconfig")
 		use("folke/lsp-colors.nvim")
@@ -106,7 +108,6 @@ return require("packer").startup({
 						{ name = "path" },
 						{ name = "buffer" },
 					},
-					experimental = { ghost_text = true },
 					formatting = {
 						format = function(entry, vim_item)
 							vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
@@ -177,7 +178,7 @@ return require("packer").startup({
 					numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
 					linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
 					word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
-					watch_index = { interval = 1000, follow_files = true },
+					watch_gitdir = { interval = 1000, follow_files = true },
 					attach_to_untracked = true,
 					current_line_blame = true,
 					current_line_blame_opts = {
@@ -187,7 +188,7 @@ return require("packer").startup({
 						ignore_whitespace = false,
 					},
 					current_line_blame_formatter_opts = { relative_time = false },
-					sign_priority = 6,
+					sign_priority = -100,
 					update_debounce = 100,
 					status_formatter = nil,
 					max_file_length = 40000,
@@ -198,7 +199,7 @@ return require("packer").startup({
 						row = 0,
 						col = 1,
 					},
-					use_internal_diff = true, -- If vim.diff or luajit is present
+					diff_opts = { internal = true }, -- If vim.diff or luajit is present
 					yadm = { enable = false },
 				})
 			end,

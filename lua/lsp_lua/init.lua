@@ -43,7 +43,7 @@ vim.diagnostic.config({
 		prefix = "⚫",
 	},
 	severity_sort = true,
-	update_in_insert = true,
+	update_in_insert = false,
 	float = {
 		source = "if_many",
 		border = "rounded",
@@ -56,7 +56,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 	virtual_text = true,
 	signs = true,
 	underline = true,
-	update_in_insert = true,
+	update_in_insert = false,
 })
 local signs = {
 	{ name = "DiagnosticSignError", text = "" },
@@ -103,6 +103,7 @@ vim.lsp.handlers["textDocument/definition"] = goto_definition("vsplit")
 -- )
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 capabilities.textDocument.completion.completionItem.documentationFormat = {
 	"markdown",
 	"plaintext",
@@ -134,8 +135,8 @@ local on_attach = function(client)
 	require("lsp_signature").on_attach({ hint_prefix = " " })
 
 	require("lspkind").init({
-		with_text = false,
-		preset = "default",
+		mode = "symbol_text",
+		preset = "codicons",
 		symbol_map = {
 			Text = "",
 			Method = "",
