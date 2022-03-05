@@ -48,8 +48,17 @@ wk.register({
 	["<F3>"] = { ":WhichKey<CR>", "Show all keybindings" },
 	["<leader>"] = {
 		name = "Leader Key Actions",
-		f = { ":lua vim.lsp.buf.formatting()<CR>", "Format File" },
-		g = { ":Neogit<CR>", "Git" },
+		f = { ":lua vim.lsp.buf.formatting()<CR>", " Format File " },
+		g = { ":Neogit<CR>", " Git  " },
+		c = {
+			name = "Create notes",
+			f = { "OFIX:<esc>:CommentToggle<CR>A ", "Perhaps i have a bug..." },
+			t = { "OTODO:<esc>:CommentToggle<CR>A ", "I have to do this next time..." },
+			h = { "OHACK:<esc>:CommentToggle<CR>A ", "I need to HACK this..." },
+			w = { "OWARN:<esc>:CommentToggle<CR>A ", "I need to WARN this..." },
+			p = { "OPERF:<esc>:CommentToggle<CR>A ", "This part can be better..." },
+			n = { "ONOTE:<esc>:CommentToggle<CR>A ", "I should remember about this..." },
+		},
 		s = {
 			name = "Session",
 			s = { "<cmd>SessionSave<CR>", "Save this session" },

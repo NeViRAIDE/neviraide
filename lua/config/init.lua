@@ -37,12 +37,15 @@ require("lsp-colors").setup({
 	Hint = "#10B981",
 })
 
+vim.cmd([[
+    autocmd FileType alpha setlocal nofoldenable
+]])
 vim.api.nvim_exec(
 	[[
-  augroup YankHighlight
+    augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
+    augroup end
 ]],
 	false
 )

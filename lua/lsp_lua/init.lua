@@ -47,7 +47,7 @@ vim.diagnostic.config({
 	float = {
 		source = "if_many",
 		border = "rounded",
-		header = { "   Diagnostics:", "diagnostic" },
+		header = { "   Diagnostics: ", "diagnostic" },
 		focusable = false,
 		focus = false,
 	},

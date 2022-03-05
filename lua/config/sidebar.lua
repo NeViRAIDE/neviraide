@@ -1,11 +1,12 @@
 local sidebar = require("sidebar-nvim")
 
 local opts = {
-	open = false,
+	open = true,
 	side = "right",
 	hide_statusline = true,
 	initial_width = 40,
 	sections = {
+	    "datetime",
 		"files",
 		"git",
 		"diagnostics",
