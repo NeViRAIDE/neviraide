@@ -16,7 +16,7 @@ onedark.setup({
 		SidebarNvimSectionSeperator = { fg = "#282c34" },
 		CopilotSuggestion = { fg = "#555555", ctermfg = 8 },
 		Folded = { fg = "#5c6370" },
-		-- Comment = { fmt = "bold" },
+		TSComment = { fmt = "bold" },
 	},
 	transparent = true,
 	term_colors = true,

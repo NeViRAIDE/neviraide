@@ -1,7 +1,7 @@
 local sidebar = require("sidebar-nvim")
 
 local opts = {
-	open = true,
+	open = false,
 	side = "right",
 	hide_statusline = true,
 	initial_width = 40,

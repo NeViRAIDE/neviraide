@@ -215,22 +215,10 @@ return require("packer").startup({
 		use("navarasu/onedark.nvim")
 		use("beauwilliams/statusline.lua")
 		use({
-			"goolord/alpha-nvim",
-			requires = { "kyazdani42/nvim-web-devicons" },
+			"startup-nvim/startup.nvim",
+			requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 			config = function()
-				local alpha = require("alpha")
-				local startify = require("alpha.themes.startify")
-				startify.section.top_buttons.val = {
-					startify.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-				}
-				startify.section.mru.val = { { type = "padding", val = 0 } }
-				startify.section.bottom_buttons.val = {
-					startify.button("q", "  Quit NVIM", ":qa<CR>"),
-				}
-				startify.section.footer = {
-					{ type = "string", val = "footer" },
-				}
-				alpha.setup(startify.config)
+				require("startup").setup(require("config.startup"))
 			end,
 		})
 		use("lukas-reineke/indent-blankline.nvim")

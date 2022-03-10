@@ -36,10 +36,6 @@ require("lsp-colors").setup({
 	Information = "#0db9d7",
 	Hint = "#10B981",
 })
-
-vim.cmd([[
-    autocmd FileType alpha setlocal nofoldenable
-]])
 vim.api.nvim_exec(
 	[[
     augroup YankHighlight
