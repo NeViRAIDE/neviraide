@@ -19,14 +19,17 @@ local my_sources = {
 	null_ls.builtins.formatting.autopep8,
 	null_ls.builtins.formatting.isort,
 	null_ls.builtins.formatting.stylua,
-	null_ls.builtins.formatting.djhtml.with({
-		extra_args = function(params)
-			return {
-				"--tabwidth",
-				vim.api.nvim_buf_get_option(params.bufnr, "shiftwidth"),
-			}
-		end,
+	null_ls.builtins.formatting.prettier.with({
+		extra_filetypes = { "htmldjango" },
 	}),
+	-- null_ls.builtins.formatting.djhtml.with({
+	-- 	extra_args = function(params)
+	-- 		return {
+	-- 			"--tabwidth",
+	-- 			vim.api.nvim_buf_get_option(params.bufnr, "shiftwidth"),
+	-- 		}
+	-- 	end,
+	-- }),
 }
 null_ls.setup({ sources = my_sources })
 
