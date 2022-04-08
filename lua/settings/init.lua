@@ -13,15 +13,14 @@ vo.conceallevel = 0
 vo.listchars = "space:∙"
 vo.virtualedit = "block"
 vo.ruler = true
-
-vim.opt.laststatus = 2
-vim.opt.softtabstop = 4
-
-vim.opt.undofile = false
+vo.laststatus = 2
+vo.softtabstop = 4
+vo.undofile = false
 cmd([[
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
     imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
     let g:copilot_no_tab_map = v:true
+    set clipboard+=unnamedplus
 ]])
 
 utils.opt("o", "wrap", false)
