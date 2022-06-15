@@ -29,7 +29,7 @@ local settings = {
         title = "Basic Commands",
         margin = 5,
         content = {
-            { "🖮  Keybindings", "WhichKey", "<F3>" },
+            { "🖮  Keybindings", "WhichKey", "<leader>k" },
             { "  New File", "lua require'startup'.new_file()", "<leader>nf" },
             { "  Find File", "Telescope find_files", "<leader>tf" },
             { "  Find Word", "Telescope live_grep", "<leader>tw" },

@@ -1,27 +1,31 @@
 require("settings.folding")
+require("settings.notify")
 local utils = require("utils")
 local indent = 4
 local cmd = vim.cmd
 local vo = vim.opt
 
 vim.g.mapleader = " "
+vim.g.python3_host_prog = '/usr/bin/python3.10'
 
 vo.path = "$PWD/**"
-vo.cmdheight = 2
 vo.showmode = false
 vo.conceallevel = 0
 vo.listchars = "space:∙"
 vo.virtualedit = "block"
 vo.ruler = true
-vo.laststatus = 2
+vo.laststatus = 3
 vo.softtabstop = 4
 vo.undofile = false
 cmd([[
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-    imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
-    let g:copilot_no_tab_map = v:true
     set clipboard+=unnamedplus
+    set nu rnu
+    autocmd FileType lsp-installer lua vim.api.nvim_win_set_config(0, { border = "rounded" })
 ]])
+-- TODO: add this strings to config correctly
+--autocmd FileType NullLsInfo lua vim.api.nvim_win_set_config(0, { border = "rounded" })
+-- let g:loaded_python3_provider = 1
 
 utils.opt("o", "wrap", false)
 utils.opt("o", "completeopt", "menuone,noselect,noinsert")
@@ -43,7 +47,6 @@ utils.opt("o", "shiftround", true)
 utils.opt("o", "smartcase", true)
 utils.opt("o", "splitbelow", true)
 utils.opt("o", "splitright", true)
-utils.opt("w", "number", true)
 utils.opt("o", "clipboard", "unnamed,unnamedplus")
 utils.opt("o", "inccommand", "split")
 utils.opt("o", "hlsearch", false)
