@@ -36,7 +36,13 @@ return require('packer').startup {
         }
         use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
         -- git
-        use { 'TimUntersberger/neogit', requires = "nvim-lua/plenary.nvim" }
+        use {
+            'TimUntersberger/neogit',
+            requires = {
+                'nvim-lua/plenary.nvim',
+                'sindrets/diffview.nvim'
+            }
+        }
         use { 'lewis6991/gitsigns.nvim',
             event = 'BufRead',
             config = function()
