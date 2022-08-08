@@ -1,3 +1,4 @@
+require 'config.neogit'
 require 'config.null-ls'
 require 'config.notify'
 require 'config.toggle-term'
