@@ -8,7 +8,8 @@ require("lspconfig").sumneko_lua.setup {
                 library = vim.api.nvim_get_runtime_file("", true),
             },
             runtime = {
-                version = 'LuaJIT'
+                version = 'LuaJIT',
+                path = vim.split(package.path, ";")
             },
             diagnostics = { globals = { "vim" } },
             telemetry = {
