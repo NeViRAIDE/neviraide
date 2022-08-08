@@ -48,8 +48,8 @@ wk.register {
         name = 'leader key actions',
         g = { '<cmd>Neogit<cr>', 'Git ' },
         s = { '<cmd>wa<cr>', 'Save all opened files' },
-        f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'Format file' },
-        b = { ':NvimTreeToggle<cr>', 'File browser' },
+        f = { '<cmd>lua vim.lsp.buf.format {async = true}<CR>', 'Format file' },
+        b = { '<cmd>Telescope file_browser<cr>', 'File browser' },
         k = { ':WhichKey<cr>', 'Keybindings' },
         p = {
             name = "Python",
@@ -75,47 +75,14 @@ wk.register {
         },
         t = {
             name = 'Telescope',
-            p = {
-                "<cmd>lua require('telescope.builtin').pickers()<cr>",
-                'Pickers',
-            },
-            e = {
-                "<cmd>lua require('telescope.builtin').registers()<cr>",
-                'Registers',
-            },
-            m = {
-                "<cmd>lua require('telescope.builtin').man_pages()<cr>",
-                'Manual pages',
-            },
-            r = {
-                "<cmd>lua require('telescope.builtin').oldfiles()<cr>",
-                'Recent files',
-            },
-            b = {
-                "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({initial_mode='normal',previewer=false,sort_lastused=true}))<cr>",
-                'Show open buffers',
-            },
-            f = {
-                "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({previewer = false}))<cr>",
-                'Find files',
-            },
-            w = {
-                "<cmd>lua require('telescope.builtin').live_grep()<cr>",
-                'Find word',
-            },
-            h = {
-                "<cmd>lua require('telescope.builtin').help_tags()<cr>",
-                'Help tags',
-            },
-            t = { "<cmd>lua require('telescope.builtin').tags()<cr>", 'Tags' },
-            s = {
-                "<cmd>lua require('telescope.builtin').grep_string()<cr>",
-                'Find string',
-            },
-            o = {
-                "<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<cr>",
-                'Tags (only current buffers)',
-            },
+            p = { "<cmd>Telescope project display_type=full<cr>", 'Projects', },
+            m = { "<cmd>Telescope man_pages<cr>", 'Manual pages', },
+            r = { "<cmd>Telescope oldfiles<cr>", 'Recent files', },
+            b = { "<cmd>Telescope buffers<cr>", 'Show open buffers', },
+            f = { "<cmd>Telescope find_files<cr>", 'Find files', },
+            w = { "<cmd>Telescope live_grep<cr>", 'Find word', },
+            h = { "<cmd>Telescope help_tags<cr>", 'Help tags', },
+            n = { "<cmd>Telescope notify<cr>", 'Notifications', },
         },
         d = {
             name = 'Diagnostics',
@@ -143,15 +110,22 @@ wk.register {
                 ":lua require('telescope.builtin').lsp_references(require('telescope.themes').get_ivy({initial_mode = 'normal', previewer = false, layout_config = {bottom_pane = {height = 12}}}))<cr>",
                 'References',
             },
-            c = {
+            a = {
                 '<cmd>lua vim.lsp.buf.code_action()<cr>',
                 'Code actions',
             },
-            n = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'New name' },
+            R = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'New name' },
             i = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Implementation' },
-            d = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Declaration' },
-            p = { '<cmd>lua vim.lsp.buf.type_definition()<cr>', 'Type definition' },
+            D = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Declaration' },
+            d = { '<cmd>Telescope lsp_definitions<cr>', 'Definition' },
+            t = { '<cmd>Telescope lsp_type_definitions<cr>', 'Type definition' },
             s = { '<cmd>lua vim.lsp.buf.signature_help()<cr>', 'Signature help' },
+            S = {
+                name = "Symbols",
+                d = { '<cmd>Telescope lsp_document_symbols<cr>', 'Document symbols' },
+                w = { '<cmd>Telescope lsp_workspace_symbols<cr>', 'Workspace symbols' },
+                D = { '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', 'Dynamic workspace symbols' }
+            }
         },
     },
 }

@@ -25,28 +25,38 @@ return require('packer').startup {
         use 'navarasu/onedark.nvim'
         use 'nvim-lualine/lualine.nvim'
         use 'kyazdani42/nvim-web-devicons'
-        use 'startup-nvim/startup.nvim'
         use 'lukas-reineke/indent-blankline.nvim'
         use 'norcalli/nvim-colorizer.lua'
         use 'yamatsum/nvim-cursorline'
         use 'rcarriga/nvim-notify'
+        use { 'startup-nvim/startup.nvim',
+            config = function()
+                require("startup").setup(require("config.startup_config"))
+            end
+        }
         use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
         -- git
-        use 'TimUntersberger/neogit'
+        use { 'TimUntersberger/neogit', requires = "nvim-lua/plenary.nvim" }
         use { 'lewis6991/gitsigns.nvim',
             event = 'BufRead',
             config = function()
                 require('gitsigns').setup()
             end,
         }
+
+        -- telescope
+        use 'nvim-telescope/telescope.nvim'
+        use 'nvim-telescope/telescope-project.nvim'
+        use "nvim-telescope/telescope-file-browser.nvim"
+        use 'nvim-telescope/telescope-symbols.nvim'
+        use 'nvim-telescope/telescope-ui-select.nvim'
         -- utils
+        use 'lewis6991/impatient.nvim'
         use 'nvim-lua/popup.nvim'
         use 'nvim-lua/plenary.nvim'
         use 'akinsho/toggleterm.nvim'
-        use 'nvim-telescope/telescope.nvim'
         use 'windwp/nvim-autopairs'
         use 'terrortylor/nvim-comment'
-        use 'kyazdani42/nvim-tree.lua'
         use 'folke/todo-comments.nvim'
         use 'folke/which-key.nvim'
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -56,23 +66,11 @@ return require('packer').startup {
         }
         -- lsp
         use 'jose-elias-alvarez/null-ls.nvim'
-        use "williamboman/nvim-lsp-installer"
         use 'ray-x/lsp_signature.nvim'
         use 'onsails/lspkind-nvim'
         use 'folke/lsp-colors.nvim'
         use 'neovim/nvim-lspconfig'
         -- completions
-        use { 'zbirenbaum/copilot-cmp',
-            after = { 'copilot.lua', 'nvim-cmp' },
-        }
-        use { 'zbirenbaum/copilot.lua',
-            event = 'InsertEnter',
-            config = function()
-                vim.schedule(function()
-                    require('copilot').setup()
-                end)
-            end,
-        }
         use 'hrsh7th/cmp-nvim-lsp'
         use { 'saadparwaiz1/cmp_luasnip' }
         use { 'L3MON4D3/LuaSnip',

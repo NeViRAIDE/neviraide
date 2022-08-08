@@ -1,9 +1,9 @@
-require 'plugins'
-require 'lsp_lua'
-require 'config'
 require 'settings'
+require 'plugins'
+require 'config'
+require 'lsp'
 
-vim.cmd [[
+vim.api.nvim_command [[
 	doautocmd BufRead
 	filetype on
 	filetype plugin indent on
@@ -11,10 +11,9 @@ vim.cmd [[
 ]]
 
 vim.defer_fn(function()
-    vim.cmd [[
+    vim.api.nvim_command [[
 		set t_ut=
 		silent! bufdo e
 		PackerLoad nvim-treesitter
-		lua require'colorizer'.setup()
 	]]
 end, 15)
