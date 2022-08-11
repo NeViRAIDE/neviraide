@@ -5,10 +5,14 @@ if fn.empty(fn.glob(install_path)) > 0 then
     execute(
         '!git clone https://github.com/wbthomason/packer.nvim ' .. install_path
     )
+    vim.cmd [[packadd packer.nvim]]
 end
-vim.cmd [[packadd packer.nvim]]
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
-vim.cmd [[packadd packer.nvim]]
+vim.cmd([[
+    augroup packer_user_config
+        autocmd!
+        autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    augroup end
+    ]])
 require('packer').init {
     git = { clone_timeout = 350 },
     display = {
@@ -21,6 +25,8 @@ require('packer').init {
 return require('packer').startup {
     function(use)
         use 'wbthomason/packer.nvim'
+        use 'nvim-lua/popup.nvim'
+        use 'nvim-lua/plenary.nvim'
         -- ui
         use 'navarasu/onedark.nvim'
         use 'nvim-lualine/lualine.nvim'
@@ -35,21 +41,6 @@ return require('packer').startup {
             end
         }
         use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
-        -- git
-        use {
-            'TimUntersberger/neogit',
-            requires = {
-                'nvim-lua/plenary.nvim',
-                'sindrets/diffview.nvim'
-            }
-        }
-        use { 'lewis6991/gitsigns.nvim',
-            event = 'BufRead',
-            config = function()
-                require('gitsigns').setup()
-            end,
-        }
-
         -- telescope
         use 'nvim-telescope/telescope.nvim'
         use 'nvim-telescope/telescope-project.nvim'
@@ -57,12 +48,27 @@ return require('packer').startup {
         use 'nvim-telescope/telescope-symbols.nvim'
         use 'nvim-telescope/telescope-ui-select.nvim'
         -- utils
+        use 'ggandor/lightspeed.nvim'
+        use { 'lewis6991/gitsigns.nvim',
+            event = 'BufRead',
+            config = function()
+                require('gitsigns').setup()
+            end,
+        }
         use 'lewis6991/impatient.nvim'
-        use 'nvim-lua/popup.nvim'
-        use 'nvim-lua/plenary.nvim'
-        use 'akinsho/toggleterm.nvim'
+        use { "akinsho/toggleterm.nvim",
+            tag = 'v2.*',
+            config = function()
+                require 'config.toggle-term'
+            end
+        }
         use 'windwp/nvim-autopairs'
-        use 'terrortylor/nvim-comment'
+        use {
+            'numToStr/Comment.nvim',
+            config = function()
+                require 'config.comment'
+            end
+        }
         use 'folke/todo-comments.nvim'
         use 'folke/which-key.nvim'
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -70,6 +76,7 @@ return require('packer').startup {
         use { 'nvim-treesitter/nvim-treesitter-textobjects',
             after = 'nvim-treesitter',
         }
+        use 'JoosepAlviste/nvim-ts-context-commentstring'
         -- lsp
         use 'jose-elias-alvarez/null-ls.nvim'
         use 'ray-x/lsp_signature.nvim'
@@ -107,5 +114,9 @@ return require('packer').startup {
                 return require('packer.util').float { border = 'rounded' }
             end,
         },
+        profile = {
+            enable = true,
+            threshold = 1
+        }
     },
 }

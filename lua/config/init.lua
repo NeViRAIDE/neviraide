@@ -1,7 +1,6 @@
-require 'config.neogit'
+-- TODO: plugin to show TODO list
 require 'config.null-ls'
 require 'config.notify'
-require 'config.toggle-term'
 require 'config.colorscheme'
 require 'config.telescope'
 require 'config.todo-comments'
@@ -22,7 +21,6 @@ _G.__luacache_config = {
 require("impatient").enable_profile()
 require 'colorizer'.setup()
 
-require('nvim_comment').setup()
 require('nvim-autopairs').setup {}
 require('indent_blankline').setup {
     show_current_context = true,

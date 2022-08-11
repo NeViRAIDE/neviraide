@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup({
-    context_commmentstring = { enable = true, enable_autocmd = true },
+    context_commmentstring = { enable = true, enable_autocmd = false },
     ensure_installed = {
         "vim",
         "lua",
@@ -121,5 +121,4 @@ require("nvim-treesitter.configs").setup({
         },
     },
     tree_docs = { enable = true }, -- Currently experimental, doesn't work well
-    context_commentstring = { enable = true },
 })

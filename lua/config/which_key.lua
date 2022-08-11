@@ -46,7 +46,7 @@ wk.setup {
 wk.register {
     ['<leader>'] = {
         name = 'leader key actions',
-        g = { '<cmd>Neogit<cr>', 'Git ' },
+        g = { '<cmd>lua _lazygit_toggle()<CR>', 'Git ' },
         s = { '<cmd>wa<cr>', 'Save all opened files' },
         f = { '<cmd>lua vim.lsp.buf.format {async = true}<CR>', 'Format file' },
         b = { '<cmd>Telescope file_browser<cr>', 'File browser' },
@@ -115,7 +115,7 @@ wk.register {
                 'Code actions',
             },
             R = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'New name' },
-            i = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Implementation' },
+            i = { '<cmd>Telescope lsp_implementations()<cr>', 'Implementation' },
             D = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Declaration' },
             d = { '<cmd>Telescope lsp_definitions<cr>', 'Definition' },
             t = { '<cmd>Telescope lsp_type_definitions<cr>', 'Type definition' },
