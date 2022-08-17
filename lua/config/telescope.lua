@@ -31,7 +31,7 @@ telescope.setup({
             end,
             layout_strategy = "horizontal",
             layout_config = {
-                height = 0.7,
+                height = 0.8,
                 width = 0.9,
                 prompt_position = "top",
                 preview_width = 0.6,
@@ -144,21 +144,6 @@ telescope.setup({
             },
             initial_mode = 'normal',
             hijack_netrw = true,
-            -- NOTE: default keymaps for telescope_file_browser
-            --    enter:    opens the currently selected file
-            --    c:        Create file/folder at current `path`\
-            --    r:        Rename multi-selected files/folders
-            --    m:        Move multi-selected files/folders to current `path`
-            --    y:        Copy (multi-)selected files/folders to current `path`
-            --    d:        Delete (multi-)selected files/folders
-            --    o:        Open file/folder with default system application
-            --    g:        Go to parent directory
-            --    e:        Go to home directory
-            --    w:        Go to current working directory (cwd)
-            --    t:        Change nvim's cwd to selected folder/file(parent)
-            --    f:        Toggle between file and folder browser
-            --    h:        Toggle hidden files/folders
-            --    s:        Toggle all entries ignoring `./` and `../`
         },
     },
 })
@@ -166,3 +151,4 @@ telescope.setup({
 telescope.load_extension 'project'
 telescope.load_extension "file_browser"
 telescope.load_extension("ui-select")
+telescope.load_extension("todo-comments")

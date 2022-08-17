@@ -1,4 +1,4 @@
-local settings = {
+require('startup').setup({
     header = {
         type = "text",
         align = "center",
@@ -30,7 +30,7 @@ local settings = {
         margin = 15,
         content = {
             { "New File", "lua require'startup'.new_file()", "<leader>nf" },
-            { "File browser", "Telescope file_browser", "<leader>b" },
+            { "File browser", "Telescope file_browser", "<leader>F" },
             { "Find File", "Telescope find_files", "<leader>tf" },
             { "Find Word", "Telescope live_grep", "<leader>tw" },
             { "Recent Files", "Telescope oldfiles", "<leader>tr" },
@@ -85,5 +85,4 @@ local settings = {
         "footer_2",
         "footer",
     },
-}
-return settings
+})

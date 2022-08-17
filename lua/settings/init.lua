@@ -1,4 +1,5 @@
 require("settings.folding")
+require("settings.winbar")
 
 local utils = require("utils")
 local indent = 4
@@ -14,6 +15,7 @@ utils.opt("o", "completeopt", "menuone,noselect,noinsert")
 utils.opt("o", "clipboard", "unnamed,unnamedplus")
 utils.opt("o", "inccommand", "split")
 utils.opt("o", "mouse", "a")
+utils.opt("o", "winblend", 10)
 
 utils.opt("o", "conceallevel", 0)
 utils.opt("o", "laststatus", 3)

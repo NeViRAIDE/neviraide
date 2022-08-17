@@ -67,7 +67,6 @@ require("nvim-treesitter.configs").setup({
                 ["isc"] = "@scopename.inner",
                 ["iB"] = "@block.inner",
                 ["aB"] = "@block.outer",
-                ["p"] = "@parameter.inner",
             },
         },
         move = {

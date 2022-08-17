@@ -16,9 +16,16 @@ function! CustomFoldText()
     endif
     let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
     let foldsize = 1 + v:foldend - v:foldstart
-    let foldsizestr = " " . foldsize . " lines  "
-    let expansionstring = repeat(" ", w - strwidth(foldsizestr.line))
-    let result = line . "..." . expansionstring . foldsizestr
+    let foldsizestr = " " . foldsize . " lines  "
+    let expansionstring = repeat(".", w - strwidth(foldsizestr.line) + 2)
+    let result = line . expansionstring . foldsizestr
     return result
 endfunction
 ]])
+
+require('fold-preview').setup({
+    default_keybindings = false,
+    border = 'rounded'
+})
+
+vim.api.nvim_exec("autocmd CursorHold * lua require'fold-preview'.show_preview()", false)

@@ -10,6 +10,12 @@ local border = {
     { "╰", "FloatBorder" },
     { "│", "FloatBorder" },
 }
+local signs = {
+    { name = "DiagnosticSignError", text = "" },
+    { name = "DiagnosticSignWarn", text = "" },
+    { name = "DiagnosticSignHint", text = "" },
+    { name = "DiagnosticSignInfo", text = "" },
+}
 local signature_config = {
     bind = true,
     hint_enable = false,
@@ -18,32 +24,20 @@ local signature_config = {
     },
     floating_window = true,
     floating_window_above_cur_line = true,
-    cursorhold_update = false
-}
-local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
+    cursorhold_update = true
 }
 
 local function update_capabilities(client)
     local rc = client.server_capabilities
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-    capabilities.textDocument.completion.completionItem.documentationFormat = {
-        "markdown",
-        "plaintext",
-    }
+    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities.textDocument.completion.completionItem.preselectSupport = true
     capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
     capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
     capabilities.textDocument.completion.completionItem.deprecatedSupport = true
     capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-    capabilities.textDocument.completion.completionItem.tagSupport = {
-        valueSet = { 1 },
-    }
+    capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
     capabilities.textDocument.completion.completionItem.resolveSupport = {
         properties = { "documentation", "detail", "additionalTextEdits" },
     }
@@ -82,41 +76,41 @@ M.build = function()
             border = border,
             focusable = true,
         })
-        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-            vim.lsp.handlers.signature_help,
-            { border = border, focusable = true }
-        )
-        require("lspkind").init({
-            mode = "symbol_text",
-            preset = "codicons",
-            symbol_map = {
-                Text = "",
-                Method = "",
-                Function = "",
-                Constructor = "",
-                Field = "ﰠ",
-                Variable = "",
-                Class = "ﴯ",
-                Interface = "",
-                Module = "",
-                Property = "ﰠ",
-                Unit = "塞",
-                Value = "",
-                Enum = "",
-                Keyword = "",
-                Snippet = "",
-                Color = "",
-                File = "",
-                Reference = "",
-                Folder = "",
-                EnumMember = "",
-                Constant = "",
-                Struct = "פּ",
-                Event = "",
-                Operator = "",
-                TypeParameter = "",
-            },
+        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+            border = border,
+            focusable = true,
         })
+        -- require("lspkind").init({
+        --     mode = "symbol_text",
+        --     preset = "codicons",
+        --     symbol_map = {
+        --         Text = "",
+        --         Method = "",
+        --         Function = "",
+        --         Constructor = "",
+        --         Field = "ﰠ",
+        --         Variable = "",
+        --         Class = "ﴯ",
+        --         Interface = "",
+        --         Module = "",
+        --         Property = "ﰠ",
+        --         Unit = "塞",
+        --         Value = "",
+        --         Enum = "",
+        --         Keyword = "",
+        --         Snippet = "",
+        --         Color = "",
+        --         File = "",
+        --         Reference = "",
+        --         Folder = "",
+        --         EnumMember = "",
+        --         Constant = "",
+        --         Struct = "פּ",
+        --         Event = "",
+        --         Operator = "",
+        --         TypeParameter = "",
+        --     },
+        -- })
     end
 end
 

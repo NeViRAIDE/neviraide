@@ -7,6 +7,7 @@ local icons = {
         visual = "V",
         insert = "I",
         command = "C",
+        replace = "R"
     },
     diagnostic = {
         error = " ",
@@ -19,8 +20,8 @@ local icons = {
         remove = " "
     },
     file = {
-        read_only = '',
-        modified = '✎',
+        read_only = ' ',
+        modified = ' ',
     },
 }
 local colors = {
@@ -43,22 +44,9 @@ local mode_color = {
     [''] = colors.magenta,
     V = colors.magenta,
     c = colors.yellow,
-    no = colors.red,
-    s = colors.orange,
-    S = colors.orange,
-    [''] = colors.orange,
-    ic = colors.yellow,
     R = colors.red,
-    Rv = colors.red,
-    cv = colors.red,
-    ce = colors.red,
-    r = colors.red,
-    rm = colors.cyan,
-    ['r?'] = colors.cyan,
-    ['!'] = colors.red,
     t = colors.red,
 }
-
 local conditions = {
     buffer_not_empty = function()
         return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
@@ -72,7 +60,6 @@ local conditions = {
         return gitdir and #gitdir > 0 and #gitdir < #filepath
     end,
 }
-
 local config = {
     extensions = {
         "quickfix", "nvim-tree", "toggleterm"
@@ -103,14 +90,13 @@ local config = {
     },
     globalstatus = true,
 }
-
 local custom_fname = require('lualine.components.filename'):extend()
 local highlight = require 'lualine.highlight'
 local default_status_colors = { saved = colors.magenta, modified = colors.red }
 function custom_fname:init(options)
     custom_fname.super.init(self, options)
-    self.options.symbols.modified = ' '
-    self.options.symbols.readonly = ' '
+    self.options.symbols.modified = icons.file.modified
+    self.options.symbols.readonly = icons.file.read_only
     self.status_colors = {
         saved = highlight.create_component_highlight_group(
             { bg = colors.bg, fg = default_status_colors.saved, gui = 'bold' }, 'filename_status_saved', self.options),
@@ -120,7 +106,6 @@ function custom_fname:init(options)
     }
     if self.options.color == nil then self.options.color = '' end
 end
-
 function custom_fname:update_status()
     local data = custom_fname.super.update_status(self)
     data = highlight.component_format_highlight(vim.bo.modified
@@ -128,15 +113,12 @@ function custom_fname:update_status()
         or self.status_colors.saved) .. data
     return data
 end
-
 local function ins_left(component)
     table.insert(config.sections.lualine_c, component)
 end
-
 local function ins_right(component)
     table.insert(config.sections.lualine_x, component)
 end
-
 ins_left {
     function()
         return '▊'
@@ -146,7 +128,6 @@ ins_left {
     end,
     padding = { left = 0, right = 1 },
 }
-
 ins_left {
     function()
         local mode_icons = {
@@ -156,7 +137,7 @@ ins_left {
             v = icons.vim_modes.visual,
             [''] = icons.vim_modes.visual .. "-Block",
             V = icons.vim_modes.visual .. "-Line",
-            R = "R"
+            R = icons.vim_modes.replace
         }
         return mode_icons[vim.fn.mode()]
     end,
@@ -165,35 +146,28 @@ ins_left {
     end,
     padding = { right = 1 },
 }
-
 ins_left {
     'filesize',
     cond = conditions.hide_in_width,
 }
-
 ins_left {
     'filetype',
     icon_only = true,
     cond = conditions.hide_in_width,
 }
-
-
 ins_left {
     custom_fname,
     cond = conditions.buffer_not_empty
 }
-
 ins_left {
     'location',
     cond = conditions.buffer_not_empty
 }
-
 ins_left {
     'progress',
     cond = conditions.buffer_not_empty,
     color = { fg = colors.fg, gui = 'bold' }
 }
-
 ins_left {
     'diagnostics',
     sources = { 'nvim_diagnostic' },
@@ -208,13 +182,11 @@ ins_left {
         color_info = { fg = colors.cyan },
     },
 }
-
 ins_left {
     function()
         return '%='
     end,
 }
-
 ins_left {
     function()
         local msg = 'No Active Lsp'
@@ -235,14 +207,12 @@ ins_left {
     color = { fg = '#074d07', gui = 'bold' },
     cond = conditions.buffer_not_empty
 }
-
 ins_right {
     'o:encoding',
     fmt = string.upper,
     cond = conditions.hide_in_width,
     color = { fg = colors.fg },
 }
-
 ins_right {
     'fileformat',
     fmt = string.upper,
@@ -250,13 +220,11 @@ ins_right {
     cond = conditions.hide_in_width,
     color = { fg = colors.fg },
 }
-
 ins_right {
     'branch',
     icon = icons.git,
     color = { fg = colors.orange, gui = 'bold' },
 }
-
 ins_right {
     'diff',
     symbols = {
@@ -270,7 +238,6 @@ ins_right {
         removed = { fg = colors.red },
     },
 }
-
 ins_right {
     function()
         return '▊'
@@ -280,5 +247,4 @@ ins_right {
     end,
     padding = { left = 1 },
 }
-
 lualine.setup(config)

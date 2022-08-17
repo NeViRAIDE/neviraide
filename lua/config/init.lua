@@ -1,12 +1,27 @@
--- TODO: plugin to show TODO list
 require 'config.null-ls'
 require 'config.notify'
 require 'config.colorscheme'
 require 'config.telescope'
-require 'config.todo-comments'
 require 'config.tree-sitter'
-require 'config.which_key'
 require 'config.lualine'
+require 'config.dap'
+
+require("impatient").enable_profile()
+require 'colorizer'.setup()
+require("link-visitor").setup({
+    silent = true,
+})
+require('indent_blankline').setup {
+    show_current_context = true,
+    show_current_context_start = true,
+    show_first_indent_level = false
+}
+require('lsp-colors').setup {
+    Error = '#db4b4b',
+    Warning = '#e0af68',
+    Information = '#0db9d7',
+    Hint = '#10B981',
+}
 
 _G.__luacache_config = {
     chunks = {
@@ -17,31 +32,6 @@ _G.__luacache_config = {
         enable = true,
         path = vim.fn.stdpath('cache') .. '/luacache_modpaths',
     }
-}
-require("impatient").enable_profile()
-require 'colorizer'.setup()
-
-require('nvim-autopairs').setup {}
-require('indent_blankline').setup {
-    show_current_context = true,
-    show_current_context_start = true,
-    show_first_indent_level = false
-}
-require('nvim-cursorline').setup {
-    cursorline = {
-        enable = true,
-        timeout = 1000,
-        number = true,
-    },
-    cursorword = {
-        enable = false,
-    },
-}
-require('lsp-colors').setup {
-    Error = '#db4b4b',
-    Warning = '#e0af68',
-    Information = '#0db9d7',
-    Hint = '#10B981',
 }
 vim.api.nvim_exec(
     [[
