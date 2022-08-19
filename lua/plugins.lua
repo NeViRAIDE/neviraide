@@ -56,6 +56,10 @@ return require('packer').startup {
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
         use { 'RRethy/nvim-treesitter-textsubjects', after = 'nvim-treesitter' }
         use 'JoosepAlviste/nvim-ts-context-commentstring'
+        use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+            setup = function()
+                vim.g.mkdp_filetypes = { "markdown" }
+            end, ft = { "markdown" }, })
         use {
             "danymat/neogen",
             config = function()
