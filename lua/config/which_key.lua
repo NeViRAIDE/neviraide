@@ -55,6 +55,7 @@ wk.register({
         F = { ':Telescope file_browser<cr>', 'File browser' },
         k = { ':WhichKey<cr>', 'Keybindings' },
         N = { name = "Neogen",
+            a = { ':Neogen<cr>', 'Create annotation(autodetect)' },
             f = { ':Neogen func<cr>', 'Create function annotation' },
             c = { ':Neogen class<cr>', 'Create class annotation' },
             t = { ':Neogen type<cr>', 'Create type annotation' },

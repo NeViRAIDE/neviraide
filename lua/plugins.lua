@@ -135,12 +135,14 @@ return require('packer').startup {
                 { 'L3MON4D3/LuaSnip', after = 'nvim-cmp' }
             },
         }
-        -- use { 'saadparwaiz1/cmp_luasnip' }
-        -- use {
-        --     'L3MON4D3/LuaSnip',
-        --     after = 'nvim-cmp',
-        --     config = function() require('config.snippets') end,
-        -- }
+        -- snippets
+        use { 'saadparwaiz1/cmp_luasnip' }
+        use {
+            'L3MON4D3/LuaSnip',
+            after = 'nvim-cmp',
+            config = function() require('config.snippets') end,
+        }
+        use "rafamadriz/friendly-snippets"
     end,
     config = {
         display = {
