@@ -8,7 +8,11 @@ telescope.setup({
             theme = "dropdown",
             initial_mode = 'normal',
             previewer = false,
-            sort_lastused = true
+            sort_lastused = true,
+            layout_config = {
+                height = 0.3,
+                width = 0.4,
+            },
         },
         file_browser = {
             attach_mappings = function(_)
@@ -58,6 +62,7 @@ telescope.setup({
             }
         },
         oldfiles = {
+            initial_mode = 'normal',
             attach_mappings = function(_)
                 telescope_actions.select:enhance({
                     post = function()
@@ -70,7 +75,7 @@ telescope.setup({
             theme = "dropdown",
             layout_config = {
                 width = 0.6,
-                height = 0.5,
+                height = 0.3,
             }
         },
         help_tags = {
@@ -102,6 +107,22 @@ telescope.setup({
                 width = 0.38
             },
         },
+        lsp_references = {
+            initial_mode = "normal",
+            theme = "ivy",
+            layout_config = {
+                bottom_pane = { height = 12 },
+                preview_width = 0.4,
+            },
+        },
+        diagnostics = {
+            initial_mode = "normal",
+            theme = "ivy",
+            previewer = false,
+            layout_config = {
+                bottom_pane = { height = 12 },
+            },
+        },
     },
     defaults = {
         prompt_prefix = " 🔍 ",
@@ -124,22 +145,25 @@ telescope.setup({
             themes.get_cursor {}
         },
         project = {
+            initial_mode = 'normal',
             preview = {
                 disable = false, -- default
                 dir_only = false, -- default
-                additional_readmes = { "notes.md", "notes.txt" } -- not default
+                additional_readmes = { "notes.md", "notes.txt", "README.md", "readme.md" } -- not default
             },
             base_dirs = {
                 '~/.config/',
-                '~/Projects',
+                '~/projects',
             },
             hidden_files = false,
             theme = "dropdown",
         },
         file_browser = {
             theme = "dropdown",
+            previewer = false,
             layout_config = {
-                height = 0.5,
+                height = 0.9,
+                width = 0.4,
                 prompt_position = "top",
             },
             initial_mode = 'normal',
@@ -149,6 +173,7 @@ telescope.setup({
 })
 
 telescope.load_extension 'project'
+-- TODO: change to file browser tree
 telescope.load_extension "file_browser"
 telescope.load_extension("ui-select")
 telescope.load_extension("todo-comments")

@@ -1,17 +1,14 @@
-vim.diagnostic.config({
-    severity_sort = true,
+vim.lsp.handlers['textDocument/publishDiagnostics'] =
+  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    virtual_text = false,
+    signs = false,
     update_in_insert = false,
-    float = {
-        source = "if_many",
-        border = "rounded",
-        header = { "   Diagnostics: ", "diagnostic" },
-        focusable = false,
-        focus = false,
-    },
-})
+  })
 
-require "lsp.servers.lua"
-require "lsp.servers.pyright"
-require "lsp.servers.html"
-require "lsp.servers.css"
-require "lsp.servers.emmet"
+require('lsp.servers.lua')
+require('lsp.servers.pyright')
+require('lsp.servers.html')
+require('lsp.servers.css')
+
+require('lsp.null-ls')

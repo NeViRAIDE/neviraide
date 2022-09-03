@@ -1,8 +1,32 @@
 -- TODO: configure dap for job
+-- TODO: automatic create dir and install virtualenv
 local dap = require("dap")
-require('dap-python').setup()
 local dapui = require("dapui")
+local dappy = require('dap-python')
 
+vim.fn.sign_define('DapBreakpoint', { text = '🛑', texthl = '', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointCondition', { text = '🔵', texthl = '', linehl = '', numhl = '' })
+vim.fn.sign_define('DapLogPoint', { text = '🟢', texthl = '', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = '⏩', texthl = '', linehl = '', numhl = '' })
+
+dappy.setup('~/.virtualenvs/debugpy/bin/python')
+require("nvim-dap-virtual-text").setup {
+    enabled = true,
+    enabled_commands = false,
+    highlight_changed_variables = true,
+    highlight_new_as_changed = true,
+    show_stop_reason = true,
+    commented = false, -- prefix virtual text with comment string
+    only_first_definition = true,
+    all_references = false,
+    -- experimental features:
+    virt_text_pos = 'eol', -- position of virtual text, see `:h nvim_buf_set_extmark()`
+    all_frames = true,
+    virt_lines = false,
+    virt_text_win_col = nil -- position the virtual text at a fixed window column (starting from the first text column) ,
+    -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
+}
+-- require('dap-python').test_runner = 'pytest'
 
 dapui.setup({
     icons = { expanded = "▾", collapsed = "▸" },
@@ -15,13 +39,6 @@ dapui.setup({
         toggle = "t",
     },
     expand_lines = vim.fn.has("nvim-0.7"),
-    -- Layouts define sections of the screen to place windows.
-    -- The position can be "left", "right", "top" or "bottom".
-    -- The size specifies the height/width depending on position. It can be an Int
-    -- or a Float. Integer specifies height/width directly (i.e. 20 lines/columns) while
-    -- Float value specifies percentage (i.e. 0.3 - 30% of available lines/columns)
-    -- Elements are the elements shown in the layout (in order).
-    -- Layouts are opened in order so that earlier layouts take priority in window sizing.
     layouts = {
         {
             elements = {

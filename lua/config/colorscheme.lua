@@ -1,26 +1,30 @@
-local onedark = require("onedark")
+local onedark = require('onedark')
+local color = require('settings.colors')
+
 onedark.setup({
-    highlights = {
-        TSException = { fg = "#c678dd", fmt = "italic" },
-        TSKeywordFunction = { fg = "#c678dd", fmt = "italic,bold" },
-        TSInclude = { fg = "#c678dd", fmt = "italic,bold" },
-        CursorLineNr = { fmt = "bold" },
-        NormalFloat = { bg = "none" },
-        FloatBorder = { fg = "Gray", bg = "none" },
-        Diagnostic = { fg = "DarkYellow", fmt = "italic,bold" },
-        -- Folded = { fg = "#59ff23", bg = "none" },
-        Folded = { fg = "#6621ef", bg = "none" },
-        TSComment = { fmt = "none" },
-        Comment = { fmt = "none" },
-        StatusLine = { bg = "none" },
-        LspSignatureActiveParameter = { fg = "LightGreen", fmt = "bold" },
-    },
-    diagnostics = {
-        background = false,
-    },
-    code_style = {
-        strings = "italic",
-        keywords = "italic,bold",
-    },
+  style = 'darker',
+  highlights = {
+    TSException = { fg = color.magenta, fmt = 'italic' },
+    TSKeywordFunction = { fg = color.magenta, fmt = 'italic,bold' },
+    TSInclude = { fg = color.magenta, fmt = 'italic,bold' },
+    CursorLineNr = { fmt = 'bold' },
+    CursorLine = { bg = color.none },
+    NormalFloat = { bg = color.none },
+    FloatBorder = { fg = 'Gray', bg = color.none },
+    Diagnostic = { fg = 'DarkYellow', fmt = 'italic,bold' },
+    Folded = { fg = color.indigo, bg = color.none },
+    TSComment = { fmt = color.none },
+    Comment = { fmt = color.none },
+    StatusLine = { bg = color.none },
+    LspSignatureActiveParameter = { fg = 'LightGreen', fmt = 'bold' },
+  },
+  diagnostics = {
+    background = false,
+  },
+  code_style = {
+    strings = 'italic',
+    keywords = 'italic,bold',
+  },
 })
+
 onedark.load()

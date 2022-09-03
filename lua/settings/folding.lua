@@ -1,9 +1,13 @@
-local utils = require("utils")
+local autocmd = require('utils').autocmd
+local add_icon = require("utils").add_icon
 
-utils.opt("o", "foldmethod", "expr")
-utils.opt("o", "foldexpr", "nvim_treesitter#foldexpr()")
-utils.opt("o", "foldtext", "CustomFoldText()")
+local folding = function()
+    vim.opt.foldmethod = 'expr'
+    vim.opt.foldexpr   = 'nvim_treesitter#foldexpr()'
+    vim.opt.foldtext   = 'CustomFoldText()'
+end
 
+-- TODO: rewrite to LUA
 vim.cmd([[
 function! CustomFoldText()
     let fs = v:foldstart
@@ -23,9 +27,6 @@ function! CustomFoldText()
 endfunction
 ]])
 
-require('fold-preview').setup({
-    default_keybindings = false,
-    border = 'rounded'
-})
-
-vim.api.nvim_exec("autocmd CursorHold * lua require'fold-preview'.show_preview()", false)
+autocmd("TS_FOLD_WORKAROUND", {
+    'BufEnter', 'BufAdd', 'BufNew', 'BufNewFile', 'BufWinEnter'
+}, { callback = folding })
