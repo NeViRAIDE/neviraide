@@ -3,11 +3,12 @@ if not null_ls_status_ok then return end
 
 local formatting = null_ls.builtins.formatting
 local hover = null_ls.builtins.hover
-
+ 
 null_ls.setup({
   sources = {
     hover.dictionary,
     formatting.prettier.with({
+      disabled_filetypes = { 'markdown' },
       -- disabled_filetypes = { 'vue' },
       extra_filetypes = { 'htmldjango' },
       extra_args = {
@@ -33,14 +34,4 @@ null_ls.setup({
       },
     }),
   },
-  on_attach = function(client, bufnr)
-    if client.supports_method('textDocument/formatting') then
-      vim.api.nvim_buf_create_user_command(
-        bufnr,
-        'LspFormatting',
-        function() vim.lsp.buf.format() end,
-        {}
-      )
-    end
-  end,
 })

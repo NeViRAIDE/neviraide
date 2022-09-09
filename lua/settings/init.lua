@@ -44,6 +44,8 @@ local settings = {
   conceallevel = 0,
   laststatus = 3,
   softtabstop = 4,
+  tabstop = 4,
+  shiftwidth = 4,
   scrolloff = 7,
   pumheight = 7,
   pumwidth = 15,
@@ -69,8 +71,6 @@ local settings = {
   undofile = false,
   wrap = false,
   hlsearch = false,
-  tabstop = 4,
-  shiftwidth = 4,
   expandtab = true,
   smartindent = true,
   autoindent = true,
@@ -88,3 +88,23 @@ vim.cmd([[
     let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 ]])
+
+_G.color = {
+  bg = '#070707',
+  fg = '#bbc2cf',
+  yellow = '#ECBE7B',
+  cyan = '#008080',
+  darkblue = '#081633',
+  green = '#98be65',
+  lightGreen = 'lightGreen',
+  orange = '#FF8800',
+  violet = '#a9a1e1',
+  magenta = '#c678dd',
+  blue = '#51afef',
+  red = '#ec5f67',
+  none = 'none',
+  indigo = '#6621ef',
+  grey = 'Grey',
+  visual = '#444c4d',
+  darkYellow = 'DarkYellow',
+}

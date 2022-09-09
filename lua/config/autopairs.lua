@@ -4,7 +4,16 @@ local handlers = require('nvim-autopairs.completion.handlers')
 
 require('nvim-autopairs').setup({
   enable_check_bracket_line = false,
-  ignored_next_char = '[%w%.]',
+  fast_wrap = {
+    map = '<M-p>',
+    chars = { '{', '[', '(', '"', "'" },
+    pattern = [=[[%'%"%)%>%]%)%}%,]]=],
+    end_key = '$',
+    keys = 'qwertyuiopzxcvbnmasdfghjkl',
+    check_comma = true,
+    highlight = 'Search',
+    highlight_grey = 'Comment',
+  },
 })
 
 cmp.event:on(

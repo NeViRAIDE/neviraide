@@ -1,22 +1,48 @@
-require('settings')
-require('plugins')
-require('config')
-require('lsp')
+_G.__luacache_config = {
+  chunks = {
+    enable = true,
+    path = vim.fn.stdpath('cache') .. '/luacache_chunks',
+  },
+  modpaths = {
+    enable = true,
+    path = vim.fn.stdpath('cache') .. '/luacache_modpaths',
+  },
+}
 
-vim.api.nvim_command([[
-	doautocmd BufRead
-	filetype on
-	filetype plugin indent on
-	syntax enable
-]])
+_G.load_config = function()
+  require('settings')
+  require('config')
+  require('lsp')
+end
 
-vim.defer_fn(
-  function()
-    vim.api.nvim_command([[
-		set t_ut=
-		silent! bufdo e
-		PackerLoad nvim-treesitter
-	]])
-  end,
-  15
-)
+_G.if_require = function(module, block, errblock)
+  local ok, mod = pcall(require, module)
+  if ok then
+    return block(mod)
+  elseif errblock then
+    return errblock(mod)
+  else
+    vim.api.nvim_err_writeln('Failed to load ' .. module .. ': ' .. mod)
+    return nil
+  end
+end
+
+do
+  local install_path = vim.fn.stdpath('data')
+    .. '/site/pack/packer/start/packer.nvim'
+  if vim.fn.isdirectory(install_path) == 0 then
+    vim.fn.system({
+      'git',
+      'clone',
+      'https://github.com/wbthomason/packer.nvim',
+      install_path,
+    })
+    vim.cmd('packadd packer.nvim')
+    require('plugins')
+    require('packer').sync()
+    vim.cmd('autocmd User PackerComplete ++once lua load_config()')
+  else
+    require('plugins')
+    load_config()
+  end
+end

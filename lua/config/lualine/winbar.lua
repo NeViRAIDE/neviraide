@@ -1,6 +1,4 @@
-local add_icon = require('utils').add_icon
 local buffer_not_empty = require('utils').buffer_not_empty
-local color = require('settings.colors')
 
 return {
   lualine_a = {},
@@ -28,13 +26,13 @@ return {
     {
       function()
         local mode_icons = {
-          n = add_icon('vim-normal-mode'),
-          i = add_icon('vim-insert-mode'),
-          c = add_icon('vim-command-mode'),
-          v = add_icon('vim-visual-mode'),
-          [''] = add_icon('vim-visual-mode') .. '-Block',
-          V = add_icon('vim-visual-mode') .. '-Line',
-          R = add_icon('vim-replace-mode'),
+          n = icon('vim-normal-mode'),
+          i = icon('vim-insert-mode'),
+          c = icon('vim-command-mode'),
+          v = icon('vim-visual-mode'),
+          [''] = icon('vim-visual-mode') .. '-Block',
+          V = icon('vim-visual-mode') .. '-Line',
+          R = icon('vim-replace-mode'),
         }
         return mode_icons[vim.fn.mode()]
       end,

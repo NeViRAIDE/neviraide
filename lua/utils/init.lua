@@ -1,4 +1,4 @@
-local function add_icon(icon_name)
+function _G.icon(icon_name)
   local icons = require('nvim-nonicons')
   local icon = icons.get(icon_name)
   return icon .. ' '
@@ -33,7 +33,6 @@ local function buffer_not_empty() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
 local function hide_in_width() return vim.fn.winwidth(0) > 90 end
 
 return {
-  add_icon = add_icon,
   opt = opt,
   autocmd = autocmd,
   autocmd_multi = autocmd_multi,

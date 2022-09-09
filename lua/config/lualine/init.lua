@@ -9,10 +9,12 @@ local config = {
   },
   options = {
     disabled_filetypes = {
+      'NvimTree',
       'dashboard',
       'packer',
       'TelescopePrompt',
       'toggleterm',
+      'lspsagaoutline',
     },
     section_separators = '',
     component_separators = '',

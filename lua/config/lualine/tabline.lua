@@ -1,7 +1,5 @@
-local color = require('settings.colors')
 local buffer_not_empty = require('utils').buffer_not_empty
 local hide_in_width = require('utils').hide_in_width
-local icon = require('utils').add_icon
 
 local function get_file_path()
   if vim.fn.bufname('%') == '' then return '' end
@@ -71,6 +69,7 @@ local function config_winbar()
     ['NvimTree'] = true,
     ['help'] = true,
     ['term'] = true,
+    ['nvim-tree'] = true,
   }
   if vim.api.nvim_win_get_config(0).zindex or exclude[vim.bo.filetype] then
     vim.wo.winbar = ''

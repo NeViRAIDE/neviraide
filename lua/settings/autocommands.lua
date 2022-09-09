@@ -1,8 +1,28 @@
-local opt = require('utils').opt
-local auto_cmd = require('utils').autocmd
-local multi_auto_cmd = require('utils').autocmd_multi
+local autocmd = require('utils').autocmd
+local autocmd_multi = require('utils').autocmd_multi
 
-multi_auto_cmd('NEVIRIDE', {
+autocmd('PACKER_RELOAD', 'BufWritePost', {
+  pattern = 'lua/plugins.lua',
+  callback = function(args)
+    vim.api.nvim_command('source ' .. args.file)
+    vim.api.nvim_command('PackerCompile')
+  end,
+  desc = 'Auto compile plugins',
+})
+
+autocmd_multi('NEVIRAIDE_CONF', {
+  {
+    'FileType',
+    {
+      pattern = { 'lua', 'javascript', 'html', 'css' },
+      desc = 'Decrease indent size',
+      callback = function()
+        vim.o.softtabstop = 2
+        vim.o.tabstop = 2
+        vim.o.shiftwidth = 2
+      end,
+    },
+  },
   {
     'FileType',
     {
@@ -15,59 +35,46 @@ multi_auto_cmd('NEVIRIDE', {
     'TextYankPost',
     {
       desc = 'Highlight on yank',
-      callback = function(event)
+      callback = function()
         vim.highlight.on_yank({ higroup = 'Search', timeout = 200 })
       end,
     },
   },
-  -- FIX: colorpicker window size
-  {
-    'WinEnter',
-    {
-      pattern = 'color-picker',
-      callback = function()
-        opt('winwidth', 25)
-        opt('cursorline', true)
-        -- opt('signcolumn', 'auto')
-        -- vim.cmd('wincmd =')
-      end,
-    },
-  },
-})
-
-multi_auto_cmd('WindowResizing', {
   {
     'WinEnter',
     {
       pattern = '*',
-      callback = function()
-        opt('winwidth', 85)
-        opt('cursorline', true)
-        opt('signcolumn', 'auto')
-        vim.cmd('wincmd =')
-      end,
+      desc = 'Equals width of unfocused splits',
+      callback = function() vim.cmd('wincmd =') end,
+    },
+  },
+})
+autocmd_multi('NEVIRAIDE_KEYS', {
+  {
+    'FileType',
+    {
+      pattern = 'python',
+      desc = 'Add python features',
+      callback = function() require('config.which_key').attach_python(0) end,
     },
   },
   {
-    'WinLeave',
+    'FileType',
     {
-      pattern = '*',
-      callback = function()
-        opt('cursorline', false)
-        opt('signcolumn', 'no')
-      end,
+      pattern = 'markdown',
+      desc = 'Add markdown features',
+      callback = function() require('config.which_key').attach_markdown(0) end,
     },
   },
 })
 
-auto_cmd(
-  'LspFormatting',
-  'BufWritePre',
-  { command = 'undojoin | LspFormatting' }
-)
-
-auto_cmd('ToggleTerm', 'TermOpen', {
+autocmd('FormatOnSave', 'BufWritePre', {
+  desc = 'Autoformat on save',
+  callback = function() vim.lsp.buf.format() end,
+})
+autocmd('ToggleTerm_keys', 'TermOpen', {
   pattern = 'term://*toggleterm#*',
+  desc = 'Add keymaps to go out from terminal',
   callback = function()
     local opts = { buffer = 0 }
     vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)

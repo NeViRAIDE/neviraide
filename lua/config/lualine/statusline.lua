@@ -1,7 +1,5 @@
-local add_icon = require('utils').add_icon
 local buffer_not_empty = require('utils').buffer_not_empty
 local hide_in_width = require('utils').hide_in_width
-local color = require('settings.colors')
 
 local function left_separator() return '' end
 
@@ -51,7 +49,7 @@ return {
     },
     {
       lsp_source,
-      icon = add_icon('server'),
+      icon = icon('server'),
       color = { bg = color.bg },
       cond = buffer_not_empty,
     },
@@ -65,10 +63,10 @@ return {
       'diagnostics',
       sources = { 'nvim_diagnostic' },
       symbols = {
-        error = add_icon('x-circle'),
-        warn = add_icon('alert'),
-        info = add_icon('info'),
-        hint = ' ',
+        error = icon('x-circle'),
+        warn = icon('alert'),
+        info = icon('info'),
+        hint = icon('light-bulb'),
       },
       diagnostics_color = {
         color_error = { fg = color.red },
@@ -93,14 +91,19 @@ return {
       padding = { left = 0, right = 0 },
     },
     {
+      'filesize',
+      cond = hide_in_width or buffer_not_empty,
+      color = { bg = color.bg },
+    },
+    {
       'fileformat',
       icons_enabled = true,
       cond = hide_in_width or buffer_not_empty,
-      color = { bg = color.bg },
+      color = { fg = color.fg, bg = color.bg },
       symbols = {
-        unix = 'LF',
-        dos = 'CRLF',
-        mac = 'CR',
+        unix = 'LF ',
+        dos = 'CRLF ',
+        mac = 'CR ',
       },
     },
     {
@@ -111,7 +114,7 @@ return {
       color = { fg = color.fg, bg = color.bg },
     },
     {
-      'filesize',
+      function() return vim.o.tabstop .. ' spaces' end,
       cond = hide_in_width or buffer_not_empty,
       color = { bg = color.bg },
     },
@@ -134,11 +137,11 @@ return {
       source = diff_source,
       color = { bg = color.bg },
       symbols = {
-        added = add_icon('diff-added'),
-        modified = add_icon('diff-modified'),
-        removed = add_icon('diff-removed'),
-        ignored = add_icon('diff-ignored'),
-        renamed = add_icon('diff-renamed'),
+        added = icon('diff-added'),
+        modified = icon('diff-modified'),
+        removed = icon('diff-removed'),
+        ignored = icon('diff-ignored'),
+        renamed = icon('diff-renamed'),
       },
       diff_color = {
         added = { fg = color.green },
@@ -150,7 +153,7 @@ return {
     },
     {
       branch_source,
-      icon = add_icon('git-branch'),
+      icon = icon('git-branch'),
       color = { fg = color.orange, gui = 'bold', bg = color.bg },
     },
     {

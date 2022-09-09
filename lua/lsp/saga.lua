@@ -1,12 +1,18 @@
--- FIX: server lua not support documentSymbol
-local icon = require('utils').add_icon
+-- FIX: server not support [textDocument/documentSymbol]
+-- NOTE: glepnir fix that in next version
 local saga = require('lspsaga')
 
 saga.init_lsp_saga({
   border_style = 'rounded',
   saga_winblend = 20,
   move_in_saga = { prev = '<C-p>', next = '<C-n>' },
-  diagnostic_header = { icon('x-circle'), icon('alert'), icon('info'), ' ' },
+  -- TODO: to diagnostics workspase list
+  diagnostic_header = {
+    icon('x-circle'),
+    icon('alert'),
+    icon('info'),
+    icon('light-bulb'),
+  },
   show_diagnostic_source = true,
   diagnostic_source_bracket = { '[', ']' },
   max_preview_lines = 10,
@@ -46,32 +52,12 @@ saga.init_lsp_saga({
     enable = true,
     separator = ' ' .. icon('triangle-right'),
     show_file = true,
-    click_support = function(node, clicks, button, modifiers)
-      -- To see all avaiable details: vim.pretty_print(node)
-      local st = node.range.start
-      local en = node.range['end']
-      if button == 'l' then
-        if clicks == 2 then
-          -- double left click to do nothing
-        else -- jump to node's starting line+char
-          vim.fn.cursor(st.line + 1, st.character + 1)
-        end
-      elseif button == 'r' then
-        if modifiers == 's' then
-          print('lspsaga') -- shift right click to print "lspsaga"
-        end -- jump to node's ending line+char
-        vim.fn.cursor(en.line + 1, en.character + 1)
-      elseif button == 'm' then
-        -- middle click to visual select node
-        vim.fn.cursor(st.line + 1, st.character + 1)
-        vim.cmd('normal v')
-        vim.fn.cursor(en.line + 1, en.character + 1)
-      end
-    end,
+    click_support = false,
   },
+  -- TODO: auto resize
   show_outline = {
     win_position = 'right',
-    win_with = 'db_ui',
+    win_with = '',
     win_width = 40,
     auto_enter = true,
     auto_preview = true,
@@ -79,7 +65,7 @@ saga.init_lsp_saga({
     jump_key = 'o',
     auto_refresh = true,
   },
-  server_filetype_map = { 'lua', 'python' },
+  server_filetype_map = {},
 })
 
 -- local action = require("lspsaga.action")

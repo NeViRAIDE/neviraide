@@ -1,12 +1,3 @@
-local fn = vim.fn
-local execute = vim.api.nvim_command
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  execute(
-    '!git clone https://github.com/wbthomason/packer.nvim ' .. install_path
-  )
-  vim.cmd('packadd packer.nvim')
-end
 require('packer').init({
   auto_reload_compiled = true,
   git = { clone_timeout = 350 },
@@ -17,6 +8,7 @@ require('packer').init({
     keybindings = { toggle_info = 'o' },
   },
 })
+
 return require('packer').startup({
   function(use)
     use('wbthomason/packer.nvim')
@@ -34,15 +26,19 @@ return require('packer').startup({
       requires = { 'kyazdani42/nvim-web-devicons' },
     })
     use('lukas-reineke/indent-blankline.nvim')
-    use('norcalli/nvim-colorizer.lua')
+    use('Akianonymus/nvim-colorizer.lua')
     use('rcarriga/nvim-notify')
     use('glepnir/dashboard-nvim')
     -- telescope
     use({ 'nvim-telescope/telescope.nvim', tag = '0.1.0' })
-    use('nvim-telescope/telescope-project.nvim')
-    use('nvim-telescope/telescope-file-browser.nvim')
     use('nvim-telescope/telescope-ui-select.nvim')
     -- utils
+    use({
+      'kyazdani42/nvim-tree.lua',
+      requires = { 'kyazdani42/nvim-web-devicons' },
+      tag = 'nightly',
+    })
+    use('beauwilliams/focus.nvim')
     use('lewis6991/impatient.nvim')
     use('ggandor/lightspeed.nvim')
     use('xiyaowong/link-visitor.nvim')
@@ -77,18 +73,19 @@ return require('packer').startup({
     })
     use({
       'numToStr/Comment.nvim',
+      requires = { 'nvim-ts-context-commentstring', 'nvim-treesitter' },
       config = function() require('config.comment') end,
     })
     use({
       'folke/todo-comments.nvim',
       config = function() require('config.todo-comments') end,
     })
-    use({
-      'folke/which-key.nvim',
-      config = function() require('config.which_key') end,
-    })
+    use('folke/which-key.nvim')
     -- treesitter
-    use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
+    use({
+      'nvim-treesitter/nvim-treesitter',
+      run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    })
     use('JoosepAlviste/nvim-ts-context-commentstring')
     use({ 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' })
     -- lsp
@@ -98,7 +95,6 @@ return require('packer').startup({
       'jose-elias-alvarez/null-ls.nvim',
       requires = { 'nvim-lua/plenary.nvim' },
     })
-    -- TODO: lspkind icons whith nonicons
     use('onsails/lspkind-nvim')
     use({
       'glepnir/lspsaga.nvim',

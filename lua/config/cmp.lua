@@ -93,12 +93,11 @@ cmp.setup({
         end
         word = str.oneline(word)
 
-        -- concatenates the string
-        -- local max = 50
-        -- if string.len(word) >= max then
-        -- 	local before = string.sub(word, 1, math.floor((max - 3) / 2))
-        -- 	word = before .. "..."
-        -- end
+        local max = 50
+        if string.len(word) >= max then
+          local before = string.sub(word, 1, math.floor((max - 3) / 2))
+          word = before .. '...'
+        end
 
         if
           entry.completion_item.insertTextFormat

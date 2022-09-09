@@ -1,5 +1,4 @@
-local wk = require('which-key')
-wk.setup({
+require('which-key').setup({
   plugins = {
     marks = true,
     registers = true,
@@ -24,9 +23,15 @@ wk.setup({
     ['<C-S>'] = 'Ctrl + s',
     ['<C-L>'] = 'Ctrl + l',
     ['<C-Bslash>'] = 'Ctrl + \\',
-    ['<C-P>'] = 'Ctrl + Shift + p',
+    ['<C-P>'] = 'Ctrl + p',
+    ['<C-H>'] = 'Ctrl + h',
+    ['<C-l>'] = 'Ctrl + l',
   },
-  icons = { breadcrumb = '»', separator = '➜', group = '+' },
+  icons = {
+    breadcrumb = icon('chevron-right'),
+    separator = icon('arrow-right'),
+    group = icon('plus'),
+  },
   popup_mappings = { scroll_down = '<c-j>', scroll_up = '<c-k>' },
   window = {
     border = 'rounded',
@@ -36,7 +41,7 @@ wk.setup({
     winblend = 10,
   },
   layout = {
-    height = { min = 4, max = 30 },
+    height = { min = 5, max = 30 },
     width = { min = 20, max = 70 },
     spacing = 14,
     align = 'center',
@@ -60,155 +65,190 @@ wk.setup({
   triggers = 'auto',
   triggers_blacklist = { i = { 'j', 'k' }, v = { 'j', 'k' } },
 })
-wk.register({
-  ['<c-P>'] = { ':MarkdownPreview<cr>', 'Preview markdown' },
-  ['<c-s>'] = { ':wa<cr>', 'Save all opened files' },
-  ['<leader>'] = {
-    name = 'Plugins and features',
-    -- TODO: gitsigns mapping
-    g = { ':lua _lazygit_toggle()<CR>', 'Git' },
-    f = { ':lua vim.lsp.buf.format({async = true})<CR>', 'Format file' },
-    F = { ':Telescope file_browser<cr>', 'File browser' },
-    N = {
-      name = 'Neogen',
-      a = { ':Neogen<cr>', 'Create annotation(autodetect)' },
-      f = { ':Neogen func<cr>', 'Create function annotation' },
-      c = { ':Neogen class<cr>', 'Create class annotation' },
-      t = { ':Neogen type<cr>', 'Create type annotation' },
-      F = { ':Neogen file<cr>', 'Create file annotation' },
-    },
-    C = {
-      name = 'Color Picker',
-      p = { ':PickColor<cr>', 'Pick color' },
-      r = { ':ConvertHEXandRGB<cr>', 'Conver HEX and RGB' },
-      h = { ':ConvertHEXandHSL<cr>', 'Convert HEX and HSL' },
-    },
-    p = {
-      name = 'Python',
-      r = { ':!python %<cr>', 'Run code' },
-      i = { ':lua _ipython_toggle()<cr>', 'Run IPython' },
-      I = {
-        ':lua _current_file_ipython_toggle()<cr>',
-        'Run current file in IPython',
+
+local function wk_register(...)
+  local args = { ... }
+  if_require(
+    'which-key',
+    function(wk) return wk.register(unpack(args)) end,
+    function(_)
+      vim.api.nvim_err_writeln(
+        'WhichKeys not installed; cannot apply mappings!'
+      )
+    end
+  )
+end
+
+local function setup()
+  wk_register({
+    ['<c-s>'] = { ':wa<cr>', 'Save all opened files' },
+    ['<leader>'] = {
+      name = 'Plugins and features',
+      b = {
+        name = 'Buffers',
+        p = { ':bprev<cr>', 'Previous' },
+        n = { ':bnext<cr>', 'Next' },
+        d = { ':bdelete<cr>', 'Delete' },
       },
-      l = { ':ToggleTermSendCurrentLine<cr>', 'Send current line to terminal' },
-    },
-    D = {
-      name = 'DAP',
-      b = { ':DapToggleBreakpoint<cr>', 'Toggle breakpoint' },
-      r = { ':DapContinue<cr>', 'Run debug' },
-      t = { ':DapTerminate<cr>', 'Terminate DAP' },
-      s = {
-        name = 'steps',
-        O = { ':DapStepOut<cr>', 'Out' },
-        o = { ':DapStepOver<cr>', 'Over' },
-        i = { ':DapStepInto<cr>', 'Into' },
+      -- TODO: gitsigns mapping
+      g = {
+        name = 'Gitsigns',
       },
-      L = {
-        name = 'Set log level',
-        w = { ':DapSetLogLevel WARN<cr>', 'Warning' },
-        i = { ':DapSetLogLevel INFO<cr>', 'Information' },
-        d = { ':DapSetLogLevel DEBUG<cr>', 'Debug' },
-        e = { ':DapSetLogLevel ERROR<cr>', 'Error' },
-        t = { ':DapSetLogLevel TRACE<cr>', 'Trace' },
+      -- TODO: rewrite to lspsaga openfloatterm
+      G = { ':lua _lazygit_toggle()<CR>', 'LazyGIT' },
+      F = { ':lua vim.lsp.buf.format({async = true})<CR>', 'Format file' },
+      f = { ':NvimTreeFindFileToggle<cr>', 'File explorer' },
+      N = {
+        name = 'Neogen',
+        a = { ':Neogen<cr>', 'Create annotation(autodetect)' },
+        f = { ':Neogen func<cr>', 'Create function annotation' },
+        c = { ':Neogen class<cr>', 'Create class annotation' },
+        t = { ':Neogen type<cr>', 'Create type annotation' },
+        F = { ':Neogen file<cr>', 'Create file annotation' },
       },
-      l = { ':DapShowLog<cr>', 'Show log' },
-      R = { ':DapToggleRepl<cr>', 'Toggle REPL' },
-    },
-    n = {
-      name = 'Notes',
-      l = {
-        ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}}<cr>',
-        'Notes list',
-      },
-      f = {
-        'OFIX: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
-        'FIX',
-      },
-      t = {
-        'OTODO: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
-        'TODO',
-      },
-      h = {
-        'OHACK: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
-        'HACK',
-      },
-      w = {
-        'OWARN: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
-        'WARN',
-      },
-      p = {
-        'OPERF: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
-        'PERF',
+      C = {
+        name = 'Color Picker',
+        p = { ':PickColor<cr>', 'Pick color' },
+        r = { ':ConvertHEXandRGB<cr>', 'Conver HEX and RGB' },
+        h = { ':ConvertHEXandHSL<cr>', 'Convert HEX and HSL' },
       },
       n = {
-        'ONOTE: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
-        'NOTE',
-      },
-    },
-    t = {
-      name = 'Telescope',
-      p = { '<cmd>Telescope project<cr>', 'Projects' },
-      m = { '<cmd>Telescope man_pages<cr>', 'Manual pages' },
-      r = { '<cmd>Telescope oldfiles<cr>', 'Recent files' },
-      b = { '<cmd>Telescope buffers<cr>', 'Show open buffers' },
-      f = { '<cmd>Telescope find_files<cr>', 'Find files' },
-      w = { '<cmd>Telescope live_grep<cr>', 'Find word' },
-      h = { '<cmd>Telescope help_tags<cr>', 'Help tags' },
-      n = {
-        '<cmd>Telescope notify theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}}<cr>',
-        'Notifications',
-      },
-    },
-    d = {
-      name = 'Diagnostics',
-      w = { ':Telescope diagnostics<cr>', 'Workspace diagnostics' },
-      s = { ':Lspsaga show_line_diagnostics<cr>', 'Show diagnostic line' },
-      p = {
-        ':Lspsaga diagnostic_jump_prev<cr>',
-        'Jump to previous diagnostic line',
-      },
-      n = {
-        ':Lspsaga diagnostic_jump_next<cr>',
-        'Jump to next diagnostic line',
-      },
-    },
-    l = {
-      name = 'LSP',
-      O = { ':LSoutlineToggle<CR>', 'Toggle winbar/outline' },
-      h = { ':Lspsaga hover_doc<cr>', 'Hover' },
-      r = { ':Telescope lsp_references<cr>', 'References' },
-      a = { ':Lspsaga code_action<cr>', 'Code action' },
-      p = { ':Lspsaga preview_definition<cr>', 'Preview definition' },
-      f = { ':Lspsaga lsp_finder<cr>', 'Finder' },
-      R = { ':Lspsaga rename<cr>', 'Rename' },
-      i = { ':Telescope lsp_implementations()<cr>', 'Implementation' },
-      D = { ':lua vim.lsp.buf.declaration()<cr>', 'Declaration' },
-      d = { ':Telescope lsp_definitions<cr>', 'Definition' },
-      t = { ':Telescope lsp_type_definitions<cr>', 'Type definition' },
-      s = { ':Lspsaga signature_help<cr>', 'Signature help' },
-      S = {
-        name = 'Symbols',
-        d = { ':Telescope lsp_document_symbols<cr>', 'Document symbols' },
-        w = { ':Telescope lsp_workspace_symbols<cr>', 'Workspace symbols' },
-        D = {
-          ':Telescope lsp_dynamic_workspace_symbols<cr>',
-          'Dynamic workspace symbols',
+        name = 'Notes',
+        l = {
+          ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}}<cr>',
+          'Notes list',
+        },
+        f = {
+          'OFIX: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
+          'FIX',
+        },
+        t = {
+          'OTODO: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
+          'TODO',
+        },
+        h = {
+          'OHACK: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
+          'HACK',
+        },
+        w = {
+          'OWARN: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
+          'WARN',
+        },
+        p = {
+          'OPERF: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
+          'PERF',
+        },
+        n = {
+          'ONOTE: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
+          'NOTE',
         },
       },
+      t = {
+        name = 'Telescope',
+        a = { '<cmd>Telescope autocommands<cr>', 'Autocommands' },
+        m = { '<cmd>Telescope man_pages<cr>', 'Manual pages' },
+        r = { '<cmd>Telescope oldfiles<cr>', 'Recent files' },
+        b = { '<cmd>Telescope buffers<cr>', 'Show open buffers' },
+        f = { '<cmd>Telescope find_files<cr>', 'Find files' },
+        w = { '<cmd>Telescope live_grep<cr>', 'Find word' },
+        h = { '<cmd>Telescope help_tags<cr>', 'Help tags' },
+        H = { '<cmd>Telescope highlights<cr>', 'Highlights' },
+        n = {
+          '<cmd>Telescope notify theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}}<cr>',
+          'Notifications',
+        },
+      },
+      d = {
+        name = 'Diagnostics',
+        w = { ':Telescope diagnostics<cr>', 'Workspace diagnostics' },
+        s = { ':Lspsaga show_line_diagnostics<cr>', 'Show diagnostic line' },
+        p = {
+          ':Lspsaga diagnostic_jump_prev<cr>',
+          'Jump to previous diagnostic line',
+        },
+        n = {
+          ':Lspsaga diagnostic_jump_next<cr>',
+          'Jump to next diagnostic line',
+        },
+      },
+      l = {
+        name = 'LSP',
+        O = { ':LSoutlineToggle<CR>', 'Toggle winbar/outline' },
+        h = { ':Lspsaga hover_doc<cr>', 'Hover' },
+        r = { ':Telescope lsp_references<cr>', 'References' },
+        a = { ':Lspsaga code_action<cr>', 'Code action' },
+        p = { ':Lspsaga preview_definition<cr>', 'Preview definition' },
+        f = { ':Lspsaga lsp_finder<cr>', 'Finder' },
+        R = { ':Lspsaga rename<cr>', 'Rename' },
+        i = { ':Telescope lsp_implementations()<cr>', 'Implementation' },
+        D = { ':lua vim.lsp.buf.declaration()<cr>', 'Declaration' },
+        d = { ':Telescope lsp_definitions<cr>', 'Definition' },
+        t = { ':Telescope lsp_type_definitions<cr>', 'Type definition' },
+      },
+      V = {
+        name = 'Visit link',
+        b = { ':VisitLinkInBuffer<cr>', 'Choose from buffer' },
+        u = { ':VisitLinkUnderCursor<cr>', 'Under cursor' },
+        n = { ':VisitLinkNearCursor<cr>', 'Near cursor' },
+      },
     },
-    V = {
-      name = 'Visit link',
-      b = { ':VisitLinkInBuffer<cr>', 'Choose from buffer' },
-      u = { ':VisitLinkUnderCursor<cr>', 'Under cursor' },
-      n = { ':VisitLinkNearCursor<cr>', 'Near cursor' },
+  })
+end
+
+local function attach_markdown(bufnr)
+  wk_register({
+    ['<leader>'] = {
+      name = 'Plugins and features',
+      p = { '<cmd>MarkdownPreviewToggle<cr>', 'Toggle preview markdown' },
     },
-  },
-}, {
-  mode = 'n',
-  prefix = '',
-  buffer = nil,
-  silent = true,
-  noremap = true,
-  nowait = false,
-})
+  }, { buffer = bufnr, mode = 'n' })
+end
+local function attach_python(bufnr)
+  wk_register({
+    ['<leader>'] = {
+      name = 'Plugins and features',
+      p = {
+        name = 'Python',
+        r = { ':!python %<cr>', 'Run code' },
+        i = { ':lua _ipython_toggle()<cr>', 'Run IPython' },
+        I = {
+          ':lua _current_file_ipython_toggle()<cr>',
+          'Run current file in IPython',
+        },
+        l = {
+          ':ToggleTermSendCurrentLine<cr>',
+          'Send current line to terminal',
+        },
+      },
+      D = {
+        name = 'DAP',
+        b = { ':DapToggleBreakpoint<cr>', 'Toggle breakpoint' },
+        r = { ':DapContinue<cr>', 'Run debug' },
+        t = { ':DapTerminate<cr>', 'Terminate DAP' },
+        s = {
+          name = 'steps',
+          O = { ':DapStepOut<cr>', 'Out' },
+          o = { ':DapStepOver<cr>', 'Over' },
+          i = { ':DapStepInto<cr>', 'Into' },
+        },
+        L = {
+          name = 'Set log level',
+          w = { ':DapSetLogLevel WARN<cr>', 'Warning' },
+          i = { ':DapSetLogLevel INFO<cr>', 'Information' },
+          d = { ':DapSetLogLevel DEBUG<cr>', 'Debug' },
+          e = { ':DapSetLogLevel ERROR<cr>', 'Error' },
+          t = { ':DapSetLogLevel TRACE<cr>', 'Trace' },
+        },
+        l = { ':DapShowLog<cr>', 'Show log' },
+        R = { ':DapToggleRepl<cr>', 'Toggle REPL' },
+      },
+    },
+  }, { buffer = bufnr, mode = 'n' })
+end
+
+return {
+  setup = setup,
+  wk_register = wk_register,
+  attach_python = attach_python,
+  attach_markdown = attach_markdown,
+}
