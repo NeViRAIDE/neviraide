@@ -1,13 +1,12 @@
 local M = {}
 
--- TODO: customize signature help
 local signature_config = {
   bind = false,
-  hint_enable = true,
   floating_window = false,
+  hint_enable = true,
   use_lspsaga = true,
-  hint_prefix = ' ',
-  hint_scheme = 'Comment',
+  hint_prefix = icon('eye') .. ' ',
+  hint_scheme = 'LspSignatureActiveParameter',
   hi_parameter = 'LspSignatureActiveParameter',
   max_height = 1,
 }

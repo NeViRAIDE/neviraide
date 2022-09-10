@@ -1,10 +1,8 @@
-local autocmd = require('utils').autocmd
-local autocmd_multi = require('utils').autocmd_multi
-
 autocmd('PACKER_RELOAD', 'BufWritePost', {
   pattern = 'lua/plugins.lua',
   callback = function(args)
     vim.api.nvim_command('source ' .. args.file)
+    vim.api.nvim_command('PackerUpdate')
     vim.api.nvim_command('PackerCompile')
   end,
   desc = 'Auto compile plugins',
@@ -72,6 +70,7 @@ autocmd('FormatOnSave', 'BufWritePre', {
   desc = 'Autoformat on save',
   callback = function() vim.lsp.buf.format() end,
 })
+
 autocmd('ToggleTerm_keys', 'TermOpen', {
   pattern = 'term://*toggleterm#*',
   desc = 'Add keymaps to go out from terminal',

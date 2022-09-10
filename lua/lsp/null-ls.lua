@@ -3,9 +3,11 @@ if not null_ls_status_ok then return end
 
 local formatting = null_ls.builtins.formatting
 local hover = null_ls.builtins.hover
- 
+local code_action = null_ls.builtins.code_actions
+
 null_ls.setup({
   sources = {
+    code_action.gitsigns,
     hover.dictionary,
     formatting.prettier.with({
       disabled_filetypes = { 'markdown' },

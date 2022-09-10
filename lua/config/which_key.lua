@@ -83,37 +83,70 @@ local function setup()
   wk_register({
     ['<c-s>'] = { ':wa<cr>', 'Save all opened files' },
     ['<leader>'] = {
-      name = 'Plugins and features',
+      name = 'Plugins and features ' .. icon('rocket'),
       b = {
         name = 'Buffers',
-        p = { ':bprev<cr>', 'Previous' },
-        n = { ':bnext<cr>', 'Next' },
+        h = { ':bprev<cr>', 'Previous' },
+        l = { ':bnext<cr>', 'Next' },
         d = { ':bdelete<cr>', 'Delete' },
       },
-      -- TODO: gitsigns mapping
       g = {
-        name = 'Gitsigns',
+        name = 'GIT ' .. icon('git-branch'),
+        l = { ':lua lazygit_toggle()<CR>', 'LazyGIT' },
+        r = { ':Gitsigns reset_hunk<cr>', 'Reset hunk' },
+        b = { ':Gitsigns blame_line<cr>', 'Blame line' },
+        d = { ':Gitsigns diffthis<cr>', 'Diff this' },
+        j = { ':Gitsigns next_hunk<cr>', 'Go to next hunk' },
+        k = { ':Gitsigns prev_hunk<cr>', 'Go to previous hunk' },
+        p = { ':Gitsigns preview_hunk<cr>', 'Preview hunk' },
+        t = {
+          name = 'Toggle',
+          l = {
+            ':Gitsigns toggle_linehl<CR>',
+            'Line highlighting',
+          },
+          n = {
+            ':Gitsigns toggle_numhl<CR>',
+            'Line numbers highlighting',
+          },
+          s = {
+            ':Gitsigns toggle_signs<CR>',
+            'Signs',
+          },
+          w = {
+            ':Gitsigns toggle_word_diff<CR>',
+            'Word diff',
+          },
+          d = {
+            ':Gitsigns toggle_deleted<CR>',
+            'Deleted',
+          },
+          b = {
+            ':Gitsigns toggle_current_line_blame<CR>',
+            'Current line blame',
+          },
+        },
       },
-      -- TODO: rewrite to lspsaga openfloatterm
-      G = { ':lua _lazygit_toggle()<CR>', 'LazyGIT' },
-      F = { ':lua vim.lsp.buf.format({async = true})<CR>', 'Format file' },
-      f = { ':NvimTreeFindFileToggle<cr>', 'File explorer' },
+      f = {
+        ':NvimTreeFindFileToggle<cr>',
+        'File explorer ' .. icon('file-directory'),
+      },
       N = {
-        name = 'Neogen',
+        name = 'Neogen ' .. icon('comment'),
         a = { ':Neogen<cr>', 'Create annotation(autodetect)' },
         f = { ':Neogen func<cr>', 'Create function annotation' },
         c = { ':Neogen class<cr>', 'Create class annotation' },
         t = { ':Neogen type<cr>', 'Create type annotation' },
         F = { ':Neogen file<cr>', 'Create file annotation' },
       },
-      C = {
-        name = 'Color Picker',
+      c = {
+        name = 'Color Picker ' .. icon('paintbrush'),
         p = { ':PickColor<cr>', 'Pick color' },
         r = { ':ConvertHEXandRGB<cr>', 'Conver HEX and RGB' },
         h = { ':ConvertHEXandHSL<cr>', 'Convert HEX and HSL' },
       },
       n = {
-        name = 'Notes',
+        name = 'Notes ' .. icon('note'),
         l = {
           ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}}<cr>',
           'Notes list',
@@ -144,7 +177,7 @@ local function setup()
         },
       },
       t = {
-        name = 'Telescope',
+        name = 'Telescope ' .. icon('telescope'),
         a = { '<cmd>Telescope autocommands<cr>', 'Autocommands' },
         m = { '<cmd>Telescope man_pages<cr>', 'Manual pages' },
         r = { '<cmd>Telescope oldfiles<cr>', 'Recent files' },
@@ -159,20 +192,20 @@ local function setup()
         },
       },
       d = {
-        name = 'Diagnostics',
+        name = 'Diagnostics ' .. icon('pulse'),
         w = { ':Telescope diagnostics<cr>', 'Workspace diagnostics' },
         s = { ':Lspsaga show_line_diagnostics<cr>', 'Show diagnostic line' },
-        p = {
+        k = {
           ':Lspsaga diagnostic_jump_prev<cr>',
           'Jump to previous diagnostic line',
         },
-        n = {
+        j = {
           ':Lspsaga diagnostic_jump_next<cr>',
           'Jump to next diagnostic line',
         },
       },
       l = {
-        name = 'LSP',
+        name = 'LSP ' .. icon('server'),
         O = { ':LSoutlineToggle<CR>', 'Toggle winbar/outline' },
         h = { ':Lspsaga hover_doc<cr>', 'Hover' },
         r = { ':Telescope lsp_references<cr>', 'References' },
@@ -185,21 +218,31 @@ local function setup()
         d = { ':Telescope lsp_definitions<cr>', 'Definition' },
         t = { ':Telescope lsp_type_definitions<cr>', 'Type definition' },
       },
-      V = {
-        name = 'Visit link',
+      v = {
+        name = 'Visit link ' .. icon('link'),
         b = { ':VisitLinkInBuffer<cr>', 'Choose from buffer' },
         u = { ':VisitLinkUnderCursor<cr>', 'Under cursor' },
         n = { ':VisitLinkNearCursor<cr>', 'Near cursor' },
       },
     },
-  })
+  }, { mode = 'n' })
+  wk_register({
+    ['<leader>'] = {
+      name = 'Plugins and features ' .. icon('rocket'),
+      g = {
+        name = 'GIT ' .. icon('git-branch'),
+        r = { ':Gitsigns reset_hunk<cr>', 'Reset hunk' },
+        s = { ':Gitsigns stage_hunk<cr>', 'Stage hunk' },
+      },
+    },
+  }, { mode = 'v' })
 end
 
 local function attach_markdown(bufnr)
   wk_register({
     ['<leader>'] = {
       name = 'Plugins and features',
-      p = { '<cmd>MarkdownPreviewToggle<cr>', 'Toggle preview markdown' },
+      P = { '<cmd>MarkdownPreviewToggle<cr>', 'Toggle preview markdown' },
     },
   }, { buffer = bufnr, mode = 'n' })
 end
@@ -208,39 +251,39 @@ local function attach_python(bufnr)
     ['<leader>'] = {
       name = 'Plugins and features',
       p = {
-        name = 'Python',
+        name = 'Python ' .. icon('python'),
         r = { ':!python %<cr>', 'Run code' },
-        i = { ':lua _ipython_toggle()<cr>', 'Run IPython' },
+        i = { ':lua ipython_toggle()<cr>', 'Run IPython' },
         I = {
-          ':lua _current_file_ipython_toggle()<cr>',
+          ':lua current_file_ipython_toggle()<cr>',
           'Run current file in IPython',
         },
         l = {
           ':ToggleTermSendCurrentLine<cr>',
           'Send current line to terminal',
         },
-      },
-      D = {
-        name = 'DAP',
-        b = { ':DapToggleBreakpoint<cr>', 'Toggle breakpoint' },
-        r = { ':DapContinue<cr>', 'Run debug' },
-        t = { ':DapTerminate<cr>', 'Terminate DAP' },
-        s = {
-          name = 'steps',
-          O = { ':DapStepOut<cr>', 'Out' },
-          o = { ':DapStepOver<cr>', 'Over' },
-          i = { ':DapStepInto<cr>', 'Into' },
+        d = {
+          name = 'DAP',
+          b = { ':DapToggleBreakpoint<cr>', 'Toggle breakpoint' },
+          r = { ':DapContinue<cr>', 'Run debug' },
+          t = { ':DapTerminate<cr>', 'Terminate DAP' },
+          s = {
+            name = 'steps',
+            O = { ':DapStepOut<cr>', 'Out' },
+            o = { ':DapStepOver<cr>', 'Over' },
+            i = { ':DapStepInto<cr>', 'Into' },
+          },
+          L = {
+            name = 'Set log level',
+            w = { ':DapSetLogLevel WARN<cr>', 'Warning' },
+            i = { ':DapSetLogLevel INFO<cr>', 'Information' },
+            d = { ':DapSetLogLevel DEBUG<cr>', 'Debug' },
+            e = { ':DapSetLogLevel ERROR<cr>', 'Error' },
+            t = { ':DapSetLogLevel TRACE<cr>', 'Trace' },
+          },
+          l = { ':DapShowLog<cr>', 'Show log' },
+          R = { ':DapToggleRepl<cr>', 'Toggle REPL' },
         },
-        L = {
-          name = 'Set log level',
-          w = { ':DapSetLogLevel WARN<cr>', 'Warning' },
-          i = { ':DapSetLogLevel INFO<cr>', 'Information' },
-          d = { ':DapSetLogLevel DEBUG<cr>', 'Debug' },
-          e = { ':DapSetLogLevel ERROR<cr>', 'Error' },
-          t = { ':DapSetLogLevel TRACE<cr>', 'Trace' },
-        },
-        l = { ':DapShowLog<cr>', 'Show log' },
-        R = { ':DapToggleRepl<cr>', 'Toggle REPL' },
       },
     },
   }, { buffer = bufnr, mode = 'n' })

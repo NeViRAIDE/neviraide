@@ -56,10 +56,8 @@ return require('packer').startup({
       'ziontee113/color-picker.nvim',
       config = function() require('config.color-picker') end,
     })
-    -- TODO: create config with keybindings
     use({
       'lewis6991/gitsigns.nvim',
-      event = 'BufRead',
       config = function() require('config.gitsigns') end,
     })
     use({

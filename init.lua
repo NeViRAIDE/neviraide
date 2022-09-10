@@ -10,6 +10,7 @@ _G.__luacache_config = {
 }
 
 _G.load_config = function()
+  require('utils')
   require('settings')
   require('config')
   require('lsp')
@@ -41,8 +42,10 @@ do
     require('plugins')
     require('packer').sync()
     vim.cmd('autocmd User PackerComplete ++once lua load_config()')
+    vim.api.nvim_command('PackerCompile')
   else
     require('plugins')
     load_config()
+    vim.api.nvim_command('PackerCompile')
   end
 end

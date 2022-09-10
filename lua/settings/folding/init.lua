@@ -1,6 +1,6 @@
 -- not todo but maybe in future make folds with virtualtext and customizing with defferent styles like bold folded_lines or percentage
 
-local autocmd = require('utils').autocmd
+-- TODO: add fold icon
 
 local ffi = require('ffi')
 ffi.cdef('int curwin_col_off(void);')
