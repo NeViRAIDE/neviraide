@@ -84,10 +84,12 @@ local function setup()
     ['<c-s>'] = { ':wa<cr>', 'Save all opened files' },
     ['<leader>'] = {
       name = 'Plugins and features ' .. icon('rocket'),
+      D = { ':Dashboard<cr>', 'Dashboard ' .. icon('device-desktop') },
+      S = { ':SessionSave<cr>', 'Save session ' .. icon('clock') },
       b = {
-        name = 'Buffers',
-        h = { ':bprev<cr>', 'Previous' },
-        l = { ':bnext<cr>', 'Next' },
+        name = 'Buffers ' .. icon('versions'),
+        p = { ':bprev<cr>', 'Previous' },
+        n = { ':bnext<cr>', 'Next' },
         d = { ':bdelete<cr>', 'Delete' },
       },
       g = {
@@ -96,9 +98,9 @@ local function setup()
         r = { ':Gitsigns reset_hunk<cr>', 'Reset hunk' },
         b = { ':Gitsigns blame_line<cr>', 'Blame line' },
         d = { ':Gitsigns diffthis<cr>', 'Diff this' },
-        j = { ':Gitsigns next_hunk<cr>', 'Go to next hunk' },
-        k = { ':Gitsigns prev_hunk<cr>', 'Go to previous hunk' },
-        p = { ':Gitsigns preview_hunk<cr>', 'Preview hunk' },
+        n = { ':Gitsigns next_hunk<cr>', 'Go to next hunk' },
+        p = { ':Gitsigns prev_hunk<cr>', 'Go to previous hunk' },
+        P = { ':Gitsigns preview_hunk<cr>', 'Preview hunk' },
         t = {
           name = 'Toggle',
           l = {
@@ -146,7 +148,7 @@ local function setup()
         h = { ':ConvertHEXandHSL<cr>', 'Convert HEX and HSL' },
       },
       n = {
-        name = 'Notes ' .. icon('note'),
+        name = 'Notes ' .. icon('checklist'),
         l = {
           ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}}<cr>',
           'Notes list',
@@ -195,11 +197,11 @@ local function setup()
         name = 'Diagnostics ' .. icon('pulse'),
         w = { ':Telescope diagnostics<cr>', 'Workspace diagnostics' },
         s = { ':Lspsaga show_line_diagnostics<cr>', 'Show diagnostic line' },
-        k = {
+        p = {
           ':Lspsaga diagnostic_jump_prev<cr>',
           'Jump to previous diagnostic line',
         },
-        j = {
+        n = {
           ':Lspsaga diagnostic_jump_next<cr>',
           'Jump to next diagnostic line',
         },
@@ -242,7 +244,10 @@ local function attach_markdown(bufnr)
   wk_register({
     ['<leader>'] = {
       name = 'Plugins and features',
-      P = { '<cmd>MarkdownPreviewToggle<cr>', 'Toggle preview markdown' },
+      P = {
+        '<cmd>MarkdownPreviewToggle<cr>',
+        'Toggle preview markdown ' .. icon('markdown'),
+      },
     },
   }, { buffer = bufnr, mode = 'n' })
 end
@@ -263,7 +268,7 @@ local function attach_python(bufnr)
           'Send current line to terminal',
         },
         d = {
-          name = 'DAP',
+          name = 'DAP ' .. icon('bug'),
           b = { ':DapToggleBreakpoint<cr>', 'Toggle breakpoint' },
           r = { ':DapContinue<cr>', 'Run debug' },
           t = { ':DapTerminate<cr>', 'Terminate DAP' },
