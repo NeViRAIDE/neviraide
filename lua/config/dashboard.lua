@@ -23,27 +23,21 @@ db.custom_center = {
   { desc = 'Exit', action = 'q' },
 }
 
--- local plugins_count = vim.fn.len(
---   vim.fn.globpath('~/.local/share/nvim/site/pack/packer/start', '*', 0, 1)
--- )
---
--- vim.cmd([[
---   function! GetNVimVersion()
---     redir => s
---     silent! version
---     redir END
---     return matchstr(s, 'NVIM v\zs[^\n]*')
---   endfunction
--- ]])
+local plugins_count = vim.fn.len(
+  vim.fn.globpath('~/.local/share/nvim/site/pack/packer/start', '*', 0, 1)
+)
 
--- local function nvim_version()
---   local string = print(vim.api.nvim_command('redir => s | version | redir END'))
--- end
--- local first_string = print(string.match(nvim_version, 'NVIM v\zs[^\n]*'))
+local function nvim_version()
+  local nvim_full_version_info = vim.fn.execute('version')
+  if nvim_full_version_info:match('NVIM') then
+    return nvim_full_version_info:match('NVIM [^\n]*')
+  else
+    return 'Check your dashboard configuration file'
+  end
+end
 
--- TODO: plugins count and nvim version
 db.custom_footer = {
   '',
-  'Version: ...coming soon...',
-  'Loaded ' .. '...coming_soon...' .. ' plugins',
+  nvim_version(),
+  'Loaded ' .. plugins_count .. ' plugins',
 }
