@@ -9,6 +9,7 @@ local config = {
   },
   options = {
     disabled_filetypes = {
+      'mason',
       'NvimTree',
       'dashboard',
       'packer',

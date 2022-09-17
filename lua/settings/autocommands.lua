@@ -1,3 +1,4 @@
+-- TODO: autocmd for start typing from previous place
 autocmd('PACKER_RELOAD', 'BufWritePost', {
   pattern = 'lua/plugins.lua',
   callback = function(args)
@@ -78,5 +79,12 @@ autocmd('ToggleTerm_keys', 'TermOpen', {
     local opts = { buffer = 0 }
     vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
     vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+  end,
+})
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'MasonToolsUpdateCompleted',
+  callback = function()
+    vim.schedule(function() print('mason-tool-installer has finished') end)
   end,
 })

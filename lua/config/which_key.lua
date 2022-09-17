@@ -238,6 +238,18 @@ local function setup()
       },
     },
   }, { mode = 'v' })
+  wk_register({
+    ['<C-\\>'] = {
+      '<Cmd>exe v:count1 . "ToggleTerm"<cr>',
+      'Number of terminal ' .. icon('terminal'),
+    },
+  }, { mode = 't' })
+  wk_register({
+    ['<C-\\>'] = {
+      '<Cmd>exe v:count1 . "ToggleTerm"<cr>',
+      'Toggle terminal ' .. icon('terminal'),
+    },
+  }, { mode = 'n' })
 end
 
 local function attach_markdown(bufnr)
@@ -257,7 +269,7 @@ local function attach_python(bufnr)
       name = 'Plugins and features',
       p = {
         name = 'Python ' .. icon('python'),
-        r = { ':!python %<cr>', 'Run code' },
+        r = { ':!python %<cr>', 'Run current file' },
         i = { ':lua ipython_toggle()<cr>', 'Run IPython' },
         I = {
           ':lua current_file_ipython_toggle()<cr>',
@@ -266,6 +278,16 @@ local function attach_python(bufnr)
         l = {
           ':ToggleTermSendCurrentLine<cr>',
           'Send current line to terminal',
+        },
+        f = {
+          name = 'Frameworks ',
+          d = {
+            name = 'Django',
+            r = {
+              ':TermExec cmd="python manage.py runserver"<cr>',
+              'Run server',
+            },
+          },
         },
         d = {
           name = 'DAP ' .. icon('bug'),

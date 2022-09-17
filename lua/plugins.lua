@@ -14,6 +14,10 @@ return require('packer').startup({
     use('wbthomason/packer.nvim')
     use('nvim-lua/popup.nvim')
     use('nvim-lua/plenary.nvim')
+    -- mason
+    use('williamboman/mason.nvim')
+    use('WhoIsSethDaniel/mason-tool-installer.nvim')
+    use('williamboman/mason-lspconfig.nvim')
     -- ui
     use('kyazdani42/nvim-web-devicons')
     use({
@@ -62,7 +66,7 @@ return require('packer').startup({
     })
     use({
       'akinsho/toggleterm.nvim',
-      tag = 'v2.*',
+      tag = '*',
       config = function() require('config.toggle-term') end,
     })
     use({

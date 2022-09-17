@@ -62,8 +62,14 @@ function custom_fname:update_status()
 end
 
 local function config_winbar()
+  -- TODO: terminal name in winbar (perhaps by table.insert)
+  -- pattern = 'term://*toggleterm#*',
+  -- winbar = {
+  --   enabled = true,
+  --   name_formatter = function(term) return term.name .. 'test' end,
+  -- },
   local exclude = {
-    ['teminal'] = true,
+    ['terminal'] = true,
     ['toggleterm'] = true,
     ['prompt'] = true,
     ['NvimTree'] = true,

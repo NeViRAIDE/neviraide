@@ -7,9 +7,27 @@ require('config.lualine')
 require('config.dashboard')
 require('config.nvim-tree')
 
+require('mason').setup({
+  ui = {
+    border = 'rounded',
+    icons = {
+      package_installed = '✓',
+      package_pending = '➜',
+      package_uninstalled = '✗',
+    },
+  },
+})
+require('mason-tool-installer').setup({
+  auto_update = true,
+  run_on_start = true,
+})
+
 require('config.which_key').setup()
 
-require('focus').setup({ width = 90 })
+require('focus').setup({
+  width = 90,
+  -- excluded_filetypes = { 'toggleterm', 'term://*toggleterm#*' },
+})
 
 require('colorizer').setup({
   filetypes = { '*' },

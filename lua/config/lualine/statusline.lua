@@ -19,6 +19,30 @@ local function lsp_source()
   return msg
 end
 
+local function interpreter()
+  local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+  if buf_ft == 'lua' then
+    return _VERSION
+  elseif buf_ft == 'python' then
+    local python_version =
+      vim.fn.execute(':python import sys; print(sys.version)')
+    return 'Python ' .. python_version:match('%d[^ ]*')
+  end
+  return buf_ft:gsub('^%l', string.upper)
+end
+
+local function virtual_env()
+  local clients = vim.lsp.get_active_clients()
+  for _, client in ipairs(clients) do
+    if client.name == 'pyright' and vim.env.VIRTUAL_ENV then
+      local virtual_env_path = vim.env.VIRTUAL_ENV
+      return '(' .. virtual_env_path:match('.virtualenvs/(.*)') .. ')'
+    end
+    return ''
+  end
+  return ''
+end
+
 local function diff_source()
   local gitsigns = vim.b.gitsigns_status_dict
   if gitsigns then
@@ -117,6 +141,24 @@ return {
       function() return vim.o.tabstop .. ' spaces' end,
       cond = hide_in_width or buffer_not_empty,
       color = { bg = color.bg },
+    },
+    {
+      interpreter,
+      color = { fg = color.fg, bg = color.bg, gui = 'italic' },
+      cond = hide_in_width or buffer_not_empty,
+      -- cond = buffer_not_empty,
+      -- cond = function() return not vim.env.VIRTUAL_ENV end,
+    },
+    {
+      virtual_env,
+      -- TODO: clean files if not venv
+      -- TODO: CONDITIONS!!!
+      color = { bg = color.bg, gui = 'italic' },
+      cond = hide_in_width or buffer_not_empty,
+      padding = { left = 0, right = 1 },
+      -- cond = buffer_not_empty,
+      -- local function buffer_not_empty() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end
+      -- cond = function() return ''  end,
     },
     {
       right_separator,

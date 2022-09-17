@@ -6,6 +6,10 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] =
     update_in_insert = false,
   })
 
+require('mason-lspconfig').setup({
+  automatic_installation = true,
+})
+
 require('lsp.servers.lua')
 require('lsp.servers.pyright')
 require('lsp.servers.html')
