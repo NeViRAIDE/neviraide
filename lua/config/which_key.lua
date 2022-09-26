@@ -91,6 +91,8 @@ local function setup()
         p = { ':bprev<cr>', 'Previous' },
         n = { ':bnext<cr>', 'Next' },
         d = { ':bdelete<cr>', 'Delete' },
+        l = { '<cmd>Telescope buffers<cr>', 'List' },
+        m = { ':WindowsMaximize<cr>', 'Fullscreen size' },
       },
       g = {
         name = 'GIT ' .. icon('git-branch'),
@@ -143,9 +145,8 @@ local function setup()
       },
       c = {
         name = 'Color Picker ' .. icon('paintbrush'),
-        p = { ':PickColor<cr>', 'Pick color' },
-        r = { ':ConvertHEXandRGB<cr>', 'Conver HEX and RGB' },
-        h = { ':ConvertHEXandHSL<cr>', 'Convert HEX and HSL' },
+        p = { ':CccPick<cr>', 'Pick color' },
+        c = { ':CccConvert<cr>', 'Conver color' },
       },
       n = {
         name = 'Notes ' .. icon('checklist'),
@@ -182,8 +183,8 @@ local function setup()
         name = 'Telescope ' .. icon('telescope'),
         a = { '<cmd>Telescope autocommands<cr>', 'Autocommands' },
         m = { '<cmd>Telescope man_pages<cr>', 'Manual pages' },
-        r = { '<cmd>Telescope oldfiles<cr>', 'Recent files' },
-        b = { '<cmd>Telescope buffers<cr>', 'Show open buffers' },
+        -- FIX: old files only in current workspace
+        r = { '<cmd>Telescope oldfiles cwd_only=v:true<cr>', 'Recent files' },
         f = { '<cmd>Telescope find_files<cr>', 'Find files' },
         w = { '<cmd>Telescope live_grep<cr>', 'Find word' },
         h = { '<cmd>Telescope help_tags<cr>', 'Help tags' },
@@ -212,7 +213,7 @@ local function setup()
         h = { ':Lspsaga hover_doc<cr>', 'Hover' },
         r = { ':Telescope lsp_references<cr>', 'References' },
         a = { ':Lspsaga code_action<cr>', 'Code action' },
-        p = { ':Lspsaga preview_definition<cr>', 'Preview definition' },
+        p = { ':Lspsaga peek_definition<cr>', 'Peek definition' },
         f = { ':Lspsaga lsp_finder<cr>', 'Finder' },
         R = { ':Lspsaga rename<cr>', 'Rename' },
         i = { ':Telescope lsp_implementations()<cr>', 'Implementation' },

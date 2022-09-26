@@ -1,19 +1,10 @@
+-- FIX: in new line cmp open float in python files (in lua after tab)
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 local neogen = require('neogen')
 local cmp = require('cmp')
 local types = require('cmp.types')
 local str = require('cmp.utils.str')
-
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0
-    and vim.api
-        .nvim_buf_get_lines(0, line - 1, line, true)[1]
-        :sub(col, col)
-        :match('%s')
-      == nil
-end
 
 luasnip.config.setup({
   region_check_events = 'CursorMoved',
@@ -30,10 +21,10 @@ cmp.setup({
   },
   preselect = cmp.PreselectMode.None,
   completion = { completeopt = 'menu,menuone,noselect' },
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-CR>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
@@ -46,13 +37,10 @@ cmp.setup({
         luasnip.expand_or_jump()
       elseif neogen.jumpable() then
         neogen.jump_next()
-      elseif has_words_before() then
-        cmp.complete()
       else
         fallback()
       end
     end, { 'i', 's' }),
-
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -64,17 +52,19 @@ cmp.setup({
         fallback()
       end
     end, { 'i', 's' }),
-  },
-  sources = {
+  }),
+  sources = cmp.config.sources({
+    { name = 'dap' },
     { name = 'latex_symbols' },
     { name = 'nvim_lua' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'calc' },
     { name = 'path' },
-    { name = 'buffer' },
     { name = 'cmdline' },
-  },
+  }, {
+    { name = 'buffer' },
+  }),
   formatting = {
     fields = {
       cmp.ItemField.Kind,
@@ -112,18 +102,36 @@ cmp.setup({
       end,
     }),
   },
-  cmp.setup.cmdline('/', {
+})
+
+for _, v in pairs({ '/', '?' }) do
+  cmp.setup.cmdline(v, {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-      { name = 'buffer' },
-    },
+    sources = { { name = 'buffer' } },
+  })
+end
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' },
+  },
+})
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' },
+  }, {
+    { name = 'cmdline' },
   }),
-  cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-      { name = 'path' },
-    }, {
-      { name = 'cmdline' },
-    }),
-  }),
+})
+cmp.setup({
+  enabled = function()
+    return vim.api.nvim_buf_get_option(0, 'buftype') ~= 'prompt'
+      or require('cmp_dap').is_dap_buffer()
+  end,
+})
+cmp.setup.filetype({ 'dap-repl', 'dapui_watches' }, {
+  sources = {
+    { name = 'dap' },
+  },
 })

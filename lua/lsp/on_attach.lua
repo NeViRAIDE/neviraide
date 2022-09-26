@@ -13,6 +13,7 @@ local signature_config = {
 
 M.build = function()
   return function(client, bufnr)
+    require('nvim-navic').attach(client, bufnr)
     require('lsp_signature').on_attach(signature_config, bufnr)
     if client.server_capabilities.documentHighlightProvider then
       vim.api.nvim_exec(

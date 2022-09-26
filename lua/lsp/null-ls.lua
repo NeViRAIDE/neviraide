@@ -9,10 +9,17 @@ null_ls.setup({
   sources = {
     code_action.gitsigns,
     hover.dictionary,
+    formatting.djlint.with({
+      timeout = 10000,
+      extra_args = {
+        '--indent',
+        '2',
+      },
+    }),
     formatting.prettier.with({
       disabled_filetypes = { 'markdown' },
       -- disabled_filetypes = { 'vue' },
-      extra_filetypes = { 'htmldjango' },
+      -- extra_filetypes = { 'htmldjango' },
       extra_args = {
         '--single-quote',
         '--no-semi',

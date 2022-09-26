@@ -30,19 +30,32 @@ return require('packer').startup({
       requires = { 'kyazdani42/nvim-web-devicons' },
     })
     use('lukas-reineke/indent-blankline.nvim')
-    use('Akianonymus/nvim-colorizer.lua')
     use('rcarriga/nvim-notify')
     use('glepnir/dashboard-nvim')
     -- telescope
     use({ 'nvim-telescope/telescope.nvim', tag = '0.1.0' })
     use('nvim-telescope/telescope-ui-select.nvim')
     -- utils
+    use('SmiteshP/nvim-navic')
+    use('uga-rosa/ccc.nvim')
+    use({
+      'anuvyklack/windows.nvim',
+      requires = {
+        'anuvyklack/middleclass',
+        'anuvyklack/animation.nvim',
+      },
+      config = function()
+        vim.o.winwidth = 10
+        vim.o.winminwidth = 10
+        vim.o.equalalways = false
+        require('windows').setup()
+      end,
+    })
     use({
       'kyazdani42/nvim-tree.lua',
       requires = { 'kyazdani42/nvim-web-devicons' },
       tag = 'nightly',
     })
-    use('beauwilliams/focus.nvim')
     use('lewis6991/impatient.nvim')
     use('ggandor/lightspeed.nvim')
     use('xiyaowong/link-visitor.nvim')
@@ -55,10 +68,6 @@ return require('packer').startup({
     use({
       'danymat/neogen',
       config = function() require('config.neogen') end,
-    })
-    use({
-      'ziontee113/color-picker.nvim',
-      config = function() require('config.color-picker') end,
     })
     use({
       'lewis6991/gitsigns.nvim',
@@ -127,6 +136,7 @@ return require('packer').startup({
         { 'kdheepak/cmp-latex-symbols', after = 'nvim-cmp' },
         { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
         { 'L3MON4D3/LuaSnip', after = 'nvim-cmp' },
+        { 'rcarriga/cmp-dap', after = 'nvim-cmp' },
       },
     })
     use({ 'saadparwaiz1/cmp_luasnip' })

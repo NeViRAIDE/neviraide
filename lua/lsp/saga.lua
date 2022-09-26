@@ -1,18 +1,12 @@
-local function outline_width() return vim.api.nvim_win_get_width(0) / 3 end
-
 require('lspsaga').init_lsp_saga({
   border_style = 'rounded',
   saga_winblend = 20,
-  move_in_saga = { prev = '<C-p>', next = '<C-n>' },
   diagnostic_header = {
     icon('x-circle'),
     icon('alert'),
     icon('info'),
     icon('light-bulb'),
   },
-  max_preview_lines = 10,
-  code_action_icon = '🪄 ',
-  code_action_num_shortcut = true,
   code_action_lightbulb = {
     enable = false,
     sign = false,
@@ -35,28 +29,8 @@ require('lspsaga').init_lsp_saga({
     scroll_down = '<C-j>',
     scroll_up = '<C-k>',
   },
-  code_action_keys = {
-    quit = 'q',
-    exec = '<CR>',
-  },
-  rename_action_quit = '<C-c>',
-  rename_in_select = true,
   symbol_in_winbar = {
     in_custom = true,
-    enable = true,
     separator = ' ' .. icon('triangle-right'),
-    show_file = true,
-    click_support = false,
   },
-  show_outline = {
-    win_position = 'right',
-    win_with = '',
-    win_width = outline_width(),
-    auto_enter = true,
-    auto_preview = true,
-    virt_text = '┃',
-    jump_key = 'o',
-    auto_refresh = true,
-  },
-  server_filetype_map = {},
 })

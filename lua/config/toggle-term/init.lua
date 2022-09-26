@@ -1,3 +1,4 @@
+-- FIX: mapping from vim in terminal mode
 require('toggleterm').setup({
   size = function(term)
     if term.direction == 'horizontal' then

@@ -62,12 +62,6 @@ function custom_fname:update_status()
 end
 
 local function config_winbar()
-  -- TODO: terminal name in winbar (perhaps by table.insert)
-  -- pattern = 'term://*toggleterm#*',
-  -- winbar = {
-  --   enabled = true,
-  --   name_formatter = function(term) return term.name .. 'test' end,
-  -- },
   local exclude = {
     ['terminal'] = true,
     ['toggleterm'] = true,
@@ -80,11 +74,13 @@ local function config_winbar()
   if vim.api.nvim_win_get_config(0).zindex or exclude[vim.bo.filetype] then
     vim.wo.winbar = ''
   else
-    local ok, lspsaga = pcall(require, 'lspsaga.symbolwinbar')
+    local ok, navic = pcall(require, 'nvim-navic')
+    -- local ok, lspsaga = pcall(require, 'lspsaga.symbolwinbar')
     local symbols
-    if ok then symbols = lspsaga.get_symbol_node() end
-    if symbols ~= nil then
-      return symbols
+    if ok then symbols = navic.get_location() end
+    -- if ok then symbols = lspsaga.get_symbol_node() end
+    if navic.is_available and symbols ~= nil or ' ' then
+      return ' %#LspSagaWinbarSep#' .. icon('triangle-right') .. symbols
     else
       return ' ...connect to LSP for document symbols... '
     end

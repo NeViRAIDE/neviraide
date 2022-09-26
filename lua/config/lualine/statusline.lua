@@ -146,19 +146,12 @@ return {
       interpreter,
       color = { fg = color.fg, bg = color.bg, gui = 'italic' },
       cond = hide_in_width or buffer_not_empty,
-      -- cond = buffer_not_empty,
-      -- cond = function() return not vim.env.VIRTUAL_ENV end,
     },
     {
       virtual_env,
-      -- TODO: clean files if not venv
-      -- TODO: CONDITIONS!!!
       color = { bg = color.bg, gui = 'italic' },
       cond = hide_in_width or buffer_not_empty,
       padding = { left = 0, right = 1 },
-      -- cond = buffer_not_empty,
-      -- local function buffer_not_empty() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end
-      -- cond = function() return ''  end,
     },
     {
       right_separator,

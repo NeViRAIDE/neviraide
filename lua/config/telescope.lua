@@ -23,7 +23,7 @@ telescope.setup({
     find_files = {
       attach_mappings = function(_)
         telescope_actions.select:enhance({
-          post = function() vim.cmd(':normal! zX') end,
+          post = function() vim.cmd(':normal! zx') end,
         })
         return true
       end,
@@ -40,7 +40,7 @@ telescope.setup({
     live_grep = {
       attach_mappings = function(_)
         telescope_actions.select:enhance({
-          post = function() vim.cmd(':normal! zX') end,
+          post = function() vim.cmd(':normal! zx') end,
         })
         return true
       end,
@@ -57,7 +57,7 @@ telescope.setup({
       initial_mode = 'normal',
       attach_mappings = function(_)
         telescope_actions.select:enhance({
-          post = function() vim.cmd(':normal! zX') end,
+          post = function() vim.cmd(':normal! zx') end,
         })
         return true
       end,

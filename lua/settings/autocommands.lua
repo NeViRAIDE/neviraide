@@ -1,4 +1,3 @@
--- TODO: autocmd for start typing from previous place
 autocmd('PACKER_RELOAD', 'BufWritePost', {
   pattern = 'lua/plugins.lua',
   callback = function(args)
@@ -11,9 +10,25 @@ autocmd('PACKER_RELOAD', 'BufWritePost', {
 
 autocmd_multi('NEVIRAIDE_CONF', {
   {
+    'BufReadPost',
+    {
+      pattern = '*',
+      desc = 'Set previous cursor position when file is open',
+      callback = function()
+        if
+          vim.fn.line('\'"') > 0 and vim.fn.line('\'"') <= vim.fn.line('$')
+        then
+          vim.fn.setpos('.', vim.fn.getpos('\'"'))
+          vim.api.nvim_feedkeys('zz', 'n', true)
+          vim.api.nvim_feedkeys('zx', 'n', true)
+        end
+      end,
+    },
+  },
+  {
     'FileType',
     {
-      pattern = { 'lua', 'javascript', 'html', 'css' },
+      pattern = { 'lua', 'javascript', 'htmldjango', 'html', 'css' },
       desc = 'Decrease indent size',
       callback = function()
         vim.o.softtabstop = 2
@@ -65,26 +80,24 @@ autocmd_multi('NEVIRAIDE_KEYS', {
       callback = function() require('config.which_key').attach_markdown(0) end,
     },
   },
+  {
+    'TermOpen',
+    {
+      pattern = 'term://*toggleterm#*',
+      desc = 'Add keymaps to go out from terminal',
+      callback = function()
+        local opts = { buffer = 0 }
+        vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+        vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+      end,
+    },
+  },
 })
 
-autocmd('FormatOnSave', 'BufWritePre', {
-  desc = 'Autoformat on save',
-  callback = function() vim.lsp.buf.format() end,
-})
-
-autocmd('ToggleTerm_keys', 'TermOpen', {
-  pattern = 'term://*toggleterm#*',
-  desc = 'Add keymaps to go out from terminal',
+autocmd('Auto_SAVE/FORMAT', { 'BufWritePre', 'FocusLost' }, {
+  pattern = '*',
   callback = function()
-    local opts = { buffer = 0 }
-    vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-    vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-  end,
-})
-
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'MasonToolsUpdateCompleted',
-  callback = function()
-    vim.schedule(function() print('mason-tool-installer has finished') end)
+    vim.lsp.buf.format()
+    vim.cmd('silent! wa')
   end,
 })

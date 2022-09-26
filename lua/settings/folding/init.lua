@@ -1,5 +1,3 @@
--- TODO: maybe in future make folds with virtualtext and customizing with defferent styles like bold folded_lines or percentage and icon in foldcolumn
-
 local ffi = require('ffi')
 ffi.cdef('int curwin_col_off(void);')
 
