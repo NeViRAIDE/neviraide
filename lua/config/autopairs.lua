@@ -5,7 +5,7 @@ local handlers = require('nvim-autopairs.completion.handlers')
 require('nvim-autopairs').setup({
   enable_check_bracket_line = false,
   fast_wrap = {
-    map = '<M-p>',
+    map = '<C-b>',
     chars = { '{', '[', '(', '"', "'" },
     pattern = [=[[%'%"%)%>%]%)%}%,]]=],
     end_key = '$',

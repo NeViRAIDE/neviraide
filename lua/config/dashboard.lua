@@ -18,6 +18,7 @@ db.custom_header = {
 db.custom_center = {
   { desc = 'New file', action = 'DashboardNewFile' },
   { desc = 'Open last session', action = 'SessionLoad' },
+  { desc = 'Recent files', action = 'Telescope oldfiles' },
   { desc = 'Keybindings', action = 'WhichKey <leader>' },
   { desc = 'Update plugins', action = 'PackerUpdate' },
   { desc = 'Exit', action = 'q' },

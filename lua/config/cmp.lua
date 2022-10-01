@@ -1,4 +1,3 @@
--- FIX: in new line cmp open float in python files (in lua after tab)
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 local neogen = require('neogen')
@@ -11,6 +10,7 @@ luasnip.config.setup({
   delete_check_events = 'TextChanged',
 })
 
+-- TODO: make an issue for disable popup window completion for empty line or space
 cmp.setup({
   snippet = {
     expand = function(args) luasnip.lsp_expand(args.body) end,
@@ -22,10 +22,8 @@ cmp.setup({
   preselect = cmp.PreselectMode.None,
   completion = { completeopt = 'menu,menuone,noselect' },
   mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-CR>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
+    ['<C-q>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
@@ -110,12 +108,6 @@ for _, v in pairs({ '/', '?' }) do
     sources = { { name = 'buffer' } },
   })
 end
-cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' },
-  },
-})
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
@@ -124,13 +116,14 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' },
   }),
 })
+
 cmp.setup({
   enabled = function()
     return vim.api.nvim_buf_get_option(0, 'buftype') ~= 'prompt'
       or require('cmp_dap').is_dap_buffer()
   end,
 })
-cmp.setup.filetype({ 'dap-repl', 'dapui_watches' }, {
+cmp.setup.filetype({ 'dap-repl', 'dapui_watches', 'dapui_hover' }, {
   sources = {
     { name = 'dap' },
   },

@@ -2,7 +2,6 @@ local buffer_not_empty = require('utils').buffer_not_empty
 local hide_in_width = require('utils').hide_in_width
 
 local function left_separator() return '' end
-
 local function right_separator() return '' end
 
 local function lsp_source()
@@ -68,14 +67,12 @@ return {
     {
       left_separator,
       color = { fg = color.bg, bg = color.none },
-      cond = buffer_not_empty,
       padding = { left = 3, right = 0 },
     },
     {
       lsp_source,
       icon = icon('server'),
       color = { bg = color.bg },
-      cond = buffer_not_empty,
     },
     {
       function() return '|' end,
@@ -100,11 +97,11 @@ return {
       },
       always_visible = true,
       color = { bg = color.bg },
+      cond = buffer_not_empty,
     },
     {
       right_separator,
       color = { fg = color.bg, bg = color.none },
-      cond = buffer_not_empty,
       padding = { left = 0, right = 0 },
     },
     { function() return '%=' end },
@@ -165,7 +162,6 @@ return {
       left_separator,
       color = { fg = color.bg, bg = color.none },
       padding = { left = 0, right = 0 },
-      cond = buffer_not_empty,
     },
     {
       'diff',
@@ -195,7 +191,6 @@ return {
       right_separator,
       color = { fg = color.bg, bg = color.none },
       padding = { left = 0, right = 3 },
-      cond = buffer_not_empty,
     },
   },
   lualine_y = {},

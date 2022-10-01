@@ -29,6 +29,9 @@ require('lspsaga').init_lsp_saga({
     scroll_down = '<C-j>',
     scroll_up = '<C-k>',
   },
+  show_outline = {
+    auto_preview = false,
+  },
   symbol_in_winbar = {
     in_custom = true,
     separator = ' ' .. icon('triangle-right'),

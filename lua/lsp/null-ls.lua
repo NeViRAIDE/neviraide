@@ -17,7 +17,7 @@ null_ls.setup({
       },
     }),
     formatting.prettier.with({
-      disabled_filetypes = { 'markdown' },
+      disabled_filetypes = { 'markdown', 'json' },
       -- disabled_filetypes = { 'vue' },
       -- extra_filetypes = { 'htmldjango' },
       extra_args = {

@@ -90,9 +90,17 @@ local function setup()
         name = 'Buffers ' .. icon('versions'),
         p = { ':bprev<cr>', 'Previous' },
         n = { ':bnext<cr>', 'Next' },
-        d = { ':bdelete<cr>', 'Delete' },
+        d = { ':w | lua close_buffer()<cr>', 'Delete' },
+        D = { ':wall | %bd | Dashboard<cr>', 'Delete all buffers' },
+        C = { ':wall | %bd | e# | bd#<cr>', 'Delete buffers except current' },
         l = { '<cmd>Telescope buffers<cr>', 'List' },
-        m = { ':WindowsMaximize<cr>', 'Fullscreen size' },
+        w = {
+          name = 'Window size',
+          v = { ':WindowsMaximizeVertically<cr>', 'Maximize vertically' },
+          h = { ':WindowsMaximizeHorizontally<cr>', 'Maximize horizontally' },
+          m = { ':WindowsMaximize<cr>', 'Fullscreen size' },
+          e = { ':WindowsEqualize<cr>', 'Equalize' },
+        },
       },
       g = {
         name = 'GIT ' .. icon('git-branch'),
@@ -183,8 +191,10 @@ local function setup()
         name = 'Telescope ' .. icon('telescope'),
         a = { '<cmd>Telescope autocommands<cr>', 'Autocommands' },
         m = { '<cmd>Telescope man_pages<cr>', 'Manual pages' },
-        -- FIX: old files only in current workspace
-        r = { '<cmd>Telescope oldfiles cwd_only=v:true<cr>', 'Recent files' },
+        r = {
+          '<cmd>Telescope oldfiles cwd_only=v:true<cr>',
+          'Recent files in current directory',
+        },
         f = { '<cmd>Telescope find_files<cr>', 'Find files' },
         w = { '<cmd>Telescope live_grep<cr>', 'Find word' },
         h = { '<cmd>Telescope help_tags<cr>', 'Help tags' },
@@ -209,7 +219,7 @@ local function setup()
       },
       l = {
         name = 'LSP ' .. icon('server'),
-        O = { ':LSoutlineToggle<CR>', 'Toggle winbar/outline' },
+        O = { ':LSoutlineToggle<CR>zR', 'Toggle winbar/outline' },
         h = { ':Lspsaga hover_doc<cr>', 'Hover' },
         r = { ':Telescope lsp_references<cr>', 'References' },
         a = { ':Lspsaga code_action<cr>', 'Code action' },
@@ -256,7 +266,7 @@ end
 local function attach_markdown(bufnr)
   wk_register({
     ['<leader>'] = {
-      name = 'Plugins and features',
+      name = 'Plugins and features ' .. icon('rocket'),
       P = {
         '<cmd>MarkdownPreviewToggle<cr>',
         'Toggle preview markdown ' .. icon('markdown'),
@@ -267,7 +277,7 @@ end
 local function attach_python(bufnr)
   wk_register({
     ['<leader>'] = {
-      name = 'Plugins and features',
+      name = 'Plugins and features ' .. icon('rocket'),
       p = {
         name = 'Python ' .. icon('python'),
         r = { ':!python %<cr>', 'Run current file' },
@@ -277,17 +287,26 @@ local function attach_python(bufnr)
           'Run current file in IPython',
         },
         l = {
-          ':ToggleTermSendCurrentLine<cr>',
-          'Send current line to terminal',
+          ':ToggleTermSendCurrentLine 23<cr>',
+          'Send current line to IPython',
         },
         f = {
           name = 'Frameworks ',
           d = {
             name = 'Django',
+            S = {
+              ':TermExec cmd="python manage.py createsuperuser"<cr>',
+              'Create superuser',
+            },
             r = {
               ':TermExec cmd="python manage.py runserver"<cr>',
               'Run server',
             },
+            s = {
+              ':TermExec cmd="python manage.py shell" direction=vertical<cr>',
+              'Shell',
+            },
+            -- TODO: python manage.py dumpdata "database_table" > "name_of_file.json" -- make with float input
           },
         },
         d = {
@@ -315,6 +334,25 @@ local function attach_python(bufnr)
       },
     },
   }, { buffer = bufnr, mode = 'n' })
+  wk_register({
+    ['<leader>'] = {
+      name = 'Plugins and features ' .. icon('rocket'),
+      p = {
+        name = 'Python ' .. icon('python'),
+        i = {
+          name = 'IPython',
+          s = {
+            ':ToggleTermSendVisualSelection 23<cr>',
+            'Send visual selection to IPython',
+          },
+          l = {
+            ':ToggleTermSendVisualLines 23<cr>',
+            'Send visual lines to IPython',
+          },
+        },
+      },
+    },
+  }, { buffer = bufnr, mode = 'v' })
 end
 
 return {

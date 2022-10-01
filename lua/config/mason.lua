@@ -25,4 +25,3 @@ require('mason-tool-installer').setup({
   auto_update = true,
   run_on_start = true,
 })
-

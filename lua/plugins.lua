@@ -38,6 +38,8 @@ return require('packer').startup({
     -- utils
     use('SmiteshP/nvim-navic')
     use('uga-rosa/ccc.nvim')
+    -- FIX: troubles with vertical direction terminal windows
+    -- TODO: make an issue to add file/buffer type 'toggleterm'
     use({
       'anuvyklack/windows.nvim',
       requires = {
@@ -48,7 +50,11 @@ return require('packer').startup({
         vim.o.winwidth = 10
         vim.o.winminwidth = 10
         vim.o.equalalways = false
-        require('windows').setup()
+        require('windows').setup({
+          animation = {
+            fps = 60,
+          },
+        })
       end,
     })
     use({

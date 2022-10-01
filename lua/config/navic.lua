@@ -54,92 +54,89 @@ vim.api.nvim_set_hl(
 vim.api.nvim_set_hl(
   0,
   'NavicIconsEnum',
-  { default = true, bg = color.none, fg = '#ffffff' }
+  { default = true, bg = color.none, fg = '#afd700' }
 )
 vim.api.nvim_set_hl(
   0,
   'NavicIconsInterface',
-  { default = true, bg = color.none, fg = '#ffffff' }
-)
-vim.api.nvim_set_hl(
-  0,
-  'NavicIconsFunction',
-  { default = true, bg = color.none, fg = '#ffffff' }
-)
-vim.api.nvim_set_hl(
-  0,
-  'NavicIconsVariable',
-  { default = true, bg = color.none, fg = '#ffffff' }
-)
-vim.api.nvim_set_hl(
-  0,
-  'NavicIconsConstant',
-  { default = true, bg = color.none, fg = '#ffffff' }
-)
-vim.api.nvim_set_hl(
-  0,
-  'NavicIconsString',
-  { default = true, bg = color.none, fg = '#98be65', bold = true }
-)
-vim.api.nvim_set_hl(
-  0,
-  'NavicIconsNumber',
-  { default = true, bg = color.none, fg = '#ffffff' }
-)
-vim.api.nvim_set_hl(
-  0,
-  'NavicIconsBoolean',
   { default = true, bg = color.none, fg = '#ff8700' }
 )
 vim.api.nvim_set_hl(
   0,
+  'NavicIconsFunction',
+  { default = true, bg = color.none, fg = '#cba6f7' }
+)
+vim.api.nvim_set_hl(
+  0,
+  'NavicIconsVariable',
+  { default = true, bg = color.none, fg = '#61afef' }
+)
+vim.api.nvim_set_hl(
+  0,
+  'NavicIconsConstant',
+  { default = true, bg = color.none, fg = '#36d0e0' }
+)
+vim.api.nvim_set_hl(
+  0,
+  'NavicIconsString',
+  { default = true, bg = color.none, fg = '#98be65' }
+)
+vim.api.nvim_set_hl(
+  0,
+  'NavicIconsNumber',
+  { default = true, bg = color.none, fg = '#afd700' }
+)
+vim.api.nvim_set_hl(
+  0,
+  'NavicIconsBoolean',
+  { default = true, bg = color.none, fg = '#cc9057' }
+)
+vim.api.nvim_set_hl(
+  0,
   'NavicIconsArray',
-  { default = true, bg = color.none, fg = '#ffffff' }
+  { default = true, bg = color.none, fg = '#61afef' }
 )
 vim.api.nvim_set_hl(
   0,
   'NavicIconsObject',
-  { default = true, bg = color.none, fg = '#ff8700', bold = true }
+  { default = true, bg = color.none, fg = '#ff8700' }
 )
 vim.api.nvim_set_hl(
   0,
   'NavicIconsKey',
-  { default = true, bg = color.none, fg = '#ffffff' }
+  { default = true, bg = color.none, fg = '#e95678' }
 )
 vim.api.nvim_set_hl(
   0,
   'NavicIconsNull',
-  { default = true, bg = color.none, fg = '#ffffff' }
+  { default = true, bg = color.none, fg = '#e95678' }
 )
 vim.api.nvim_set_hl(
   0,
   'NavicIconsEnumMember',
-  { default = true, bg = color.none, fg = '#ffffff' }
+  { default = true, bg = color.none, fg = '#afd700' }
 )
 vim.api.nvim_set_hl(
   0,
   'NavicIconsStruct',
-  { default = true, bg = color.none, fg = '#ffffff' }
+  { default = true, bg = color.none, fg = '#cba6f7' }
 )
 vim.api.nvim_set_hl(
   0,
   'NavicIconsEvent',
-  { default = true, bg = color.none, fg = '#ffffff' }
+  { default = true, bg = color.none, fg = '#cba6f7' }
 )
 vim.api.nvim_set_hl(
   0,
   'NavicIconsOperator',
-  { default = true, bg = color.none, fg = '#ffffff' }
+  { default = true, bg = color.none, fg = '#afd700' }
 )
 vim.api.nvim_set_hl(
   0,
   'NavicIconsTypeParameter',
   { default = true, bg = color.none, fg = '#afd700' }
 )
-vim.api.nvim_set_hl(0, 'NavicText', {
-  default = true,
-  bg = color.none,
-})
+vim.api.nvim_set_hl(0, 'NavicText', { default = true, bg = color.none })
 vim.api.nvim_set_hl(
   0,
   'NavicSeparator',

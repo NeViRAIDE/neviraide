@@ -11,11 +11,13 @@ local config = {
     disabled_filetypes = {
       'mason',
       'NvimTree',
-      'dashboard',
       'packer',
       'TelescopePrompt',
       'toggleterm',
       'lspsagaoutline',
+      winbar = {
+        'dashboard',
+      },
     },
     section_separators = '',
     component_separators = '',
