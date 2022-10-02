@@ -3,7 +3,7 @@ require('todo-comments').setup({
   sign_priority = 8,
   keywords = {
     FIX = { icon = icon('meter'), color = color.fix },
-    TODO = { icon = icon('tasklist'), color = color.todo },
+    TODO = { icon = icon('check-circle'), color = color.todo },
     HACK = { icon = icon('flame'), color = color.hack },
     WARN = { icon = icon('alert'), color = color.warn },
     PERF = { icon = icon('stopwatch'), color = color.perf },

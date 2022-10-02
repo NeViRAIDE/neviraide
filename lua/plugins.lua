@@ -118,15 +118,18 @@ return require('packer').startup({
       branch = 'main',
       config = function() require('lsp.saga') end,
     })
+    -- TODO: make powerfull debug system
     -- Debugger
-    use({
-      'mfussenegger/nvim-dap',
-      requires = {
-        'mfussenegger/nvim-dap-python',
-        'theHamsta/nvim-dap-virtual-text',
-        'rcarriga/nvim-dap-ui',
-      },
-    })
+    -- use('nvim-neotest/neotest')
+    -- use('nvim-neotest/neotest-python')
+    -- use({
+    --   'mfussenegger/nvim-dap',
+    --   requires = {
+    --     'mfussenegger/nvim-dap-python',
+    --     'theHamsta/nvim-dap-virtual-text',
+    --     'rcarriga/nvim-dap-ui',
+    --   },
+    -- })
     -- completions
     use('hrsh7th/cmp-nvim-lsp')
     use({
@@ -142,7 +145,6 @@ return require('packer').startup({
         { 'kdheepak/cmp-latex-symbols', after = 'nvim-cmp' },
         { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
         { 'L3MON4D3/LuaSnip', after = 'nvim-cmp' },
-        { 'rcarriga/cmp-dap', after = 'nvim-cmp' },
       },
     })
     use({ 'saadparwaiz1/cmp_luasnip' })

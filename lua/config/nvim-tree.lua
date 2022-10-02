@@ -5,8 +5,8 @@ require('nvim-tree').setup({
     preserve_window_proportions = true,
   },
   renderer = {
-    add_trailing = true,
-    highlight_git = true,
+    add_trailing = false,
+    highlight_git = false,
     highlight_opened_files = 'all',
     root_folder_modifier = ':t:r',
     indent_markers = {
@@ -30,11 +30,11 @@ require('nvim-tree').setup({
           symlink_open = icon('file-submodule'),
         },
         git = {
-          unstaged = icon('x'),
-          staged = icon('check'),
+          unstaged = icon('diff-modified'),
+          staged = icon('tasklist'),
           unmerged = icon('git-merge'),
           renamed = icon('diff-renamed'),
-          untracked = icon('star'),
+          untracked = icon('diff-added'),
           deleted = icon('diff-removed'),
           ignored = icon('diff-ignored'),
         },

@@ -36,12 +36,11 @@ require('nvim-dap-virtual-text').setup({
   virt_text_win_col = nil, -- position the virtual text at a fixed window column (starting from the first text column) ,
   -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
 })
--- require('dap-python').test_runner = 'pytest'
 
 dapui.setup({
   icons = { expanded = '▾', collapsed = '▸' },
   mappings = {
-    expand = { '<CR>', '<2-LeftMouse>' },
+    expand = { '<CR>', '<TAB>', '<2-LeftMouse>' },
     open = 'o',
     remove = 'd',
     edit = 'e',

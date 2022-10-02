@@ -16,6 +16,11 @@ local custom_highlights = {
   Diagnostic = { fg = color.darkYellow, fmt = 'italic,bold' },
   rainbowcol1 = { fg = color.blue },
   rainbowcol3 = { fg = color.red },
+  NvimTreeOpenedFile = { fg = color.lightGreen, fmt = 'italic' },
+  NvimTreeFolderName = { fg = color.white },
+  NvimTreeOpenedFolderName = { fg = color.white },
+  NvimTreeEmptyFolderName = { fg = color.white },
+  NvimTreeGitDirty = { fg = '#4fa6ed' },
 }
 
 onedark.setup({

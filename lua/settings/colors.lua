@@ -1,4 +1,5 @@
 _G.color = {
+  white = '#ffffff',
   bg = '#070707',
   fg = '#bbc2cf',
   yellow = '#ECBE7B',

@@ -7,7 +7,7 @@ require('config.notify')
 -- Utils
 require('config.tree-sitter')
 require('config.telescope')
-require('config.dap')
+-- require('config.dap')
 require('config.nvim-tree')
 require('config.navic')
 require('config.mason')
@@ -33,3 +33,9 @@ require('indent_blankline').setup({
   show_current_context_start = true,
   show_first_indent_level = false,
 })
+
+-- require('neotest').setup({
+--   adapters = {
+--     require('neotest-python'),
+--   },
+-- })

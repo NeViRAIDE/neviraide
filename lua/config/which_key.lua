@@ -1,3 +1,4 @@
+-- TODO: separate to defferent files
 require('which-key').setup({
   plugins = {
     marks = true,
@@ -90,9 +91,9 @@ local function setup()
         name = 'Buffers ' .. icon('versions'),
         p = { ':bprev<cr>', 'Previous' },
         n = { ':bnext<cr>', 'Next' },
-        d = { ':w | lua close_buffer()<cr>', 'Delete' },
-        D = { ':wall | %bd | Dashboard<cr>', 'Delete all buffers' },
-        C = { ':wall | %bd | e# | bd#<cr>', 'Delete buffers except current' },
+        d = { ':lua close_buffer()<cr>', 'Delete' },
+        D = { ':%bd | Dashboard<cr>', 'Delete all buffers' },
+        C = { ':%bd | e# | bd#<cr>', 'Delete buffers except current' },
         l = { '<cmd>Telescope buffers<cr>', 'List' },
         w = {
           name = 'Window size',
@@ -307,30 +308,34 @@ local function attach_python(bufnr)
               'Shell',
             },
             -- TODO: python manage.py dumpdata "database_table" > "name_of_file.json" -- make with float input
+            -- TODO: python manage.py loaddata "path_to_dump_database_file" -- make with float input
+            -- TODO: python manage.py startapp "application_name" -- createapplication
+            -- TODO: python manage.py makemigrations -- make migrations
+            -- TODO: python manage.py migrate -- migrate
           },
         },
-        d = {
-          name = 'DAP ' .. icon('bug'),
-          b = { ':DapToggleBreakpoint<cr>', 'Toggle breakpoint' },
-          r = { ':DapContinue<cr>', 'Run debug' },
-          t = { ':DapTerminate<cr>', 'Terminate DAP' },
-          s = {
-            name = 'steps',
-            O = { ':DapStepOut<cr>', 'Out' },
-            o = { ':DapStepOver<cr>', 'Over' },
-            i = { ':DapStepInto<cr>', 'Into' },
-          },
-          L = {
-            name = 'Set log level',
-            w = { ':DapSetLogLevel WARN<cr>', 'Warning' },
-            i = { ':DapSetLogLevel INFO<cr>', 'Information' },
-            d = { ':DapSetLogLevel DEBUG<cr>', 'Debug' },
-            e = { ':DapSetLogLevel ERROR<cr>', 'Error' },
-            t = { ':DapSetLogLevel TRACE<cr>', 'Trace' },
-          },
-          l = { ':DapShowLog<cr>', 'Show log' },
-          R = { ':DapToggleRepl<cr>', 'Toggle REPL' },
-        },
+        -- d = {
+        --   name = 'DAP ' .. icon('bug'),
+        --   b = { ':DapToggleBreakpoint<cr>', 'Toggle breakpoint' },
+        --   r = { ':DapContinue<cr>', 'Run debug' },
+        --   t = { ':DapTerminate<cr>', 'Terminate DAP' },
+        --   s = {
+        --     name = 'steps',
+        --     O = { ':DapStepOut<cr>', 'Out' },
+        --     o = { ':DapStepOver<cr>', 'Over' },
+        --     i = { ':DapStepInto<cr>', 'Into' },
+        --   },
+        --   L = {
+        --     name = 'Set log level',
+        --     w = { ':DapSetLogLevel WARN<cr>', 'Warning' },
+        --     i = { ':DapSetLogLevel INFO<cr>', 'Information' },
+        --     d = { ':DapSetLogLevel DEBUG<cr>', 'Debug' },
+        --     e = { ':DapSetLogLevel ERROR<cr>', 'Error' },
+        --     t = { ':DapSetLogLevel TRACE<cr>', 'Trace' },
+        --   },
+        --   l = { ':DapShowLog<cr>', 'Show log' },
+        --   R = { ':DapToggleRepl<cr>', 'Toggle REPL' },
+        -- },
       },
     },
   }, { buffer = bufnr, mode = 'n' })
