@@ -39,7 +39,6 @@ return require('packer').startup({
     use('SmiteshP/nvim-navic')
     use('uga-rosa/ccc.nvim')
     -- FIX: troubles with vertical direction terminal windows
-    -- TODO: make an issue to add file/buffer type 'toggleterm'
     use({
       'anuvyklack/windows.nvim',
       requires = {
@@ -78,11 +77,6 @@ return require('packer').startup({
     use({
       'lewis6991/gitsigns.nvim',
       config = function() require('config.gitsigns') end,
-    })
-    use({
-      'akinsho/toggleterm.nvim',
-      tag = '*',
-      config = function() require('config.toggle-term') end,
     })
     use({
       'windwp/nvim-autopairs',

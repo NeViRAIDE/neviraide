@@ -52,6 +52,7 @@ local count_bufs_by_type = function(loaded_only)
     quickfix = 0,
     terminal = 0,
     prompt = 0,
+    term = 0,
   }
   local buftypes = vim.api.nvim_list_bufs()
   for _, bufname in pairs(buftypes) do
@@ -68,8 +69,30 @@ function _G.close_buffer()
   if bufTable.normal <= 1 then
     vim.api.nvim_exec([[:bd]], true)
     vim.api.nvim_exec([[:Dashboard]], true)
+  elseif bufTable.terminal then
+    vim.api.nvim_exec([[:bd!]], true)
   else
     vim.api.nvim_exec([[:bd]], true)
+  end
+end
+
+function _G.save_and_format()
+  local file_name = vim.fn.expand('%:t')
+  if vim.lsp.buf.server_ready() == true then
+    vim.lsp.buf.format()
+    vim.cmd('silent! wa')
+    vim.notify(
+      'File "' .. file_name .. '" was formated and saved',
+      'info',
+      { title = 'Saved and formated', icon = icon('check') }
+    )
+  else
+    vim.cmd('silent! wa')
+    vim.notify(
+      'File "' .. file_name .. '" was saved',
+      'info',
+      { title = 'Saved', icon = icon('check') }
+    )
   end
 end
 

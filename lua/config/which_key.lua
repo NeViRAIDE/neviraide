@@ -82,7 +82,7 @@ end
 
 local function setup()
   wk_register({
-    ['<c-s>'] = { ':wa<cr>', 'Save all opened files' },
+    ['<c-s>'] = { ':lua save_and_format()<cr>', 'Save and format file' },
     ['<leader>'] = {
       name = 'Plugins and features ' .. icon('rocket'),
       D = { ':Dashboard<cr>', 'Dashboard ' .. icon('device-desktop') },
@@ -188,6 +188,12 @@ local function setup()
           'NOTE',
         },
       },
+      T = {
+        name = 'Terminal ' .. icon('terminal'),
+        v = { ':vsplit | terminal<cr>', 'Vertical' },
+        h = { ':split | terminal<cr>', 'Horizontal' },
+        t = { ':terminal<cr>', 'Tab' },
+      },
       t = {
         name = 'Telescope ' .. icon('telescope'),
         a = { '<cmd>Telescope autocommands<cr>', 'Autocommands' },
@@ -250,18 +256,6 @@ local function setup()
       },
     },
   }, { mode = 'v' })
-  wk_register({
-    ['<C-\\>'] = {
-      '<Cmd>exe v:count1 . "ToggleTerm"<cr>',
-      'Number of terminal ' .. icon('terminal'),
-    },
-  }, { mode = 't' })
-  wk_register({
-    ['<C-\\>'] = {
-      '<Cmd>exe v:count1 . "ToggleTerm"<cr>',
-      'Toggle terminal ' .. icon('terminal'),
-    },
-  }, { mode = 'n' })
 end
 
 local function attach_markdown(bufnr)
@@ -282,15 +276,11 @@ local function attach_python(bufnr)
       p = {
         name = 'Python ' .. icon('python'),
         r = { ':!python %<cr>', 'Run current file' },
-        i = { ':lua ipython_toggle()<cr>', 'Run IPython' },
-        I = {
-          ':lua current_file_ipython_toggle()<cr>',
-          'Run current file in IPython',
-        },
-        l = {
-          ':ToggleTermSendCurrentLine 23<cr>',
-          'Send current line to IPython',
-        },
+        -- i = { ':lua ipython_toggle()<cr>', 'Run IPython' },
+        -- I = {
+        --   ':lua current_file_ipython_toggle()<cr>',
+        --   'Run current file in IPython',
+        -- },
         f = {
           name = 'Frameworks ',
           d = {
@@ -344,16 +334,17 @@ local function attach_python(bufnr)
       name = 'Plugins and features ' .. icon('rocket'),
       p = {
         name = 'Python ' .. icon('python'),
+        -- TODO: realize with builtin
         i = {
           name = 'IPython',
-          s = {
-            ':ToggleTermSendVisualSelection 23<cr>',
-            'Send visual selection to IPython',
-          },
-          l = {
-            ':ToggleTermSendVisualLines 23<cr>',
-            'Send visual lines to IPython',
-          },
+          -- s = {
+          --   ':ToggleTermSendVisualSelection 23<cr>',
+          --   'Send visual selection to IPython',
+          -- },
+          -- l = {
+          --   ':ToggleTermSendVisualLines 23<cr>',
+          --   'Send visual lines to IPython',
+          -- },
         },
       },
     },

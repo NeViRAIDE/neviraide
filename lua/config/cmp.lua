@@ -5,11 +5,6 @@ local cmp = require('cmp')
 local types = require('cmp.types')
 local str = require('cmp.utils.str')
 
-luasnip.config.setup({
-  region_check_events = 'CursorMoved',
-  delete_check_events = 'TextChanged',
-})
-
 -- TODO: make an issue for disable popup window completion for empty line or space
 cmp.setup({
   snippet = {

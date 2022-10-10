@@ -1,3 +1,4 @@
+-- TODO: folding for djangohtml files
 local ffi = require('ffi')
 ffi.cdef('int curwin_col_off(void);')
 
