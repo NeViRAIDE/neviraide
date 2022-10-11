@@ -1,4 +1,3 @@
--- FIX: errors in help windows (highlighter errors)
 require('nvim-treesitter.configs').setup({
   ensure_installed = { 'python', 'lua', 'html', 'css', 'markdown' },
   sync_install = false,

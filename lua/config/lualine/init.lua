@@ -22,9 +22,8 @@ local config = {
       'lspsagaoutline',
       'terminal',
       'term',
-      winbar = {
-        'dashboard',
-      },
+      'help',
+      'dashboard',
     },
     section_separators = '',
     component_separators = '',
