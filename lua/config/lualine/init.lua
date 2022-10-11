@@ -8,6 +8,11 @@ local config = {
     'symbols-outline',
   },
   options = {
+    refresh = {
+      statusline = 200, -- Note these are in mili second and default is 1000
+      tabline = 500,
+      winbar = 300,
+    },
     disabled_filetypes = {
       'mason',
       'NvimTree',
@@ -15,6 +20,8 @@ local config = {
       'TelescopePrompt',
       'toggleterm',
       'lspsagaoutline',
+      'terminal',
+      'term',
       winbar = {
         'dashboard',
       },

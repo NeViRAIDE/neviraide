@@ -37,7 +37,7 @@ end
 
 local function buffer_not_empty() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end
 
---- Hide if window width more than 90
+--- Hide if window width less than 90
 ---@return boolean
 local function hide_in_width() return vim.fn.winwidth(0) > 90 end
 
@@ -67,10 +67,12 @@ end
 function _G.close_buffer()
   local bufTable = count_bufs_by_type()
   if bufTable.normal <= 1 then
-    vim.api.nvim_exec([[:bd]], true)
-    vim.api.nvim_exec([[:Dashboard]], true)
-  elseif bufTable.terminal then
-    vim.api.nvim_exec([[:bd!]], true)
+    if vim.bo.buftype == 'terminal' then
+      vim.api.nvim_exec([[:bd!]], true)
+    else
+      vim.api.nvim_exec([[:bd]], true)
+      vim.api.nvim_exec([[:Dashboard]], true)
+    end
   else
     vim.api.nvim_exec([[:bd]], true)
   end

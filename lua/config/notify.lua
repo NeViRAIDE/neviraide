@@ -1,5 +1,3 @@
--- vim.notify = require('notify')
-
 local async_load_plugin = nil
 async_load_plugin = vim.loop.new_async(vim.schedule_wrap(function()
   local notify = require('notify')
@@ -7,11 +5,11 @@ async_load_plugin = vim.loop.new_async(vim.schedule_wrap(function()
     timeout = 3000,
     fps = 60,
     icons = {
-      DEBUG = '',
-      ERROR = '',
-      INFO = '',
-      TRACE = '✎',
-      WARN = '',
+      DEBUG = icon('bug'),
+      ERROR = icon('x-circle'),
+      INFO = icon('info'),
+      TRACE = icon('pencil'),
+      WARN = icon('alert'),
     },
     minimum_width = 10,
   })
