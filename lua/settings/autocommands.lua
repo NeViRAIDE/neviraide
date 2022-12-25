@@ -1,0 +1,103 @@
+autocmd_multi('NEVIRAIDE_CONF', {
+  {
+    'BufReadPost',
+    {
+      pattern = '*',
+      desc = 'Set previous cursor position when file is open',
+      callback = function()
+        if vim.fn.line('\'"') > 0 and vim.fn.line('\'"') <= vim.fn.line('$')
+        then
+          vim.fn.setpos('.', vim.fn.getpos('\'"'))
+          vim.api.nvim_feedkeys('zz', 'n', true)
+          vim.api.nvim_feedkeys('zx', 'n', true)
+        end
+      end,
+    },
+  },
+  {
+    'FileType',
+    {
+      pattern = { 'lua', 'javascript', 'json', 'htmldjango', 'html', 'css' },
+      desc = 'Decrease indent size',
+      callback = function()
+        vim.o.softtabstop = 2
+        vim.o.tabstop = 2
+        vim.o.shiftwidth = 2
+      end,
+    },
+  },
+  {
+    'FileType',
+    {
+      pattern = {
+        "qf",
+        "help",
+        "man",
+        "notify",
+        "lspinfo",
+        "spectre_panel",
+        "startuptime",
+        "tsplayground",
+        "PlenaryTestPopup"
+      },
+      desc = 'Use q to close the window',
+      command = 'nnoremap <buffer> q <cmd>quit<cr>',
+    },
+  },
+  {
+    'FileType',
+    {
+      pattern = { 'gitsigns://*', 'gitsigns' },
+      desc = 'Use q to close the window',
+      command = 'nnoremap <buffer> q <cmd>quit<cr>',
+    },
+  },
+  {
+    'TextYankPost',
+    {
+      desc = 'Highlight on yank',
+      callback = function()
+        vim.highlight.on_yank({ higroup = 'Search', timeout = 200 })
+      end,
+    },
+  },
+})
+autocmd_multi('NEVIRAIDE_KEYS', {
+  {
+    'TermOpen',
+    {
+      pattern = 'term://*',
+      desc = 'Add keymaps to go out from terminal',
+      callback = function()
+        local opts = { buffer = 0 }
+        vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+        vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+        vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+        vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+        vim.keymap.set('t', '<esc>', [[<c-\><c-n>]], opts)
+        vim.o.number = false
+        vim.o.relativenumber = false
+      end,
+    },
+  },
+})
+
+vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
+  callback = function()
+    local ok, cl = pcall(vim.api.nvim_win_get_var, 0, "auto-cursorline")
+    if ok and cl then
+      vim.wo.cursorline = true
+      vim.api.nvim_win_del_var(0, "auto-cursorline")
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
+  callback = function()
+    local cl = vim.wo.cursorline
+    if cl then
+      vim.api.nvim_win_set_var(0, "auto-cursorline", cl)
+      vim.wo.cursorline = false
+    end
+  end,
+})
