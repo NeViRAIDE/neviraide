@@ -19,6 +19,7 @@ vim.g.loaded_netrwPlugin = 1
 require('utils')
 
 require("lazy").setup("config.plugins", {
+  defaults = { lazy = true },
   checker = { enabled = true },
   performance = {
     rtp = {

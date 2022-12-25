@@ -2,6 +2,7 @@ local M = {
   "glepnir/dashboard-nvim",
   lazy = false
 }
+
 function M.config()
   local db = require('dashboard')
 

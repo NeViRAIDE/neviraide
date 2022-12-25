@@ -1,4 +1,4 @@
-local M = { "uga-rosa/ccc.nvim" }
+local M = { "uga-rosa/ccc.nvim", event = "BufReadPre" }
 
 function M.config()
 

@@ -1,6 +1,6 @@
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
-  lazy = false,
+  event = "VeryLazy",
   branch = "v2.x",
   dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" }
 }
@@ -10,9 +10,9 @@ function M.config()
     default_component_configs = {
       git_status = {
         symbols = {
-          added    = " ",
-          modified = "柳",
-          deleted  = " ",
+          added    = " ",
+          modified = " ",
+          deleted  = " ",
         }
       },
     },

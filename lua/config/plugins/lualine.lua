@@ -1,4 +1,7 @@
-local M = { "nvim-lualine/lualine.nvim",
+local M = {
+  "nvim-lualine/lualine.nvim",
+  event = "BufReadPre",
+  -- event = "VeryLazy",
   config = function()
     require('config.plugins.lualine').setup()
   end
@@ -39,7 +42,7 @@ function M.setup()
       return gitdir and #gitdir > 0 and #gitdir < #filepath
     end,
   }
-  ---------------------------------------------------------------
+
   local function get_file_path()
     if vim.fn.bufname('%') == '' then return '' end
     local sep = '/'
@@ -62,11 +65,10 @@ function M.setup()
 
   function custom_fname:init(options)
     custom_fname.super.init(self, options)
-    -- TODO: add icons
-    self.options.symbols.modified = ' '
-    self.options.symbols.readonly = ' '
-    self.options.symbols.newfile = ' '
-    self.options.symbols.unnamed = ' '
+    self.options.symbols.modified = '🖊️'
+    self.options.symbols.readonly = '🔏'
+    self.options.symbols.newfile = ''
+    self.options.symbols.unnamed = 'ﱤ'
     self.status_colors = {
       newfile = highlight.create_component_highlight_group(
         { bg = color.none, fg = color.green, gui = 'bold' },
@@ -157,7 +159,7 @@ function M.setup()
       lualine_c = {
         {
           function()
-            local half_window_width = vim.api.nvim_win_get_width(0) / 2 - 13
+            local half_window_width = vim.api.nvim_win_get_width(0) / 2 - 15
             return string.rep(' ', half_window_width)
           end,
           padding = { left = 0, right = 0 },
@@ -180,13 +182,11 @@ function M.setup()
               n = 'Normal',
               i = 'Insert',
               c = 'Command',
-              v = 'Visual',
-              [''] = 'Visual' .. '-Block',
-              V = 'Visual' .. '-Line',
               v = '-isual',
               [''] = '' .. '-Block',
               V = '' .. '-Line',
               R = 'Replace',
+              t = 'Terminal ',
             }
             return mode_icons[vim.fn.mode()]
           end,
@@ -199,7 +199,7 @@ function M.setup()
               V = color.magenta,
               c = color.yellow,
               R = color.red,
-              t = color.red,
+              t = color.darkYellow,
             }
             return {
               fg = mode_color[vim.fn.mode()],
@@ -254,8 +254,6 @@ function M.setup()
     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
     if buf_ft == 'lua' then
       return _VERSION
-    elseif buf_ft == 'python' then
-      local python_version = vim.fn.execute(':python import sys; print(sys.version)')
     elseif buf_ft == 'go' then
       local go_version = vim.fn.execute(':go version')
       return go_version
@@ -278,25 +276,6 @@ function M.setup()
     return ''
   end
 
-  -- local function diff_source()
-  --   local gitsigns = vim.b.gitsigns_status_dict
-  --   if gitsigns then
-  --     return {
-  --       added = gitsigns.added,
-  --       modified = gitsigns.changed,
-  --       removed = gitsigns.removed,
-  --     }
-  --   end
-  -- end
-
-  -- local function branch_source()
-  --   local msg = 'Not in a git repository'
-  --   local git_branch = vim.b.gitsigns_head
-  --   if git_branch then return git_branch end
-  --   return msg
-  -- end
-
-  -------------------------------------------------------------
   local function statusline()
     return {
       lualine_a = {},
@@ -309,7 +288,7 @@ function M.setup()
         },
         {
           lsp_source,
-          icon = '',
+          icon = '',
           color = { bg = color.bg },
         },
         {
@@ -322,7 +301,7 @@ function M.setup()
           'diagnostics',
           sources = { 'nvim_diagnostic' },
 
-          symbols = { error = ' ', warn = ' ', info = ' ', hint = '! ' },
+          symbols = { error = ' ', warn = '⚠ ', info = ' ', hint = ' ' },
           diagnostics_color = {
             color_error = { fg = color.red },
             color_warn = { fg = color.yellow },
@@ -401,7 +380,11 @@ function M.setup()
           'diff',
           source = diff_source,
           color = { bg = color.bg },
-          symbols = { added = ' ', modified = '柳', removed = ' ' },
+          symbols = {
+            added    = " ",
+            modified = " ",
+            removed  = " ",
+          },
           diff_color = {
             added = { fg = color.green },
             modified = { fg = color.blue },

@@ -1,6 +1,9 @@
 local M = { "nvim-telescope/telescope.nvim", version = "0.1.0",
-  lazy = false,
-  dependencies = "nvim-telescope/telescope-ui-select.nvim",
+  event = "VeryLazy",
+  dependencies = {
+    "nvim-telescope/telescope-ui-select.nvim",
+    'nvim-telescope/telescope-symbols.nvim'
+  },
 }
 function M.config()
   local telescope = require('telescope')
