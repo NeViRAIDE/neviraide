@@ -135,6 +135,7 @@ function M.config()
 
   extension('ui-select')
   extension('todo-comments')
+  extension("notify")
 end
 
 return M

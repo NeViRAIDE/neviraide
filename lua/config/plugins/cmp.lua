@@ -2,7 +2,6 @@ local M = {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
-    "hrsh7th/cmp-cmdline",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-nvim-lsp",
@@ -10,9 +9,10 @@ local M = {
     "hrsh7th/cmp-path",
     "kdheepak/cmp-latex-symbols",
     "saadparwaiz1/cmp_luasnip",
+    'dmitmel/cmp-digraphs',
+
     "L3MON4D3/LuaSnip",
     "rafamadriz/friendly-snippets",
-    "onsails/lspkind-nvim",
   },
 }
 
@@ -61,14 +61,15 @@ function M.config()
     }),
     sources = cmp.config.sources({
       { name = 'dap' },
-      { name = 'latex_symbols' },
-      { name = 'nvim_lua' },
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
-      { name = 'calc' },
+      { name = 'nvim_lua' },
       { name = 'path' },
     }, {
       { name = 'buffer' },
+      { name = 'calc' },
+      { name = 'digraphs' },
+      { name = 'latex_symbols' },
     }),
     formatting = {
       fields = {
@@ -105,6 +106,11 @@ function M.config()
         end,
       }),
     },
+    experimental = {
+      ghost_text = {
+        hl_group = "Comment",
+      },
+    }
   })
 end
 

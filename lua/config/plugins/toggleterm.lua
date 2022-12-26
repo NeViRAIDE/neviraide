@@ -5,7 +5,9 @@ local M = {
 }
 
 function M.config()
-  require("toggleterm").setup()
+  require("toggleterm").setup({
+    open_mapping = [[<c-\>]],
+  })
 end
 
 return M

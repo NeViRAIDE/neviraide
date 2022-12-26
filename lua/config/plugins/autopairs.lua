@@ -1,4 +1,4 @@
-local M = { "windwp/nvim-autopairs" }
+local M = { "windwp/nvim-autopairs", event = "InsertEnter" }
 
 function M.config()
   local cmp = require('cmp')

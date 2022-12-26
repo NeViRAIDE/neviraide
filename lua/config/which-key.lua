@@ -1,3 +1,4 @@
+-- TODO: debug keys
 _G.if_require = function(module, block, errblock)
   local ok, mod = pcall(require, module)
   if ok then
@@ -113,6 +114,16 @@ local function setup()
           m = { ':WindowsMaximize<cr>', 'Fullscreen size' },
           e = { ':WindowsEqualize<cr>', 'Equalize' },
         },
+      },
+      G = {
+        name = "GoLang",
+        r = { ":!go run main.go<CR>", "Run main.go" },
+        b = { ":!go build main.go<CR>", "Build main.go" },
+        m = {
+          name = "Mod",
+          i = { ":lua _G.inputMod:mount()<CR>", "Init go.mod" },
+          t = { ":GoMod tidy<CR>", "Tidy go.mod" },
+        }
       },
       g = {
         name = 'GIT ',
@@ -237,12 +248,6 @@ local function setup()
         d = { ':Telescope lsp_definitions<cr>', 'Definition' },
         t = { ':Telescope lsp_type_definitions<cr>', 'Type definition' },
       },
-      v = {
-        name = 'Visit link ',
-        b = { ':VisitLinkInBuffer<cr>', 'Choose from buffer' },
-        u = { ':VisitLinkUnderCursor<cr>', 'Under cursor' },
-        n = { ':VisitLinkNearCursor<cr>', 'Near cursor' },
-      },
     }
   }, { mode = 'n' })
   wk_register({
@@ -269,27 +274,8 @@ local function attach_markdown(bufnr)
   }, { buffer = bufnr, mode = 'n' })
 end
 
-local function attach_golang(bufnr)
-  wk_register({
-    ['<leader>'] = {
-      name = 'Plugins and features ',
-      G = {
-        name = "GoLang",
-        r = { ":!go run main.go<CR>", "Run main.go" },
-        b = { ":!go build main.go<CR>", "Run main.go" },
-        m = {
-          name = "Mod",
-          i = { ":!go mod init<CR>", "Init go.mod" },
-          t = { ":!go mod tidy<CR>", "Tidy go.mod" },
-        }
-      },
-    },
-  }, { buffer = bufnr, mode = 'n' })
-end
-
 return {
   setup = setup,
   wk_register = wk_register,
   attach_markdown = attach_markdown,
-  attach_golang = attach_golang,
 }

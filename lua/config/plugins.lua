@@ -14,7 +14,6 @@ return {
   },
   'nvim-tree/nvim-web-devicons',
   "nvim-lua/plenary.nvim",
-  "olexsmir/gopher.nvim",
   "ggandor/lightspeed.nvim",
   {
     "olexsmir/gopher.nvim",
@@ -27,10 +26,6 @@ return {
     "nvim-treesitter/nvim-treesitter-context",
     event = "BufReadPre",
     config = true,
-  },
-  {
-    "mfussenegger/nvim-dap",
-    dependencies = { "theHamsta/nvim-dap-virtual-text", "rcarriga/nvim-dap-ui" }
   },
   "ray-x/lsp_signature.nvim",
   "onsails/lspkind-nvim",

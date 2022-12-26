@@ -23,8 +23,8 @@
 <details>
 <summary>core</summary>
 
-- [Plenary](https://github.com/nvim-lua/plenary.nvim) - powerfull library
-- [Popup](https://github.com/nvim-lua/popup.nvim) - implementation of the Popup API from vim
+
+- [Plenary](https://github.com/nvim-lua/plenary.nvim) - plugin for async 
 </details>
 
 <details>

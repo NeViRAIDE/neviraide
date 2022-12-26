@@ -21,6 +21,9 @@ require('utils')
 require("lazy").setup("config.plugins", {
   defaults = { lazy = true },
   checker = { enabled = true },
+  ui = {
+    border = "rounded"
+  },
   performance = {
     rtp = {
       disabled_plugins = {

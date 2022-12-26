@@ -34,6 +34,7 @@ autocmd_multi('NEVIRAIDE_CONF', {
         "help",
         "man",
         "notify",
+        "prompt",
         "lspinfo",
         "spectre_panel",
         "startuptime",

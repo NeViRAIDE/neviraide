@@ -1,7 +1,6 @@
 local M = {
   "nvim-lualine/lualine.nvim",
   event = "BufReadPre",
-  -- event = "VeryLazy",
   config = function()
     require('config.plugins.lualine').setup()
   end
@@ -421,15 +420,17 @@ function M.setup()
     },
     disabled_filetypes = {
       'mason',
-      'neo-tree',
+      'filesystem',
+      -- 'neo-tree',
+      -- 'neotree',
       'TelescopePrompt',
-      'toggleterm',
-      'lspsagaoutline',
-      'terminal',
-      'term',
+      -- 'toggleterm',
+      -- 'lspsagaoutline',
+      -- 'terminal',
+      -- 'term',
       'help',
       'dashboard',
-      'man'
+      -- 'man'
     },
     options = {
       component_separators = '',
