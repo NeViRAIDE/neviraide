@@ -120,7 +120,7 @@ local function setup()
         name = 'GoLang',
         r = { ':lua goRun:mount()<CR>', 'Compile and run Go programm' },
         b = { ':lua goBuild:mount()<CR>', 'Compile packages and dependencies' },
-        t = {
+        T = {
           name = 'Tests',
           r = { ':!go test<CR>', 'Run tests' },
           g = {
@@ -142,7 +142,7 @@ local function setup()
           i = { ':lua inputMod:mount()<CR>', 'Init go.mod' },
           t = { ':GoMod tidy<CR>:LspRestart<cr>', 'Tidy go.mod' },
         },
-        T = {
+        t = {
           name = 'Tags',
           a = { ':lua tagsAdd:mount()<cr>', 'Add tags' },
           r = { ':lua tagsRemove:mount()<cr>', 'Remove tags' },

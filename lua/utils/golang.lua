@@ -69,7 +69,7 @@ _G.tagsAdd = Menu({
     padding = { 0, 1 },
   },
   relative = 'cursor',
-  win_options = { winhighlight = 'Normal:Normal,FloatBorder:VertSplit' },
+  win_options = { winhighlight = 'Normal:Normal,FloatBorder:String' },
 }, {
   lines = {
     Menu.item('json'),
@@ -98,7 +98,7 @@ _G.tagsRemove = Menu({
     padding = { 0, 1 },
   },
   relative = 'cursor',
-  win_options = { winhighlight = 'Normal:Normal,FloatBorder:VertSplit' },
+  win_options = { winhighlight = 'Normal:Normal,FloatBorder:DiagnosticError' },
 }, {
   lines = {
     Menu.item('json'),
