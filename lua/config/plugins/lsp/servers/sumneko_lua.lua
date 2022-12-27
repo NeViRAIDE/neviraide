@@ -16,12 +16,9 @@ require('lspconfig').sumneko_lua.setup({
           [vim.fn.stdpath('config') .. '/lua'] = true,
         },
       },
-      telemetry = {
-        enable = false,
-      },
-      format = {
-        enable = true,
-      },
+      telemetry = { enable = false },
+      format = { enable = true },
+      hint = { enable = true }
     },
   },
 })

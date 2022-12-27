@@ -1,4 +1,6 @@
 -- TODO: debug keys
+-- TODO: golang keys
+-- TODO: icons
 _G.if_require = function(module, block, errblock)
   local ok, mod = pcall(require, module)
   if ok then
@@ -115,19 +117,35 @@ local function setup()
           e = { ':WindowsEqualize<cr>', 'Equalize' },
         },
       },
-      G = {
+      g = {
         name = "GoLang",
-        r = { ":!go run main.go<CR>", "Run main.go" },
-        b = { ":!go build main.go<CR>", "Build main.go" },
+        r = { ":lua goRun:mount()<CR>", "Run" },
+        b = { ":lua goBuild:mount()<CR>", "Build" },
+        g = { ":lua goGet:mount()<CR>", "Get go packages" },
+        c = { ":GoCmt<cr>", "Documentation comment" },
+        i = { ":GoIfErr<cr>", "If error template" },
+        I = { ":lua goInterface:mount()<cr>", "Interface implementation" },
+        G = {
+          name = "Generate",
+          o = { ":GoTestAdd<cr>", "One test for function/method" },
+          a = { ":GoTestAll<cr>", "All tests for all functions/methods" },
+          e = { ":GoTestExp<cr>", "Only for exported tests for functions/methods" },
+        },
         m = {
           name = "Mod",
-          i = { ":lua _G.inputMod:mount()<CR>", "Init go.mod" },
+          i = { ":lua inputMod:mount()<CR>", "Init go.mod" },
           t = { ":GoMod tidy<CR>", "Tidy go.mod" },
-        }
+        },
+        t = {
+          name = "Tags",
+          a = { ":lua tagsAdd:mount()<cr>", "Add tags" },
+          r = { ":lua tagsRemove:mount()<cr>", "Remove tags" },
+        },
       },
-      g = {
+      G = {
         name = 'GIT ',
-        l = { ':Termexec direction=float cmd=lazygit<CR>', 'Lazygit' },
+        -- TODO: function for lazygit
+        l = { ':TermExec direction=float cmd=lazygit<CR>', 'Lazygit' },
         r = { ':Gitsigns reset_hunk<cr>', 'Reset hunk' },
         b = { ':Gitsigns blame_line<cr>', 'Blame line' },
         d = { ':Gitsigns diffthis<cr>', 'Diff this' },
@@ -136,31 +154,20 @@ local function setup()
         P = { ':Gitsigns preview_hunk<cr>', 'Preview hunk' },
         t = {
           name = 'Toggle',
-          l = {
-            ':Gitsigns toggle_linehl<CR>',
-            'Line highlighting',
-          },
-          n = {
-            ':Gitsigns toggle_numhl<CR>',
-            'Line numbers highlighting',
-          },
-          s = {
-            ':Gitsigns toggle_signs<CR>',
-            'Signs',
-          },
-          w = {
-            ':Gitsigns toggle_word_diff<CR>',
-            'Word diff',
-          },
-          d = {
-            ':Gitsigns toggle_deleted<CR>',
-            'Deleted',
-          },
-          b = {
-            ':Gitsigns toggle_current_line_blame<CR>',
-            'Current line blame',
-          },
+          l = { ':Gitsigns toggle_linehl<CR>', 'Line highlighting' },
+          n = { ':Gitsigns toggle_numhl<CR>', 'Line numbers highlighting' },
+          s = { ':Gitsigns toggle_signs<CR>', 'Signs' },
+          w = { ':Gitsigns toggle_word_diff<CR>', 'Word diff' },
+          d = { ':Gitsigns toggle_deleted<CR>', 'Deleted' },
+          b = { ':Gitsigns toggle_current_line_blame<CR>', 'Current line blame' },
         },
+      },
+      w = {
+        name = 'Window size',
+        v = { ':WindowsMaximizeVertically<cr>', 'Maximize vertically' },
+        h = { ':WindowsMaximizeHorizontally<cr>', 'Maximize horizontally' },
+        m = { ':WindowsMaximize<cr>', 'Fullscreen size' },
+        e = { ':WindowsEqualize<cr>', 'Equalize' },
       },
       N = {
         name = 'Neogen ',
@@ -236,6 +243,28 @@ local function setup()
         n = {
           ':lua vim.diagnostic.goto_next()<cr>',
           'Jump to next diagnostic line',
+        },
+        d = {
+          name = 'DAP',
+          b = { ':DapToggleBreakpoint<cr>', 'Toggle breakpoint' },
+          r = { ':DapContinue<cr>', 'Run debug' },
+          t = { ':DapTerminate<cr>', 'Terminate DAP' },
+          s = {
+            name = 'steps',
+            O = { ':DapStepOut<cr>', 'Out' },
+            o = { ':DapStepOver<cr>', 'Over' },
+            i = { ':DapStepInto<cr>', 'Into' },
+          },
+          L = {
+            name = 'Set log level',
+            w = { ':DapSetLogLevel WARN<cr>', 'Warning' },
+            i = { ':DapSetLogLevel INFO<cr>', 'Information' },
+            d = { ':DapSetLogLevel DEBUG<cr>', 'Debug' },
+            e = { ':DapSetLogLevel ERROR<cr>', 'Error' },
+            t = { ':DapSetLogLevel TRACE<cr>', 'Trace' },
+          },
+          l = { ':DapShowLog<cr>', 'Show log' },
+          R = { ':DapToggleRepl<cr>', 'Toggle REPL' },
         },
       },
       l = {
