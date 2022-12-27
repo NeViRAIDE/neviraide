@@ -1,3 +1,4 @@
+-- TODO: add codelens features
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -14,9 +15,18 @@ require 'lspconfig'.gopls.setup {
         shadow = true,
       },
       staticcheck = true,
+      usePlaceholders = true,
+      codelenses = {
+        genrate = true,
+        gc_details = true
+      }
     },
   },
   init_options = {
     usePlaceholders = true,
+  },
+  codelenses = {
+    genrate = true,
+    gc_details = true
   }
 }

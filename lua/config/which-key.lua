@@ -1,4 +1,3 @@
--- TODO: debug keys
 -- TODO: golang keys
 -- TODO: icons
 _G.if_require = function(module, block, errblock)
@@ -118,28 +117,35 @@ local function setup()
         },
       },
       g = {
-        name = "GoLang",
-        r = { ":lua goRun:mount()<CR>", "Run" },
-        b = { ":lua goBuild:mount()<CR>", "Build" },
-        g = { ":lua goGet:mount()<CR>", "Get go packages" },
-        c = { ":GoCmt<cr>", "Documentation comment" },
-        i = { ":GoIfErr<cr>", "If error template" },
-        I = { ":lua goInterface:mount()<cr>", "Interface implementation" },
-        G = {
-          name = "Generate",
-          o = { ":GoTestAdd<cr>", "One test for function/method" },
-          a = { ":GoTestAll<cr>", "All tests for all functions/methods" },
-          e = { ":GoTestExp<cr>", "Only for exported tests for functions/methods" },
-        },
-        m = {
-          name = "Mod",
-          i = { ":lua inputMod:mount()<CR>", "Init go.mod" },
-          t = { ":GoMod tidy<CR>", "Tidy go.mod" },
-        },
+        name = 'GoLang',
+        r = { ':lua goRun:mount()<CR>', 'Compile and run Go programm' },
+        b = { ':lua goBuild:mount()<CR>', 'Compile packages and dependencies' },
         t = {
-          name = "Tags",
-          a = { ":lua tagsAdd:mount()<cr>", "Add tags" },
-          r = { ":lua tagsRemove:mount()<cr>", "Remove tags" },
+          name = 'Tests',
+          r = { ':!go test<CR>', 'Run tests' },
+          g = {
+            name = 'Generate',
+            o = { ':GoTestAdd<cr>', 'One test for function/method' },
+            a = { ':GoTestAll<cr>', 'All tests for all functions/methods' },
+            e = {
+              ':GoTestExp<cr>',
+              'Only for exported tests for functions/methods',
+            },
+          },
+        },
+        g = { ':lua goGet:mount()<CR>', 'Get go packages' },
+        c = { ':GoCmt<cr>', 'Documentation comment' },
+        i = { ':GoIfErr<cr>', 'If error template' },
+        I = { ':lua goInterface:mount()<cr>', 'Interface implementation' },
+        m = {
+          name = 'Mod',
+          i = { ':lua inputMod:mount()<CR>', 'Init go.mod' },
+          t = { ':GoMod tidy<CR>:LspRestart<cr>', 'Tidy go.mod' },
+        },
+        T = {
+          name = 'Tags',
+          a = { ':lua tagsAdd:mount()<cr>', 'Add tags' },
+          r = { ':lua tagsRemove:mount()<cr>', 'Remove tags' },
         },
       },
       G = {
@@ -159,7 +165,10 @@ local function setup()
           s = { ':Gitsigns toggle_signs<CR>', 'Signs' },
           w = { ':Gitsigns toggle_word_diff<CR>', 'Word diff' },
           d = { ':Gitsigns toggle_deleted<CR>', 'Deleted' },
-          b = { ':Gitsigns toggle_current_line_blame<CR>', 'Current line blame' },
+          b = {
+            ':Gitsigns toggle_current_line_blame<CR>',
+            'Current line blame',
+          },
         },
       },
       w = {
@@ -272,12 +281,12 @@ local function setup()
         h = { ':lua vim.lsp.buf.hover()<cr>', 'Hover' },
         r = { ':Telescope lsp_references<cr>', 'References' },
         a = { ':lua vim.lsp.buf.code_action()<cr>', 'Code action' },
-        R = { ':lua vim.lsp.buf.rename()<cr>', 'Rename' },
+        R = { ':lua customRename()<cr>', 'Rename' },
         D = { ':lua vim.lsp.buf.declaration()<cr>', 'Declaration' },
         d = { ':Telescope lsp_definitions<cr>', 'Definition' },
         t = { ':Telescope lsp_type_definitions<cr>', 'Type definition' },
       },
-    }
+    },
   }, { mode = 'n' })
   wk_register({
     ['<leader>'] = {
@@ -297,7 +306,7 @@ local function attach_markdown(bufnr)
       name = 'Plugins and features ',
       P = {
         '<cmd>MarkdownPreviewToggle<cr>',
-        'Toggle preview markdown '
+        'Toggle preview markdown ',
       },
     },
   }, { buffer = bufnr, mode = 'n' })

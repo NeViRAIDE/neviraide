@@ -1,8 +1,10 @@
-local M = { "nvim-telescope/telescope.nvim", version = "0.1.0",
-  event = "VeryLazy",
+local M = {
+  'nvim-telescope/telescope.nvim',
+  version = '0.1.0',
+  event = 'VeryLazy',
   dependencies = {
-    "nvim-telescope/telescope-ui-select.nvim",
-    'nvim-telescope/telescope-symbols.nvim'
+    'nvim-telescope/telescope-ui-select.nvim',
+    'nvim-telescope/telescope-symbols.nvim',
   },
 }
 function M.config()
@@ -133,9 +135,9 @@ function M.config()
     },
   })
 
-  extension('ui-select')
+  -- extension('ui-select')
   extension('todo-comments')
-  extension("notify")
+  extension('notify')
 end
 
 return M
