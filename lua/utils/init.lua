@@ -1,5 +1,3 @@
-require('utils.colors')
-
 function _G.opt(o, v, scopes)
   scopes = scopes or { vim.o }
   for _, s in ipairs(scopes) do
@@ -21,9 +19,7 @@ end
 --- Set global highlight
 --- @param name string
 --- @param value table
-function _G.hi(name, value)
-  vim.api.nvim_set_hl(0, name, value)
-end
+function _G.hi(name, value) vim.api.nvim_set_hl(0, name, value) end
 
 function _G.autocmd_multi(group, cmds, clear)
   clear = (clear == nil) and true or clear

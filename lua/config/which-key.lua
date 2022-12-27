@@ -281,7 +281,7 @@ local function setup()
         h = { ':lua vim.lsp.buf.hover()<cr>', 'Hover' },
         r = { ':Telescope lsp_references<cr>', 'References' },
         a = { ':lua vim.lsp.buf.code_action()<cr>', 'Code action' },
-        R = { ':lua customRename()<cr>', 'Rename' },
+        R = { ':lua vim.lsp.buf.rename()<cr>', 'Rename' },
         D = { ':lua vim.lsp.buf.declaration()<cr>', 'Declaration' },
         d = { ':Telescope lsp_definitions<cr>', 'Definition' },
         t = { ':Telescope lsp_type_definitions<cr>', 'Type definition' },
