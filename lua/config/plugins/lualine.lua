@@ -1,13 +1,11 @@
 local M = {
-  "nvim-lualine/lualine.nvim",
-  event = "BufReadPre",
-  config = function()
-    require('config.plugins.lualine').setup()
-  end
+  'nvim-lualine/lualine.nvim',
+  event = 'BufReadPre',
+  config = function() require('config.plugins.lualine').setup() end,
 }
 
 function M.setup()
-  local navic = require("nvim-navic")
+  local navic = require('nvim-navic')
   local lualine = require('lualine')
 
   local function diff_source()
@@ -16,7 +14,7 @@ function M.setup()
       return {
         added = gitsigns.added,
         modified = gitsigns.changed,
-        removed = gitsigns.removed
+        removed = gitsigns.removed,
       }
     end
   end
@@ -32,9 +30,7 @@ function M.setup()
     buffer_not_empty = function()
       return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
     end,
-    hide_in_width = function()
-      return vim.fn.winwidth(0) > 80
-    end,
+    hide_in_width = function() return vim.fn.winwidth(0) > 80 end,
     check_git_workspace = function()
       local filepath = vim.fn.expand('%:p:h')
       local gitdir = vim.fn.finddir('.git', filepath .. ';')
@@ -46,11 +42,11 @@ function M.setup()
     if vim.fn.bufname('%') == '' then return '' end
     local sep = '/'
     local path_list =
-    vim.split(string.gsub(vim.fn.expand('%:~:.:h'), '%%', ''), sep)
+      vim.split(string.gsub(vim.fn.expand('%:~:.:h'), '%%', ''), sep)
     local file_path = ''
     for _, cur in ipairs(path_list) do
       file_path = (cur == '.' or cur == '~') and ''
-          or file_path
+        or file_path
           .. cur
           .. ' %#LspSagaWinbarSep#'
           .. '▶ '
@@ -92,14 +88,15 @@ function M.setup()
   function custom_fname:newfile()
     local data = custom_fname.super.update_status(self)
     data = highlight.component_format_highlight(self.status_colors.newfile)
-        .. data
+      .. data
     return data
   end
 
   function custom_fname:update_status()
     local data = custom_fname.super.update_status(self)
     data = highlight.component_format_highlight(
-      vim.bo.modified and self.status_colors.modified or self.status_colors.saved
+      vim.bo.modified and self.status_colors.modified
+        or self.status_colors.saved
     ) .. data
     return data
   end
@@ -142,7 +139,7 @@ function M.setup()
         {
           navic.get_location,
           color = { bg = color.none },
-          cond = navic.is_available or conditions.buffer_not_empty
+          cond = navic.is_available or conditions.buffer_not_empty,
         },
       },
       lualine_x = {},
@@ -215,9 +212,9 @@ function M.setup()
           padding = { left = 1, right = 1 },
         },
         {
-          require("lazy.status").updates,
-          cond = require("lazy.status").has_updates,
-          color = { fg = "#ff9e64", bg = color.bg },
+          require('lazy.status').updates,
+          cond = require('lazy.status').has_updates,
+          color = { fg = '#ff9e64', bg = color.bg },
         },
         {
           function() return '' end,
@@ -254,10 +251,11 @@ function M.setup()
     if buf_ft == 'lua' then
       return _VERSION
     elseif buf_ft == 'go' then
-      local go_version = vim.fn.execute(':go version')
-      return go_version
+      local go_version = vim.fn.execute(':!go version')
+      return 'Go ' .. go_version:match('%d[^ ]*')
     elseif buf_ft == 'python' then
-      local python_version = vim.fn.execute(':python import sys; print(sys.version)')
+      local python_version =
+        vim.fn.execute(':python import sys; print(sys.version)')
       return 'Python ' .. python_version:match('%d[^ ]*')
     end
     return buf_ft:gsub('^%l', string.upper)
@@ -300,7 +298,12 @@ function M.setup()
           'diagnostics',
           sources = { 'nvim_diagnostic' },
 
-          symbols = { error = ' ', warn = '⚠ ', info = ' ', hint = ' ' },
+          symbols = {
+            error = ' ',
+            warn = '⚠ ',
+            info = ' ',
+            hint = ' ',
+          },
           diagnostics_color = {
             color_error = { fg = color.red },
             color_warn = { fg = color.yellow },
@@ -380,9 +383,9 @@ function M.setup()
           source = diff_source,
           color = { bg = color.bg },
           symbols = {
-            added    = " ",
-            modified = " ",
-            removed  = " ",
+            added = ' ',
+            modified = ' ',
+            removed = ' ',
           },
           diff_color = {
             added = { fg = color.green },
@@ -421,16 +424,9 @@ function M.setup()
     disabled_filetypes = {
       'mason',
       'filesystem',
-      -- 'neo-tree',
-      -- 'neotree',
       'TelescopePrompt',
-      -- 'toggleterm',
-      -- 'lspsagaoutline',
-      -- 'terminal',
-      -- 'term',
       'help',
       'dashboard',
-      -- 'man'
     },
     options = {
       component_separators = '',

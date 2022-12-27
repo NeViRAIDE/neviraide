@@ -1,5 +1,3 @@
--- TODO: golang keys
--- TODO: icons
 _G.if_require = function(module, block, errblock)
   local ok, mod = pcall(require, module)
   if ok then
@@ -96,7 +94,7 @@ local function setup()
     ['<c-k>'] = { ':wincmd k<cr>', 'Go to up window' },
     ['<c-l>'] = { ':wincmd l<cr>', 'Go to left window' },
     ['<leader>'] = {
-      name = 'Plugins and features ',
+      name = 'Plugins and features',
       f = { ':Neotree toggle<cr>', 'File explorer ' },
       D = { ':Dashboard<cr>', 'Dashboard ' },
       S = { ':SessionSave<cr>', 'Save session ' },
@@ -150,8 +148,7 @@ local function setup()
       },
       G = {
         name = 'GIT ',
-        -- TODO: function for lazygit
-        l = { ':TermExec direction=float cmd=lazygit<CR>', 'Lazygit' },
+        l = { ':lua lazygit_toggle()<CR>', 'Lazygit' },
         r = { ':Gitsigns reset_hunk<cr>', 'Reset hunk' },
         b = { ':Gitsigns blame_line<cr>', 'Blame line' },
         d = { ':Gitsigns diffthis<cr>', 'Diff this' },
