@@ -59,11 +59,11 @@ function M.config()
           if node.type == 'directory' then
             highlight = highlights.DIRECTORY_ICON
             if node.loaded and not node:has_children() then
-              icon = ''
+              icon = '' or config.default
             elseif node:is_expanded() then
-              icon = '📂'
+              icon = '📂' or config.default
             else
-              icon = '📁'
+              icon = '📁' or config.default
             end
           elseif node.type == 'file' then
             local success, web_devicons = pcall(require, 'nvim-web-devicons')
