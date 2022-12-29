@@ -95,28 +95,25 @@ local function setup()
     ['<c-l>'] = { ':wincmd l<cr>', 'Go to left window' },
     ['<leader>'] = {
       name = 'Plugins and features',
-      f = { ':Neotree toggle<cr>', 'File explorer ' },
-      D = { ':Dashboard<cr>', 'Dashboard ' },
-      S = { ':SessionSave<cr>', 'Save session ' },
+      f = { ':Neotree toggle<cr>', 'File explorer' },
+      D = { ':Dashboard<cr>', 'Dashboard' },
+      S = { ':SessionSave<cr>', 'Save session' },
       b = {
-        name = 'Buffers ',
+        name = 'Buffers',
         p = { ':bprev<cr>', 'Previous' },
         n = { ':bnext<cr>', 'Next' },
         d = { ':lua close_buffer()<cr>', 'Delete' },
         D = { ':%bd | Dashboard<cr>', 'Delete all buffers' },
         C = { ':%bd | e# | bd#<cr>', 'Delete buffers except current' },
         l = { '<cmd>Telescope buffers<cr>', 'List' },
-        w = {
-          name = 'Window size',
-          v = { ':WindowsMaximizeVertically<cr>', 'Maximize vertically' },
-          h = { ':WindowsMaximizeHorizontally<cr>', 'Maximize horizontally' },
-          m = { ':WindowsMaximize<cr>', 'Fullscreen size' },
-          e = { ':WindowsEqualize<cr>', 'Equalize' },
-        },
       },
       g = {
-        name = 'GoLang',
+        name = 'GoLang ',
         r = { ':lua goRun:mount()<CR>', 'Compile and run Go programm' },
+        R = {
+          ':lua goRunInTerm:mount()<CR>',
+          'Compile and run Go programm in terminal',
+        },
         b = { ':lua goBuild:mount()<CR>', 'Compile packages and dependencies' },
         T = {
           name = 'Tests',
@@ -147,7 +144,7 @@ local function setup()
         },
       },
       G = {
-        name = 'GIT ',
+        name = 'GIT ',
         l = { ':lua lazygit_toggle()<CR>', 'Lazygit' },
         r = { ':Gitsigns reset_hunk<cr>', 'Reset hunk' },
         b = { ':Gitsigns blame_line<cr>', 'Blame line' },
@@ -169,14 +166,14 @@ local function setup()
         },
       },
       w = {
-        name = 'Window size',
+        name = 'Window size 缾',
         v = { ':WindowsMaximizeVertically<cr>', 'Maximize vertically' },
         h = { ':WindowsMaximizeHorizontally<cr>', 'Maximize horizontally' },
         m = { ':WindowsMaximize<cr>', 'Fullscreen size' },
         e = { ':WindowsEqualize<cr>', 'Equalize' },
       },
       N = {
-        name = 'Neogen ',
+        name = 'Neogen',
         a = { ':Neogen<cr>', 'Create annotation(autodetect)' },
         f = { ':Neogen func<cr>', 'Create function annotation' },
         c = { ':Neogen class<cr>', 'Create class annotation' },
@@ -184,12 +181,12 @@ local function setup()
         F = { ':Neogen file<cr>', 'Create file annotation' },
       },
       c = {
-        name = 'Color Picker ',
+        name = 'Color Picker ',
         p = { ':CccPick<cr>', 'Pick color' },
         c = { ':CccConvert<cr>', 'Conver color' },
       },
       n = {
-        name = 'Notes ',
+        name = 'TODO notes',
         l = {
           ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}}<cr>',
           'Notes list',
@@ -221,7 +218,7 @@ local function setup()
       },
       T = { ':ToggleTerm<cr>', 'Temrinal' },
       t = {
-        name = 'Telescope ',
+        name = 'Telescope',
         a = { '<cmd>Telescope autocommands<cr>', 'Autocommands' },
         m = { '<cmd>Telescope man_pages<cr>', 'Manual pages' },
         r = {
@@ -238,7 +235,7 @@ local function setup()
         },
       },
       d = {
-        name = 'Diagnostics ',
+        name = 'Diagnostics',
         w = { ':Telescope diagnostics<cr>', 'Workspace diagnostics' },
         l = { ':lua vim.diagnostic.open_float()<cr>', 'Show diagnostic line' },
 
@@ -274,7 +271,7 @@ local function setup()
         },
       },
       l = {
-        name = 'LSP ',
+        name = 'LSP',
         h = { ':lua vim.lsp.buf.hover()<cr>', 'Hover' },
         r = { ':Telescope lsp_references<cr>', 'References' },
         a = { ':lua vim.lsp.buf.code_action()<cr>', 'Code action' },
@@ -303,7 +300,7 @@ local function attach_markdown(bufnr)
       name = 'Plugins and features ',
       P = {
         '<cmd>MarkdownPreviewToggle<cr>',
-        'Toggle preview markdown ',
+        'Toggle preview markdown ',
       },
     },
   }, { buffer = bufnr, mode = 'n' })

@@ -7,8 +7,20 @@ local M = {
 function M.config()
   require('toggleterm').setup({
     open_mapping = [[<c-\>]],
+    size = function(term)
+      if term.direction == 'horizontal' then
+        return vim.o.lines * 0.3
+      elseif term.direction == 'vertical' then
+        return vim.o.columns * 0.3
+      end
+    end,
     winbar = {
       enabled = true,
+    },
+    float_opts = {
+      border = 'rounded',
+      width = function(term) return math.floor(vim.o.columns * 0.6) end,
+      height = function(term) return math.floor(vim.o.lines * 0.5) end,
     },
   })
 
@@ -20,6 +32,8 @@ function M.config()
     direction = 'float',
     float_opts = {
       border = 'rounded',
+      width = function(term) return math.floor(vim.o.columns * 0.85) end,
+      height = function(term) return math.floor(vim.o.lines * 0.85) end,
     },
   })
   function _G.lazygit_toggle() lazygit:toggle() end

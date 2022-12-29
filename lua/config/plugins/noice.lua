@@ -12,13 +12,14 @@ function M.config()
       },
     },
     lsp = {
+      signature = { enabled = false },
+      message = { enabled = true },
+      hover = { enabled = true },
       override = {
         ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
         ['vim.lsp.util.stylize_markdown'] = true,
         ['cmp.entry.get_documentation'] = true,
-        ['vim.lsp.buf.code_action'] = true,
       },
-      signature = { enabled = false },
     },
     presets = {
       bottom_search = true,

@@ -1,8 +1,11 @@
 -- TODO: add codelens features
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require 'lspconfig'.gopls.setup {
+require('lspconfig').gopls.setup({
   on_attach = require('config.plugins.lsp.on_attach').build(),
   capabilities = capabilities,
   flags = { debounce_text_changes = 150 },
@@ -18,8 +21,8 @@ require 'lspconfig'.gopls.setup {
       usePlaceholders = true,
       codelenses = {
         genrate = true,
-        gc_details = true
-      }
+        gc_details = true,
+      },
     },
   },
   init_options = {
@@ -27,6 +30,6 @@ require 'lspconfig'.gopls.setup {
   },
   codelenses = {
     genrate = true,
-    gc_details = true
-  }
-}
+    gc_details = true,
+  },
+})

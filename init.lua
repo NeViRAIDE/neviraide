@@ -9,7 +9,6 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
-
 vim.opt.runtimepath:prepend(lazypath)
 
 vim.g.mapleader = ' '
@@ -22,9 +21,7 @@ require('settings.colors')
 require('lazy').setup('config.plugins', {
   defaults = { lazy = true },
   checker = { enabled = true },
-  ui = {
-    border = 'rounded',
-  },
+  ui = { border = 'rounded' },
   performance = {
     rtp = {
       disabled_plugins = {

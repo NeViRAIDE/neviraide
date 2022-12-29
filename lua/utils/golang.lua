@@ -168,6 +168,31 @@ _G.goRun = Input({
 })
 goRun:on(event.BufLeave, function() inputMod:unmount() end)
 
+_G.goRunInTerm = Input({
+  position = '50%',
+  size = { width = 15 },
+  border = {
+    style = 'rounded',
+    text = {
+      top = ' Run ',
+      top_align = 'center',
+    },
+    padding = { 0, 1 },
+  },
+  relative = 'editor',
+  win_options = {
+    winhighlight = 'Normal:DevIconCsv,FloatBorder:DevIconCsv',
+  },
+}, {
+  prompt = '',
+  default_value = '',
+  on_close = function() require('notify').notify('Running canceled!', 'error') end,
+  on_submit = function(value)
+    vim.fn.execute('TermExec direction=float cmd="go run ' .. value .. '"')
+  end,
+})
+goRunInTerm:on(event.BufLeave, function() inputMod:unmount() end)
+
 _G.goBuild = Input({
   position = '50%',
   size = { width = 15 },

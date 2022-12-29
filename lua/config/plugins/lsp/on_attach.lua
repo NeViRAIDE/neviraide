@@ -14,7 +14,7 @@ local signature_config = {
 M.build = function()
   return function(client, bufnr)
     if client.server_capabilities.documentSymbolProvider then
-      require("nvim-navic").attach(client, bufnr)
+      require('nvim-navic').attach(client, bufnr)
     end
     require('lsp_signature').on_attach(signature_config, bufnr)
     if client.server_capabilities.documentHighlightProvider then

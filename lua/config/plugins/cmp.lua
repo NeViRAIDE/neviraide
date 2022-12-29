@@ -9,7 +9,6 @@ local M = {
     'hrsh7th/cmp-path',
     'kdheepak/cmp-latex-symbols',
     'saadparwaiz1/cmp_luasnip',
-    'dmitmel/cmp-digraphs',
 
     'L3MON4D3/LuaSnip',
     'rafamadriz/friendly-snippets',
@@ -68,7 +67,6 @@ function M.config()
     }, {
       { name = 'buffer' },
       { name = 'calc' },
-      { name = 'digraphs' },
       { name = 'latex_symbols' },
     }),
     formatting = {

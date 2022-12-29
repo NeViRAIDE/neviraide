@@ -2,27 +2,28 @@
 local M = {
   'nvim-lualine/lualine.nvim',
   event = 'BufReadPre',
-  config = function() require('config.plugins.lualine').setup() end,
 }
 
-function M.setup()
+function M.config()
   local lualine = require('lualine')
 
   local config = {
     extensions = {
       'quickfix',
-      -- 'neo-tree',
+      'neo-tree',
       'toggleterm',
       'nvim-dap-ui',
       'man',
     },
     disabled_filetypes = {
+      'neo-tree',
       'mason',
       'filesystem',
-      'neo-tree',
       'TelescopePrompt',
       'help',
       'dashboard',
+      'lazy',
+      'Sqls_output',
     },
     options = {
       component_separators = '',

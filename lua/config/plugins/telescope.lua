@@ -128,9 +128,7 @@ function M.config()
   })
 
   extension('todo-comments')
-
-  -- TODO: customize telescope
-  -- hi('TelescopeNormal', { bg = color.cyan })
+  extension('notify')
 end
 
 return M
