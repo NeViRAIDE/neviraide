@@ -3,13 +3,11 @@ local M = {
   version = '0.1.0',
   event = 'VeryLazy',
   dependencies = {
-    'nvim-telescope/telescope-ui-select.nvim',
     'nvim-telescope/telescope-symbols.nvim',
   },
 }
 function M.config()
   local telescope = require('telescope')
-  local themes = require('telescope.themes')
   local action = require('telescope.actions')
   local action_layout = require('telescope.actions.layout')
 
@@ -127,17 +125,12 @@ function M.config()
         },
       },
     },
-    extensions = {
-      ['ui-select'] = {
-        initial_mode = 'normal',
-        themes.get_cursor({}),
-      },
-    },
   })
 
-  -- extension('ui-select')
   extension('todo-comments')
-  extension('notify')
+
+  -- TODO: customize telescope
+  -- hi('TelescopeNormal', { bg = color.cyan })
 end
 
 return M

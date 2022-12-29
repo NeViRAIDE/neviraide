@@ -1,3 +1,4 @@
+<!-- TODO:  MAKE README FILE --> 
 # NEVIRAIDE
 
 ***...desctiption is comming soon...***
@@ -13,17 +14,15 @@
 - ripgrep
 - npm
 - unzip
-- xclip
 - lazygit
-...
+- emoji
 
 
 #### Plugins:
 
 <details>
 <summary>core</summary>
-
-
+- [Lazy]() - plugin manager
 - [Plenary](https://github.com/nvim-lua/plenary.nvim) - plugin for async 
 </details>
 
@@ -42,7 +41,6 @@
 <summary>Telescope</summary>
 
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim) - is very powerfull feature
-- [UI-select](https://github.com/nvim-telescope/telescope-ui-select.nvim) - make your select pretty
 </details>
 
 <details>

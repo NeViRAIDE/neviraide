@@ -1,3 +1,4 @@
+-- TODO: add go features
 local Input = require('nui.input')
 local Menu = require('nui.menu')
 

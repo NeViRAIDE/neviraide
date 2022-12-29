@@ -1,18 +1,18 @@
 local M = {
-  "hrsh7th/nvim-cmp",
-  event = "InsertEnter",
+  'hrsh7th/nvim-cmp',
+  event = 'InsertEnter',
   dependencies = {
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-nvim-lua",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-calc",
-    "hrsh7th/cmp-path",
-    "kdheepak/cmp-latex-symbols",
-    "saadparwaiz1/cmp_luasnip",
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-nvim-lua',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-calc',
+    'hrsh7th/cmp-path',
+    'kdheepak/cmp-latex-symbols',
+    'saadparwaiz1/cmp_luasnip',
     'dmitmel/cmp-digraphs',
 
-    "L3MON4D3/LuaSnip",
-    "rafamadriz/friendly-snippets",
+    'L3MON4D3/LuaSnip',
+    'rafamadriz/friendly-snippets',
   },
 }
 
@@ -81,8 +81,9 @@ function M.config()
         with_text = false,
         before = function(entry, vim_item)
           local word = entry:get_insert_text()
-          if entry.completion_item.insertTextFormat
-              == types.lsp.InsertTextFormat.Snippet
+          if
+            entry.completion_item.insertTextFormat
+            == types.lsp.InsertTextFormat.Snippet
           then
             word = vim.lsp.util.parse_snippet(word)
           end
@@ -94,9 +95,10 @@ function M.config()
             word = before .. '...'
           end
 
-          if entry.completion_item.insertTextFormat
+          if
+            entry.completion_item.insertTextFormat
               == types.lsp.InsertTextFormat.Snippet
-              and string.sub(vim_item.abbr, -1, -1) == '~'
+            and string.sub(vim_item.abbr, -1, -1) == '~'
           then
             word = word .. '~'
           end
@@ -108,9 +110,9 @@ function M.config()
     },
     experimental = {
       ghost_text = {
-        hl_group = "Comment",
+        hl_group = 'Comment',
       },
-    }
+    },
   })
 end
 
