@@ -1,3 +1,4 @@
+-- FIX: can't execute terminal command after open via neo-tree
 local M = {
   'nvim-neo-tree/neo-tree.nvim',
   event = 'VeryLazy',
@@ -45,7 +46,7 @@ function M.config()
         },
       },
     },
-    close_if_last_window = true,
+    -- close_if_last_window = true,
     filesystem = {
       use_libuv_file_watcher = true,
       follow_current_file = true,

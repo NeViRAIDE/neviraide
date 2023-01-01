@@ -1,3 +1,4 @@
+-- FIX: can't close if last window
 local M = {
   'akinsho/toggleterm.nvim',
   version = '*',

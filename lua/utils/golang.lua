@@ -40,7 +40,7 @@ _G.goGet = Input({
     text = {
       top = ' Package link: ',
       top_align = 'center',
-      bottom = 'you can provide more than one package url',
+      bottom = '(you can provide more than one package url)',
     },
     padding = { 0.5, 1 },
   },
@@ -144,74 +144,3 @@ _G.goInterface = Input({
   on_submit = function(value) vim.fn.execute('GoImpl ' .. value) end,
 })
 goInterface:on(event.BufLeave, function() inputMod:unmount() end)
-
-_G.goRun = Input({
-  position = '50%',
-  size = { width = 15 },
-  border = {
-    style = 'rounded',
-    text = {
-      top = ' Run ',
-      top_align = 'center',
-    },
-    padding = { 0, 1 },
-  },
-  relative = 'editor',
-  win_options = {
-    winhighlight = 'Normal:DevIconCsv,FloatBorder:DevIconCsv',
-  },
-}, {
-  prompt = '',
-  default_value = '',
-  on_close = function() require('notify').notify('Running canceled!', 'error') end,
-  on_submit = function(value) vim.fn.execute('!go run ' .. value) end,
-})
-goRun:on(event.BufLeave, function() inputMod:unmount() end)
-
-_G.goRunInTerm = Input({
-  position = '50%',
-  size = { width = 15 },
-  border = {
-    style = 'rounded',
-    text = {
-      top = ' Run ',
-      top_align = 'center',
-    },
-    padding = { 0, 1 },
-  },
-  relative = 'editor',
-  win_options = {
-    winhighlight = 'Normal:DevIconCsv,FloatBorder:DevIconCsv',
-  },
-}, {
-  prompt = '',
-  default_value = '',
-  on_close = function() require('notify').notify('Running canceled!', 'error') end,
-  on_submit = function(value)
-    vim.fn.execute('TermExec direction=float cmd="go run ' .. value .. '"')
-  end,
-})
-goRunInTerm:on(event.BufLeave, function() inputMod:unmount() end)
-
-_G.goBuild = Input({
-  position = '50%',
-  size = { width = 15 },
-  border = {
-    style = 'rounded',
-    text = {
-      top = ' Build ',
-      top_align = 'center',
-    },
-    padding = { 0, 1 },
-  },
-  relative = 'editor',
-  win_options = {
-    winhighlight = 'Normal:VertSplit,FloatBorder:VertSplit',
-  },
-}, {
-  prompt = '',
-  default_value = '',
-  on_close = function() require('notify').notify('Building canceled!', 'error') end,
-  on_submit = function(value) vim.fn.execute('!go build ' .. value) end,
-})
-goBuild:on(event.BufLeave, function() inputMod:unmount() end)

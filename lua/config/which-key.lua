@@ -109,21 +109,17 @@ local function setup()
       },
       g = {
         name = 'GoLang ',
-        r = { ':lua goRun:mount()<CR>', 'Compile and run Go programm' },
-        R = {
-          ':lua goRunInTerm:mount()<CR>',
-          'Compile and run Go programm in terminal',
-        },
-        b = { ':lua goBuild:mount()<CR>', 'Compile packages and dependencies' },
+        r = { ':!go run .<CR>', 'Run Go programm' },
+        b = { ':!go build .<CR>', 'Build Go programm' },
         T = {
           name = 'Tests',
           r = { ':!go test<CR>', 'Run tests' },
           g = {
             name = 'Generate',
             o = { ':GoTestAdd<cr>', 'One test for function/method' },
-            a = { ':GoTestAll<cr>', 'All tests for all functions/methods' },
+            a = { ':GoTestsAll<cr>', 'All tests for all functions/methods' },
             e = {
-              ':GoTestExp<cr>',
+              ':GoTestsExp<cr>',
               'Only for exported tests for functions/methods',
             },
           },

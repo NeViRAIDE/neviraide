@@ -20,11 +20,12 @@ return {
       lsp_source,
       icon = '',
       color = { bg = color.bg },
+      cond = conditions.hide_in_width,
     },
     {
       function() return '|' end,
       color = { fg = 'Grey', bg = color.bg, gui = 'none' },
-      cond = conditions.buffer_not_empty,
+      cond = conditions.hide_in_width or conditions.buffer_not_empty,
       padding = { left = 0, right = 0 },
     },
     {
@@ -51,8 +52,9 @@ return {
       right_separator,
       color = { fg = color.bg, bg = color.none },
       padding = { left = 0, right = 0 },
+      cond = conditions.hide_in_width,
     },
-    { function() return '%=' end },
+    { function() return '%=' end, cond = conditions.hide_in_width },
     {
       left_separator,
       color = { fg = color.bg, bg = color.none },
@@ -61,7 +63,7 @@ return {
     },
     {
       'filesize',
-      cond = conditions.hide_in_width or conditions.buffer_not_empty,
+      cond = conditions.buffer_not_empty,
       color = { bg = color.bg },
     },
     {
@@ -90,18 +92,18 @@ return {
     {
       interpreter,
       color = { fg = color.fg, bg = color.bg, gui = 'italic' },
-      cond = conditions.hide_in_width or conditions.buffer_not_empty,
+      cond = conditions.buffer_not_empty,
     },
     {
       virtual_env,
       color = { bg = color.bg, gui = 'italic' },
-      cond = conditions.hide_in_width or conditions.buffer_not_empty,
+      cond = conditions.buffer_not_empty,
       padding = { left = 0, right = 1 },
     },
     {
       right_separator,
       color = { fg = color.bg, bg = color.none },
-      cond = conditions.hide_in_width or conditions.buffer_not_empty,
+      cond = conditions.buffer_not_empty,
       padding = { left = 0, right = 0 },
     },
   },
