@@ -50,6 +50,8 @@ function M.config()
       use_libuv_file_watcher = true,
       follow_current_file = true,
       hijack_netrw_behavior = 'open_current',
+      -- TODO: change directory icons
+
       -- components = {
       --   icon = function(config, node, state)
       --     local icon = config.default or ' '
