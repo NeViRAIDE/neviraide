@@ -18,7 +18,7 @@ return {
     },
     {
       lsp_source,
-      icon = '',
+      icon = icon('server'),
       color = { bg = color.bg },
       cond = conditions.hide_in_width,
     },
@@ -33,10 +33,10 @@ return {
       sources = { 'nvim_diagnostic' },
 
       symbols = {
-        error = ' ',
-        warn = '⚠ ',
-        info = ' ',
-        hint = ' ',
+        error = icon('x-circle'),
+        warn = icon('alert'),
+        info = icon('info'),
+        hint = icon('light-bulb'),
       },
       diagnostics_color = {
         color_error = { fg = color.red },
@@ -118,9 +118,9 @@ return {
       source = diff_source,
       color = { bg = color.bg },
       symbols = {
-        added = ' ',
-        modified = ' ',
-        removed = ' ',
+        added = icon('diff-added'),
+        modified = icon('diff-modified'),
+        removed = icon('diff-removed'),
       },
       diff_color = {
         added = { fg = color.green },
@@ -132,7 +132,7 @@ return {
     },
     {
       branch_source,
-      icon = '',
+      icon = icon('git-branch'),
       color = { fg = color.orange, gui = 'bold', bg = color.bg },
     },
     {

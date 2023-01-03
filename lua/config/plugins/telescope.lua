@@ -104,7 +104,7 @@ function M.config()
       },
     },
     defaults = {
-      prompt_prefix = ' 🔍 ',
+      prompt_prefix = ' ' .. icon('search') .. ' ',
       selection_caret = '➤ ',
       dynamic_preview_title = true,
       use_less = true,
@@ -129,6 +129,7 @@ function M.config()
 
   extension('todo-comments')
   extension('notify')
+  extension('noice')
 end
 
 return M

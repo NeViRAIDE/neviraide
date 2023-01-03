@@ -9,7 +9,7 @@ return {
   lualine_c = {
     {
       function()
-        local half_window_width = vim.api.nvim_win_get_width(0) / 2 - 15
+        local half_window_width = vim.api.nvim_win_get_width(0) / 2 - 11
         return string.rep(' ', half_window_width)
       end,
       padding = { left = 0, right = 0 },
@@ -29,14 +29,14 @@ return {
     {
       function()
         local mode_icons = {
-          n = 'Normal',
-          i = 'Insert',
-          c = 'Command',
-          v = '-isual',
-          [''] = '' .. '-Block',
-          V = '' .. '-Line',
-          R = 'Replace',
-          t = 'Terminal ',
+          n = icon('vim-normal-mode'),
+          i = icon('vim-insert-mode'),
+          c = icon('vim-command-mode'),
+          v = icon('vim-visual-mode'),
+          [''] = icon('vim-visual-mode') .. '-Block',
+          V = icon('vim-visual-mode') .. '-Line',
+          R = icon('vim-replace-mode'),
+          t = icon('vim-terminal-mode'),
         }
         return mode_icons[vim.fn.mode()]
       end,
@@ -53,7 +53,7 @@ return {
         }
         return {
           fg = mode_color[vim.fn.mode()],
-          gui = 'bold,italic',
+          gui = 'bold',
           bg = color.bg,
         }
       end,

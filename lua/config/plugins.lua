@@ -6,6 +6,11 @@ return {
     config = function() vim.cmd('colorscheme darcula-solid') end,
   },
   {
+    'yamatsum/nvim-nonicons',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = true,
+  },
+  {
     'folke/which-key.nvim',
     lazy = false,
     config = function() require('config.which-key').setup() end,
@@ -15,14 +20,18 @@ return {
     event = 'VeryLazy',
   },
   { 'ggandor/lightspeed.nvim', event = 'BufReadPre' },
+  'nvim-lua/plenary.nvim',
+  'ggandor/lightspeed.nvim',
+  'ray-x/lsp_signature.nvim',
+  { 'ray-x/web-tools.nvim', event = 'VeryLazy', config = true },
   {
     'nvim-treesitter/nvim-treesitter-context',
     event = 'BufReadPre',
     config = true,
   },
-  'nvim-tree/nvim-web-devicons',
-  'nvim-lua/plenary.nvim',
-  'ggandor/lightspeed.nvim',
-  'ray-x/lsp_signature.nvim',
-  'onsails/lspkind-nvim',
+  {
+    'windwp/nvim-ts-autotag',
+    event = 'InsertEnter',
+    config = true,
+  },
 }

@@ -1,6 +1,8 @@
+require('utils.nonicons')
+
 local M = {
-  "glepnir/dashboard-nvim",
-  lazy = false
+  'glepnir/dashboard-nvim',
+  lazy = false,
 }
 
 function M.config()
@@ -22,14 +24,21 @@ function M.config()
     '',
   }
   db.custom_center = {
-    { desc = 'New file', action = 'DashboardNewFile' },
-    { desc = 'Open last session', action = 'SessionLoad' },
-    { desc = 'Recent files', action = 'Telescope oldfiles' },
-    { desc = 'Keybindings', action = 'WhichKey <leader>' },
-    { desc = 'Plugins', action = 'Lazy' },
-    { desc = 'Exit', action = 'q' },
+    { desc = 'New file ' .. icon('file'), action = 'DashboardNewFile' },
+    { desc = 'Open last session ' .. icon('archive'), action = 'SessionLoad' },
+    {
+      desc = 'Recent files ' .. icon('history'),
+      action = 'Telescope oldfiles',
+    },
+    { desc = 'Keybindings ' .. icon('gear'), action = 'WhichKey <leader>' },
+    {
+      desc = "Show TODO's " .. icon('tasklist'),
+      action = 'TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=14}}',
+    },
+    { desc = 'Plugins ' .. icon('plug'), action = 'Lazy' },
+    { desc = 'Neovim Check Health ' .. icon('pulse'), action = 'checkhealth' },
+    { desc = 'Exit ' .. icon('sign-out'), action = 'q' },
   }
-
 
   local function nvim_version()
     local nvim_full_version_info = vim.fn.execute('version')
@@ -40,7 +49,7 @@ function M.config()
     end
   end
 
-  local plugins = require("lazy").stats().count
+  local plugins = require('lazy').stats().count
   db.custom_footer = {
     '',
     nvim_version(),

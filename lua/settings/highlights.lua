@@ -24,3 +24,5 @@ hi('NeoTreeGitDeleted', { fg = color.red })
 hi('NeoTreeGitAdded', { fg = color.green })
 
 hi('LspSagaWinbarSep', { fg = color.red })
+
+hi('Function', { italic = true, fg = '#ffc66b' })

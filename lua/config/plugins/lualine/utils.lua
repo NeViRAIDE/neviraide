@@ -2,7 +2,7 @@ local function left_separator() return '' end
 
 local function right_separator() return '' end
 
-local function clock() return ' ' .. os.date('%H:%M') end
+local function clock() return icon('clock') .. ' ' .. os.date('%H:%M') end
 
 local function get_file_path()
   if vim.fn.bufname('%') == '' then return '' end
@@ -15,7 +15,7 @@ local function get_file_path()
       or file_path
         .. cur
         .. ' %#LspSagaWinbarSep#'
-        .. '▶ '
+        .. icon('triangle-right')
         .. '%#lualine_c_filetype_normal#'
   end
   return file_path
@@ -26,10 +26,10 @@ local highlight = require('lualine.highlight')
 
 function custom_fname:init(options)
   custom_fname.super.init(self, options)
-  self.options.symbols.modified = '🖊️'
-  self.options.symbols.readonly = '🔏'
-  self.options.symbols.newfile = ''
-  self.options.symbols.unnamed = 'ﱤ'
+  self.options.symbols.modified = icon('pencil')
+  self.options.symbols.readonly = icon('lock')
+  self.options.symbols.newfile = icon('file')
+  self.options.symbols.unnamed = 'ﱤ '
   self.status_colors = {
     newfile = highlight.create_component_highlight_group(
       { bg = color.none, fg = color.green, gui = 'bold' },

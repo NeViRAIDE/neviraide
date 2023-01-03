@@ -12,6 +12,11 @@ local M = {
 
     'L3MON4D3/LuaSnip',
     'rafamadriz/friendly-snippets',
+
+    {
+      'onsails/lspkind-nvim',
+      config = function() require('lspkind').init({ preset = 'codicons' }) end,
+    },
   },
 }
 

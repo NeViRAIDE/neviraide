@@ -23,7 +23,7 @@ return {
       icon_only = true,
       cond = conditions.buffer_not_empty,
       color = { bg = color.none },
-      padding = { left = 0, right = 0 },
+      padding = { left = 0, right = 1 },
     },
     {
       custom_fname,
@@ -32,7 +32,7 @@ return {
       padding = { left = 1, right = 0 },
     },
     {
-      function() return ' ▶' end,
+      function() return ' ' .. icon('triangle-right') end,
       cond = navic.is_available and conditions.buffer_not_empty,
       color = { bg = color.none, fg = color.red },
       padding = { left = 0, right = 0 },
@@ -41,6 +41,7 @@ return {
       navic.get_location,
       color = { bg = color.none },
       cond = navic.is_available or conditions.buffer_not_empty,
+      padding = { left = 0, right = 0 },
     },
   },
   lualine_x = {},

@@ -8,7 +8,15 @@ function M.config()
   require('noice').setup({
     cmdline = {
       format = {
-        filter = { pattern = '^:%s*!', icon = '', lang = 'bash' },
+        filter = { icon = icon('terminal') },
+        search_down = {
+          icon = icon('search') .. icon('chevron-down'),
+        },
+        search_up = {
+          icon = icon('search') .. icon('chevron-up'),
+        },
+        lua = { icon = icon('lua') },
+        help = { icon = icon('question') },
       },
     },
     lsp = {
@@ -29,6 +37,21 @@ function M.config()
       lsp_doc_border = true,
     },
   })
+
+  vim.keymap.set('n', '<c-j>', function()
+    if not require('noice.lsp').scroll(4) then return ':wincmd j<cr>' end
+  end, { silent = true, expr = true })
+
+  vim.keymap.set('n', '<c-k>', function()
+    if not require('noice.lsp').scroll(-4) then return ':wincmd k<cr>' end
+  end, { silent = true, expr = true })
+
+  vim.keymap.set(
+    'c',
+    '<S-Enter>',
+    function() require('noice').redirect(vim.fn.getcmdline()) end,
+    { desc = 'Redirect Cmdline' }
+  )
 
   require('settings.override_vim_ui')
 end

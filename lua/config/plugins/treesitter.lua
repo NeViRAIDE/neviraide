@@ -1,7 +1,7 @@
 local M = {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  event = "BufReadPost",
+  'nvim-treesitter/nvim-treesitter',
+  build = ':TSUpdate',
+  event = 'BufReadPost',
 }
 
 function M.config()
@@ -12,7 +12,7 @@ function M.config()
     query_linter = {
       enable = true,
       use_virtual_text = true,
-      lint_events = { "BufWrite", "CursorHold" },
+      lint_events = { 'BufWrite', 'CursorHold' },
     },
     highlight = { enable = true, additional_vim_regex_highlighting = true },
     context_commmentstring = { enable = true, enable_autocmd = false },

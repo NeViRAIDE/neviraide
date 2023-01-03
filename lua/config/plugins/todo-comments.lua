@@ -1,14 +1,20 @@
 local M = {
-  "folke/todo-comments.nvim",
-  config = function()
-    require("config.plugins.todo-comments")
-  end,
-  event = "BufReadPost"
+  'folke/todo-comments.nvim',
+  config = function() require('config.plugins.todo-comments') end,
+  event = 'BufReadPost',
 }
 function M.config()
   require('todo-comments').setup({
     signs = true,
     sign_priority = 8,
+    keywords = {
+      FIX = { icon = icon('meter'), color = color.fix },
+      TODO = { icon = icon('check-circle'), color = color.todo },
+      HACK = { icon = icon('flame'), color = color.hack },
+      WARN = { icon = icon('alert'), color = color.warn },
+      PERF = { icon = icon('stopwatch'), color = color.perf },
+      NOTE = { icon = icon('note'), color = color.note },
+    },
     merge_keywords = true,
     highlight = {
       before = '',
