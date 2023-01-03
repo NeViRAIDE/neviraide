@@ -46,12 +46,20 @@
 - [Luasnip](https://github.com/L3MON4D3/LuaSnip)
 </details>
 On open neovim
+
 ![Dashboard](https://github.com/RAprogramm/NEVIRAIDE/blob/golangIDE/neviraide_screens/dashboard.png)
+
 Comfortable colors for long reading
+
 ![Interface](https://github.com/RAprogramm/NEVIRAIDE/blob/golangIDE/neviraide_screens/interface.png)
 Intuitive keybindings
+
 ![Keybindings](https://github.com/RAprogramm/NEVIRAIDE/blob/golangIDE/neviraide_screens/keybindings.png)
+
 Wokring in shell
+
 ![Terminal](https://github.com/RAprogramm/NEVIRAIDE/blob/golangIDE/neviraide_screens/terminal.png)
+
 All git actions
+
 ![Lazygit](https://github.com/RAprogramm/NEVIRAIDE/blob/golangIDE/neviraide_screens/lazygit.png)
