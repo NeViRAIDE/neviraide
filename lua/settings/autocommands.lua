@@ -5,7 +5,8 @@ autocmd_multi('NEVIRAIDE_CONF', {
       pattern = '*',
       desc = 'Set previous cursor position when file is open',
       callback = function()
-        if vim.fn.line('\'"') > 0 and vim.fn.line('\'"') <= vim.fn.line('$')
+        if
+          vim.fn.line('\'"') > 0 and vim.fn.line('\'"') <= vim.fn.line('$')
         then
           vim.fn.setpos('.', vim.fn.getpos('\'"'))
           vim.api.nvim_feedkeys('zz', 'n', true)
@@ -30,16 +31,16 @@ autocmd_multi('NEVIRAIDE_CONF', {
     'FileType',
     {
       pattern = {
-        "qf",
-        "help",
-        "man",
-        "notify",
-        "prompt",
-        "lspinfo",
-        "spectre_panel",
-        "startuptime",
-        "tsplayground",
-        "PlenaryTestPopup"
+        'qf',
+        'help',
+        'man',
+        'notify',
+        'prompt',
+        'lspinfo',
+        'spectre_panel',
+        'startuptime',
+        'tsplayground',
+        'PlenaryTestPopup',
       },
       desc = 'Use q to close the window',
       command = 'nnoremap <buffer> q <cmd>quit<cr>',
@@ -63,6 +64,7 @@ autocmd_multi('NEVIRAIDE_CONF', {
     },
   },
 })
+
 autocmd_multi('NEVIRAIDE_KEYS', {
   {
     'TermOpen',
@@ -83,22 +85,47 @@ autocmd_multi('NEVIRAIDE_KEYS', {
   },
 })
 
-vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
-  callback = function()
-    local ok, cl = pcall(vim.api.nvim_win_get_var, 0, "auto-cursorline")
-    if ok and cl then
-      vim.wo.cursorline = true
-      vim.api.nvim_win_del_var(0, "auto-cursorline")
-    end
-  end,
+autocmd_multi('NEVIRAIDE_CURSOR', {
+  {
+    { 'BufEnter', 'WinEnter' },
+    {
+      desc = 'Set cursorline if focused',
+      callback = function()
+        local ok, cl = pcall(vim.api.nvim_win_get_var, 0, 'auto-cursorline')
+        if ok and cl then
+          vim.wo.cursorline = true
+          vim.api.nvim_win_del_var(0, 'auto-cursorline')
+        end
+      end,
+    },
+  },
+  {
+    { 'BufLeave', 'WinLeave' },
+    {
+      desc = 'Hide cursorline if unfocused',
+      callback = function()
+        local cl = vim.wo.cursorline
+        if cl then
+          vim.api.nvim_win_set_var(0, 'auto-cursorline', cl)
+          vim.wo.cursorline = false
+        end
+      end,
+    },
+  },
 })
-
-vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
-  callback = function()
-    local cl = vim.wo.cursorline
-    if cl then
-      vim.api.nvim_win_set_var(0, "auto-cursorline", cl)
-      vim.wo.cursorline = false
-    end
-  end,
+autocmd_multi('NEVIRAIDE_STATUS', {
+  {
+    { 'BufEnter', 'WinEnter' },
+    {
+      pattern = 'neo-tree',
+      desc = 'Hide status line',
+      callback = function()
+        local ok, cl = pcall(vim.api.nvim_win_get_var, 0, 'auto-cursorline')
+        if ok and cl then
+          vim.wo.cursorline = true
+          vim.api.nvim_win_del_var(0, 'auto-cursorline')
+        end
+      end,
+    },
+  },
 })

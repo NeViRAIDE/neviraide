@@ -28,6 +28,7 @@ function M.config()
     '01010010 01000001 01110000 01110010 01101111 01100111 01110010 01100001 01101101 01101101',
     '',
     '. . . NEVIRAIDE . . .',
+    '',
   }
   db.custom_center = {
     {
@@ -38,19 +39,23 @@ function M.config()
       desc = 'Find files ' .. icon('search'),
       action = 'Telescope find_files',
     },
-    { desc = 'Open last session ' .. icon('archive'), action = 'SessionLoad' },
+    { desc = 'Load saved session ' .. icon('archive'), action = 'SessionLoad' },
     {
-      desc = 'Recent files ' .. icon('history'),
+      desc = 'Recent files in current directory ' .. icon('history'),
       action = 'Telescope oldfiles',
     },
-    { desc = 'Keybindings ' .. icon('gear'), action = 'WhichKey <leader>' },
     {
-      desc = "Show TODO's " .. icon('tasklist'),
+      desc = 'Show TODO list ' .. icon('tasklist'),
       action = 'TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=14}}',
     },
-    { desc = 'Plugins ' .. icon('plug'), action = 'Lazy' },
+    { desc = 'Plugin manager ' .. icon('plug'), action = 'Lazy' },
     { desc = 'Neovim Check Health ' .. icon('pulse'), action = 'checkhealth' },
-    { desc = 'Exit ' .. icon('sign-out'), action = 'q' },
+    {
+      icon = ' Exit ',
+      desc = icon('sign-out'),
+      icon_hl = { fg = 'red' },
+      action = 'q',
+    },
   }
 
   local function nvim_version()
@@ -65,6 +70,7 @@ function M.config()
   local plugins = require('lazy').stats().count
 
   db.custom_footer = {
+    '',
     nvim_version(),
     'Installed ' .. plugins .. ' plugins',
   }

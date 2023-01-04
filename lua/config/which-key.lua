@@ -258,7 +258,6 @@ local function setup()
         F = { ':Neogen file<cr>', 'Create file annotation' },
       },
       S = { ':SessionSave<cr>', 'Save session ' .. icon('pin') },
-      -- T = { ':ToggleTerm<cr>', 'Temrinal ' .. icon('terminal') },
       t = {
         name = 'Telescope ' .. icon('telescope'),
         a = { '<cmd>Telescope autocommands<cr>', 'Autocommands' },
