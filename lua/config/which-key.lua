@@ -138,7 +138,7 @@ local function setup()
             i = { ':DapStepInto<cr>', 'Into' },
           },
           L = {
-            name = 'Set log level',
+            name = 'Set log level ' .. icon('log'),
             w = { ':DapSetLogLevel WARN<cr>', 'Warning' },
             i = { ':DapSetLogLevel INFO<cr>', 'Information' },
             d = { ':DapSetLogLevel DEBUG<cr>', 'Debug' },
@@ -171,13 +171,13 @@ local function setup()
             },
           },
         },
-        g = { ':lua goGet:mount()<CR>', 'Get go packages' },
+        g = { ':lua goGet()<CR>', 'Get go packages' },
         c = { ':GoCmt<cr>', 'Documentation comment' },
         i = { ':GoIfErr<cr>', 'If error template' },
-        I = { ':lua goInterface:mount()<cr>', 'Interface implementation' },
+        I = { ':lua goInterface()<cr>', 'Interface implementation' },
         m = {
           name = 'Mod',
-          i = { ':lua inputMod:mount()<CR>', 'Init go.mod' },
+          i = { ':lua inputMod()<CR>', 'Init go.mod' },
           t = { ':GoMod tidy<CR>:LspRestart<cr>', 'Tidy go.mod' },
         },
         t = {
@@ -191,7 +191,7 @@ local function setup()
         l = { ':lua lazygit_toggle()<CR>', 'Lazygit' },
         r = { ':Gitsigns reset_hunk<cr>', 'Reset hunk' },
         b = { ':Gitsigns blame_line<cr>', 'Blame line' },
-        d = { ':Gitsigns diffthis<cr>', 'Diff this' },
+        d = { ':Gitsigns diffthis<cr>', 'Diff this ' .. icon('diff') },
         n = { ':Gitsigns next_hunk<cr>', 'Go to next hunk' },
         p = { ':Gitsigns prev_hunk<cr>', 'Go to previous hunk' },
         P = { ':Gitsigns preview_hunk<cr>', 'Preview hunk' },
@@ -217,13 +217,6 @@ local function setup()
         D = { ':lua vim.lsp.buf.declaration()<cr>', 'Declaration' },
         d = { ':Telescope lsp_definitions<cr>', 'Definition' },
         t = { ':Telescope lsp_type_definitions<cr>', 'Type definition' },
-      },
-      L = {
-        name = 'Live Server ' .. icon('globe'),
-        o = { ':BrowserOpen<cr>', 'Run server and preview file' },
-        p = { ':BrowserPreview<cr>', 'Preview in browser' },
-        r = { ':BrowserRestart<cr>', 'Restart browser sync' },
-        s = { ':BrowserStop<cr>', 'Stop browser sync' },
       },
       n = {
         name = 'TODO notes ' .. icon('tasklist'),
@@ -265,7 +258,7 @@ local function setup()
         F = { ':Neogen file<cr>', 'Create file annotation' },
       },
       S = { ':SessionSave<cr>', 'Save session ' .. icon('pin') },
-      T = { ':ToggleTerm<cr>', 'Temrinal ' .. icon('terminal') },
+      -- T = { ':ToggleTerm<cr>', 'Temrinal ' .. icon('terminal') },
       t = {
         name = 'Telescope ' .. icon('telescope'),
         a = { '<cmd>Telescope autocommands<cr>', 'Autocommands' },

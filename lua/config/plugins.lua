@@ -23,7 +23,6 @@ return {
   'nvim-lua/plenary.nvim',
   'ggandor/lightspeed.nvim',
   'ray-x/lsp_signature.nvim',
-  { 'ray-x/web-tools.nvim', event = 'VeryLazy', config = true },
   {
     'nvim-treesitter/nvim-treesitter-context',
     event = 'BufReadPre',

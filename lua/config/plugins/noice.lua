@@ -4,6 +4,8 @@ local M = {
   event = 'VeryLazy',
 }
 
+require('config.plugins.dashboard.dash_utils')
+
 function M.config()
   require('noice').setup({
     cmdline = {

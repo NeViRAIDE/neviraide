@@ -8,9 +8,17 @@ local M = {
 function M.config()
   local db = require('dashboard')
 
+  db.session_auto_save_on_exit = true
+  db.session_directory = vim.fn.stdpath('cache') .. '/session'
+  db.session_verbose = true
+
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'DBSessionSavePre',
+    callback = function() vim.cmd('NeoTreeClose') end,
+  })
+
   db.preview_file_height = 12
   db.preview_file_width = 80
-  db.session_directory = '~/.cache/nvim/'
   db.custom_header = {
     '01001110 01100101 01101111 01110110 01101001 01101101',
     '01001001 01101110 01110100 01100101 01100111 01110010 01100001 01110100 01100101 01100100',
@@ -22,7 +30,10 @@ function M.config()
     '. . . NEVIRAIDE . . .',
   }
   db.custom_center = {
-    { desc = 'New file ' .. icon('file'), action = 'DashboardNewFile' },
+    {
+      desc = 'New file ' .. icon('file'),
+      action = 'lua dashNewFile()',
+    },
     {
       desc = 'Find files ' .. icon('search'),
       action = 'Telescope find_files',
