@@ -44,44 +44,16 @@ function M.config()
           deleted = icon('diff-removed'),
         },
       },
+      icon = {
+        folder_closed = icon('file-directory-fill'),
+        folder_open = icon('file-directory-open-fill'),
+        folder_empty = icon('file-directory'),
+      },
     },
-    -- close_if_last_window = true,
     filesystem = {
       use_libuv_file_watcher = true,
       follow_current_file = true,
       hijack_netrw_behavior = 'open_current',
-      -- TODO: change directory icons
-
-      -- components = {
-      --   icon = function(config, node, state)
-      --     local icon = config.default or ' '
-      --     local padding = config.padding or ' '
-      --     local highlight = config.highlight or highlights.FILE_ICON
-      --
-      --     if node.type == 'directory' then
-      --       highlight = highlights.DIRECTORY_ICON
-      --       if node.loaded and not node:has_children() then
-      --         icon = icon('file-directory') or config.default
-      --       elseif node:is_expanded() then
-      --         icon = icon('file-directory-open-fill') or config.default
-      --       else
-      --         icon = icon('file-directory-fill') or config.default
-      --       end
-      --     elseif node.type == 'file' then
-      --       local success, web_devicons = pcall(require, 'nvim-web-devicons')
-      --       if success then
-      --         local devicon, hl = web_devicons.get_icon(node.name, node.ext)
-      --         icon = devicon or icon
-      --         highlight = hl or highlight
-      --       end
-      --     end
-      --
-      --     return {
-      --       text = icon .. padding,
-      --       highlight = highlight,
-      --     }
-      --   end,
-      -- },
     },
   })
 end

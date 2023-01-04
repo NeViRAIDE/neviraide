@@ -12,7 +12,6 @@ function M.config()
   db.preview_file_width = 80
   db.session_directory = '~/.cache/nvim/'
   db.custom_header = {
-    '',
     '01001110 01100101 01101111 01110110 01101001 01101101',
     '01001001 01101110 01110100 01100101 01100111 01110010 01100001 01110100 01100101 01100100',
     '01000100 01100101 01110110 01100101 01101100 01101111 01110000 01101101 01100101 01101110 01110100',
@@ -21,10 +20,13 @@ function M.config()
     '01010010 01000001 01110000 01110010 01101111 01100111 01110010 01100001 01101101 01101101',
     '',
     '. . . NEVIRAIDE . . .',
-    '',
   }
   db.custom_center = {
     { desc = 'New file ' .. icon('file'), action = 'DashboardNewFile' },
+    {
+      desc = 'Find files ' .. icon('search'),
+      action = 'Telescope find_files',
+    },
     { desc = 'Open last session ' .. icon('archive'), action = 'SessionLoad' },
     {
       desc = 'Recent files ' .. icon('history'),
@@ -50,10 +52,10 @@ function M.config()
   end
 
   local plugins = require('lazy').stats().count
+
   db.custom_footer = {
-    '',
     nvim_version(),
-    'Loaded ' .. plugins .. ' plugins',
+    'Installed ' .. plugins .. ' plugins',
   }
 end
 

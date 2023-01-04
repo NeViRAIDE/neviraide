@@ -114,14 +114,17 @@ local function setup()
       d = {
         name = 'Diagnostics ' .. icon('pulse'),
         w = { ':Telescope diagnostics<cr>', 'Workspace diagnostics' },
-        l = { ':lua vim.diagnostic.open_float()<cr>', 'Show diagnostic line' },
+        l = {
+          ':lua vim.diagnostic.open_float()<cr>',
+          'Show diagnostic on line',
+        },
         p = {
           ':lua vim.diagnostic.goto_prev()<cr>',
-          'Jump to previous diagnostic line',
+          'Jump to previous diagnostic node',
         },
         n = {
           ':lua vim.diagnostic.goto_next()<cr>',
-          'Jump to next diagnostic line',
+          'Jump to next diagnostic node',
         },
         d = {
           name = 'DAP',
