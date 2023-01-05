@@ -15,17 +15,17 @@ function M.config()
       'nvim-dap-ui',
       'man',
     },
-    disabled_filetypes = {
-      'neo-tree',
-      'mason',
-      'filesystem',
-      'TelescopePrompt',
-      'help',
-      'dashboard',
-      'lazy',
-      'Sqls_output',
-    },
     options = {
+      disabled_filetypes = {
+        winbar = { 'neo-tree' },
+        'mason',
+        'filesystem',
+        'TelescopePrompt',
+        'help',
+        'dashboard',
+        'lazy',
+        'Sqls_output',
+      },
       component_separators = '',
       section_separators = '',
       theme = {

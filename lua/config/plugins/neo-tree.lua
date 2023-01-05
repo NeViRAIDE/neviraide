@@ -1,4 +1,3 @@
--- FIX: can't execute terminal command after open via neo-tree
 local M = {
   'nvim-neo-tree/neo-tree.nvim',
   event = 'VeryLazy',

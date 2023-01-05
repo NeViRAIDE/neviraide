@@ -113,19 +113,3 @@ autocmd_multi('NEVIRAIDE_CURSOR', {
     },
   },
 })
-autocmd_multi('NEVIRAIDE_STATUS', {
-  {
-    { 'BufEnter', 'WinEnter' },
-    {
-      pattern = 'neo-tree',
-      desc = 'Hide status line',
-      callback = function()
-        local ok, cl = pcall(vim.api.nvim_win_get_var, 0, 'auto-cursorline')
-        if ok and cl then
-          vim.wo.cursorline = true
-          vim.api.nvim_win_del_var(0, 'auto-cursorline')
-        end
-      end,
-    },
-  },
-})
