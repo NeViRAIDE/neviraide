@@ -1,4 +1,3 @@
-<!-- TODO:  MAKE README FILE --> 
 # NEVIRAIDE
 
 ***...desctiption is comming soon...***

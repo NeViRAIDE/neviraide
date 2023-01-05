@@ -33,4 +33,8 @@ return {
     event = 'InsertEnter',
     config = true,
   },
+  -- TODO: sql support
+  --
+  -- 'nanotee/sqls.nvim',
+  -- https://github.com/nanotee/sqls.nvim/blob/main/doc/sqls-nvim.txt#L14
 }

@@ -1,7 +1,7 @@
--- TODO: add todo-comments count
 local M = {
   'nvim-lualine/lualine.nvim',
-  event = 'BufReadPre',
+  -- event = 'BufReadPre',
+  event = 'BufWinEnter',
 }
 
 function M.config()
@@ -17,12 +17,11 @@ function M.config()
     },
     options = {
       disabled_filetypes = {
-        winbar = { 'neo-tree' },
+        winbar = { 'dashboard', 'neo-tree' },
         'mason',
         'filesystem',
         'TelescopePrompt',
         'help',
-        'dashboard',
         'lazy',
         'Sqls_output',
       },

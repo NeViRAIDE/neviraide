@@ -156,8 +156,8 @@ local function setup()
       },
       g = {
         name = 'GoLang  ',
-        r = { ':!go run .<CR>', 'Run Go programm' },
-        b = { ':!go build .<CR>', 'Build Go programm' },
+        r = { ':lua goRun()<CR>', 'Run Go programm' },
+        b = { ':lua goBuild()<CR>', 'Build Go programm' },
         T = {
           name = 'Tests',
           r = { ':!go test<CR>', 'Run tests' },
@@ -217,6 +217,7 @@ local function setup()
         D = { ':lua vim.lsp.buf.declaration()<cr>', 'Declaration' },
         d = { ':Telescope lsp_definitions<cr>', 'Definition' },
         t = { ':Telescope lsp_type_definitions<cr>', 'Type definition' },
+        c = { ':lua vim.lsp.codelens.run()<cr>', 'Codelens action' },
       },
       n = {
         name = 'TODO notes ' .. icon('tasklist'),
@@ -257,7 +258,7 @@ local function setup()
         t = { ':Neogen type<cr>', 'Create type annotation' },
         F = { ':Neogen file<cr>', 'Create file annotation' },
       },
-      S = { ':SessionSave<cr>', 'Save session ' .. icon('pin') },
+      s = { ':SessionSave<cr>', 'Save session ' .. icon('pin') },
       t = {
         name = 'Telescope ' .. icon('telescope'),
         a = { '<cmd>Telescope autocommands<cr>', 'Autocommands' },
@@ -309,8 +310,34 @@ local function attach_markdown(bufnr)
   }, { buffer = bufnr, mode = 'n' })
 end
 
+local function attach_jqx(bufnr)
+  wk_register({
+    ['<leader>'] = {
+      name = 'Plugins and features ',
+      J = {
+        name = 'JQX ' .. icon('json'),
+        l = { ':JqxList<cr>', 'List' },
+        q = { ':JqxQuery<cr>', 'Query' },
+      },
+    },
+  }, { buffer = bufnr, mode = 'n' })
+end
+
+-- local function attach_sql(bufnr)
+--   wk_register({
+--     ['<leader>'] = {
+--       name = 'Plugins and features ',
+--       S = {
+--         name = 'SQL ' .. icon('database'),
+--       },
+--     },
+--   }, { buffer = bufnr, mode = 'n' })
+-- end
+
 return {
   setup = setup,
   wk_register = wk_register,
   attach_markdown = attach_markdown,
+  attach_jqx = attach_jqx,
+  -- attach_sql = attach_sql,
 }

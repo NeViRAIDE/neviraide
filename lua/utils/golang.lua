@@ -1,4 +1,3 @@
--- TODO: add go features
 local Input = require('nui.input')
 local Menu = require('nui.menu')
 
@@ -151,6 +150,64 @@ _G.goInterface = function()
       require('notify').notify('Interface implementation canceled!', 'error')
     end,
     on_submit = function(value) vim.fn.execute('GoImpl ' .. value) end,
+  })
+  input:on(event.BufLeave, function() input:unmount() end)
+  input:mount()
+end
+
+_G.goRun = function()
+  local input = Input({
+    position = '50%',
+    size = { width = 35 },
+    border = {
+      style = 'rounded',
+      text = {
+        top = ' Run Go programm: ',
+        top_align = 'center',
+      },
+      padding = { 0, 1 },
+    },
+    relative = 'editor',
+    win_options = {
+      winhighlight = 'Normal:Normal,FloatBorder:DevIconCsv',
+    },
+  }, {
+    prompt = '',
+    default_value = '',
+    on_close = function()
+      require('notify').notify('Run programm canceled!', 'error')
+    end,
+    on_submit = function(value)
+      vim.fn.execute('TermExec direction=float cmd="go run ' .. value .. '"')
+    end,
+  })
+  input:on(event.BufLeave, function() input:unmount() end)
+  input:mount()
+end
+
+_G.goBuild = function()
+  local input = Input({
+    position = '50%',
+    size = { width = 35 },
+    border = {
+      style = 'rounded',
+      text = {
+        top = ' Build Go programm: ',
+        top_align = 'center',
+      },
+      padding = { 0, 1 },
+    },
+    relative = 'editor',
+    win_options = {
+      winhighlight = 'Normal:Normal,FloatBorder:DevIconElm',
+    },
+  }, {
+    prompt = '',
+    default_value = '',
+    on_close = function() require('notify').notify('Build canceled!', 'error') end,
+    on_submit = function(value)
+      vim.fn.execute('TermExec direction=float cmd="go build ' .. value .. '"')
+    end,
   })
   input:on(event.BufLeave, function() input:unmount() end)
   input:mount()

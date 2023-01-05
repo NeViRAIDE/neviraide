@@ -135,6 +135,12 @@ local function virtual_env()
   return ''
 end
 
+-- TODO: todo count
+local function get_todos()
+  local todos
+  return todos
+end
+
 return {
   clock = clock,
   left_separator = left_separator,
@@ -147,4 +153,5 @@ return {
   diff_source = diff_source,
   branch_source = branch_source,
   lsp_source = lsp_source,
+  get_todos = get_todos,
 }

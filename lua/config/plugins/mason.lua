@@ -25,6 +25,9 @@ function M.config()
       'sumneko_lua',
       'gopls',
       'bashls',
+      'dockerls',
+      'jsonls',
+      'yamlls',
     },
     automatic_installation = true,
   })

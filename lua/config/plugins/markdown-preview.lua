@@ -7,7 +7,7 @@ local M = {
 
 function M.config()
   vim.g.mkdp_filetypes = { "markdown" }
-  autocmd("NEVIRAIDE_GO",
+  autocmd("NEVIRAIDE_Markdown",
     'FileType',
     {
       pattern = 'markdown',

@@ -14,7 +14,7 @@ hi('DiagnosticHint', { fg = color.violet })
 
 hi(
   'LspSignatureActiveParameter',
-  { fg = '#565656', italic = true, bg = color.none }
+  { fg = color.grey, italic = true, bg = color.none }
 )
 
 hi('DiffChange', { fg = color.blue })
@@ -26,3 +26,6 @@ hi('NeoTreeGitAdded', { fg = color.green })
 hi('LspSagaWinbarSep', { fg = color.red })
 
 hi('Function', { italic = true, fg = '#ffc66b' })
+
+hi('LspCodeLens', { fg = color.grey })
+hi('LspCodeLensSeparator', { link = 'Boolean' })

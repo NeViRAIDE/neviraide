@@ -1,5 +1,3 @@
--- TODO: add codelens features
-
 local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
@@ -20,16 +18,10 @@ require('lspconfig').gopls.setup({
       staticcheck = true,
       usePlaceholders = true,
       codelenses = {
+        references = true,
         genrate = true,
         gc_details = true,
       },
     },
-  },
-  init_options = {
-    usePlaceholders = true,
-  },
-  codelenses = {
-    genrate = true,
-    gc_details = true,
   },
 })
