@@ -1,10 +1,15 @@
 hi('VertSplit', { bg = color.none, fg = color.blue })
 hi('NormalFloat', { bg = color.none })
 
+hi('TelescopeBorder', { bg = color.none, fg = color.blue })
+hi('TelescopePromptPrefix', { bg = color.none, fg = color.yellow })
+hi('TelescopeTitle', { bg = color.none, fg = color.blue, bold = true })
+hi('TelescopeSelectionCaret', { bg = color.none, fg = color.lightGreen })
+
 hi('Directory', { fg = '#ecbe50' })
 
 hi('DashboardHeader', { fg = color.green })
-hi('DashboardCenter', { fg = color.fg })
+hi('DashboardCenter', { fg = color.fg, bold = true })
 hi('DashboardFooter', { fg = '#444c4d', italic = true })
 
 hi('DiagnosticError', { fg = color.red })

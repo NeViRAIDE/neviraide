@@ -4,8 +4,6 @@ local M = {
   event = 'VeryLazy',
 }
 
-require('utils.dashboard')
-
 function M.config()
   require('noice').setup({
     cmdline = {
@@ -56,6 +54,8 @@ function M.config()
   )
 
   require('settings.override_vim_ui')
+
+  require('utils.dashboard')
 end
 
 return M
