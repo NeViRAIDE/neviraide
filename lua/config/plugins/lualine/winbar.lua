@@ -80,6 +80,7 @@ return {
       require('lazy.status').updates,
       cond = require('lazy.status').has_updates,
       color = { fg = '#ff9e64', bg = color.bg },
+      on_click = function() vim.fn.execute('Lazy') end,
     },
     {
       clock,

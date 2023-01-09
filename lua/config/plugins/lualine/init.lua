@@ -18,6 +18,7 @@ function M.config()
     options = {
       disabled_filetypes = {
         winbar = { 'dashboard', 'neo-tree' },
+        'lspinfo',
         'mason',
         'filesystem',
         'TelescopePrompt',

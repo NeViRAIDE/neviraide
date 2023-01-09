@@ -21,6 +21,7 @@ return {
       icon = icon('server'),
       color = { bg = color.bg },
       cond = conditions.hide_in_width,
+      on_click = function() vim.fn.execute('LspInfo') end,
     },
     {
       function() return '|' end,
@@ -44,6 +45,7 @@ return {
         color_info = { fg = color.blue },
         color_hint = { fg = color.magenta },
       },
+      on_click = function() vim.fn.execute('Telescope diagnostics') end,
       always_visible = true,
       color = { bg = color.bg },
       cond = conditions.buffer_not_empty,
@@ -129,11 +131,13 @@ return {
         ignored = { fg = color.red },
         renamed = { fg = color.red },
       },
+      on_click = function() vim.fn.execute('Gitsigns diffthis') end,
     },
     {
       branch_source,
       icon = icon('git-branch'),
       color = { fg = color.orange, gui = 'bold', bg = color.bg },
+      on_click = function() lazygit_toggle() end,
     },
     {
       right_separator,

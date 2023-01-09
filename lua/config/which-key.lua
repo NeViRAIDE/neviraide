@@ -180,8 +180,8 @@ local function setup()
           i = { ':lua inputMod()<CR>', 'Init go.mod' },
           t = { ':GoMod tidy<CR>:LspRestart<cr>', 'Tidy go.mod' },
         },
-        t = {
-          name = 'Tags',
+        s = {
+          name = 'Struct',
           a = { ':lua tagsAdd:mount()<cr>', 'Add tags' },
           r = { ':lua tagsRemove:mount()<cr>', 'Remove tags' },
         },

@@ -1,3 +1,4 @@
+-- TODO: close gitsigns on press "q"
 autocmd_multi('NEVIRAIDE_CONF', {
   {
     'BufReadPost',
@@ -42,14 +43,6 @@ autocmd_multi('NEVIRAIDE_CONF', {
         'tsplayground',
         'PlenaryTestPopup',
       },
-      desc = 'Use q to close the window',
-      command = 'nnoremap <buffer> q <cmd>quit<cr>',
-    },
-  },
-  {
-    'FileType',
-    {
-      pattern = { 'gitsigns://*', 'gitsigns' },
       desc = 'Use q to close the window',
       command = 'nnoremap <buffer> q <cmd>quit<cr>',
     },
