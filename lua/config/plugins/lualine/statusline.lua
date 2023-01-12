@@ -105,7 +105,6 @@ return {
     {
       right_separator,
       color = { fg = color.bg, bg = color.none },
-      cond = conditions.buffer_not_empty,
       padding = { left = 0, right = 0 },
     },
   },

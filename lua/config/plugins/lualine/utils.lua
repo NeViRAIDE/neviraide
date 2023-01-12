@@ -134,7 +134,7 @@ local function virtual_env()
   end
   return ''
 end
-
+-- NOTE: info todo shows in neo-tree. check to get the code
 -- TODO: todo count
 local function get_todos()
   -- local function tablelength(T)

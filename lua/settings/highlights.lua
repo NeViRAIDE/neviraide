@@ -6,11 +6,11 @@ hi('TelescopePromptPrefix', { bg = color.none, fg = color.yellow })
 hi('TelescopeTitle', { bg = color.none, fg = color.blue, bold = true })
 hi('TelescopeSelectionCaret', { bg = color.none, fg = color.lightGreen })
 
-hi('Directory', { fg = '#ecbe50' })
+hi('Directory', { fg = color.directoryYellow })
 
 hi('DashboardHeader', { fg = color.green })
 hi('DashboardCenter', { fg = color.fg, bold = true })
-hi('DashboardFooter', { fg = '#444c4d', italic = true })
+hi('DashboardFooter', { fg = color.visual, italic = true })
 
 hi('DiagnosticError', { fg = color.red })
 hi('DiagnosticWarn', { fg = color.warn })
@@ -18,8 +18,12 @@ hi('DiagnosticInfo', { fg = color.blue })
 hi('DiagnosticHint', { fg = color.violet })
 
 hi(
-  'LspSignatureActiveParameter',
+  'LspSignatureActiveParameterHint',
   { fg = color.grey, italic = true, bg = color.none }
+)
+hi(
+  'LspSignatureActiveParameter',
+  { fg = color.lightGreen, italic = true, bg = color.none }
 )
 
 hi('DiffChange', { fg = color.blue })

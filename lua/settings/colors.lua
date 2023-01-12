@@ -23,4 +23,5 @@ _G.color = {
   warn = '#e0af68',
   perf = '#c678dd',
   note = '#10B981',
+  directoryYellow = '#ecbe50',
 }

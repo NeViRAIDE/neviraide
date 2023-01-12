@@ -211,6 +211,7 @@ local function setup()
       l = {
         name = 'LSP ' .. icon('server'),
         h = { ':lua vim.lsp.buf.hover()<cr>', 'Hover' },
+        s = { ':lua vim.lsp.buf.signature_help()<cr>', 'Signature help' },
         r = { ':Telescope lsp_references<cr>', 'References' },
         a = { ':lua vim.lsp.buf.code_action()<cr>', 'Code action' },
         R = { ':lua vim.lsp.buf.rename()<cr>', 'Rename' },

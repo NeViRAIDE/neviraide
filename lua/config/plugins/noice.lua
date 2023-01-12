@@ -20,7 +20,14 @@ function M.config()
       },
     },
     lsp = {
-      signature = { enabled = false },
+      signature = {
+        enabled = true,
+        auto_open = {
+          enabled = false,
+          trigger = false,
+          luasnip = false,
+        },
+      },
       message = { enabled = true },
       hover = { enabled = true },
       override = {

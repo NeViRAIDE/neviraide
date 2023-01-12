@@ -33,3 +33,4 @@ _G.dashNewFile = function()
   input:on(event.BufLeave, function() input:unmount() end)
   input:mount()
 end
+-- TODO: as description add session date || no session

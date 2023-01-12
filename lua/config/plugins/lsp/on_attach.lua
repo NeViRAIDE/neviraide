@@ -6,7 +6,7 @@ local signature_config = {
   hint_enable = true,
   use_lspsaga = false,
   hint_prefix = icon('eye'),
-  hint_scheme = 'LspSignatureActiveParameter',
+  hint_scheme = 'LspSignatureActiveParameterHint',
   hi_parameter = 'LspSignatureActiveParameter',
   max_height = 1,
 }

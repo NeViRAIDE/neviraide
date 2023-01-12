@@ -8,7 +8,7 @@ end
 --- Create autocommand
 ---@param group string
 ---@param events string | table
----@param opts table
+---@param opts table pattern, description and command/callback
 function _G.autocmd(group, events, opts, clear)
   clear = (clear == nil) and true or clear
   group = vim.api.nvim_create_augroup(group, { clear = clear })
@@ -17,10 +17,13 @@ function _G.autocmd(group, events, opts, clear)
 end
 
 --- Set global highlight
---- @param name string
---- @param value table
+--- @param name string highlight group
+--- @param value table keys
 function _G.hi(name, value) vim.api.nvim_set_hl(0, name, value) end
 
+--- Multi autocommands in one group
+---@param group string
+---@param cmds table command with event, pattern, description and command/callback
 function _G.autocmd_multi(group, cmds, clear)
   clear = (clear == nil) and true or clear
   group = vim.api.nvim_create_augroup(group, { clear = clear })
