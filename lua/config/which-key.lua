@@ -1,6 +1,6 @@
 require('utils.nonicons')
 
-_G.if_require = function(module, block, errblock)
+local function if_require(module, block, errblock)
   local ok, mod = pcall(require, module)
   if ok then
     return block(mod)
@@ -102,7 +102,7 @@ local function setup()
         p = { ':bprev<cr>', 'Previous' },
         n = { ':bnext<cr>', 'Next' },
         d = { ':lua close_buffer()<cr>', 'Delete' },
-        D = { ':%bd | Dashboard<cr>', 'Delete all buffers' },
+        D = { ':%bd | Alpha<cr>', 'Delete all buffers' },
         C = { ':%bd | e# | bd#<cr>', 'Delete buffers except current' },
         l = { '<cmd>Telescope buffers<cr>', 'List' },
       },
@@ -149,15 +149,18 @@ local function setup()
           R = { ':DapToggleRepl<cr>', 'Toggle REPL' },
         },
       },
-      D = { ':Dashboard<cr>', 'Dashboard ' .. icon('home') },
+      D = { ':Alpha<cr>', 'Startup screen ' .. icon('home') },
       f = {
         ':Neotree toggle<cr>',
         'File explorer ' .. icon('file-directory-open-fill'),
       },
       g = {
         name = 'GoLang  ',
-        r = { ':lua goRun()<CR>', 'Run Go programm' },
-        b = { ':lua goBuild()<CR>', 'Build Go programm' },
+        r = { ':lua require("utils.golang").goRun()<CR>', 'Run Go programm' },
+        b = {
+          ':lua require("utils.golang").goBuild()<CR>',
+          'Build Go programm',
+        },
         T = {
           name = 'Tests',
           r = { ':!go test<CR>', 'Run tests' },
@@ -171,19 +174,25 @@ local function setup()
             },
           },
         },
-        g = { ':lua goGet()<CR>', 'Get go packages' },
+        g = { ':lua require("utils.golang").goGet()<CR>', 'Get go packages' },
         c = { ':GoCmt<cr>', 'Documentation comment' },
         i = { ':GoIfErr<cr>', 'If error template' },
-        I = { ':lua goInterface()<cr>', 'Interface implementation' },
+        I = {
+          ':lua require("utils.golang").goInterface()<cr>',
+          'Interface implementation',
+        },
         m = {
           name = 'Mod',
-          i = { ':lua inputMod()<CR>', 'Init go.mod' },
+          i = { ':lua require("utils.golang").inputMod()<CR>', 'Init go.mod' },
           t = { ':GoMod tidy<CR>:LspRestart<cr>', 'Tidy go.mod' },
         },
         s = {
           name = 'Struct',
-          a = { ':lua tagsAdd:mount()<cr>', 'Add tags' },
-          r = { ':lua tagsRemove:mount()<cr>', 'Remove tags' },
+          a = { ':lua require("utils.golang").tagsAdd:mount()<cr>', 'Add tags' },
+          r = {
+            ':lua require("utils.golang").tagsRemove:mount()<cr>',
+            'Remove tags',
+          },
         },
       },
       G = {
@@ -259,7 +268,10 @@ local function setup()
         t = { ':Neogen type<cr>', 'Create type annotation' },
         F = { ':Neogen file<cr>', 'Create file annotation' },
       },
-      s = { ':SessionSave<cr>', 'Save session ' .. icon('pin') },
+      s = {
+        ':lua require("utils.startup").sessions:mount()<cr>',
+        'Session manager ' .. icon('pin'),
+      },
       t = {
         name = 'Telescope ' .. icon('telescope'),
         a = { '<cmd>Telescope autocommands<cr>', 'Autocommands' },

@@ -21,6 +21,7 @@ require('settings.colors')
 require('lazy').setup('config.plugins', {
   defaults = { lazy = true },
   checker = { enabled = true },
+  install = { colorscheme = { 'darcula-solid', 'onedark', 'onelight' } },
   ui = { border = 'rounded' },
   performance = {
     rtp = {

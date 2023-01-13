@@ -3,7 +3,7 @@ local Menu = require('nui.menu')
 
 local event = require('nui.utils.autocmd').event
 
-_G.inputMod = function()
+local function inputMod()
   local input = Input({
     position = '50%',
     size = {
@@ -36,7 +36,7 @@ _G.inputMod = function()
   input:mount()
 end
 
-_G.goGet = function()
+local function goGet()
   local input = Input({
     position = '50%',
     size = { width = 70 },
@@ -68,7 +68,7 @@ _G.goGet = function()
   input:mount()
 end
 
-_G.tagsAdd = Menu({
+local tagsAdd = Menu({
   position = { row = -1, col = 1 },
   size = { width = 10, height = 2 },
   border = {
@@ -97,7 +97,7 @@ _G.tagsAdd = Menu({
   end,
 })
 
-_G.tagsRemove = Menu({
+local tagsRemove = Menu({
   position = { row = -1, col = 1 },
   size = { width = 12, height = 2 },
   border = {
@@ -125,7 +125,7 @@ _G.tagsRemove = Menu({
   on_submit = function(item) vim.fn.execute('GoTagRm ' .. item.text) end,
 })
 
-_G.goInterface = function()
+local function goInterface()
   local input = Input({
     position = { row = -1, col = 1 },
     size = {
@@ -147,7 +147,10 @@ _G.goInterface = function()
     prompt = '',
     default_value = '',
     on_close = function()
-      require('notify').notify('Interface implementation canceled!', 'error')
+      require('notify').notify(
+        'Interface implementation was canceled!',
+        'error'
+      )
     end,
     on_submit = function(value) vim.fn.execute('GoImpl ' .. value) end,
   })
@@ -155,7 +158,7 @@ _G.goInterface = function()
   input:mount()
 end
 
-_G.goRun = function()
+local function goRun()
   local input = Input({
     position = '50%',
     size = { width = 35 },
@@ -175,7 +178,7 @@ _G.goRun = function()
     prompt = '',
     default_value = '',
     on_close = function()
-      require('notify').notify('Run programm canceled!', 'error')
+      require('notify').notify('Running was canceled!', 'error')
     end,
     on_submit = function(value)
       vim.fn.execute('TermExec direction=float cmd="go run ' .. value .. '"')
@@ -185,7 +188,7 @@ _G.goRun = function()
   input:mount()
 end
 
-_G.goBuild = function()
+local function goBuild()
   local input = Input({
     position = '50%',
     size = { width = 35 },
@@ -204,7 +207,9 @@ _G.goBuild = function()
   }, {
     prompt = '',
     default_value = '',
-    on_close = function() require('notify').notify('Build canceled!', 'error') end,
+    on_close = function()
+      require('notify').notify('Building was canceled!', 'error')
+    end,
     on_submit = function(value)
       vim.fn.execute('TermExec direction=float cmd="go build ' .. value .. '"')
     end,
@@ -212,3 +217,13 @@ _G.goBuild = function()
   input:on(event.BufLeave, function() input:unmount() end)
   input:mount()
 end
+
+return {
+  inputMod = inputMod,
+  goGet = goGet,
+  goRun = goRun,
+  goBuild = goBuild,
+  goInterface = goInterface,
+  tagsAdd = tagsAdd,
+  tagsRemove = tagsRemove,
+}

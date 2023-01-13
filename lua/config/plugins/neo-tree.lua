@@ -36,6 +36,12 @@ function M.config()
       },
     },
     default_component_configs = {
+      indent = {
+        with_expanders = true,
+        expander_collapsed = '',
+        expander_expanded = '',
+        expander_highlight = 'NeoTreeExpander',
+      },
       git_status = {
         symbols = {
           added = icon('diff-added'),

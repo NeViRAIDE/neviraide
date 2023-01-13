@@ -26,6 +26,8 @@ hi(
   { fg = color.lightGreen, italic = true, bg = color.none }
 )
 
+hi('AlphaFortune', { fg = color.green, italic = true, bg = color.none })
+
 hi('DiffChange', { fg = color.blue })
 
 hi('NeoTreeGitModified', { fg = color.blue })
@@ -38,3 +40,6 @@ hi('Function', { italic = true, fg = '#ffc66b' })
 
 hi('LspCodeLens', { fg = color.grey })
 hi('LspCodeLensSeparator', { link = 'Boolean' })
+
+hi('SessionManagerText', { fg = color.violet })
+hi('SessionManagerBorder', { fg = color.indigo })

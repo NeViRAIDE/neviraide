@@ -65,7 +65,7 @@ function _G.close_buffer()
       vim.api.nvim_exec([[:bd!]], true)
     else
       vim.api.nvim_exec([[:bd]], true)
-      vim.api.nvim_exec([[:Dashboard]], true)
+      vim.api.nvim_exec([[:Alpha]], true)
     end
   else
     vim.api.nvim_exec([[:bd]], true)

@@ -62,7 +62,7 @@ function M.config()
 
   require('settings.override_vim_ui')
 
-  require('utils.dashboard')
+  require('utils.startup')
 end
 
 return M

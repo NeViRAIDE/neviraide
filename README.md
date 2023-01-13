@@ -53,7 +53,6 @@ ___
 <details>
 <summary>UI</summary>
 
-- [Dashboard](https://github.com/glepnir/dashboard-nvim) - startup screen
 - [Lualine]() - status line, winbar and tabline
 - [Devicons](https://github.com/nvim-tree/nvim-web-devicons) - icons
 - [Nonicons]() - outlined icons

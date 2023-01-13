@@ -1,6 +1,5 @@
 local M = {
   'nvim-lualine/lualine.nvim',
-  -- event = 'BufReadPre',
   event = 'BufWinEnter',
 }
 
@@ -18,6 +17,7 @@ function M.config()
     options = {
       disabled_filetypes = {
         winbar = { 'dashboard', 'neo-tree' },
+        tabline = { 'toggleterm', 'neo-tree' },
         'lspinfo',
         'mason',
         'filesystem',
@@ -25,6 +25,7 @@ function M.config()
         'help',
         'lazy',
         'Sqls_output',
+        'alpha',
       },
       component_separators = '',
       section_separators = '',
