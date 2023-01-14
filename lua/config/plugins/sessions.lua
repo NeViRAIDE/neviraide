@@ -4,7 +4,7 @@ local M = {
 }
 
 function M.config()
-  -- TODO: write ui for manager
+  -- TODO: set up for correct working
   require('session_manager').setup({
     -- sessions_dir = Path:new(vim.fn.stdpath('data'), 'sessions'), -- The directory where the session files will be saved.
     path_replacer = '__', -- The character to which the path separator will be replaced for session files.

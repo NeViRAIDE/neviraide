@@ -98,7 +98,7 @@ local function setup()
     ['<leader>'] = {
       name = 'Plugins and features ' .. icon('rocket'),
       b = {
-        name = 'Buffers ' .. icon('bookmark'),
+        name = 'Buffers ' .. icon('versions'),
         p = { ':bprev<cr>', 'Previous' },
         n = { ':bnext<cr>', 'Next' },
         d = { ':lua close_buffer()<cr>', 'Delete' },
@@ -270,7 +270,7 @@ local function setup()
       },
       s = {
         ':lua require("utils.startup").sessions:mount()<cr>',
-        'Session manager ' .. icon('pin'),
+        'Session manager ' .. icon('project'),
       },
       t = {
         name = 'Telescope ' .. icon('telescope'),

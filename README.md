@@ -1,26 +1,37 @@
 # NEVIRAIDE
-***Fast, comfortable and light GolangIDE with support json, markdown, lua, sql, html, bash and docker***
+Fast, comfortable and light GolangIDE
+---
+
+### This is my setup of NEOVIM
+***Remember that it's only modifications of config files and collect of different plugins.
+Vim/Neovim is a FREEDOM.
+You can setup your own IDE or simple text redactor.
+You need only define what you want and what you need.***
+
+#### Content
+- [Screenshots](#screenshots)
+- [Dependencies](#dependecies)
+- [Instalation](#installation)
+  - [Auto](#auto)
+  - [Manual](#manual)
+- [Used plugins](#used-plugins)
 ___
-## This is my setup of NEOVIM
-***...desctiption is comming soon...***
+## Screenshots
+#### Customizable startup screen
+![Interface](./neviraide_screens/startup_screen.png)
 ___
-## Installation
-Make sure that all dependecies are installed.
-###  Auto
-To quick install my vision of neovim (calls NEVIRAIDE) you may download install script and rin it!
-
-**[Download install script](https://github.com/RAprogramm/NEVIRAIDE/blob/golangIDE/install.sh)** - right click and "Save Link As..."
-
-**! Make script executable !** *(to make script executable run* `sudo chmod +x install.sh` *in place where downloaded script is located)*
-
-### Manual
-1. Clone this repository.
-3. Delete ~/.config/nvim (if exist)
-2. Rename it (from "NEVIRAIDE" to "nvim").
-4. Move our renamed folder to ~/.config 
+#### Comfortable colors for long reading
+![Interface](https://github.com/RAprogramm/NEVIRAIDE/blob/golangIDE/neviraide_screens/interface.png)
+___
+#### Wokring in shell
+![Terminal](./neviraide_screens/terminal.png)
+___
+#### All git actions with lazygit
+![Lazygit](./neviraide_screens/lazygit.png)
 ___
 ## Dependencies
 <details>
+
 - fd *(search in filesystem)*
 - ripgrep *(search in text)*
 - npm *(install dependecies)*
@@ -30,16 +41,22 @@ ___
 - delta *(pretty look git diff)*
 </details>
 
+## Installation
+Make sure that all dependecies are installed.
+###  Auto
+To quick install my vision of neovim (calls NEVIRAIDE) you may download install script and rin it!
 
-#### Comfortable colors for long reading
-![Interface](https://github.com/RAprogramm/NEVIRAIDE/blob/golangIDE/neviraide_screens/interface.png)
+**[Install script](https://github.com/RAprogramm/NEVIRAIDE/blob/golangIDE/install.sh)** - to download it right click and "Save Link As..."
+
+**! Make script executable !** *(to make script executable run* `sudo chmod +x install.sh` *in place where downloaded script is located)*
+
+### Manual
+1. Clone this repository.
+3. Delete ~/.config/nvim (if exist)
+2. Rename it (from "NEVIRAIDE" to "nvim").
+4. Move our renamed folder to ~/.config 
 ___
-Wokring in shell
-![Terminal](./neviraide_screens/terminal.png)
-___
-#### All git actions
-![Lazygit](./neviraide_screens/lazygit.png)
-___
+
 ### Used plugins
 
 <details>

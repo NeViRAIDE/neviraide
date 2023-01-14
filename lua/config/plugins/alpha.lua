@@ -18,7 +18,7 @@ function M.config()
     if nvim_full_version_info:match('NVIM') then
       return nvim_full_version_info:match('NVIM [^\n]*')
     else
-      return 'Check your dashboard configuration file'
+      return 'Check your alpha configuration file'
     end
   end
 
@@ -101,7 +101,6 @@ function M.config()
       { type = 'padding', val = 3 },
       {
         type = 'group',
-        -- TODO: change icons
         val = {
           button(
             icon('file'),
@@ -109,7 +108,7 @@ function M.config()
             ':lua require("utils.startup").dashNewFile()<cr>'
           ),
           button(
-            icon('file-badge'),
+            icon('search'),
             icon('dot') .. 'Find file',
             ':Telescope find_files<cr>'
           ),
@@ -119,12 +118,12 @@ function M.config()
             ':Telescope oldfiles<cr>'
           ),
           button(
-            icon('grabber'),
+            icon('quote'),
             icon('dot') .. 'Find word',
             ':Telescope live_grep<cr>'
           ),
           button(
-            icon('archive'),
+            icon('project'),
             icon('dot') .. 'Session manager',
             ':lua require("utils.startup").sessions:mount()<cr>'
           ),
@@ -134,7 +133,7 @@ function M.config()
             ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=14}}<cr>'
           ),
           button(
-            icon('pulse'),
+            icon('heart'),
             icon('dot') .. 'Check health',
             ':checkhealth<cr>'
           ),
