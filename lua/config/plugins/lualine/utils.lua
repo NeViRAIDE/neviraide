@@ -134,19 +134,6 @@ local function virtual_env()
   end
   return ''
 end
--- NOTE: info todo shows in neo-tree. check to get the code
--- TODO: todo count
-local function get_todos()
-  -- local function tablelength(T)
-  --   local count = 0
-  --   for _ in pairs(T) do
-  --     count = count + 1
-  --   end
-  --   return count
-  -- end
-  local todos
-  return todos
-end
 
 return {
   clock = clock,
@@ -160,5 +147,5 @@ return {
   diff_source = diff_source,
   branch_source = branch_source,
   lsp_source = lsp_source,
-  get_todos = get_todos,
+  -- get_todos = get_todos,
 }

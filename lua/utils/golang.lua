@@ -7,7 +7,7 @@ local function inputMod()
   local input = Input({
     position = '50%',
     size = {
-      width = 30,
+      width = 40,
     },
     border = {
       style = 'rounded',
@@ -15,7 +15,7 @@ local function inputMod()
         top = ' Module name is: ',
         top_align = 'center',
       },
-      padding = { 0, 1 },
+      padding = { 0, 2 },
     },
     relative = 'editor',
     win_options = {
