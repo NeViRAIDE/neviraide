@@ -1,7 +1,7 @@
 # NEVIRAIDE
 Fast, comfortable and light GolangIDE
 ---
-![Welcome](./neviraide_screens/starup_screen.webm)
+![Welcome](./neviraide_screens/dashboard1.gif)
 
 ### This is my setup of NEOVIM
 ***Remember that it's only modifications of config files and collect of different plugins.
