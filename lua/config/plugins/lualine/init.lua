@@ -4,8 +4,6 @@ local M = {
 }
 
 function M.config()
-  local lualine = require('lualine')
-
   local config = {
     extensions = {
       'quickfix',
@@ -48,7 +46,7 @@ function M.config()
     globalstatus = true,
   }
 
-  lualine.setup(config)
+  require('lualine').setup(config)
 end
 
 return M

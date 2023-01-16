@@ -1,7 +1,3 @@
-local function left_separator() return '' end
-
-local function right_separator() return '' end
-
 local function clock() return icon('clock') .. ' ' .. os.date('%H:%M') end
 
 local function get_file_path()
@@ -74,6 +70,9 @@ local conditions = {
     local gitdir = vim.fn.finddir('.git', filepath .. ';')
     return gitdir and #gitdir > 0 and #gitdir < #filepath
   end,
+  gitsigns = function()
+    if vim.b.gitsigns_status_dict ~= true then return true end
+  end,
 }
 
 local function diff_source()
@@ -135,10 +134,46 @@ local function virtual_env()
   return ''
 end
 
+-- TODO: make todo_count for lualine
+local function get_todos()
+  print('get_todos function')
+  print('need to add clickable on statusline')
+end
+
+--- Can be left -  , right -  and simple - |
+---@param type string | nil
+---@param condition any | nil
+---@param left_padding integer | nil
+---@param right_padding integer | nil
+---@return table
+local function separator(type, condition, left_padding, right_padding)
+  if type == 'left' then
+    return {
+      function() return '' end,
+      color = { fg = color.bg, bg = color.none },
+      cond = condition,
+      padding = { left = left_padding, right = right_padding },
+    }
+  elseif type == 'right' then
+    return {
+      function() return '' end,
+      color = { fg = color.bg, bg = color.none },
+      cond = condition,
+      padding = { left = left_padding, right = right_padding },
+    }
+  else
+    return {
+      function() return '|' end,
+      color = { fg = color.visual, bg = color.bg },
+      cond = condition,
+      padding = { left = left_padding, right = right_padding },
+    }
+  end
+end
+
 return {
   clock = clock,
-  left_separator = left_separator,
-  right_separator = right_separator,
+  separator = separator,
   conditions = conditions,
   get_file_path = get_file_path,
   custom_fname = custom_fname,
@@ -147,5 +182,5 @@ return {
   diff_source = diff_source,
   branch_source = branch_source,
   lsp_source = lsp_source,
-  -- get_todos = get_todos,
+  get_todos = get_todos,
 }
