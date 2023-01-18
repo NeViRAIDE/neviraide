@@ -6,6 +6,7 @@ local M = {
 }
 
 function M.config()
+  require('lspconfig.ui.windows').default_options.border = 'rounded'
   require('config.plugins.lsp.diagnostics').setup()
 
   require('config.plugins.lsp.servers.gopls')

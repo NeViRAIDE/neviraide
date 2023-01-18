@@ -1,5 +1,11 @@
+---Current time
+--(hours and minutes).
+---@return string
 local function clock() return icon('clock') .. ' ' .. os.date('%H:%M') end
 
+---Filepath breadcrumb of your
+--workspace with separators.
+---@return string
 local function get_file_path()
   if vim.fn.bufname('%') == '' then return '' end
   local sep = '/'
@@ -17,6 +23,9 @@ local function get_file_path()
   return file_path
 end
 
+---The name of the current file
+--with dynamic change color and
+--icon depending on state.
 local custom_fname = require('lualine.components.filename'):extend()
 local highlight = require('lualine.highlight')
 
@@ -32,7 +41,6 @@ function custom_fname:init(options)
       'filename_status_newfile',
       self.options
     ),
-
     saved = highlight.create_component_highlight_group(
       { bg = color.none, fg = color.fg, gui = 'bold' },
       'filename_status_saved',
@@ -63,7 +71,11 @@ function custom_fname:update_status()
 end
 
 local conditions = {
+  ---If buffer not empty.
+  ---@return boolean
   buffer_not_empty = function() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end,
+  ---If windows width less than 100.
+  ---@return boolean
   hide_in_width = function() return vim.fn.winwidth(0) > 100 end,
   check_git_workspace = function()
     local filepath = vim.fn.expand('%:p:h')
@@ -71,10 +83,13 @@ local conditions = {
     return gitdir and #gitdir > 0 and #gitdir < #filepath
   end,
   gitsigns = function()
-    if vim.b.gitsigns_status_dict ~= true then return true end
+    if vim.b.gitsigns_status_dict ~= 1 then return true end
   end,
 }
 
+---Get added, modified and
+---removed diffs from the
+--gitsigns plugin.
 local function diff_source()
   local gitsigns = vim.b.gitsigns_status_dict
   if gitsigns then
@@ -86,6 +101,10 @@ local function diff_source()
   end
 end
 
+---Name of the current git
+--branch from the gitsigns
+--plugin or a message.
+---@return string
 local function branch_source()
   local msg = 'Not in a git repository'
   local git_branch = vim.b.gitsigns_head
@@ -93,6 +112,10 @@ local function branch_source()
   return msg
 end
 
+---Name of the LSP server
+--for the current filetype
+--or a message.
+---@return string
 local function lsp_source()
   local msg = 'No Active LSP'
   local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
@@ -107,6 +130,9 @@ local function lsp_source()
   return msg
 end
 
+---Filetype with version
+--of the interpreter.
+---@return string
 local function interpreter()
   local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
   if buf_ft == 'lua' then
@@ -122,6 +148,10 @@ local function interpreter()
   return buf_ft:gsub('^%l', string.upper)
 end
 
+---Name of the virtual environment
+--for python filetype (working with
+--"pyright" language server).
+---@return string
 local function virtual_env()
   local clients = vim.lsp.get_active_clients()
   for _, client in ipairs(clients) do
@@ -140,7 +170,12 @@ local function get_todos()
   print('need to add clickable on statusline')
 end
 
---- Can be left -  , right -  and simple - |
+---Lualine separator component with type, condition and paddings.
+---If use with no parameters it return '|' separator with no conditions and 0 paddings
+---Types:
+---  'left' = 
+---  'right' = 
+---  '' or 'any_string' = |
 ---@param type string | nil
 ---@param condition any | nil
 ---@param left_padding integer | nil

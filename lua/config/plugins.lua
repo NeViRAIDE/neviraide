@@ -12,11 +12,6 @@ return {
     config = true,
   },
   {
-    'folke/which-key.nvim',
-    lazy = false,
-    config = function() require('config.which-key').setup() end,
-  },
-  {
     'olexsmir/gopher.nvim',
     event = 'VeryLazy',
   },

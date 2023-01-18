@@ -12,7 +12,9 @@ function M.config()
   autocmd('NEVIRAIDE_JQX', 'FileType', {
     pattern = { 'json', 'yaml', 'yml' },
     desc = 'Add markdown features',
-    callback = function() require('config.which-key').attach_jqx(0) end,
+    callback = function()
+      require('config.plugins.which-key.keybindings').attach_jqx(0)
+    end,
   })
 end
 
