@@ -34,5 +34,5 @@ return {
   lsp_server,
   utils.separator('', utils.conditions.hide_in_width),
   lsp_diagnostic,
-  utils.separator('right'),
+  utils.separator('right', utils.conditions.hide_in_width),
 }

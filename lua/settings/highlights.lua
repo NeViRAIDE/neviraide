@@ -34,6 +34,8 @@ hi('NeoTreeGitModified', { fg = color.blue })
 hi('NeoTreeGitDeleted', { fg = color.red })
 hi('NeoTreeGitAdded', { fg = color.green })
 
+hi('GitSignsCurrentLineBlame', { fg = color.cyan, italic = true })
+
 hi('LspSagaWinbarSep', { fg = color.red })
 
 hi('Function', { italic = true, fg = '#ffc66b' })

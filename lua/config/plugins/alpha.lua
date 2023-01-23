@@ -62,7 +62,7 @@ function M.config()
   if ret == 0 then
     term_or_text = {
       type = 'terminal',
-      command = "neo --fps=20 --speed=5 -D -m 'NEVIRAIDE' -d 0.5 -l 1,1",
+      command = "neo --fps=60 --speed=6 -D -a -m 'NEVIRAIDE' -d 0.5 -l 1,1",
       width = window_width,
       height = term_height,
       opts = {

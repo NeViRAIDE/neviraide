@@ -1,43 +1,58 @@
 #!/bin/bash
 
-nvim_Warning() {
-  echo "Install neovim, and try again."
-  exit
-}
+UBUNTU=`uname -a | grep -i ubuntu >/dev/null`
+READY=true
 
-rg_Warning() {
-  echo "Install rg(ripgrep) and try again."
-  echo "(Telescope dependency)."
-  echo "It's need for search in text of files."
-  exit }
+if $UBUNTU; then FD=fdfind; else FD=fd; fi
 
-node_Warning() {
-  echo "Install nodejs and try again."
-  echo "(Actually we need npm - it's nodejs package manager)."
-  echo "For automatic install features like language servers, linters and another."
-  exit }
-
-git_Warning() {
-  echo "Install git and try again."
-  echo "(Required by lazygit)."
-  echo "Need to work with git, and downloading packages from github."
-  exit
-}
-
-rename_Dir() {
-  mv $HOME/.config/nvim $HOME/.config/nvim.old
-  echo "We save your current config of Neovim to ~/.config/nvim.old."
-  clone
-}
-
+# clone NEVIRAIDE repository from github.com to your .config
 clone() {
-  echo "Cloning..."
-  git clone https://github.com/RAprogramm/NEVIRAIDE.git
+    echo "Cloning..."
+    git clone -v --progress https://github.com/RAprogramm/NEVIRAIDE.git $HOME/.config/nvim
 }
 
-which nvim >/dev/null && echo "Neovim is installed" || nvim_Warning
-which node >/dev/null && echo "Node is installed" || node_Warning
-which git >/dev/null && echo "Git is installed" || git_Warning
-which rg >/dev/null && echo "RipGrep is installed" || rg_Warning
+# save old neovim config to .old directory
+rename_Dir() {
+    mv $HOME/.config/nvim $HOME/.config/nvim.old
+    echo "Your current configuration of Neovim save in ~/.config/nvim.old"
+}
 
-[ -d "$HOME/.config/nvim" ] && rename_Dir || clone
+check() {
+    name=$1
+    have="echo -e \t✅ $name installed"
+    not_have="echo -e \t❌ $name not installed"
+    case $name in
+        "neo") if command -v $name >/dev/null; then $have; else $not_have; fi ;;
+        "nonicons") if fc-list | grep $name >/dev/null; then $have; else $not_have; fi ;;
+        *) if which $name >/dev/null; then $have; else $not_have; READY=false; fi ;;
+    esac
+}
+
+check_dependencies() {
+    echo "  Checking requirements for correct work:"
+    check nvim
+    check git
+    check npm
+    check lazygit
+    check $FD
+    check rg
+    check unzip
+    check delta
+    check nonicons
+    check neo
+    if $READY; then echo "  All prepared for installation! 👍"; else echo "Install all dependencies!"; fi
+}
+
+install_start() {
+    echo "      Installing NEVIRAIDE..."
+    # rename_Dir
+    # clone
+    echo "NEVIRAIDE has been installed! 🎉"
+}
+
+echo "      GREETEENGS!"
+echo "Now will be install NEVIRAIDE."
+check_dependencies
+if $READY; then
+    install_start
+fi

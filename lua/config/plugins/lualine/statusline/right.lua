@@ -30,7 +30,7 @@ return {
   utils.separator('left'),
   diff,
   -- FIX: hide if no diff
-  utils.separator(),
+  -- utils.separator('', utils.conditions.gitsigns),
   git_branch,
   utils.separator('right', nil, 0, 3),
 }

@@ -40,7 +40,7 @@ local spaces = {
 local interpreter = {
   utils.interpreter,
   color = { fg = color.fg, bg = color.bg, gui = 'italic' },
-  cond = utils.conditions.buffer_not_empty,
+  cond = utils.conditions.hide_in_width or utils.conditions.buffer_not_empty,
 }
 
 -- virtual environment
@@ -51,25 +51,20 @@ local venv = {
   padding = { left = 0, right = 1 },
 }
 
+local hiw_and_bne = utils.conditions.hide_in_width
+  or utils.conditions.buffer_not_empty
+
 return {
-  utils.separator('left'),
+  utils.separator('left', utils.conditions.hide_in_width),
+  utils.separator('', function() return vim.fn.winwidth(0) < 100 end),
   size,
-  utils.separator('', utils.conditions.buffer_not_empty),
+  utils.separator('', hiw_and_bne),
   format,
-  utils.separator(
-    '',
-    utils.conditions.hide_in_width or utils.conditions.buffer_not_empty
-  ),
+  utils.separator('', hiw_and_bne),
   encoding,
-  utils.separator(
-    '',
-    utils.conditions.hide_in_width or utils.conditions.buffer_not_empty
-  ),
+  utils.separator('', hiw_and_bne),
   spaces,
-  utils.separator(
-    '',
-    utils.conditions.hide_in_width or utils.conditions.buffer_not_empty
-  ),
+  utils.separator('', hiw_and_bne),
   interpreter,
   venv,
   utils.separator('right'),

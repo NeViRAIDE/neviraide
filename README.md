@@ -34,6 +34,8 @@ ___
 <details>
 
 - fd *(search in filesystem)*
+- git
+- npm (package manager nodejs)
 - ripgrep *(search in text)*
 - npm *(install dependecies)*
 - unzip *(install dependecies)*
@@ -45,6 +47,9 @@ ___
 ## Installation
 Make sure that all dependecies are installed.
 ###  Auto
+
+AT THIS MOMENT NOT WORKING! USE MANUAL INSTALLATION!
+
 To quick install my vision of neovim (calls NEVIRAIDE) you may download install script and rin it!
 
 **[Install script](https://github.com/RAprogramm/NEVIRAIDE/blob/golangIDE/install.sh)** - to download it right click and "Save Link As..."

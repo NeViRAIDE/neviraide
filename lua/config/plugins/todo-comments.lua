@@ -1,7 +1,8 @@
 local M = {
   'folke/todo-comments.nvim',
   config = function() require('config.plugins.todo-comments') end,
-  event = 'BufReadPost',
+  -- event = 'BufReadPost',
+  -- event = 'VeryLazy',
 }
 function M.config()
   require('todo-comments').setup({

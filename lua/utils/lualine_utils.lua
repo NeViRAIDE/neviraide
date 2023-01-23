@@ -77,13 +77,19 @@ local conditions = {
   ---If windows width less than 100.
   ---@return boolean
   hide_in_width = function() return vim.fn.winwidth(0) > 100 end,
-  check_git_workspace = function()
-    local filepath = vim.fn.expand('%:p:h')
-    local gitdir = vim.fn.finddir('.git', filepath .. ';')
-    return gitdir and #gitdir > 0 and #gitdir < #filepath
-  end,
+
+  -- check_git_workspace = function()
+  --   local filepath = vim.fn.expand('%:p:h')
+  --   local gitdir = vim.fn.finddir('.git', filepath .. ';')
+  --   return gitdir and #gitdir > 0 and #gitdir < #filepath
+  -- end,
+  --
   gitsigns = function()
-    if vim.b.gitsigns_status_dict ~= 1 then return true end
+    local gs_diff = vim.b.gitsigns_status_dict
+    if vim.b.gitsigns_status then
+      return gs_diff.added > 0 or gs_diff.removed > 0 or gs_diff.modified > 0
+    end
+    return false
   end,
 }
 
@@ -165,10 +171,30 @@ local function virtual_env()
 end
 
 -- TODO: make todo_count for lualine
-local function get_todos()
-  print('get_todos function')
-  print('need to add clickable on statusline')
+--
+-- local a = require('plenary.async_lib')
+-- local async, await, run = a.async, a.await, a.run
+--
+-- local tcs = require('todo-comments.search')
+--
+-- local count = async(function()
+--   tcs.search(async(function(results)
+--     local res = await(#results)
+--     await(print('inside:', res))
+--     return res
+--   end))
+-- end)
+--
+-- print('outside simple:', count())
+-- print('outside run:', run(count()))
+
+---Number of incomplete tasks
+local function todo_count()
+  local res = 0
+  return 'You have ' .. res .. ' todos.'
 end
+
+------------------------------------------------------------------------------------------------
 
 ---Lualine separator component with type, condition and paddings.
 ---If use with no parameters it return '|' separator with no conditions and 0 paddings
@@ -217,5 +243,5 @@ return {
   diff_source = diff_source,
   branch_source = branch_source,
   lsp_source = lsp_source,
-  get_todos = get_todos,
+  todo_count = todo_count,
 }

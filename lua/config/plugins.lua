@@ -1,4 +1,5 @@
 return {
+  -- TODO: colorscheme for not gui
   -- TODO: dynamic change colorscheme
   {
     'briones-gabriel/darcula-solid.nvim',
