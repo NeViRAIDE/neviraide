@@ -45,8 +45,8 @@ check_dependencies() {
 
 install_start() {
     echo "      Installing NEVIRAIDE..."
-    # rename_Dir
-    # clone
+    rename_Dir
+    clone
     echo "NEVIRAIDE has been installed! 🎉"
 }
 
