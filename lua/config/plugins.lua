@@ -30,7 +30,7 @@ return {
     event = 'InsertEnter',
     config = true,
   },
-  -- TODO: add picture support
+  -- TODO: add picture support in markdown
   --
   -- {
   --   'edluffy/hologram.nvim',
