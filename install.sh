@@ -126,9 +126,9 @@ nonicons_support() {
 delta_support() {
     INSERT=`echo "
     [core]
-    pager = delta
+        pager = delta
     [interactive]
-    diffFilter = delta --color-only
+        diffFilter = delta --color-only
     [delta]
         navigate = true
         light = false
