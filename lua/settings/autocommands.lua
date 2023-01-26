@@ -20,11 +20,23 @@ autocmd_multi('NEVIRAIDE_CONF', {
     'FileType',
     {
       pattern = { 'lua', 'javascript', 'json', 'htmldjango', 'html', 'css' },
-      desc = 'Decrease indent size',
+      desc = 'Set up indent size',
       callback = function()
         vim.o.softtabstop = 2
         vim.o.tabstop = 2
         vim.o.shiftwidth = 2
+      end,
+    },
+  },
+  {
+    'FileType',
+    {
+      pattern = { 'go', 'python', 'sh' },
+      desc = 'Set up indent size',
+      callback = function()
+        vim.o.softtabstop = 4
+        vim.o.tabstop = 4
+        vim.o.shiftwidth = 4
       end,
     },
   },

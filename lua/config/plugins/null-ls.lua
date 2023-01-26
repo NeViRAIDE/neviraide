@@ -15,7 +15,12 @@ function M.config()
   null_ls.setup({
     sources = {
       code_action.gitsigns,
+      code_action.gomodifytags,
+      code_action.refactoring,
+      code_action.shellcheck,
       hover.dictionary,
+      formatting.shfmt,
+      formatting.jq,
       formatting.stylua.with({
         extra_args = {
           '--quote-style',

@@ -31,6 +31,7 @@ end
 local settings = {
   path = '$PWD/**',
   sessionoptions = 'blank,buffers,curdir,folds,help,options,tabpages,winsize,resize,winpos,terminal',
+  formatoptions = 'jcrql',
   showmatch = true,
   fileformats = 'unix',
   fileencoding = 'utf-8',

@@ -27,11 +27,15 @@ end
 
 local function setup()
   wk_register({
+    ['<c-\\>'] = { ':ToggleTerm<cr>', 'Toggle terminal ' .. icon('terminal') },
     ['<c-s>'] = { ':lua save_and_format()<cr>', 'Save and format file' },
-    ['<c-h>'] = { ':wincmd h<cr>', 'Go to right window' },
-    ['<c-j>'] = { ':wincmd j<cr>', 'Go to down window' },
-    ['<c-k>'] = { ':wincmd k<cr>', 'Go to up window' },
-    ['<c-l>'] = { ':wincmd l<cr>', 'Go to left window' },
+    ['<c-h>'] = {
+      ':wincmd h<cr>',
+      'Go to right window ' .. icon('arrow-right'),
+    },
+    ['<c-j>'] = { ':wincmd j<cr>', 'Go to down window ' .. icon('arrow-down') },
+    ['<c-k>'] = { ':wincmd k<cr>', 'Go to up window ' .. icon('arrow-up') },
+    ['<c-l>'] = { ':wincmd l<cr>', 'Go to left window ' .. icon('arrow-left') },
     ['<leader>'] = {
       name = 'Plugins and features ' .. icon('rocket'),
       b = {
@@ -92,7 +96,7 @@ local function setup()
         'File explorer ' .. icon('file-directory-open-fill'),
       },
       g = {
-        name = 'GoLang  ',
+        name = icon('go') .. 'Lang ',
         r = { ':lua require("utils.golang").goRun()<CR>', 'Run Go programm' },
         b = {
           ':lua require("utils.golang").goBuild()<CR>',
@@ -238,9 +242,13 @@ local function setup()
   }, { mode = 'n' })
   wk_register({
     ['<leader>'] = {
-      name = 'Plugins and features ',
+      name = 'Plugins and features ' .. icon('rocket'),
+      l = {
+        name = 'LSP ' .. icon('server'),
+        a = { ':lua vim.lsp.buf.code_action()<cr>', 'Code action' },
+      },
       g = {
-        name = 'GIT ',
+        name = 'GIT ' .. icon('git-branch'),
         r = { ':Gitsigns reset_hunk<cr>', 'Reset hunk' },
         s = { ':Gitsigns stage_hunk<cr>', 'Stage hunk' },
       },
@@ -251,10 +259,10 @@ end
 local function attach_markdown(bufnr)
   wk_register({
     ['<leader>'] = {
-      name = 'Plugins and features ',
+      name = 'Plugins and features ' .. icon('rocket'),
       P = {
         '<cmd>MarkdownPreviewToggle<cr>',
-        'Toggle preview markdown ',
+        'Toggle preview markdown ' .. icon('markdown'),
       },
     },
   }, { buffer = bufnr, mode = 'n' })
@@ -263,7 +271,7 @@ end
 local function attach_jqx(bufnr)
   wk_register({
     ['<leader>'] = {
-      name = 'Plugins and features ',
+      name = 'Plugins and features ' .. icon('rocket'),
       J = {
         name = 'JQX ' .. icon('json'),
         l = { ':JqxList<cr>', 'List' },
@@ -276,7 +284,7 @@ end
 -- local function attach_sql(bufnr)
 --   wk_register({
 --     ['<leader>'] = {
---       name = 'Plugins and features ',
+--       name = 'Plugins and features ' .. icon('rocket'),
 --       S = {
 --         name = 'SQL ' .. icon('database'),
 --       },

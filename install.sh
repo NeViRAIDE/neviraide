@@ -1,59 +1,69 @@
 #!/bin/bash
 
-UBUNTU=`uname -a | grep -i ubuntu >/dev/null`
+UBUNTU=$(uname -a | grep -i ubuntu >/dev/null)
 READY=true
 
 if $UBUNTU; then
-    FD=fdfind
-    INSTALL=`printf "sudo apt install %s" $1`
+	FD=fdfind
+	INSTALL=$(printf "sudo apt install %s" "$1")
 else
-    FD=fd
-    INSTALL=`printf "sudo pacman -S %s" $1`
+	FD=fd
+	INSTALL=$(printf "sudo pacman -S %s" "$1")
 fi
 
 # Clone NEVIRAIDE repository from github.com to your .config as nvim
 clone() {
-    echo "Cloning..."
-    git clone -v --progress https://github.com/RAprogramm/NEVIRAIDE.git $HOME/.config/nvim
+	echo "Cloning..."
+	git clone -v --progress https://github.com/RAprogramm/NEVIRAIDE.git "$HOME"/.config/nvim
 }
 
 # Save old neovim config to .old directory
 rename_Dir() {
-    mv $HOME/.config/nvim $HOME/.config/nvim.old
-    echo "Your current configuration of Neovim save in ~/.config/nvim.old"
+	mv "$HOME"/.config/nvim "$HOME"/.config/nvim.old
+	echo "Your current configuration of Neovim save in ~/.config/nvim.old"
 }
 
 # Check is program install or not and print message
 # Arguments:
 #   name - name of the program
 check() {
-    name=$1
-    have="echo -e \t✅ $name installed"
-    not_have="echo -e \t❌ $name not installed"
-    case $name in
-        "neo") if command -v $name >/dev/null; then $have; else $not_have; READY=false; fi;;
-        "nonicons") if fc-list | grep $name >/dev/null; then $have; else $not_have; READY=false; fi;;
-        *) if which $name >/dev/null; then $have; else $not_have; READY=false; fi;;
-    esac
+	name=$1
+	have="echo -e \t✅ $name installed"
+	not_have="echo -e \t❌ $name not installed"
+	case $name in
+	"neo") if command -v "$name" >/dev/null; then $have; else
+		$not_have
+		READY=false
+	fi ;;
+	"nonicons") if fc-list | grep "$name" >/dev/null; then $have; else
+		$not_have
+		READY=false
+	fi ;;
+	*) if which "$name" >/dev/null; then $have; else
+		$not_have
+		READY=false
+	fi ;;
+	esac
 }
 
+# Checking requirements for correct work
 check_dependencies() {
-    echo "  Checking requirements for correct work:"
-    check nvim
-    check kitty
-    check git
-    check npm
-    check lazygit
-    check $FD
-    check rg
-    check unzip
-    check delta
-    check nonicons
-    check neo
+	echo "  Checking requirements for correct work:"
+	check nvim
+	check kitty
+	check git
+	check npm
+	check lazygit
+	check $FD
+	check rg
+	check unzip
+	check delta
+	check nonicons
+	check neo
 }
 
 nonicons_support() {
-    INSERT=`echo "
+	INSERT=$(echo "
     kitty_mod super+shift
     diff_cmd auto
     initial_window_width  1600
@@ -67,6 +77,9 @@ nonicons_support() {
     bold_italic_font JetBrains Mono SemiBold Italic
     font_size 14.0
     symbol_map U+f101-U+f25c nonicons
+    modify_font underline_position 5px
+    modify_font underline_thickness 150%
+    modify_font strikethrough_position 10px
     cursor none
     cursor_text_color background
     cursor_shape beam
@@ -110,21 +123,22 @@ nonicons_support() {
     color15  #e3e3e3
     shell .
     editor nvim
-    " >> $HOME/.config/kitty/kitty.conf`
+    " >>"$HOME"/.config/kitty/kitty.conf)
 
-    if [[ `which kitty` ]]; then
-        $INSERT
-    else
-        curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=nightly
-        sudo ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/
-        cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications
-        sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty.desktop
-        $INSERT
-    fi
+	if [[ $(which kitty) ]]; then
+		$INSERT
+	else
+		curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=nightly
+		sudo ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/
+		cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications
+		sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty.desktop
+		$INSERT
+	fi
 }
 
+# Configuration .gitconfig to enable delta diff
 delta_support() {
-    INSERT=`echo "
+	INSERT=$(echo "
     [core]
         pager = delta
     [interactive]
@@ -136,21 +150,22 @@ delta_support() {
         conflictstyle = diff3
     [diff]
         colorMoved = default
-        " >> $HOME/.gitconfig`
+        " >>"$HOME"/.gitconfig)
 
-    if [[ `which delta` ]] && [[ `which git` ]] ; then
-        $INSERT
-    else
-        $INSTALL delta
-        $INSERT
-    fi
+	if [[ $(which delta) ]] && [[ $(which git) ]]; then
+		$INSERT
+	else
+		$INSTALL delta
+		$INSERT
+	fi
 }
 
+# Install NEVIRAIDE
 install_start() {
-    echo "      Installing NEVIRAIDE..."
-    rename_Dir
-    clone
-    echo "NEVIRAIDE has been installed! 🎉"
+	echo "      Installing NEVIRAIDE..."
+	rename_Dir
+	clone
+	echo "NEVIRAIDE has been installed! 🎉"
 }
 
 echo "      GREETEENGS!"
@@ -159,8 +174,8 @@ check_dependencies
 nonicons_support
 delta_support
 if $READY; then
-    echo "  All prepared for installation! 👍"
-    install_start
+	echo "  All prepared for installation! 👍"
+	install_start
 else
-    echo "Dependecies are not installed!"
+	echo "Dependecies are not installed!"
 fi

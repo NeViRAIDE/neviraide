@@ -1,6 +1,9 @@
 local M = {
   'williamboman/mason.nvim',
-  dependencies = { 'williamboman/mason-lspconfig.nvim' },
+  dependencies = {
+    'williamboman/mason-lspconfig.nvim',
+    'jay-babu/mason-null-ls.nvim',
+  },
   event = 'VeryLazy',
 }
 
@@ -12,8 +15,8 @@ function M.config()
     },
   })
 
-  local status_ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
-  if not status_ok then
+  local m_lspconfig_ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
+  if not m_lspconfig_ok then
     vim.notify('Problem with mason-lspconfig', 4)
     return
   end
@@ -29,6 +32,16 @@ function M.config()
       'jsonls',
       'yamlls',
     },
+    automatic_installation = true,
+  })
+
+  local m_null_ls_ok, mason_null_ls = pcall(require, 'mason-null-ls')
+  if not m_null_ls_ok then
+    vim.notify('Problem with mason-null-ls', 4)
+    return
+  end
+  mason_null_ls.setup({
+    ensure_installed = { 'stylua', 'shfmt', 'jq', 'shellcheck' },
     automatic_installation = true,
   })
 end
