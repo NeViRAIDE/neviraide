@@ -11,7 +11,9 @@ function M.config()
     pattern = 'markdown',
     desc = 'Add markdown features',
     callback = function()
-      require('config.plugins.which-key.keybindings').attach_markdown(0)
+      require('config.plugins.which-key.keybindings.markdown').attach_markdown(
+        0
+      )
     end,
   })
 end

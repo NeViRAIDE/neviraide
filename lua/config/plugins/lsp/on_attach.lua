@@ -13,6 +13,10 @@ local signature_config = {
 
 M.build = function()
   return function(client, bufnr)
+    if client.name == 'sqls' then
+      require('sqls').on_attach(client, bufnr)
+      require('config.plugins.which-key.keybindings.sql').attach_sql(bufnr)
+    end
     if client.server_capabilities.documentSymbolProvider then
       require('nvim-navic').attach(client, bufnr)
     end

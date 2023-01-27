@@ -13,7 +13,7 @@ function M.config()
     pattern = { 'json', 'yaml', 'yml' },
     desc = 'Add markdown features',
     callback = function()
-      require('config.plugins.which-key.keybindings').attach_jqx(0)
+      require('config.plugins.which-key.keybindings.jqx').attach_jqx(0)
     end,
   })
 end

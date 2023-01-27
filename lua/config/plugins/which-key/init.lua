@@ -60,7 +60,7 @@ function M.config()
     },
   })
 
-  require('config.plugins.which-key.keybindings').setup()
+  require('config.plugins.which-key.keybindings.main').setup()
 end
 
 return M

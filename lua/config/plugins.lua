@@ -30,19 +30,5 @@ return {
     event = 'InsertEnter',
     config = true,
   },
-  -- TODO: add picture support in markdown
-  --
-  -- {
-  --   'edluffy/hologram.nvim',
-  --   event = 'BufReadPre',
-  --   config = function()
-  --     require('hologram').setup({
-  --       auto_display = true, -- WIP automatic markdown image display, may be prone to breaking
-  --     })
-  --   end,
-  -- },
-  -- TODO: sql support
-  --
-  -- 'nanotee/sqls.nvim',
-  -- https://github.com/nanotee/sqls.nvim/blob/main/doc/sqls-nvim.txt#L14
+  'nanotee/sqls.nvim',
 }
