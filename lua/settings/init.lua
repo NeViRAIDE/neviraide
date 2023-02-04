@@ -1,5 +1,4 @@
 require('settings.autocommands')
-require('settings.highlights')
 
 local disabled_built_ins = {
   'netrw',

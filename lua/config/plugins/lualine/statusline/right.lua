@@ -21,7 +21,7 @@ local diff = {
 
 local git_branch = {
   utils.branch_source,
-  icon = icon('git-branch', '', 'Branch:'),
+  icon = icon('git-branch', '🔀', 'Branch:'),
   color = { fg = color.orange, gui = 'bold', bg = color.bg },
   on_click = function() lazygit_toggle() end,
 }

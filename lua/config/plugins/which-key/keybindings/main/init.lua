@@ -48,7 +48,7 @@ local function setup()
     },
     ['<leader>'] = {
       name = 'Plugins and features ' .. icon('rocket', '✨', ''),
-      D = { ':Alpha<cr>', 'Startup screen ' .. icon('home', '', '') },
+      S = { ':Alpha<cr>', 'Startup screen ' .. icon('home', '', '') },
       f = {
         ':Neotree toggle<cr>',
         'File explorer ' .. icon('file-directory-open-fill', '🗃️', ''),

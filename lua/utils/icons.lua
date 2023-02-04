@@ -11,7 +11,7 @@ function _G.icon(nonicon, icon, text)
   if term == 'xterm-kitty' then
     if ni == '' then return nonicon end
     return ni .. ' '
-  elseif term == 'linux' then
+  elseif term == 'linux' or term == 'screen' then
     return text
   end
   return icon

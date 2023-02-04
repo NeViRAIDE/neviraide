@@ -8,8 +8,8 @@ function M.config()
     signs = true,
     sign_priority = 8,
     keywords = {
-      FIX = { icon = icon('meter', '', 'F'), color = color.fix },
-      TODO = { icon = icon('check-circle', '', 'T'), color = color.todo },
+      FIX = { icon = icon('meter', '🐛', 'F'), color = color.fix },
+      TODO = { icon = icon('check-circle', '✅', 'T'), color = color.todo },
       HACK = { icon = icon('flame', '🔥', 'H'), color = color.hack },
       WARN = { icon = icon('alert', '⚠️ ', 'W'), color = color.warn },
       PERF = { icon = icon('stopwatch', '⏱️ ', 'P'), color = color.perf },
