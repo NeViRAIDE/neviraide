@@ -1,25 +1,20 @@
+require('utils.icons')
+
 return {
-  -- TODO: colorscheme for not gui
-  -- TODO: dynamic change colorscheme
-  {
-    'briones-gabriel/darcula-solid.nvim',
-    lazy = false,
-    dependencies = 'rktjmp/lush.nvim',
-    config = function() vim.cmd('colorscheme darcula-solid') end,
-  },
   {
     'yamatsum/nvim-nonicons',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = true,
+    config = function()
+      if vim.api.nvim_exec('echo $TERM', '') == 'xterm-kitty' then
+        return require('nvim-nonicons').setup()
+      end
+    end,
   },
   {
     'olexsmir/gopher.nvim',
     event = 'VeryLazy',
   },
   { 'ggandor/lightspeed.nvim', event = 'BufReadPre' },
-  'nvim-lua/plenary.nvim',
-  'ggandor/lightspeed.nvim',
-  'ray-x/lsp_signature.nvim',
   {
     'nvim-treesitter/nvim-treesitter-context',
     event = 'BufReadPre',
@@ -30,5 +25,7 @@ return {
     event = 'InsertEnter',
     config = true,
   },
+  'nvim-lua/plenary.nvim',
+  'ray-x/lsp_signature.nvim',
   'nanotee/sqls.nvim',
 }

@@ -1,5 +1,5 @@
 return {
-  name = 'Buffers ' .. icon('versions'),
+  name = 'Buffers ' .. icon('versions', '', ''),
   p = { ':bprev<cr>', 'Previous' },
   n = { ':bnext<cr>', 'Next' },
   d = { ':lua close_buffer()<cr>', 'Delete' },

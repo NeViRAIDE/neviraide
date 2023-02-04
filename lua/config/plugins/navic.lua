@@ -1,7 +1,4 @@
-local M = {
-  'SmiteshP/nvim-navic',
-  event = 'VeryLazy',
-}
+local M = { 'SmiteshP/nvim-navic' }
 
 --- Highlight navic icons
 ---@param parameter string
@@ -13,38 +10,10 @@ end
 function M.config()
   vim.g.navic_silence = true
   require('nvim-navic').setup({
-    separator = ' ' .. icon('triangle-right'),
+    separator = ' ' .. icon('triangle-right', ' ▶ ', ' > '),
     highlight = true,
     depth_limit = 5,
     save_output = true,
-    icons = {
-      File = icon('file') .. ' ',
-      Module = icon('file-submodule') .. ' ',
-      Namespace = ' ',
-      Package = icon('package') .. ' ',
-      Class = icon('class') .. ' ',
-      Method = ' ',
-      Property = ' ',
-      Field = icon('field') .. ' ',
-      Constructor = ' ',
-      Enum = '練',
-      Interface = icon('interface') .. ' ',
-      Function = ' ',
-      Variable = icon('variable') .. ' ',
-      Constant = icon('constant') .. ' ',
-      String = ' ',
-      Number = icon('number') .. ' ',
-      Boolean = '◩ ',
-      Array = ' ',
-      Object = ' ',
-      Key = icon('key') .. ' ',
-      Null = 'ﳠ ',
-      EnumMember = ' ',
-      Struct = icon('struct') .. ' ',
-      Event = ' ',
-      Operator = ' ',
-      TypeParameter = ' ',
-    },
   })
 
   hi_navic('NavicIconsFile', '#ffffff')

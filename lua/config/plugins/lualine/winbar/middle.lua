@@ -10,7 +10,7 @@ local indent = {
 
 local location = {
   'location',
-  icon = '',
+  icon = icon('', '', ''),
   cond = utils.conditions.buffer_not_empty,
   color = { bg = color.bg, gui = 'italic' },
   padding = { left = 1, right = 1 },
@@ -19,14 +19,14 @@ local location = {
 local vim_mode = {
   function()
     local mode_icons = {
-      n = icon('vim-normal-mode'),
-      i = icon('vim-insert-mode'),
-      c = icon('vim-command-mode'),
-      v = icon('vim-visual-mode'),
-      [''] = icon('vim-visual-mode') .. '-Block',
-      V = icon('vim-visual-mode') .. '-Line',
-      R = icon('vim-replace-mode'),
-      t = icon('vim-terminal-mode'),
+      n = icon('vim-normal-mode', '[N]', 'NORMAL'),
+      i = icon('vim-insert-mode', '[I]', 'INSERT'),
+      c = icon('vim-command-mode', '[C]', 'COMMAND'),
+      v = icon('vim-visual-mode', '[V]', 'VISUAL'),
+      [''] = icon('vim-visual-mode' .. '-Block', '[V]-Block', 'V-BLOCK'),
+      V = icon('vim-visual-mode' .. '-Line', '[V]-Line', 'V-LINE'),
+      R = icon('vim-replace-mode', '[R]', 'REPLACE'),
+      t = icon('vim-terminal-mode', '[T]', 'TERMINAL'),
     }
     return mode_icons[vim.fn.mode()]
   end,

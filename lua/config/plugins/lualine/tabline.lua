@@ -33,7 +33,7 @@ local file_name = {
 }
 
 local indent_with_triange = {
-  function() return ' ' .. icon('triangle-right') end,
+  function() return ' ' .. icon('triangle-right', '▶ ', '> ') end,
   cond = navic.is_available and utils.conditions.buffer_not_empty,
   color = { bg = color.none, fg = color.red },
   padding = { left = 0, right = 0 },

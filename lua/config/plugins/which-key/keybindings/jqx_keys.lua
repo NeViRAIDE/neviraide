@@ -4,9 +4,9 @@ local wk_register =
 local function attach_jqx(bufnr)
   wk_register({
     ['<leader>'] = {
-      name = 'Plugins and features ' .. icon('rocket'),
+      name = 'Plugins and features ' .. icon('rocket', '', ''),
       J = {
-        name = 'JQX ' .. icon('json'),
+        name = 'JQX ' .. icon('json', '', ''),
         l = { ':JqxList<cr>', 'List' },
         q = { ':JqxQuery<cr>', 'Query' },
       },

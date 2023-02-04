@@ -1,9 +1,9 @@
 return {
-  name = 'GIT ' .. icon('git-branch'),
+  name = 'GIT ' .. icon('git-branch', '', ''),
   l = { ':lua lazygit_toggle()<CR>', 'Lazygit' },
   r = { ':Gitsigns reset_hunk<cr>', 'Reset hunk' },
   b = { ':Gitsigns blame_line<cr>', 'Blame line' },
-  d = { ':Gitsigns diffthis<cr>', 'Diff this ' .. icon('diff') },
+  d = { ':Gitsigns diffthis<cr>', 'Diff this ' .. icon('diff', '', '') },
   n = { ':Gitsigns next_hunk<cr>', 'Go to next hunk' },
   p = { ':Gitsigns prev_hunk<cr>', 'Go to previous hunk' },
   P = { ':Gitsigns preview_hunk<cr>', 'Preview hunk' },

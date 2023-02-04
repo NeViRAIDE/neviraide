@@ -4,9 +4,9 @@ local wk_register =
 local function attach_sql(bufnr)
   wk_register({
     ['<leader>'] = {
-      name = 'Plugins and features ' .. icon('rocket'),
+      name = 'Plugins and features ' .. icon('rocket', '', ''),
       S = {
-        name = 'SQL ' .. icon('database'),
+        name = 'SQL ' .. icon('database', '', ''),
         e = {
           name = 'Execute',
           q = { ':SqlsExecuteQuery<cr>', 'Execute the query' },

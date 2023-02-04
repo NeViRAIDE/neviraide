@@ -1,7 +1,9 @@
 ---Current time
 --(hours and minutes).
 ---@return string
-local function clock() return icon('clock') .. ' ' .. os.date('%H:%M') end
+local function clock()
+  return icon('clock', '🕰️', 'Time:') .. ' ' .. os.date('%H:%M')
+end
 
 ---Filepath breadcrumb of your
 --workspace with separators.
@@ -17,7 +19,7 @@ local function get_file_path()
       or file_path
         .. cur
         .. ' %#LspSagaWinbarSep#'
-        .. icon('triangle-right')
+        .. icon('triangle-right', '▶ ', '> ')
         .. '%#lualine_c_filetype_normal#'
   end
   return file_path
@@ -31,10 +33,10 @@ local highlight = require('lualine.highlight')
 
 function custom_fname:init(options)
   custom_fname.super.init(self, options)
-  self.options.symbols.modified = icon('pencil')
-  self.options.symbols.readonly = icon('lock')
-  self.options.symbols.newfile = icon('file')
-  self.options.symbols.unnamed = 'ﱤ '
+  self.options.symbols.modified = icon('pencil', '🖊️', 'NOT SAVED')
+  self.options.symbols.readonly = icon('lock', '🔏', 'READ ONLY')
+  self.options.symbols.newfile = icon('file', '', 'NEW FILE')
+  self.options.symbols.unnamed = icon('ﱤ ', '', 'UNNAMED')
   self.status_colors = {
     newfile = highlight.create_component_highlight_group(
       { bg = color.none, fg = color.green, gui = 'bold' },
@@ -78,12 +80,7 @@ local conditions = {
   ---@return boolean
   hide_in_width = function() return vim.fn.winwidth(0) > 100 end,
 
-  -- check_git_workspace = function()
-  --   local filepath = vim.fn.expand('%:p:h')
-  --   local gitdir = vim.fn.finddir('.git', filepath .. ';')
-  --   return gitdir and #gitdir > 0 and #gitdir < #filepath
-  -- end,
-  --
+  -- TODO: add conditions for diff separator
   gitsigns = function()
     local gs_diff = vim.b.gitsigns_status_dict
     if vim.b.gitsigns_status then
@@ -210,26 +207,25 @@ end
 local function separator(type, condition, left_padding, right_padding)
   if type == 'left' then
     return {
-      function() return '' end,
+      function() return icon('', '', '') end,
       color = { fg = color.bg, bg = color.none },
       cond = condition,
       padding = { left = left_padding, right = right_padding },
     }
   elseif type == 'right' then
     return {
-      function() return '' end,
+      function() return icon('', '', '') end,
       color = { fg = color.bg, bg = color.none },
       cond = condition,
       padding = { left = left_padding, right = right_padding },
     }
-  else
-    return {
-      function() return '|' end,
-      color = { fg = color.visual, bg = color.bg },
-      cond = condition,
-      padding = { left = left_padding, right = right_padding },
-    }
   end
+  return {
+    function() return '|' end,
+    color = { fg = color.visual, bg = color.bg },
+    cond = condition,
+    padding = { left = left_padding, right = right_padding },
+  }
 end
 
 return {

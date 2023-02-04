@@ -5,6 +5,7 @@ hi('TelescopeBorder', { bg = color.none, fg = color.blue })
 hi('TelescopePromptPrefix', { bg = color.none, fg = color.yellow })
 hi('TelescopeTitle', { bg = color.none, fg = color.blue, bold = true })
 hi('TelescopeSelectionCaret', { bg = color.none, fg = color.lightGreen })
+-- hi('TelescopeNormal', { bg = color.none, fg = color.blue })
 
 hi('Directory', { fg = color.directoryYellow })
 

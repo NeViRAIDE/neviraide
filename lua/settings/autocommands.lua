@@ -45,6 +45,7 @@ autocmd_multi('NEVIRAIDE_CONF', {
     {
       pattern = {
         'qf',
+        'checkhealth',
         'help',
         'man',
         'notify',

@@ -4,10 +4,10 @@ local wk_register =
 local function attach_markdown(bufnr)
   wk_register({
     ['<leader>'] = {
-      name = 'Plugins and features ' .. icon('rocket'),
+      name = 'Plugins and features ' .. icon('rocket', '', ''),
       P = {
         '<cmd>MarkdownPreviewToggle<cr>',
-        'Toggle preview markdown ' .. icon('markdown'),
+        'Toggle preview markdown ' .. icon('markdown', '', ''),
       },
     },
   }, { buffer = bufnr, mode = 'n' })

@@ -1,5 +1,5 @@
 return {
-  name = icon('go') .. 'Lang ',
+  name = icon('go', 'Go', 'Go') .. 'Lang ',
   r = { ':lua require("utils.golang").goRun()<CR>', 'Run Go programm' },
   b = {
     ':lua require("utils.golang").goBuild()<CR>',

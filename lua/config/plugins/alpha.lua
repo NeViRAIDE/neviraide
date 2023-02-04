@@ -4,7 +4,7 @@ local M = {
 }
 
 function M.config()
-  require('utils.nonicons')
+  require('utils')
   require('alpha.term')
 
   local window_width = math.floor(vim.o.columns)
@@ -34,12 +34,12 @@ function M.config()
       align_shortcut = 'right',
       hl_shortcut = 'Boolean',
       hl = 'AlphaButton',
-      width = 20,
+      width = 23,
       position = 'center',
     }
     opts = opts and vim.tbl_extend('force', def_opts, opts) or def_opts
     opts.shortcut = sc
-    local sc_ = sc:gsub('%s', ''):gsub('SPC', '<Leader>')
+    local sc_ = sc:gsub('%s', '*'):gsub('SPC', '<Leader>')
     local on_press = function()
       local key = vim.api.nvim_replace_termcodes(
         keybind or sc_ .. '<Ignore>',
@@ -59,7 +59,7 @@ function M.config()
     return { type = 'button', val = txt, on_press = on_press, opts = opts }
   end
 
-  if ret == 0 then
+  if ret == 0 and vim.api.nvim_exec('echo $TERM', ' ') ~= 'linux' then
     term_or_text = {
       type = 'terminal',
       command = "neo --fps=60 --speed=6 -D -a -m 'NEVIRAIDE' -d 0.5 -l 1,1",
@@ -76,14 +76,14 @@ function M.config()
     term_or_text = {
       type = 'text',
       val = {
-        '01001110 01100101 01101111 01110110 01101001 01101101',
-        '01001001 01101110 01110100 01100101 01100111 01110010 01100001 01110100 01100101 01100100',
+        '                      01001110 01100101 01101111 01110110 01101001 01101101',
+        '    01001001 01101110 01110100 01100101 01100111 01110010 01100001 01110100 01100101 01100100',
         '01000100 01100101 01110110 01100101 01101100 01101111 01110000 01101101 01100101 01101110 01110100',
         '01000101 01101110 01110110 01101001 01110010 01101111 01101110 01101101 01100101 01101110 01110100',
-        '01100010 01111001',
-        '01010010 01000001 01110000 01110010 01101111 01100111 01110010 01100001 01101101 01101101',
+        '                                        01100010 01111001',
+        '    01010010 01000001 01110000 01110010 01101111 01100111 01110010 01100001 01101101 01101101',
         '',
-        '. . . NEVIRAIDE . . .',
+        '                                      . . . NEVIRAIDE . . .',
         '',
       },
       opts = { position = 'center', hl = 'DashboardHeader' },
@@ -103,42 +103,50 @@ function M.config()
         type = 'group',
         val = {
           button(
-            icon('file'),
-            icon('dot') .. 'Create new file',
+            icon('file', '📄', ' '),
+            icon('dot', '🟢 ', '* ') .. 'Create new file',
             ':lua require("utils.startup").dashNewFile()<cr>'
           ),
           button(
-            icon('search'),
-            icon('dot') .. 'Find file',
+            icon('search', '🔍', ' '),
+            icon('dot', '🔵 ', '* ') .. 'Find file',
             ':Telescope find_files<cr>'
           ),
           button(
-            icon('history'),
-            icon('dot') .. 'Recent files',
+            icon('history', '🕰️', ' '),
+            icon('dot', '🔵 ', '* ') .. 'Recent files',
             ':Telescope oldfiles<cr>'
           ),
           button(
-            icon('quote'),
-            icon('dot') .. 'Find word',
+            icon('quote', '💬', ' '),
+            icon('dot', '🔵 ', '* ') .. 'Find word',
             ':Telescope live_grep<cr>'
           ),
           button(
-            icon('project'),
-            icon('dot') .. 'Session manager',
+            icon('project', '👔', ' '),
+            icon('dot', '🟣 ', '* ') .. 'Session manager',
             ':lua require("utils.startup").sessions:mount()<cr>'
           ),
           button(
-            icon('tasklist'),
-            icon('dot') .. 'TODO list',
+            icon('tasklist', '📓', ' '),
+            icon('dot', '🟡 ', '* ') .. 'TODO list',
             ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=14}}<cr>'
           ),
           button(
-            icon('heart'),
-            icon('dot') .. 'Check health',
+            icon('heart', '🩺', ' '),
+            icon('dot', '⚪ ', '* ') .. 'Check health',
             ':checkhealth<cr>'
           ),
-          button(icon('plug'), icon('dot') .. 'Plugin manager', ':Lazy<cr>'),
-          button(icon('sign-out'), icon('dot') .. 'Exit', ':qa<cr>'),
+          button(
+            icon('plug', '🔌', ' '),
+            icon('dot', '🟠 ', '* ') .. 'Plugin manager',
+            ':Lazy<cr>'
+          ),
+          button(
+            icon('sign-out', '❌', ' '),
+            icon('dot', '🔴 ', '* ') .. 'Exit',
+            ':qa<cr>'
+          ),
         },
         opts = {
           hl = 'Constant',

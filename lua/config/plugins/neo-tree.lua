@@ -13,19 +13,19 @@ function M.config()
 
   vim.fn.sign_define(
     'DiagnosticSignError',
-    { text = icon('x-circle'), texthl = 'DiagnosticSignError' }
+    { text = icon('x-circle', '❌', 'E'), texthl = 'DiagnosticSignError' }
   )
   vim.fn.sign_define(
     'DiagnosticSignWarn',
-    { text = icon('alert'), texthl = 'DiagnosticSignWarn' }
+    { text = icon('alert', '⚠️', 'W'), texthl = 'DiagnosticSignWarn' }
   )
   vim.fn.sign_define(
     'DiagnosticSignInfo',
-    { text = icon('info'), texthl = 'DiagnosticSignInfo' }
+    { text = icon('info', 'ℹ️', 'I'), texthl = 'DiagnosticSignInfo' }
   )
   vim.fn.sign_define(
     'DiagnosticSignHint',
-    { text = icon('light-bulb'), texthl = 'DiagnosticSignHint' }
+    { text = icon('light-bulb', '💡', 'H'), texthl = 'DiagnosticSignHint' }
   )
 
   require('neo-tree').setup({
@@ -38,21 +38,21 @@ function M.config()
     default_component_configs = {
       indent = {
         with_expanders = true,
-        expander_collapsed = '',
-        expander_expanded = '',
+        expander_collapsed = icon('', '', '+'),
+        expander_expanded = icon('', '', '-'),
         expander_highlight = 'NeoTreeExpander',
       },
       git_status = {
         symbols = {
-          added = icon('diff-added'),
-          modified = icon('diff-modified'),
-          deleted = icon('diff-removed'),
+          added = icon('diff-added', '', 'Added'),
+          modified = icon('diff-modified', '', 'Modified'),
+          deleted = icon('diff-removed', '', 'Removed'),
         },
       },
       icon = {
-        folder_closed = icon('file-directory-fill'),
-        folder_open = icon('file-directory-open-fill'),
-        folder_empty = icon('file-directory'),
+        folder_closed = icon('file-directory-fill', '📁', ''),
+        folder_open = icon('file-directory-open-fill', '📂', ''),
+        folder_empty = icon('file-directory', '', ''),
       },
     },
     filesystem = {

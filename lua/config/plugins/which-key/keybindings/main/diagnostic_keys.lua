@@ -1,5 +1,5 @@
 return {
-  name = 'Diagnostics ' .. icon('pulse'),
+  name = 'Diagnostics ' .. icon('pulse', '🩺', ''),
   w = { ':Telescope diagnostics<cr>', 'Workspace diagnostics' },
   l = {
     ':lua vim.diagnostic.open_float()<cr>',
@@ -25,7 +25,7 @@ return {
       i = { ':DapStepInto<cr>', 'Into' },
     },
     L = {
-      name = 'Set log level ' .. icon('log'),
+      name = 'Set log level ' .. icon('log', '', ''),
       w = { ':DapSetLogLevel WARN<cr>', 'Warning' },
       i = { ':DapSetLogLevel INFO<cr>', 'Information' },
       d = { ':DapSetLogLevel DEBUG<cr>', 'Debug' },

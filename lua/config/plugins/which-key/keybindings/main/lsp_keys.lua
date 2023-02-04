@@ -1,5 +1,5 @@
 return {
-  name = 'LSP ' .. icon('server'),
+  name = 'LSP ' .. icon('server', '🌐', ''),
   h = { ':lua vim.lsp.buf.hover()<cr>', 'Hover' },
   s = { ':lua vim.lsp.buf.signature_help()<cr>', 'Signature help' },
   r = { ':Telescope lsp_references<cr>', 'References' },

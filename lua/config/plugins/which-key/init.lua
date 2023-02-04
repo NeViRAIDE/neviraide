@@ -13,9 +13,9 @@ function M.config()
       spelling = { enabled = true },
     },
     icons = {
-      breadcrumb = icon('chevron-right'),
-      separator = icon('arrow-right'),
-      group = icon('plus'),
+      breadcrumb = icon('chevron-right', '', '>>'),
+      separator = icon('arrow-right', '', '->'),
+      group = icon('plus', '', '+'),
     },
     key_labels = {
       ['<space>'] = 'Space',
