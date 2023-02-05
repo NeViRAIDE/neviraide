@@ -104,8 +104,8 @@ function M.config()
       },
     },
     defaults = {
-      prompt_prefix = ' ' .. icon('search', ' 🔎 ', '  ') .. ' ',
-      selection_caret = icon('arrow-right', '👉', '> ') .. ' ',
+      prompt_prefix = ' ' .. icon('search', '  ', '  ') .. ' ',
+      selection_caret = icon('arrow-right', '➡ ', '> ') .. ' ',
       dynamic_preview_title = true,
       use_less = true,
       mappings = {

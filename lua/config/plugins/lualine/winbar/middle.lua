@@ -19,14 +19,14 @@ local location = {
 local vim_mode = {
   function()
     local mode_icons = {
-      n = icon('vim-normal-mode', '[N]', 'NORMAL'),
-      i = icon('vim-insert-mode', '[I]', 'INSERT'),
-      c = icon('vim-command-mode', '[C]', 'COMMAND'),
-      v = icon('vim-visual-mode', '[V]', 'VISUAL'),
-      [''] = icon('vim-visual-mode' .. '-Block', '[V]-Block', 'V-BLOCK'),
-      V = icon('vim-visual-mode' .. '-Line', '[V]-Line', 'V-LINE'),
-      R = icon('vim-replace-mode', '[R]', 'REPLACE'),
-      t = icon('vim-terminal-mode', '[T]', 'TERMINAL'),
+      n = icon('vim-normal-mode', 'N', 'NORMAL'),
+      i = icon('vim-insert-mode', 'I', 'INSERT'),
+      c = icon('vim-command-mode', 'C', 'COMMAND'),
+      v = icon('vim-visual-mode', 'V', 'VISUAL'),
+      [''] = icon('vim-visual-mode' .. '-Block', 'V-Block', 'V-BLOCK'),
+      V = icon('vim-visual-mode' .. '-Line', 'V-Line', 'V-LINE'),
+      R = icon('vim-replace-mode', 'R', 'REPLACE'),
+      t = icon('vim-terminal-mode', 'T', 'TERMINAL'),
     }
     return mode_icons[vim.fn.mode()]
   end,

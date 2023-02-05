@@ -11,9 +11,9 @@ return {
   h = { '<cmd>Telescope help_tags<cr>', 'Help tags' },
   H = { '<cmd>Telescope highlights<cr>', 'Highlights' },
   s = {
-    -- '<cmd>lua require"telescope.builtin".symbols{ sources = {"emoji", "kaomoji", "gitmoji"} }<cr>',
-    '<cmd>Telescope symbols<cr>',
-    'Symbols',
+    '<cmd>lua require"telescope.builtin".symbols{ sources = {"emoji", "kaomoji", "gitmoji"} }<cr>',
+    -- '<cmd>Telescope symbols<cr>',
+    'Emoji',
   },
   n = {
     '<cmd>Telescope notify theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}}<cr>',

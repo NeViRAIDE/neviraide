@@ -79,14 +79,10 @@ local conditions = {
   ---If windows width less than 100.
   ---@return boolean
   hide_in_width = function() return vim.fn.winwidth(0) > 100 end,
-
-  -- TODO: add conditions for diff separator
-  gitsigns = function()
-    local gs_diff = vim.b.gitsigns_status_dict
-    if vim.b.gitsigns_status then
-      return gs_diff.added > 0 or gs_diff.removed > 0 or gs_diff.modified > 0
-    end
-    return false
+  ---Hide if no diffs
+  ---@return boolean
+  gitdiff = function()
+    return vim.b.gitsigns_status ~= '' and vim.b.gitsigns_status ~= nil
   end,
 }
 

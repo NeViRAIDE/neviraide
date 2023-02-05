@@ -9,17 +9,17 @@ function M.config()
   require('noice').setup({
     cmdline = {
       format = {
-        filter = { icon = icon('terminal', '', '!') },
+        filter = { icon = icon('terminal', '', '!') },
         search_down = {
-          icon = icon('search', '', 'SEARCH')
-            .. icon('chevron-down', '', ' >>'),
+          icon = icon('search', '', 'SEARCH')
+            .. icon('chevron-down', ' ', ' >>'),
         },
         search_up = {
-          icon = icon('search', '', '<< ')
-            .. icon('chevron-up', '', 'SEARCH'),
+          icon = icon('search', ' ', '<< ')
+            .. icon('chevron-up', '', 'SEARCH'),
         },
-        lua = { icon = icon('lua', '', '(lua)') },
-        help = { icon = icon('question', '', '(?)') },
+        lua = { icon = icon('lua', '', '(lua)') },
+        help = { icon = icon('question', '', '(?)') },
       },
     },
     lsp = {
