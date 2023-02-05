@@ -1,5 +1,5 @@
 return {
-  name = 'Diagnostics ' .. icon('pulse', '🩺', ''),
+  name = 'Diagnostics ' .. icon('pulse', '﫵', ''),
   w = { ':Telescope diagnostics<cr>', 'Workspace diagnostics' },
   l = {
     ':lua vim.diagnostic.open_float()<cr>',

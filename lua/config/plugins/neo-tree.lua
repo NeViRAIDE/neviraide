@@ -13,19 +13,19 @@ function M.config()
 
   vim.fn.sign_define(
     'DiagnosticSignError',
-    { text = icon('x-circle', '❌', 'E'), texthl = 'DiagnosticSignError' }
+    { text = icon('x-circle', '', 'E'), texthl = 'DiagnosticSignError' }
   )
   vim.fn.sign_define(
     'DiagnosticSignWarn',
-    { text = icon('alert', '⚠️', 'W'), texthl = 'DiagnosticSignWarn' }
+    { text = icon('alert', '', 'W'), texthl = 'DiagnosticSignWarn' }
   )
   vim.fn.sign_define(
     'DiagnosticSignInfo',
-    { text = icon('info', 'ℹ️', 'I'), texthl = 'DiagnosticSignInfo' }
+    { text = icon('info', '', 'I'), texthl = 'DiagnosticSignInfo' }
   )
   vim.fn.sign_define(
     'DiagnosticSignHint',
-    { text = icon('light-bulb', '💡', 'H'), texthl = 'DiagnosticSignHint' }
+    { text = icon('light-bulb', '', 'H'), texthl = 'DiagnosticSignHint' }
   )
 
   require('neo-tree').setup({

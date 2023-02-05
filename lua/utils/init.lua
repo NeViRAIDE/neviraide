@@ -1,3 +1,6 @@
+---@type string
+_G.term = vim.api.nvim_exec('echo $TERM', '')
+
 function _G.opt(o, v, scopes)
   scopes = scopes or { vim.o }
   for _, s in ipairs(scopes) do

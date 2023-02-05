@@ -1,5 +1,5 @@
 return {
-  name = 'Telescope ' .. icon('telescope', '🔭', ''),
+  name = 'Telescope ' .. icon('telescope', '', ''),
   a = { '<cmd>Telescope autocommands<cr>', 'Autocommands' },
   m = { '<cmd>Telescope man_pages<cr>', 'Manual pages' },
   r = {
@@ -11,7 +11,8 @@ return {
   h = { '<cmd>Telescope help_tags<cr>', 'Help tags' },
   H = { '<cmd>Telescope highlights<cr>', 'Highlights' },
   s = {
-    '<cmd>lua require"telescope.builtin".symbols{ sources = {"emoji", "kaomoji", "gitmoji"} }<cr>',
+    -- '<cmd>lua require"telescope.builtin".symbols{ sources = {"emoji", "kaomoji", "gitmoji"} }<cr>',
+    '<cmd>Telescope symbols<cr>',
     'Symbols',
   },
   n = {

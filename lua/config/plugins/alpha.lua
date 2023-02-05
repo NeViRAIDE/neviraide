@@ -59,11 +59,7 @@ function M.config()
     return { type = 'button', val = txt, on_press = on_press, opts = opts }
   end
 
-  if
-    ret == 0
-    and vim.api.nvim_exec('echo $TERM', '') ~= 'linux'
-    and vim.api.nvim_exec('echo $TERM', '') ~= 'screen'
-  then
+  if ret == 0 and term ~= 'linux' and term ~= 'screen' then
     term_or_text = {
       type = 'terminal',
       command = "neo --fps=60 --speed=6 -D -a -m 'NEVIRAIDE' -d 0.5 -l 1,1",
@@ -107,48 +103,48 @@ function M.config()
         type = 'group',
         val = {
           button(
-            icon('file', '📄', ' '),
-            icon('dot', '🔹 ', '* ') .. 'Create new file',
+            icon('file', '', ' '),
+            icon('dot', ' ', '* ') .. 'Create new file',
             ':lua require("utils.startup").dashNewFile()<cr>'
           ),
           button(
-            icon('search', '🔍', ' '),
-            icon('dot', '🔹 ', '* ') .. 'Find file',
+            icon('search', '', ' '),
+            icon('dot', ' ', '* ') .. 'Find file',
             ':Telescope find_files<cr>'
           ),
           button(
-            icon('history', '🕰️', ' '),
-            icon('dot', '🔹 ', '* ') .. 'Recent files',
+            icon('history', '', ' '),
+            icon('dot', ' ', '* ') .. 'Recent files',
             ':Telescope oldfiles<cr>'
           ),
           button(
-            icon('quote', '💬', ' '),
-            icon('dot', '🔹 ', '* ') .. 'Find word',
+            icon('quote', '', ' '),
+            icon('dot', ' ', '* ') .. 'Find word',
             ':Telescope live_grep<cr>'
           ),
           button(
-            icon('project', '👔', ' '),
-            icon('dot', '🔹 ', '* ') .. 'Session manager',
+            icon('project', '', ' '),
+            icon('dot', ' ', '* ') .. 'Session manager',
             ':lua require("utils.startup").sessions:mount()<cr>'
           ),
           button(
-            icon('tasklist', '📓', ' '),
-            icon('dot', '🔹 ', '* ') .. 'TODO list',
+            icon('tasklist', '', ' '),
+            icon('dot', ' ', '* ') .. 'TODO list',
             ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=14}}<cr>'
           ),
           button(
-            icon('heart', '🩺', ' '),
-            icon('dot', '🔹 ', '* ') .. 'Check health',
+            icon('heart', '', ' '),
+            icon('dot', ' ', '* ') .. 'Check health',
             ':checkhealth<cr>'
           ),
           button(
-            icon('plug', '🔌', ' '),
-            icon('dot', '🔹 ', '* ') .. 'Plugin manager',
+            icon('plug', '', ' '),
+            icon('dot', ' ', '* ') .. 'Plugin manager',
             ':Lazy<cr>'
           ),
           button(
-            icon('sign-out', '❌', ' '),
-            icon('dot', '🔹 ', '* ') .. 'Exit',
+            icon('sign-out', '', ' '),
+            icon('dot', ' ', '* ') .. 'Exit',
             ':qa<cr>'
           ),
         },

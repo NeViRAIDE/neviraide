@@ -2,7 +2,7 @@ local utils = require('utils.lualine_utils')
 
 local lsp_server = {
   utils.lsp_source,
-  icon = icon('server', '⚙️ ', 'LSP:'),
+  icon = icon('server', '', 'LSP:'),
   color = { bg = color.bg },
   cond = utils.conditions.hide_in_width,
   on_click = function() vim.fn.execute('LspInfo') end,
@@ -12,10 +12,10 @@ local lsp_diagnostic = {
   'diagnostics',
   sources = { 'nvim_diagnostic' },
   symbols = {
-    error = icon('x-circle', '❌ ', 'Error '),
-    warn = icon('alert', '⚠️  ', 'Warn '),
-    info = icon('info', 'ℹ️  ', 'Info '),
-    hint = icon('light-bulb', '💡 ', 'Hint '),
+    error = icon('x-circle', ' ', 'Error '),
+    warn = icon('alert', ' ', 'Warn '),
+    info = icon('info', ' ', 'Info '),
+    hint = icon('light-bulb', ' ', 'Hint '),
   },
   diagnostics_color = {
     color_error = { fg = color.red },

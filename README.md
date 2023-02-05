@@ -6,7 +6,7 @@ Fast, comfortable and light GolangIDE
 ### This is my setup of NEOVIM
 ***Remember that it's only modifications of config files and collect of different plugins.
 Vim/Neovim is a FREEDOM.
-You can setup your own IDE or simple text redactor.
+You can setup your own IDE or simple text editor.
 You need only define what you want and what you need.***
 
 #### Content
@@ -47,16 +47,19 @@ ___
 ## Installation
 Make sure that all dependecies are installed.
 ###  Auto
+!!! THIS TIME INSTALL SCRIPT NOT READY. I TRY TO MAKE INSTALLATION MORE COMFORTABLE, SO I WILL REWRITE INSTALLATION
+SCRIPT TO GO LANGUAGE. IF YOU WANT TO TRY HTIS CONFIG USE MANUAL INSTALLATION
 
 To quick install my vision of neovim (calls NEVIRAIDE) you may download install script and rin it!
 
 **[Install script](https://github.com/RAprogramm/NEVIRAIDE/blob/golangIDE/install.sh)** - to download it right click and "Save Link As..."
 
 ### Manual
-1. Clone this repository.
+1. Install dependecies
+2. Clone this repository.
 3. Delete ~/.config/nvim (if exist)
-2. Rename it (from "NEVIRAIDE" to "nvim").
-4. Move our renamed folder to ~/.config 
+4. Rename it (from "NEVIRAIDE" to "nvim").
+5. Move our renamed folder to ~/.config 
 ___
 
 ### Used plugins

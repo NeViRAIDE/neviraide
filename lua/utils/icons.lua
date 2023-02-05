@@ -1,7 +1,3 @@
----@type string
-local term = vim.api.nvim_exec('echo $TERM', '')
--- TODO: best practice lua function commenting
-
 ---Setting icons depending on the terminal used.
 ---@param nonicon string
 ---@param icon string

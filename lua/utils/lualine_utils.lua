@@ -2,7 +2,7 @@
 --(hours and minutes).
 ---@return string
 local function clock()
-  return icon('clock', '🕰️', 'Time:') .. ' ' .. os.date('%H:%M')
+  return icon('clock', '', 'Time:') .. ' ' .. os.date('%H:%M')
 end
 
 ---Filepath breadcrumb of your
@@ -33,10 +33,10 @@ local highlight = require('lualine.highlight')
 
 function custom_fname:init(options)
   custom_fname.super.init(self, options)
-  self.options.symbols.modified = icon('pencil', '🖊️', 'NOT SAVED')
-  self.options.symbols.readonly = icon('lock', '🔏', 'READ ONLY')
-  self.options.symbols.newfile = icon('file', '', 'NEW FILE')
-  self.options.symbols.unnamed = icon('ﱤ ', '', 'UNNAMED')
+  self.options.symbols.modified = icon('pencil', ' ', 'NOT SAVED')
+  self.options.symbols.readonly = icon('lock', ' ', 'READ ONLY')
+  self.options.symbols.newfile = icon('file', ' ', 'NEW FILE')
+  self.options.symbols.unnamed = icon('ﱤ ', '▣ ', 'UNNAMED')
   self.status_colors = {
     newfile = highlight.create_component_highlight_group(
       { bg = color.none, fg = color.green, gui = 'bold' },

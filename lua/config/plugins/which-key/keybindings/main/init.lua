@@ -27,35 +27,35 @@ local function setup()
   wk_register({
     ['<c-\\>'] = {
       ':ToggleTerm<cr>',
-      'Toggle terminal ' .. icon('terminal', '', ''),
+      'Toggle terminal ' .. icon('terminal', '', ''),
     },
     ['<c-s>'] = { ':lua save_and_format()<cr>', 'Save and format file' },
     ['<c-h>'] = {
       ':wincmd h<cr>',
-      'Go to right window ' .. icon('arrow-right', '', ''),
+      'Go to right window ' .. icon('arrow-right', '→', ''),
     },
     ['<c-j>'] = {
       ':wincmd j<cr>',
-      'Go to down window ' .. icon('arrow-down', '', ''),
+      'Go to down window ' .. icon('arrow-down', '↓', ''),
     },
     ['<c-k>'] = {
       ':wincmd k<cr>',
-      'Go to up window ' .. icon('arrow-up', '', ''),
+      'Go to up window ' .. icon('arrow-up', '↑', ''),
     },
     ['<c-l>'] = {
       ':wincmd l<cr>',
-      'Go to left window ' .. icon('arrow-left', '', ''),
+      'Go to left window ' .. icon('arrow-left', '←', ''),
     },
     ['<leader>'] = {
-      name = 'Plugins and features ' .. icon('rocket', '✨', ''),
-      S = { ':Alpha<cr>', 'Startup screen ' .. icon('home', '', '') },
+      name = 'Plugins and features ' .. icon('rocket', '', ''),
+      a = { ':Alpha<cr>', 'Alpha screen ' .. icon('home', '', '') },
       f = {
         ':Neotree toggle<cr>',
-        'File explorer ' .. icon('file-directory-open-fill', '🗃️', ''),
+        'File explorer ' .. icon('file-directory-open-fill', '', ''),
       },
       s = {
         ':lua require("utils.startup").sessions:mount()<cr>',
-        'Session manager ' .. icon('project', '', ''),
+        'Session manager ' .. icon('project', '', ''),
       },
       b = require('config.plugins.which-key.keybindings.main.buffers_keys'),
       c = require('config.plugins.which-key.keybindings.main.color_pic_keys'),
@@ -71,13 +71,13 @@ local function setup()
   }, { mode = 'n' })
   wk_register({
     ['<leader>'] = {
-      name = 'Plugins and features ' .. icon('rocket', '✨', ''),
+      name = 'Plugins and features ' .. icon('rocket', '', ''),
       l = {
-        name = 'LSP ' .. icon('server', '', ''),
+        name = 'LSP ' .. icon('server', '', ''),
         a = { ':lua vim.lsp.buf.code_action()<cr>', 'Code action' },
       },
       g = {
-        name = 'GIT ' .. icon('git-branch', '', ''),
+        name = 'GIT ' .. icon('git-branch', '', ''),
         r = { ':Gitsigns reset_hunk<cr>', 'Reset hunk' },
         s = { ':Gitsigns stage_hunk<cr>', 'Stage hunk' },
       },

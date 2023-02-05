@@ -5,9 +5,9 @@ local diff = {
   source = utils.diff_source,
   color = { bg = color.bg },
   symbols = {
-    added = icon('diff-added', '+', 'Added '),
-    modified = icon('diff-modified', '~', 'Modified '),
-    removed = icon('diff-removed', '-', 'Removed '),
+    added = icon('diff-added', ' ', 'Added '),
+    modified = icon('diff-modified', ' ', 'Modified '),
+    removed = icon('diff-removed', ' ', 'Removed '),
   },
   diff_color = {
     added = { fg = color.green },
@@ -21,7 +21,7 @@ local diff = {
 
 local git_branch = {
   utils.branch_source,
-  icon = icon('git-branch', '🔀', 'Branch:'),
+  icon = icon('git-branch', '', 'Branch:'),
   color = { fg = color.orange, gui = 'bold', bg = color.bg },
   on_click = function() lazygit_toggle() end,
 }

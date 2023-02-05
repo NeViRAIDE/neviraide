@@ -5,9 +5,7 @@ return {
     'yamatsum/nvim-nonicons',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      if vim.api.nvim_exec('echo $TERM', '') == 'xterm-kitty' then
-        return require('nvim-nonicons').setup()
-      end
+      if term == 'xterm-kitty' then return require('nvim-nonicons').setup() end
     end,
   },
   {
