@@ -1,4 +1,3 @@
--- FIX: not correct digraphs view
 local M = {
   'folke/noice.nvim',
   dependencies = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' },
@@ -11,12 +10,12 @@ function M.config()
       format = {
         filter = { icon = icon('terminal', '', '!') },
         search_down = {
-          icon = icon('search', '', 'SEARCH')
-            .. icon('chevron-down', ' ', ' >>'),
+          icon = icon('search', '  ', 'SEARCH')
+            .. icon('chevron-down', '', ' >>'),
         },
         search_up = {
-          icon = icon('search', ' ', '<< ')
-            .. icon('chevron-up', '', 'SEARCH'),
+          icon = icon('search', '  ', '<< ')
+            .. icon('chevron-up', '', 'SEARCH'),
         },
         lua = { icon = icon('lua', '', '(lua)') },
         help = { icon = icon('question', '', '(?)') },
@@ -45,6 +44,12 @@ function M.config()
       long_message_to_split = true,
       inc_rename = false,
       lsp_doc_border = true,
+    },
+    routes = {
+      {
+        view = 'split',
+        filter = { min_width = 500 },
+      },
     },
   })
 

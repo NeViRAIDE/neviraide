@@ -163,25 +163,22 @@ local function virtual_env()
   return ''
 end
 
+--{----------------------------------------------------
 -- TODO: make todo_count for lualine
---
--- local a = require('plenary.async_lib')
--- local async, await, run = a.async, a.await, a.run
---
--- local tcs = require('todo-comments.search')
---
--- local count = async(function()
---   tcs.search(async(function(results)
---     local res = await(#results)
---     await(print('inside:', res))
---     return res
---   end))
--- end)
---
--- print('outside simple:', count())
--- print('outside run:', run(count()))
 
----Number of incomplete tasks
+local tcs = require('todo-comments.search')
+
+local count = function()
+  tcs.search(function(results)
+    local res = #results
+    print('You have', res, 'incomplete tasks')
+  end)
+end
+
+-- count()
+--}----------------------------------------------------
+
+---Count of incomplete tasks
 local function todo_count()
   local res = 0
   return 'You have ' .. res .. ' todos.'

@@ -8,7 +8,6 @@ local indent = {
 }
 
 local file_path = {
-  -- TODO: on_click to open neo-tree with focus on selected node
   utils.get_file_path,
   cond = utils.conditions.hide_in_width or utils.conditions.buffer_not_empty,
   color = { bg = color.none },

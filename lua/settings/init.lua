@@ -28,9 +28,6 @@ end
 local settings = {
   path = '$PWD/**',
   sessionoptions = 'blank,buffers,curdir,folds,help,options,tabpages,terminal',
-  -- sessionoptions = 'blank,buffers,curdir,folds,help,options,tabpages,winsize,resize,winpos,terminal',
-  -- FIX: new line after conmment is comment
-  formatoptions = 'jcorql',
   showmatch = true,
   fileformats = 'unix',
   fileencoding = 'utf-8',

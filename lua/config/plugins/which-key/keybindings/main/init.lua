@@ -30,6 +30,7 @@ local function setup()
       'Toggle terminal ' .. icon('terminal', '', ''),
     },
     ['<c-s>'] = { ':lua save_and_format()<cr>', 'Save and format file' },
+    ['<c-q>'] = { ':q<cr>', 'Quit the current window' },
     ['<c-h>'] = {
       ':wincmd h<cr>',
       'Go to right window ' .. icon('arrow-right', '→', ''),

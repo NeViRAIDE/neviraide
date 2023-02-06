@@ -24,6 +24,7 @@ function M.config()
         'lazy',
         'Sqls_output',
         'alpha',
+        'noice',
       },
       component_separators = '',
       section_separators = '',

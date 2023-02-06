@@ -29,7 +29,6 @@ local git_branch = {
 return {
   utils.separator('left'),
   diff,
-  -- FIX: hide if no diff
   utils.separator('', utils.conditions.gitdiff),
   git_branch,
   utils.separator('right', nil, 0, 3),

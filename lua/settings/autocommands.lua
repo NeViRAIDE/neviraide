@@ -1,4 +1,3 @@
--- TODO: close gitsigns on press "q"
 autocmd_multi('NEVIRAIDE_CONF', {
   {
     'BufReadPost',
@@ -118,8 +117,15 @@ autocmd_multi('NEVIRAIDE_CURSOR', {
       end,
     },
   },
+  {
+    'FileType',
+    {
+      pattern = '*',
+      desc = "Don't add the comment prefix when I hit enter or o/O on a comment line.",
+      callback = function() vim.o.formatoptions = 'jcrql' end,
+    },
+  },
 })
-
 autocmd('NEVIRIDE_CODELENS', { 'CursorHold', 'CursorHoldI', 'InsertLeave' }, {
   pattern = { '*.go', '*.mod' },
   callback = function() vim.lsp.codelens.refresh() end,
