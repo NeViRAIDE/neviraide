@@ -38,6 +38,8 @@ function M.config()
     preselect = cmp.PreselectMode.None,
     completion = { completeopt = 'menu,menuone,noselect' },
     mapping = cmp.mapping.preset.insert({
+      ['<C-k>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-j>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
       ['<C-CR>'] = cmp.mapping.complete(),
       ['<C-q>'] = cmp.mapping.close(),
       ['<CR>'] = cmp.mapping.confirm({

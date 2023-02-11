@@ -35,14 +35,6 @@ local function setup()
       ':wincmd h<cr>',
       'Go to right window ' .. icon('arrow-right', '→', ''),
     },
-    ['<c-j>'] = {
-      ':wincmd j<cr>',
-      'Go to down window ' .. icon('arrow-down', '↓', ''),
-    },
-    ['<c-k>'] = {
-      ':wincmd k<cr>',
-      'Go to up window ' .. icon('arrow-up', '↑', ''),
-    },
     ['<c-l>'] = {
       ':wincmd l<cr>',
       'Go to left window ' .. icon('arrow-left', '←', ''),

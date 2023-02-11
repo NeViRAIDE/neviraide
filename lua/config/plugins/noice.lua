@@ -42,7 +42,6 @@ function M.config()
       bottom_search = true,
       command_palette = true,
       long_message_to_split = true,
-      inc_rename = false,
       lsp_doc_border = true,
     },
     routes = {
@@ -53,7 +52,6 @@ function M.config()
     },
   })
 
-  -- FIX: not working!
   vim.keymap.set({ 'n', 'i', 's' }, '<c-j>', function()
     if not require('noice.lsp').scroll(4) then return ':wincmd j<cr>' end
   end, { silent = true, expr = true })
