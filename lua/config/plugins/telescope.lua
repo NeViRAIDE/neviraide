@@ -2,10 +2,16 @@ local M = {
   'nvim-telescope/telescope.nvim',
   version = '0.1.0',
   event = 'VeryLazy',
-  dependencies = {
-    'nvim-telescope/telescope-symbols.nvim',
-  },
+  dependencies = { 'nvim-telescope/telescope-symbols.nvim' },
 }
+
+local customize = {
+  ---@return number
+  buffers_height = function()
+    return 4 + vim.api.nvim_exec('echo len(getbufinfo({"buflisted":1}))', '')
+  end,
+}
+
 function M.config()
   local telescope = require('telescope')
   local action = require('telescope.actions')
@@ -23,7 +29,7 @@ function M.config()
         previewer = false,
         sort_lastused = true,
         layout_config = {
-          height = 0.3,
+          height = customize.buffers_height,
           width = 0.5,
         },
       },
@@ -54,7 +60,7 @@ function M.config()
         theme = 'dropdown',
         layout_config = {
           width = 0.6,
-          height = 0.3,
+          height = 14,
         },
       },
       help_tags = {
@@ -64,7 +70,7 @@ function M.config()
           width = 0.9,
           prompt_position = 'top',
           scroll_speed = 2,
-          preview_width = 0.7,
+          preview_width = 0.6,
         },
       },
       man_pages = {

@@ -1,5 +1,5 @@
 # NEVIRAIDE
-Fast, comfortable and light GolangIDE
+Fast, comfortable and light IDE
 ---
 ![Welcome](./neviraide_screens/dashboard1.gif)
 

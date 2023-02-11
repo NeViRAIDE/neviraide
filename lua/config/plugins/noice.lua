@@ -53,14 +53,16 @@ function M.config()
     },
   })
 
-  vim.keymap.set('n', '<c-j>', function()
+  -- FIX: not working!
+  vim.keymap.set({ 'n', 'i', 's' }, '<c-j>', function()
     if not require('noice.lsp').scroll(4) then return ':wincmd j<cr>' end
   end, { silent = true, expr = true })
 
-  vim.keymap.set('n', '<c-k>', function()
+  vim.keymap.set({ 'n', 'i', 's' }, '<c-k>', function()
     if not require('noice.lsp').scroll(-4) then return ':wincmd k<cr>' end
   end, { silent = true, expr = true })
 
+  -- execute cmdmode command and stay cmdline open
   vim.keymap.set(
     'c',
     '<S-Enter>',
