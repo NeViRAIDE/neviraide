@@ -1,7 +1,7 @@
 local M = {
   'neovim/nvim-lspconfig',
   name = 'lsp',
-  event = 'BufReadPre',
+  -- event = 'BufReadPre',
   dependencies = { 'hrsh7th/cmp-nvim-lsp' },
 }
 
@@ -10,7 +10,7 @@ function M.config()
   require('config.plugins.lsp.diagnostics').setup()
 
   require('config.plugins.lsp.servers.gopls')
-  require('config.plugins.lsp.servers.sumneko_lua')
+  require('config.plugins.lsp.servers.lua_ls')
   require('config.plugins.lsp.servers.html')
   require('config.plugins.lsp.servers.bash')
   require('config.plugins.lsp.servers.json')

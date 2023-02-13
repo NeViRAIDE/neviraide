@@ -1,4 +1,4 @@
-require('lspconfig').sumneko_lua.setup({
+require('lspconfig').lua_ls.setup({
   on_attach = require('config.plugins.lsp.on_attach').build(),
   capabilities = require('config.plugins.lsp.capabilities').build(),
   flags = { debounce_text_changes = 150 },
@@ -18,7 +18,7 @@ require('lspconfig').sumneko_lua.setup({
       },
       telemetry = { enable = false },
       format = { enable = false },
-      hint = { enable = true }
+      hint = { enable = true },
     },
   },
 })

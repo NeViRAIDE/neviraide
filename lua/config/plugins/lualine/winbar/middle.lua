@@ -23,8 +23,8 @@ local vim_mode = {
       i = icon('vim-insert-mode', 'I', 'INSERT'),
       c = icon('vim-command-mode', 'C', 'COMMAND'),
       v = icon('vim-visual-mode', 'V', 'VISUAL'),
-      [''] = icon('vim-visual-mode' .. '-Block', 'V-Block', 'V-BLOCK'),
-      V = icon('vim-visual-mode' .. '-Line', 'V-Line', 'V-LINE'),
+      V = icon('vim-visual-mode', 'V', 'VISUAL') .. '-Line',
+      [''] = icon('vim-visual-mode', 'VISUAL', 'V') .. '-Block',
       R = icon('vim-replace-mode', 'R', 'REPLACE'),
       t = icon('vim-terminal-mode', 'T', 'TERMINAL'),
     }

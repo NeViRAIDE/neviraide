@@ -16,7 +16,6 @@ function M.config()
     sources = {
       code_action.gitsigns,
       code_action.gomodifytags,
-      code_action.refactoring,
       code_action.shellcheck,
       hover.dictionary,
       formatting.shfmt,

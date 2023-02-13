@@ -9,10 +9,41 @@ return {
     end,
   },
   {
+    'lewis6991/gitsigns.nvim',
+    event = 'BufReadPre',
+    config = function()
+      require('gitsigns').setup({ preview_config = { border = 'rounded' } })
+    end,
+  },
+  {
+    'danymat/neogen',
+    event = 'BufReadPre',
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    config = function() require('neogen').setup({ snippet_engine = 'luasnip' }) end,
+  },
+  {
+    'uga-rosa/ccc.nvim',
+    event = 'BufReadPre',
+    config = function()
+      require('ccc').setup({ highlighter = { auto_enable = true } })
+    end,
+  },
+  {
     'olexsmir/gopher.nvim',
-    event = 'VeryLazy',
+    event = 'BufReadPre',
+    config = function()
+      require('gopher').setup()
+      require('gopher.dap').setup()
+      require('utils.golang')
+    end,
   },
   { 'ggandor/lightspeed.nvim', event = 'BufReadPre' },
+  -- FIX: invisible cursor after load session
+  {
+    'Shatur/neovim-session-manager',
+    event = 'VeryLazy',
+    config = true,
+  },
   {
     'nvim-treesitter/nvim-treesitter-context',
     event = 'BufReadPre',
