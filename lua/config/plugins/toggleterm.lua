@@ -1,3 +1,4 @@
+-- FIX: not correct work when there are split windows
 local M = {
   'akinsho/toggleterm.nvim',
   version = '*',

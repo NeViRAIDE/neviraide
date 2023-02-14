@@ -12,7 +12,7 @@ local file_path = {
   cond = utils.conditions.hide_in_width or utils.conditions.buffer_not_empty,
   color = { bg = color.none },
   padding = { left = 0, right = 0 },
-  on_click = function() vim.fn.execute('NeoTreeFocusToggle') end,
+  on_click = function() vim.fn.execute('Neotree reveal toggle') end,
 }
 
 local file_icon = {
@@ -28,7 +28,7 @@ local file_name = {
   newfile_status = true,
   cond = utils.conditions.buffer_not_empty,
   padding = { left = 1, right = 0 },
-  on_click = function() vim.fn.execute('Neotree toggle float buffers') end,
+  on_click = function() vim.fn.execute('Neotree buffers focus float') end,
 }
 
 local indent_with_triange = {
