@@ -23,7 +23,9 @@ local git_branch = {
   utils.branch_source,
   icon = icon('git-branch', '', 'Branch:'),
   color = { fg = color.orange, gui = 'bold', bg = color.bg },
-  on_click = function() lazygit_toggle() end,
+  on_click = function()
+    vim.fn.execute('Neotree position=right git_status toggle')
+  end,
 }
 
 return {

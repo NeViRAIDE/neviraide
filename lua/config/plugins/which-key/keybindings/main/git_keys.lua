@@ -1,7 +1,7 @@
 return {
   name = 'GIT ' .. icon('git-branch', '', ''),
   l = { ':lua lazygit_toggle()<CR>', 'Lazygit' },
-  s = { ':NeoTreeFloatToggle git_status<CR>', 'Status' },
+  s = { ':Neotree position=right git_status toggle<CR>', 'Status' },
   r = { ':Gitsigns reset_hunk<cr>', 'Reset hunk' },
   b = { ':Gitsigns blame_line<cr>', 'Blame line' },
   d = { ':Gitsigns diffthis<cr>', 'Diff this ' .. icon('diff', '', '') },
