@@ -28,7 +28,7 @@ local file_name = {
   newfile_status = true,
   cond = utils.conditions.buffer_not_empty,
   padding = { left = 1, right = 0 },
-  on_click = function() vim.fn.execute('Telescope buffers') end,
+  on_click = function() vim.fn.execute('Neotree toggle float buffers') end,
 }
 
 local indent_with_triange = {
