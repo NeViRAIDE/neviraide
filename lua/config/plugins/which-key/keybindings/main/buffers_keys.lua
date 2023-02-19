@@ -6,4 +6,5 @@ return {
   D = { ':%bd | Alpha<cr>', 'Delete all buffers' },
   C = { ':%bd | e# | bd#<cr>', 'Delete buffers except current' },
   l = { '<cmd>Telescope buffers<cr>', 'List' },
+  L = { '<cmd>Neotree buffers focus float<cr>', 'List (Neotree)' },
 }

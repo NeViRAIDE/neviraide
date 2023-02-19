@@ -22,11 +22,12 @@ return {
     config = function() require('neogen').setup({ snippet_engine = 'luasnip' }) end,
   },
   {
-    -- FIX: remove colors from neotree buffers float findow (number of buffer)
     'uga-rosa/ccc.nvim',
     event = 'BufReadPre',
     config = function()
-      require('ccc').setup({ highlighter = { auto_enable = true } })
+      require('ccc').setup({
+        highlighter = { auto_enable = true, excludes = { 'neo-tree' } },
+      })
     end,
   },
   {

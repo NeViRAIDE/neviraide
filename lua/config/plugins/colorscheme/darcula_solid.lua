@@ -34,3 +34,17 @@ hi('LspCodeLens', { fg = color.grey })
 hi('LspCodeLensSeparator', { link = 'Boolean' })
 hi('SessionManagerText', { fg = color.violet })
 hi('SessionManagerBorder', { fg = color.indigo })
+-- cmp
+hi(
+  'CmpItemAbbrDeprecated',
+  { bg = color.none, strikethrough = true, fg = '#808080' }
+)
+-- hi('CmpItemAbbrMatch', { bg = color.none, fg = '#569CD6' })
+hi('CmpItemKindVariable', { bg = color.none, fg = '#9CDCFE' })
+hi('CmpItemKindSnippetDefault', { bg = color.none, fg = color.green })
+hi('CmpItemKindText', { bg = color.none, fg = '#8fa867' })
+hi('CmpItemKindFunction', { bg = color.none, fg = '#ffc66b' })
+hi('CmpItemKindMethod', { bg = color.none, fg = '#ffc66b' })
+hi('CmpItemKindKeyword', { bg = color.none, fg = '#cd7832' })
+hi('CmpItemKindProperty', { bg = color.none, fg = '#a781bb' })
+hi('CmpItemKindUnit', { bg = color.none, fg = '#a781bb' })
