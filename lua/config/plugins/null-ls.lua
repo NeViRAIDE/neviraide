@@ -34,6 +34,17 @@ function M.config()
           'Always',
         },
       }),
+      formatting.prettier.with({
+        extra_args = {
+          '--jsx-single-quote',
+          '--vue-indent-script-and-style',
+          '--no-semi',
+          '--single-quote',
+          '--single-attribute-per-line',
+          '--trailing-comma',
+          'none',
+        },
+      }),
     },
   })
 end

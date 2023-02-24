@@ -9,7 +9,7 @@ require('lspconfig').html.setup({
       css = true,
       javascript = true,
     },
-    provideFormatter = true,
+    provideFormatter = false,
   },
   settings = {
     html = {

@@ -18,7 +18,15 @@ autocmd_multi('NEVIRAIDE_CONF', {
   {
     'FileType',
     {
-      pattern = { 'lua', 'javascript', 'json', 'htmldjango', 'html', 'css' },
+      pattern = {
+        'lua',
+        'vue',
+        'javascript',
+        'json',
+        'htmldjango',
+        'html',
+        'css',
+      },
       desc = 'Set up indent size',
       callback = function()
         vim.o.softtabstop = 2

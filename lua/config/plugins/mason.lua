@@ -31,6 +31,7 @@ function M.config()
       'dockerls',
       'jsonls',
       'yamlls',
+      'vue-language-server',
     },
     automatic_installation = true,
   })
@@ -41,7 +42,7 @@ function M.config()
     return
   end
   mason_null_ls.setup({
-    ensure_installed = { 'stylua', 'shfmt', 'jq', 'shellcheck' },
+    ensure_installed = { 'stylua', 'shfmt', 'jq', 'shellcheck', 'prettier' },
     automatic_installation = true,
   })
 end

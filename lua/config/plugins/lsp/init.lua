@@ -17,6 +17,7 @@ function M.config()
   require('config.plugins.lsp.servers.yaml')
   require('config.plugins.lsp.servers.docker')
   require('config.plugins.lsp.servers.sql')
+  require('config.plugins.lsp.servers.volar')
 end
 
 return M
