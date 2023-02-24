@@ -17,6 +17,9 @@ local function get_file_path()
   for _, cur in ipairs(path_list) do
     file_path = (cur == '.' or cur == '~') and ''
       or file_path
+        .. ' %#Directory#'
+        .. icon('file-directory-open-fill', '📂', '')
+        .. ' '
         .. cur
         .. ' %#LspSagaWinbarSep#'
         .. icon('triangle-right', '▶ ', '> ')
