@@ -40,11 +40,18 @@ return {
     end,
   },
   { 'ggandor/lightspeed.nvim', event = 'BufReadPre' },
-  -- FIX: invisible cursor after load session
   {
     'Shatur/neovim-session-manager',
     event = 'VeryLazy',
-    config = true,
+    config = function()
+      require('session_manager').setup({
+        sessions_dir = require('plenary.path'):new(
+          vim.fn.stdpath('cache'),
+          'sessions'
+        ),
+        autosave_last_session = false,
+      })
+    end,
   },
   {
     'nvim-treesitter/nvim-treesitter-context',

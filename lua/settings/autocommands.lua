@@ -22,6 +22,7 @@ autocmd_multi('NEVIRAIDE_CONF', {
         'lua',
         'vue',
         'javascript',
+        'typescript',
         'json',
         'htmldjango',
         'html',
@@ -90,7 +91,7 @@ autocmd_multi('NEVIRAIDE_KEYS', {
         vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
         vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
         vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
-        -- vim.keymap.set('t', '<esc>', [[<c-\><c-n>]], opts)
+        vim.keymap.set('t', '<esc>', [[<c-\><c-n>]], opts)
         vim.o.number = false
         vim.o.relativenumber = false
       end,

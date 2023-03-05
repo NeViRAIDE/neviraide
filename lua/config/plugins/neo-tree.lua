@@ -56,9 +56,17 @@ function M.config()
       },
     },
     filesystem = {
+      filtered_items = {
+        always_show = {
+          '.gitignore',
+        },
+      },
       use_libuv_file_watcher = true,
       follow_current_file = true,
       hijack_netrw_behavior = 'open_current',
+    },
+    nesting_rules = {
+      ['js'] = { 'js.map' },
     },
   })
 end

@@ -27,7 +27,7 @@ end
 
 local settings = {
   path = '$PWD/**',
-  sessionoptions = 'blank,buffers,curdir,folds,help,options,tabpages,terminal',
+  sessionoptions = 'blank,buffers,curdir,folds,help,options,tabpages,terminal,globals,localoptions,tabpages',
   showmatch = true,
   fileformats = 'unix',
   fileencoding = 'utf-8',
