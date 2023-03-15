@@ -66,15 +66,4 @@ return {
   'nvim-lua/plenary.nvim',
   'ray-x/lsp_signature.nvim',
   'nanotee/sqls.nvim',
-  {
-    'simrat39/symbols-outline.nvim',
-    lazy = false,
-    config = function()
-      require('symbols-outline').setup({
-        relative_width = false,
-        auto_close = false,
-        width = 15,
-      })
-    end,
-  },
 }
