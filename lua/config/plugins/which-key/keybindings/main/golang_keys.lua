@@ -7,7 +7,7 @@ return {
   },
   T = {
     name = 'Tests',
-    r = { ':!go test<CR>', 'Run tests' },
+    r = { ':lua require("utils.golang").goTestRun()<cr>', 'Run tests' },
     g = {
       name = 'Generate',
       o = { ':GoTestAdd<cr>', 'One test for function/method' },

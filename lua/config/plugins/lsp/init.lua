@@ -1,7 +1,6 @@
 local M = {
   'neovim/nvim-lspconfig',
   name = 'lsp',
-  -- event = 'BufReadPre',
   dependencies = { 'hrsh7th/cmp-nvim-lsp' },
 }
 
@@ -18,7 +17,8 @@ function M.config()
   require('config.plugins.lsp.servers.docker')
   require('config.plugins.lsp.servers.sql')
   require('config.plugins.lsp.servers.volar')
-  require('config.plugins.lsp.servers.emmet')
+  require('config.plugins.lsp.servers.cssls')
+  require('config.plugins.lsp.servers.toml')
 end
 
 return M

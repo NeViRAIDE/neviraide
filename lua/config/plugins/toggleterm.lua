@@ -1,3 +1,4 @@
+-- TODO: find alternatives
 -- FIX: not correct work when there are split windows
 local M = {
   'akinsho/toggleterm.nvim',
@@ -7,7 +8,7 @@ local M = {
 
 function M.config()
   require('toggleterm').setup({
-    open_mapping = [[<c-\>]],
+    open_mapping = '<C-\\>',
     size = function(term)
       if term.direction == 'horizontal' then
         return vim.o.lines * 0.4

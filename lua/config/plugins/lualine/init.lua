@@ -11,11 +11,11 @@ function M.config()
       'toggleterm',
       'nvim-dap-ui',
       'man',
+      'symbols-outline',
     },
     options = {
       disabled_filetypes = {
-        winbar = { 'dashboard', 'neo-tree' },
-        tabline = { 'toggleterm', 'neo-tree' },
+        winbar = { 'neo-tree', 'toggleterm', 'dap-repl', 'outline' },
         'lspinfo',
         'mason',
         'filesystem',
@@ -25,6 +25,9 @@ function M.config()
         'Sqls_output',
         'alpha',
         'noice',
+        'checkhealth',
+        -- 'nui',
+        -- 'nuiui',
       },
       component_separators = '',
       section_separators = '',

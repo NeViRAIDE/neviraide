@@ -1,6 +1,27 @@
 ---@type string
 _G.term = vim.api.nvim_exec('echo $TERM', '')
 
+-- TODO: make short expand function
+
+---Return different conditions of current file path.
+--- Possible arguments:
+--- "file"     - only filename
+--- "dir_file" - directory with filename
+--- "dir_only" - directory containing file
+--- "full"     - full path
+---@param length string
+function _G.filePath(length)
+  if length == 'file' then
+    return vim.api.nvim_exec('echo expand("%:t")', '')
+  elseif length == 'dir_file' then
+    return vim.api.nvim_exec('echo @%', '')
+  elseif length == 'dir_only' then
+    return vim.api.nvim_exec('echo expand("%:h")', '')
+  elseif length == 'full' then
+    return vim.api.nvim_exec('echo expand("%:p")', '')
+  end
+end
+
 function _G.opt(o, v, scopes)
   scopes = scopes or { vim.o }
   for _, s in ipairs(scopes) do

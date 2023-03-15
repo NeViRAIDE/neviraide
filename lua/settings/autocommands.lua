@@ -81,17 +81,17 @@ autocmd_multi('NEVIRAIDE_CONF', {
 
 autocmd_multi('NEVIRAIDE_KEYS', {
   {
-    'TermOpen',
+    { 'TermOpen', 'TermEnter' },
     {
       pattern = 'term://*',
       desc = 'Add keymaps to go out from terminal',
       callback = function()
         local opts = { buffer = 0 }
-        vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-        vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-        vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-        vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
-        vim.keymap.set('t', '<esc>', [[<c-\><c-n>]], opts)
+        vim.keymap.set('t', '<C-j>', '<Cmd>wincmd j<CR>', opts)
+        vim.keymap.set('t', '<C-k>', '<Cmd>wincmd k<CR>', opts)
+        vim.keymap.set('t', '<C-h>', '<Cmd>wincmd h<CR>', opts)
+        vim.keymap.set('t', '<C-l>', '<Cmd>wincmd l<CR>', opts)
+        vim.keymap.set('t', '<esc>', '<C-\\><C-n>', opts)
         vim.o.number = false
         vim.o.relativenumber = false
       end,
@@ -136,6 +136,6 @@ autocmd_multi('NEVIRAIDE_CURSOR', {
   },
 })
 autocmd('NEVIRIDE_CODELENS', { 'CursorHold', 'CursorHoldI', 'InsertLeave' }, {
-  pattern = { '*.go', '*.mod' },
+  pattern = { '*.go', '*.mod', '*.vue', '*.js', '*.ts' },
   callback = function() vim.lsp.codelens.refresh() end,
 })

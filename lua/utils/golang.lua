@@ -23,12 +23,13 @@ local function inputMod()
     },
   }, {
     prompt = '',
-    default_value = '',
+    default_value = 'github.com/',
     on_close = function()
       require('notify').notify('Mod init canceled!', 'error')
     end,
     on_submit = function(value)
       vim.fn.execute('GoMod init ' .. value)
+      -- FIX: change "restart" to "start" and "stop" with 3 second waiting
       vim.fn.execute('LspRestart')
     end,
   })
@@ -55,7 +56,7 @@ local function goGet()
     },
   }, {
     prompt = '',
-    default_value = '',
+    default_value = 'github.com/',
     on_close = function()
       require('notify').notify('Getting packages canceled!', 'error')
     end,
@@ -70,7 +71,7 @@ end
 
 local tagsAdd = Menu({
   position = { row = -1, col = 1 },
-  size = { width = 10, height = 2 },
+  size = { width = 10, height = 3 },
   border = {
     style = 'rounded',
     text = { top = ' Add tags ', top_align = 'center' },
@@ -82,6 +83,7 @@ local tagsAdd = Menu({
   lines = {
     Menu.item('json'),
     Menu.item('yaml'),
+    Menu.item('toml'),
   },
   max_width = 10,
   keymap = {
@@ -90,7 +92,7 @@ local tagsAdd = Menu({
     close = { '<Esc>', '<C-c>', 'q' },
     submit = { '<CR>' },
   },
-  on_close = function() require('notify').notify('Add tags canceld!', 'error') end,
+  on_close = function() require('notify').notify("Tags wasn't added!", 'error') end,
   on_submit = function(item)
     print(item.text)
     vim.fn.execute('GoTagAdd ' .. item.text)
@@ -99,7 +101,7 @@ local tagsAdd = Menu({
 
 local tagsRemove = Menu({
   position = { row = -1, col = 1 },
-  size = { width = 12, height = 2 },
+  size = { width = 12, height = 3 },
   border = {
     style = 'rounded',
     text = { top = ' Remove tags ', top_align = 'center' },
@@ -111,6 +113,7 @@ local tagsRemove = Menu({
   lines = {
     Menu.item('json'),
     Menu.item('yaml'),
+    Menu.item('toml'),
   },
   max_width = 20,
   keymap = {
@@ -120,7 +123,7 @@ local tagsRemove = Menu({
     submit = { '<CR>' },
   },
   on_close = function()
-    require('notify').notify('Revoming tags canceled!', 'error')
+    require('notify').notify("Tags wasn't removed!", 'error')
   end,
   on_submit = function(item) vim.fn.execute('GoTagRm ' .. item.text) end,
 })
@@ -176,7 +179,7 @@ local function goRun()
     },
   }, {
     prompt = '',
-    default_value = '',
+    default_value = filePath('file'),
     on_close = function()
       require('notify').notify('Running was canceled!', 'error')
     end,
@@ -206,7 +209,7 @@ local function goBuild()
     },
   }, {
     prompt = '',
-    default_value = '',
+    default_value = filePath('file'),
     on_close = function()
       require('notify').notify('Building was canceled!', 'error')
     end,
@@ -214,6 +217,37 @@ local function goBuild()
       vim.fn.execute('TermExec direction=float cmd="go build ' .. value .. '"')
     end,
   })
+  input:on(event.BufLeave, function() input:unmount() end)
+  input:mount()
+end
+
+local function goTestRun()
+  local input = Input({
+    position = '50%',
+    size = { width = 35 },
+    border = {
+      style = 'rounded',
+      text = {
+        top = ' Run tests in: ',
+        top_align = 'center',
+      },
+      padding = { 0, 1 },
+    },
+    relative = 'editor',
+    win_options = {
+      winhighlight = 'Normal:Normal,FloatBorder:DevIconPp',
+    },
+  }, {
+    prompt = './',
+    default_value = filePath('dir_only'),
+    on_close = function()
+      require('notify').notify("Testing wasn't running!", 'error')
+    end,
+    on_submit = function(value)
+      vim.fn.execute('TermExec direction=float cmd="go test ./' .. value .. '"')
+    end,
+  })
+  -- TODO: press enter to quit from terminal
   input:on(event.BufLeave, function() input:unmount() end)
   input:mount()
 end
@@ -226,4 +260,5 @@ return {
   goInterface = goInterface,
   tagsAdd = tagsAdd,
   tagsRemove = tagsRemove,
+  goTestRun = goTestRun,
 }

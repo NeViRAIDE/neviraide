@@ -26,12 +26,11 @@ function M.config()
       'gopls',
       'html',
       'sumneko_lua',
-      'gopls',
       'bashls',
       'dockerls',
       'jsonls',
       'yamlls',
-      'vue-language-server',
+      'volar',
     },
     automatic_installation = true,
   })

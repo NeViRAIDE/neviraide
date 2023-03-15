@@ -1,0 +1,1 @@
+require('lspconfig').taplo.setup({})

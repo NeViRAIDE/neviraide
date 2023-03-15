@@ -10,7 +10,7 @@ return {
   w = { '<cmd>Telescope live_grep<cr>', 'Find word' },
   h = { '<cmd>Telescope help_tags<cr>', 'Help tags' },
   H = { '<cmd>Telescope highlights<cr>', 'Highlights' },
-  s = {
+  e = {
     '<cmd>lua require"telescope.builtin".symbols{ sources = {"emoji", "kaomoji", "gitmoji"} }<cr>',
     -- '<cmd>Telescope symbols<cr>',
     'Emoji',
