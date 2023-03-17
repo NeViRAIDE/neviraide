@@ -1,88 +1,62 @@
 require('settings.autocommands')
 
-local disabled_built_ins = {
-  'netrw',
-  'netrwPlugin',
-  'netrwSettings',
-  'netrwFileHandlers',
-  'gzip',
-  'zip',
-  'zipPlugin',
-  'tar',
-  'tarPlugin',
-  'getscript',
-  'getscriptPlugin',
-  'vimball',
-  'vimballPlugin',
-  '2html_plugin',
-  'logipat',
-  'rrhelper',
-  'spellfile_plugin',
-  'matchit',
-}
+vim.opt.shortmess:append('sI')
 
-for _, plugin in pairs(disabled_built_ins) do
-  vim.g['loaded_' .. plugin] = 1
+for _, provider in ipairs({ 'perl', 'ruby', 'python3' }) do
+  vim.g['loaded_' .. provider .. '_provider'] = 0
 end
 
 local settings = {
-  path = '$PWD/**',
-  sessionoptions = 'blank,buffers,curdir,folds,help,options,tabpages,terminal,globals,localoptions,tabpages',
-  showmatch = true,
-  fileformats = 'unix',
-  fileencoding = 'utf-8',
-  listchars = 'space: ',
-  virtualedit = 'block',
+  -- Visual
   completeopt = 'menuone,noselect,noinsert',
-  clipboard = 'unnamed,unnamedplus',
-  inccommand = 'split',
-  mouse = 'a',
-  winblend = 15,
-  conceallevel = 0,
-  laststatus = 3,
-  softtabstop = 4,
-  tabstop = 4,
-  shiftwidth = 4,
-  scrolloff = 7,
-  pumheight = 7,
-  pumwidth = 15,
-  pumblend = 15,
-  updatetime = 150,
-  ruler = true,
-  lazyredraw = false,
-  magic = true,
-  number = true,
-  relativenumber = true,
-  termguicolors = true,
-  smarttab = true,
-  hidden = true,
-  ignorecase = true,
-  shiftround = true,
-  smartcase = true,
-  splitbelow = true,
-  splitright = true,
-  breakindent = true,
+  confirm = true,
   cursorline = true,
-  swapfile = false,
-  showmode = false,
-  undofile = false,
-  wrap = false,
   hlsearch = false,
+  pumblend = 15,
+  scrolloff = 7,
+  showmatch = true,
+  showmode = false,
+  termguicolors = true,
+  winblend = 15,
+  wrap = false,
+
+  -- Indenting
+  shiftround = true,
+  shiftwidth = 4,
+  tabstop = 4,
+  softtabstop = 4,
   expandtab = true,
   smartindent = true,
-  autoindent = true,
+  breakindent = true,
   copyindent = true,
   preserveindent = true,
-  autoread = true,
+
+  -- Numbers
+  number = true,
+  relativenumber = true,
+  ruler = false,
+
+  -- Split window position
+  splitbelow = true,
+  splitright = true,
+
+  -- Other
+  clipboard = 'unnamed,unnamedplus',
+  fileformats = 'unix',
+  fileencoding = 'utf-8',
+  ignorecase = true,
+  inccommand = 'split',
+  laststatus = 3,
+  listchars = 'space: ',
+  mouse = 'a',
+  path = '$PWD/**',
+  sessionoptions = 'blank,buffers,curdir,folds,help,options,tabpages,terminal,globals,localoptions,tabpages',
+  smartcase = true,
+  swapfile = false,
+  updatetime = 150,
+  virtualedit = 'block',
 }
 
 for i, set in pairs(settings) do
   vim.opt[i] = set
 end
-
-vim.cmd([[
-    let &fcs='eob: '
-    filetype plugin on
-    let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-]])

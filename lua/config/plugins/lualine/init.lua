@@ -26,8 +26,7 @@ function M.config()
         'alpha',
         'noice',
         'checkhealth',
-        -- 'nui',
-        -- 'nuiui',
+        -- FIX: hide lualine when open nui elements
       },
       component_separators = '',
       section_separators = '',

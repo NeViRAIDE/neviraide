@@ -244,12 +244,18 @@ local function goTestRun()
       require('notify').notify("Testing wasn't running!", 'error')
     end,
     on_submit = function(value)
-      vim.fn.execute('TermExec direction=float cmd="go test ./' .. value .. '"')
+      vim.fn.execute(
+        'TermExec direction=float cmd="go test -v ./' .. value .. '"'
+      )
     end,
   })
   -- TODO: press enter to quit from terminal
   input:on(event.BufLeave, function() input:unmount() end)
   input:mount()
+end
+
+local function goTestAll()
+  vim.fn.execute('TermExec direction=float cmd="go test -v  ./..."')
 end
 
 return {
@@ -261,4 +267,5 @@ return {
   tagsAdd = tagsAdd,
   tagsRemove = tagsRemove,
   goTestRun = goTestRun,
+  goTestAll = goTestAll,
 }

@@ -37,37 +37,42 @@ local function dashNewFile()
 end
 
 local sessions = Menu({
+  relative = 'editor',
   position = '50%',
   border = {
     style = 'rounded',
     text = { top = ' Session manager ', top_align = 'center' },
     padding = { 0, 1 },
   },
-  relative = 'editor',
   win_options = {
     winhighlight = 'Normal:SessionManagerText,FloatBorder:SessionManagerBorder',
   },
 }, {
   lines = {
-    Menu.separator('Save', {
+    Menu.separator('Save ' .. icon('pin', '', ''), {
       char = ' ',
       text_align = 'center',
     }),
-    Menu.item('save_current_session'),
-    Menu.separator('Load', {
+    Menu.item('Save current session', { action = 'save_current_session' }),
+    Menu.separator('', { char = ' ', text_align = 'center' }),
+    Menu.separator('Load ' .. icon('upload', '', ''), {
       char = ' ',
       text_align = 'center',
     }),
-    Menu.item('load_session'),
-    Menu.item('load_last_session'),
-    Menu.item('load_current_dir_session'),
-    Menu.separator('Delete', {
+    Menu.item('Restore last session', { action = 'load_last_session' }),
+    Menu.item('Restore session from list', { action = 'load_session' }),
+    Menu.item(
+      'Restore session from current directory',
+      { action = 'load_current_dir_session' }
+    ),
+    Menu.separator('', { char = ' ', text_align = 'center' }),
+    Menu.separator('Delete ' .. icon('trash', '', ''), {
       char = ' ',
       text_align = 'center',
     }),
-    Menu.item('delete_session'),
+    Menu.item('Remove session from list', { action = 'delete_session' }),
   },
-  max_width = 25,
+  max_width = 40,
   keymap = {
     focus_next = { 'j', '<Down>', '<Tab>' },
     focus_prev = { 'k', '<Up>', '<S-Tab>' },
@@ -77,7 +82,7 @@ local sessions = Menu({
   on_close = function()
     require('notify').notify('Session manager was closed', 'error')
   end,
-  on_submit = function(item) vim.fn.execute('SessionManager ' .. item.text) end,
+  on_submit = function(item) vim.fn.execute('SessionManager ' .. item.action) end,
 })
 
 return {

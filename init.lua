@@ -12,8 +12,6 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 vim.g.mapleader = ' '
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 
 require('utils')
 require('settings.colors')
@@ -26,24 +24,33 @@ require('lazy').setup('config.plugins', {
   performance = {
     rtp = {
       disabled_plugins = {
+        '2html_plugin',
+        'tohtml',
+        'bugreport',
+        'compiler',
+        'ftplugin',
+        'getscript',
+        'getscriptPlugin',
+        'gzip',
+        'logipat',
+        'matchit',
         'netrw',
         'netrwPlugin',
         'netrwSettings',
         'netrwFileHandlers',
-        'gzip',
-        'zip',
-        'zipPlugin',
+        'optwin',
+        'rrhelper',
+        'rplugin',
+        'spellfile_plugin',
+        'syntax',
+        'synmenu',
         'tar',
         'tarPlugin',
-        'getscript',
-        'getscriptPlugin',
+        'tutor',
         'vimball',
         'vimballPlugin',
-        '2html_plugin',
-        'logipat',
-        'rrhelper',
-        'spellfile_plugin',
-        'matchit',
+        'zip',
+        'zipPlugin',
       },
     },
   },

@@ -135,6 +135,7 @@ autocmd_multi('NEVIRAIDE_CURSOR', {
     },
   },
 })
+
 autocmd('NEVIRIDE_CODELENS', { 'CursorHold', 'CursorHoldI', 'InsertLeave' }, {
   pattern = { '*.go', '*.mod', '*.vue', '*.js', '*.ts' },
   callback = function() vim.lsp.codelens.refresh() end,

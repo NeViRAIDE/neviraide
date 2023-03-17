@@ -1,7 +1,10 @@
 ---@type string
 _G.term = vim.api.nvim_exec('echo $TERM', '')
 
--- TODO: make short expand function
+--- Set global highlight
+--- @param name string highlight group
+--- @param value table keys
+function _G.hi(name, value) vim.api.nvim_set_hl(0, name, value) end
 
 ---Return different conditions of current file path.
 --- Possible arguments:
@@ -22,13 +25,6 @@ function _G.filePath(length)
   end
 end
 
-function _G.opt(o, v, scopes)
-  scopes = scopes or { vim.o }
-  for _, s in ipairs(scopes) do
-    s[o] = v
-  end
-end
-
 --- Create autocommand
 ---@param group string
 ---@param events string | table
@@ -39,11 +35,6 @@ function _G.autocmd(group, events, opts, clear)
   opts.group = group
   vim.api.nvim_create_autocmd(events, opts)
 end
-
---- Set global highlight
---- @param name string highlight group
---- @param value table keys
-function _G.hi(name, value) vim.api.nvim_set_hl(0, name, value) end
 
 --- Multi autocommands in one group
 ---@param group string

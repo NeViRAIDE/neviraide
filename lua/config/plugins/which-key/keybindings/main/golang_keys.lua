@@ -7,7 +7,14 @@ return {
   },
   T = {
     name = 'Tests',
-    r = { ':lua require("utils.golang").goTestRun()<cr>', 'Run tests' },
+    a = {
+      ':lua require("utils.golang").goTestAll()<cr>',
+      'Run all tests in root directory',
+    },
+    c = {
+      ':lua require("utils.golang").goTestRun()<cr>',
+      'Run tests in current directory',
+    },
     g = {
       name = 'Generate',
       o = { ':GoTestAdd<cr>', 'One test for function/method' },
