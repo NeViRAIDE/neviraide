@@ -7,6 +7,7 @@ function M.config()
   require('utils')
   require('alpha.term')
 
+  -- FIX: set width dynamic
   local window_width = math.floor(vim.o.columns)
   local term_height = 10
   local term_or_text = nil
@@ -68,7 +69,7 @@ function M.config()
       opts = {
         position = 'center',
         redraw = true,
-        window_config = {},
+        window_config = { zindex = 1 },
       },
     }
     term_padding = { type = 'padding', val = term_height }

@@ -8,6 +8,7 @@ local M = {
 
 function M.config()
   require('toggleterm').setup({
+    -- FIX: not correct opening number+term
     open_mapping = '<C-\\>',
     size = function(term)
       if term.direction == 'horizontal' then

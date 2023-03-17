@@ -34,6 +34,18 @@ local function inputMod()
     end,
   })
   input:on(event.BufLeave, function() input:unmount() end)
+  input:map(
+    'n',
+    { '<Esc>', 'q', '<C-c>' },
+    function() input:unmount() end,
+    { noremap = true, nowait = true }
+  )
+  input:map(
+    'i',
+    { '<Esc>', '<C-q>', '<C-c>' },
+    function() input:unmount() end,
+    { noremap = true, nowait = true }
+  )
   input:mount()
 end
 
@@ -67,6 +79,18 @@ local function goGet()
   })
   input:on(event.BufLeave, function() input:unmount() end)
   input:mount()
+  input:map(
+    'n',
+    { '<Esc>', 'q', '<C-c>' },
+    function() input:unmount() end,
+    { noremap = true, nowait = true }
+  )
+  input:map(
+    'i',
+    { '<Esc>', '<C-q>', '<C-c>' },
+    function() input:unmount() end,
+    { noremap = true, nowait = true }
+  )
 end
 
 local tagsAdd = Menu({
@@ -89,7 +113,7 @@ local tagsAdd = Menu({
   keymap = {
     focus_next = { 'j', '<Down>', '<Tab>' },
     focus_prev = { 'k', '<Up>', '<S-Tab>' },
-    close = { '<Esc>', '<C-c>', 'q' },
+    close = { '<Esc>', '<C-q>', '<C-c>', 'q' },
     submit = { '<CR>' },
   },
   on_close = function() require('notify').notify("Tags wasn't added!", 'error') end,
@@ -119,7 +143,7 @@ local tagsRemove = Menu({
   keymap = {
     focus_next = { 'j', '<Down>', '<Tab>' },
     focus_prev = { 'k', '<Up>', '<S-Tab>' },
-    close = { '<Esc>', '<C-c>', 'q' },
+    close = { '<Esc>', '<C-q>', '<C-c>', 'q' },
     submit = { '<CR>' },
   },
   on_close = function()
@@ -159,6 +183,18 @@ local function goInterface()
   })
   input:on(event.BufLeave, function() input:unmount() end)
   input:mount()
+  input:map(
+    'n',
+    { '<Esc>', 'q', '<C-c>' },
+    function() input:unmount() end,
+    { noremap = true, nowait = true }
+  )
+  input:map(
+    'i',
+    { '<Esc>', '<C-q>', '<C-c>' },
+    function() input:unmount() end,
+    { noremap = true, nowait = true }
+  )
 end
 
 local function goRun()
@@ -189,6 +225,18 @@ local function goRun()
   })
   input:on(event.BufLeave, function() input:unmount() end)
   input:mount()
+  input:map(
+    'n',
+    { '<Esc>', 'q', '<C-c>' },
+    function() input:unmount() end,
+    { noremap = true, nowait = true }
+  )
+  input:map(
+    'i',
+    { '<Esc>', '<C-q>', '<C-c>' },
+    function() input:unmount() end,
+    { noremap = true, nowait = true }
+  )
 end
 
 local function goBuild()
@@ -219,6 +267,18 @@ local function goBuild()
   })
   input:on(event.BufLeave, function() input:unmount() end)
   input:mount()
+  input:map(
+    'n',
+    { '<Esc>', 'q', '<C-c>' },
+    function() input:unmount() end,
+    { noremap = true, nowait = true }
+  )
+  input:map(
+    'i',
+    { '<Esc>', '<C-q>', '<C-c>' },
+    function() input:unmount() end,
+    { noremap = true, nowait = true }
+  )
 end
 
 local function goTestRun()
@@ -252,6 +312,18 @@ local function goTestRun()
   -- TODO: press enter to quit from terminal
   input:on(event.BufLeave, function() input:unmount() end)
   input:mount()
+  input:map(
+    'n',
+    { '<Esc>', 'q', '<C-c>' },
+    function() input:unmount() end,
+    { noremap = true, nowait = true }
+  )
+  input:map(
+    'i',
+    { '<Esc>', '<C-q>', '<C-c>' },
+    function() input:unmount() end,
+    { noremap = true, nowait = true }
+  )
 end
 
 local function goTestAll()

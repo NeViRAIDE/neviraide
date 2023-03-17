@@ -25,7 +25,7 @@ local function dashNewFile()
     prompt = '',
     default_value = '',
     on_close = function()
-      require('notify').notify('New file was not created!', 'error')
+      require('notify').notify("New file wasn't created!", 'error')
     end,
     on_submit = function(value)
       vim.fn.execute('enew')
