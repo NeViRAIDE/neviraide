@@ -22,6 +22,9 @@ local function override_ui_input()
         padding = { 0, 1 },
       },
       win_options = { winhighlight = 'Normal:VertSplit,FloatBorder:DevIconC' },
+      buf_options = {
+        filetype = 'nui',
+      },
     }, {
       default_value = default_value,
       on_close = function() on_done(nil) end,

@@ -43,6 +43,7 @@ function M.config()
   mason_null_ls.setup({
     ensure_installed = { 'stylua', 'shfmt', 'jq', 'shellcheck', 'prettier' },
     automatic_installation = true,
+    automatic_setup = true,
   })
 end
 

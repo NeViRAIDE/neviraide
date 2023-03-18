@@ -21,6 +21,9 @@ local function dashNewFile()
     win_options = {
       winhighlight = 'Normal:String,FloatBorder:AlphaFortune',
     },
+    buf_options = {
+      filetype = 'nui',
+    },
   }, {
     prompt = '',
     default_value = '',
@@ -46,6 +49,9 @@ local sessions = Menu({
   },
   win_options = {
     winhighlight = 'Normal:SessionManagerText,FloatBorder:SessionManagerBorder',
+  },
+  buf_options = {
+    filetype = 'nui',
   },
 }, {
   lines = {

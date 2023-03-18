@@ -6,9 +6,7 @@ local event = require('nui.utils.autocmd').event
 local function inputMod()
   local input = Input({
     position = '50%',
-    size = {
-      width = 40,
-    },
+    size = { width = 40 },
     border = {
       style = 'rounded',
       text = {
@@ -18,9 +16,8 @@ local function inputMod()
       padding = { 0, 2 },
     },
     relative = 'editor',
-    win_options = {
-      winhighlight = 'Normal:Normal,FloatBorder:VertSplit',
-    },
+    win_options = { winhighlight = 'Normal:Normal,FloatBorder:VertSplit' },
+    buf_options = { filetype = 'nui' },
   }, {
     prompt = '',
     default_value = 'github.com/',
@@ -63,9 +60,8 @@ local function goGet()
       padding = { 0.5, 1 },
     },
     relative = 'editor',
-    win_options = {
-      winhighlight = 'Normal:Normal,FloatBorder:VertSplit',
-    },
+    win_options = { winhighlight = 'Normal:Normal,FloatBorder:VertSplit' },
+    buf_options = { filetype = 'nui' },
   }, {
     prompt = '',
     default_value = 'github.com/',
@@ -103,6 +99,7 @@ local tagsAdd = Menu({
   },
   relative = 'cursor',
   win_options = { winhighlight = 'Normal:Normal,FloatBorder:String' },
+  buf_options = { filetype = 'nui' },
 }, {
   lines = {
     Menu.item('json'),
@@ -133,6 +130,7 @@ local tagsRemove = Menu({
   },
   relative = 'cursor',
   win_options = { winhighlight = 'Normal:Normal,FloatBorder:DiagnosticError' },
+  buf_options = { filetype = 'nui' },
 }, {
   lines = {
     Menu.item('json'),
@@ -155,9 +153,7 @@ local tagsRemove = Menu({
 local function goInterface()
   local input = Input({
     position = { row = -1, col = 1 },
-    size = {
-      width = 40,
-    },
+    size = { width = 40 },
     border = {
       style = 'rounded',
       text = {
@@ -167,9 +163,8 @@ local function goInterface()
       padding = { 0, 1 },
     },
     relative = 'cursor',
-    win_options = {
-      winhighlight = 'Normal:Normal,FloatBorder:VertSplit',
-    },
+    win_options = { winhighlight = 'Normal:Normal,FloatBorder:VertSplit' },
+    buf_options = { filetype = 'nui' },
   }, {
     prompt = '',
     default_value = '',
@@ -210,9 +205,8 @@ local function goRun()
       padding = { 0, 1 },
     },
     relative = 'editor',
-    win_options = {
-      winhighlight = 'Normal:Normal,FloatBorder:DevIconCsv',
-    },
+    win_options = { winhighlight = 'Normal:Normal,FloatBorder:DevIconCsv' },
+    buf_options = { filetype = 'nui' },
   }, {
     prompt = '',
     default_value = filePath('file'),
@@ -252,9 +246,8 @@ local function goBuild()
       padding = { 0, 1 },
     },
     relative = 'editor',
-    win_options = {
-      winhighlight = 'Normal:Normal,FloatBorder:DevIconElm',
-    },
+    win_options = { winhighlight = 'Normal:Normal,FloatBorder:DevIconElm' },
+    buf_options = { filetype = 'nui' },
   }, {
     prompt = '',
     default_value = filePath('file'),
@@ -294,9 +287,8 @@ local function goTestRun()
       padding = { 0, 1 },
     },
     relative = 'editor',
-    win_options = {
-      winhighlight = 'Normal:Normal,FloatBorder:DevIconPp',
-    },
+    win_options = { winhighlight = 'Normal:Normal,FloatBorder:DevIconPp' },
+    buf_options = { filetype = 'nui' },
   }, {
     prompt = './',
     default_value = filePath('dir_only'),

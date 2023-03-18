@@ -25,10 +25,9 @@ local function override_ui_select()
       win_options = {
         winhighlight = 'Normal:String,FloatBorder:DevIconCsv',
       },
-      -- HACK: experementally, but works(need to implement to all entries)
-      -- buf_options = {
-      --   filetype = 'help',
-      -- },
+      buf_options = {
+        filetype = 'nui',
+      },
       zindex = 999,
     }
 

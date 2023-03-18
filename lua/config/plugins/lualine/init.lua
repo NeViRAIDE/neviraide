@@ -26,7 +26,8 @@ function M.config()
         'alpha',
         'noice',
         'checkhealth',
-        -- FIX: hide lualine when open nui elements
+        'neo-tree-popup',
+        'nui',
       },
       component_separators = '',
       section_separators = '',
@@ -34,6 +35,7 @@ function M.config()
         normal = { c = { fg = color.fg, bg = color.none } },
         inactive = { c = { fg = color.fg, bg = color.none } },
       },
+      globalstatus = true,
     },
     inactive_sections = {
       lualine_a = {},

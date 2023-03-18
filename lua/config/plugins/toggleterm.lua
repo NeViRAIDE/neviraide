@@ -1,4 +1,5 @@
 -- TODO: find alternatives
+-- NOTE: nvchad have own terminal telescope implementation
 -- FIX: not correct work when there are split windows
 local M = {
   'akinsho/toggleterm.nvim',
