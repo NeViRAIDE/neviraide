@@ -44,7 +44,7 @@ ___
 - delta *(pretty look git diff)*
 </details>
 
-## Installation
+~~~## Installation
 Make sure that all dependecies are installed.
 ###  Auto
 !!! THIS TIME INSTALL SCRIPT NOT READY. I TRY TO MAKE INSTALLATION MORE COMFORTABLE, SO I WILL REWRITE INSTALLATION
@@ -60,7 +60,7 @@ To quick install my vision of neovim (calls NEVIRAIDE) you may download install 
 3. Delete ~/.config/nvim (if exist)
 4. Rename it (from "NEVIRAIDE" to "nvim").
 5. Move our renamed folder to ~/.config 
-___
+___~~~
 
 ### Used plugins
 
