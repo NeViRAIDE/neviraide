@@ -1,3 +1,5 @@
+stopped temporarily
+
 # NEVIRAIDE
 Fast, comfortable and light IDE
 ---
