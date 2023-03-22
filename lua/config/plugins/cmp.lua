@@ -71,6 +71,7 @@ function M.config()
       { name = 'luasnip' },
       { name = 'nvim_lua' },
       { name = 'path' },
+      { name = 'neorg' },
     }, {
       { name = 'buffer' },
       { name = 'calc' },

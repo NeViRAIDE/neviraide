@@ -70,6 +70,7 @@ function M.config()
   hi_navic('NavicIconsEvent', color.white)
   hi_navic('NavicIconsOperator', color.white)
   hi_navic('NavicIconsTypeParameter', color.white)
+
   hi_navic('NavicText', color.white)
   hi_navic('NavicSeparator', color.red)
 end

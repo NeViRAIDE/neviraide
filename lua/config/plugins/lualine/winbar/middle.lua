@@ -27,6 +27,7 @@ local vim_mode = {
       [''] = icon('vim-visual-mode', 'VISUAL', 'V') .. '-Block',
       R = icon('vim-replace-mode', 'R', 'REPLACE'),
       t = icon('vim-terminal-mode', 'T', 'TERMINAL'),
+      s = icon('vim-select-mode', 'S', 'SELECT'),
     }
     return mode_icons[vim.fn.mode()]
   end,
@@ -40,6 +41,7 @@ local vim_mode = {
       c = color.yellow,
       R = color.red,
       t = color.darkYellow,
+      s = color.orange,
     }
     return {
       fg = mode_color[vim.fn.mode()],

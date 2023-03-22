@@ -22,19 +22,24 @@ M.build = function()
     end
     require('lsp_signature').on_attach(signature_config, bufnr)
     if client.server_capabilities.documentHighlightProvider then
-      vim.api.nvim_exec(
-        [[
-            hi LspReferenceRead  gui=bold
-            hi LspReferenceText  gui=bold
-            hi LspReferenceWrite gui=bold
-            augroup lsp_document_highlight
-            autocmd! * <buffer>
-            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            augroup END
-        ]],
-        false
-      )
+      autocmd_multi('lsp_document_highlight', {
+        {
+          'CursorHold',
+          {
+            pattern = '*',
+            desc = "Visual highlighting sybmol's references in document when cursor hold on it",
+            command = 'lua vim.lsp.buf.document_highlight()',
+          },
+        },
+        {
+          'CursorMoved',
+          {
+            pattern = '*',
+            desc = "Reset visual highlighting sybmol's references in document when cursor moved",
+            command = 'lua vim.lsp.buf.clear_references()',
+          },
+        },
+      })
     end
   end
 end

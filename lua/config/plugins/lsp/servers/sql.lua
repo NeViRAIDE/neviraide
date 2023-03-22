@@ -7,7 +7,7 @@ require('lspconfig').sqls.setup({
       connections = {
         {
           driver = 'postgresql',
-          dataSourceName = 'postgres://<user>:<password>@localhost/<database_name>?sslmode=disable',
+          dataSourceName = 'postgres://rori:zaratustra@localhost/restapi_dev?sslmode=disable',
         },
       },
     },

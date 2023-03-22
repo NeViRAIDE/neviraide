@@ -64,6 +64,34 @@ function M.config()
       use_libuv_file_watcher = true,
       follow_current_file = true,
       hijack_netrw_behavior = 'open_current',
+      -- FIX: make short root (only directory)
+
+      -- components = {
+      --   name = function(config, node, state)
+      --     local highlight = config.highlight or highlights.FILE_NAME
+      --     if node.type == 'directory' then
+      --       highlight = highlights.DIRECTORY_NAME
+      --     end
+      --     if node:get_depth() == 1 then
+      --       highlight = highlights.ROOT_NAME
+      --       -- node.name = filePath('dir_only')
+      --     else
+      --       if
+      --         config.use_git_status_colors == nil
+      --         or config.use_git_status_colors
+      --       then
+      --         local git_status = state.components.git_status({}, node, state)
+      --         if git_status and git_status.highlight then
+      --           highlight = git_status.highlight
+      --         end
+      --       end
+      --     end
+      --     return {
+      --       text = node.name,
+      --       highlight = highlight,
+      --     }
+      --   end,
+      -- },
     },
     nesting_rules = {
       ['js'] = { 'js.map' },

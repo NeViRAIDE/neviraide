@@ -3,6 +3,7 @@ local Menu = require('nui.menu')
 
 local event = require('nui.utils.autocmd').event
 
+---wrapper for go mod init
 local function inputMod()
   local input = Input({
     position = '50%',

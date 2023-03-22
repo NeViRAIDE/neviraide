@@ -7,11 +7,9 @@ function M.config()
   require('utils')
   require('alpha.term')
 
-  -- FIX: set width dynamic
-  local window_width = math.floor(vim.o.columns)
+  local term_width = math.floor(vim.o.columns) - 82
   local term_height = 10
   local term_or_text = nil
-  local term_padding = nil
   local ret = os.execute('command -v neo &>/dev/null')
 
   local function nvim_version()
@@ -60,11 +58,17 @@ function M.config()
     return { type = 'button', val = txt, on_press = on_press, opts = opts }
   end
 
-  if ret == 0 and term ~= 'linux' and term ~= 'screen' then
+  if
+    ret == 0
+    and term ~= 'linux'
+    and term ~= 'screen'
+    -- FIX: working only on start
+    -- and vim.api.nvim_exec('echo len(getbufinfo({"buflisted":1}))', '') < '1'
+  then
     term_or_text = {
       type = 'terminal',
       command = "neo --fps=60 --speed=6 -D -a -m 'NEVIRAIDE' -d 0.5 -l 1,1",
-      width = window_width,
+      width = term_width,
       height = term_height,
       opts = {
         position = 'center',
@@ -72,7 +76,6 @@ function M.config()
         window_config = { zindex = 1 },
       },
     }
-    term_padding = { type = 'padding', val = term_height }
   else
     term_or_text = {
       type = 'text',
@@ -89,15 +92,10 @@ function M.config()
       },
       opts = { position = 'center', hl = 'DashboardHeader' },
     }
-    term_padding = {
-      type = 'padding',
-      val = vim.fn.max({ 2, vim.fn.floor(vim.fn.winheight(0) * 0.2) }),
-    }
   end
 
   local config = {
     layout = {
-      term_padding,
       term_or_text,
       { type = 'padding', val = 3 },
       {

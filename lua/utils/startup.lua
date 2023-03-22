@@ -36,6 +36,18 @@ local function dashNewFile()
     end,
   })
   input:on(event.BufLeave, function() input:unmount() end)
+  input:map(
+    'n',
+    { '<Esc>', 'q', '<C-c>' },
+    function() input:unmount() end,
+    { noremap = true, nowait = true }
+  )
+  input:map(
+    'i',
+    { '<Esc>', '<C-q>', '<C-c>' },
+    function() input:unmount() end,
+    { noremap = true, nowait = true }
+  )
   input:mount()
 end
 
@@ -82,7 +94,7 @@ local sessions = Menu({
   keymap = {
     focus_next = { 'j', '<Down>', '<Tab>' },
     focus_prev = { 'k', '<Up>', '<S-Tab>' },
-    close = { '<Esc>', '<C-c>', 'q' },
+    close = { '<Esc>', '<C-c>', '<C-q>', 'q' },
     submit = { '<CR>' },
   },
   on_close = function()
@@ -90,6 +102,8 @@ local sessions = Menu({
   end,
   on_submit = function(item) vim.fn.execute('SessionManager ' .. item.action) end,
 })
+
+-- TODO: realize nui for NEORG
 
 return {
   dashNewFile = dashNewFile,

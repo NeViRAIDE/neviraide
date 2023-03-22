@@ -73,6 +73,7 @@ local count_bufs_by_type = function(loaded_only)
   return count
 end
 
+-- FIX: left "noname" file after "bd"
 function _G.close_buffer()
   local bufTable = count_bufs_by_type()
   if bufTable.normal <= 1 then

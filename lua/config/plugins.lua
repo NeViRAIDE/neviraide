@@ -25,6 +25,7 @@ return {
     'uga-rosa/ccc.nvim',
     event = 'BufReadPre',
     config = function()
+      -- TODO: enable for cmp float windows
       require('ccc').setup({
         highlighter = { auto_enable = true, excludes = { 'neo-tree' } },
       })
@@ -66,4 +67,37 @@ return {
   'nvim-lua/plenary.nvim',
   'ray-x/lsp_signature.nvim',
   'nanotee/sqls.nvim',
+  -- TODO: learn "NEORG"
+  {
+    'nvim-neorg/neorg',
+    -- lazy = false,
+    event = 'VeryLazy',
+    build = ':Neorg sync-parsers',
+    opts = {
+      load = {
+        ['core.ui'] = {},
+        -- ['core.presenter'] = {},
+        ['core.defaults'] = {}, -- Loads default behaviour
+        ['core.norg.concealer'] = {}, -- Adds pretty icons to your documents
+        ['core.integrations.telescope'] = {},
+        ['core.norg.completion'] = {
+          config = {
+            engine = 'nvim-cmp',
+            name = '[Neorg]',
+          },
+        },
+        ['core.norg.dirman'] = { -- Manages Neorg workspaces
+          config = {
+            workspaces = {
+              notes = '~/notes',
+            },
+          },
+        },
+      },
+    },
+    dependencies = {
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-neorg/neorg-telescope' },
+    },
+  },
 }

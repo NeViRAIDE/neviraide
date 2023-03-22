@@ -1,4 +1,5 @@
 require('settings.autocommands')
+require('settings.highlights')
 
 vim.opt.shortmess:append('sI')
 
