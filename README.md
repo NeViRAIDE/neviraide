@@ -1,4 +1,6 @@
-stopped temporarily
+# ORKING VERSION OF MY CONFIG ON "lightIDEgo" branch
+try it
+---
 
 # NEVIRAIDE
 Fast, comfortable and light IDE
