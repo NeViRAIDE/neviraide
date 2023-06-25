@@ -1,4 +1,4 @@
-# ORKING VERSION OF MY CONFIG ON "lightIDEgo" branch
+# WORKING VERSION OF MY CONFIG ON "lightIDEgo" branch
 try it
 ---
 
