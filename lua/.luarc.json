@@ -1,0 +1,20 @@
+{
+    "workspace.library": [
+        "/home/ra/.config/nvim",
+        "/home/ra/.local/share/nvim/lazy/lazy.nvim",
+        "/home/ra/.local/share/nvim/lazy/lsp_signature.nvim",
+        "/home/ra/.local/share/nvim/lazy/nvim-lspconfig",
+        "/home/ra/.local/share/nvim/lazy/mason-lspconfig.nvim",
+        "/home/ra/.local/share/nvim/lazy/mason.nvim",
+        "/home/ra/.local/share/nvim/lazy/nvim-treesitter",
+        "/home/ra/.local/share/nvim/lazy/plenary.nvim",
+        "/home/ra/.local/share/nvim/lazy/nui.nvim",
+        "/home/ra/.local/share/nvim/lazy/nvim-web-devicons",
+        "/home/ra/.local/share/nvim/lazy/neo-tree.nvim",
+        "/home/ra/.local/share/nvim/lazy/tokyonight.nvim",
+        "/usr/share/nvim/runtime",
+        "/usr/lib/nvim",
+        "/home/ra/.local/state/nvim/lazy/readme",
+        "${3rd}/luassert/library"
+    ]
+}

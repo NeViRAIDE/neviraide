@@ -1,0 +1,71 @@
+local component = require('plugins.lualine.components')
+
+return {
+  'nvim-lualine/lualine.nvim',
+  init   = function() require("utils").lazy_load "lualine.nvim" end,
+  config = function()
+    require("lualine").setup(
+      {
+        extensions = {
+          "lazy",
+          'man',
+          'neo-tree',
+          'nvim-dap-ui',
+          'nvim-dap-ui',
+          "quickfix",
+          'symbols-outline',
+          'toggleterm',
+        },
+        options = {
+          disabled_filetypes = {
+            'lspinfo',
+            'mason',
+            'filesystem',
+            'TelescopePrompt',
+            'help',
+            'checkhealth',
+            'neo-tree-popup',
+            'nui',
+          },
+          component_separators = '',
+          section_separators = '',
+          theme = {
+            normal = { c = { bg = 'none' } },
+            inactive = { c = { bg = 'none' } },
+          },
+          globalstatus = true,
+        },
+        tabline = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = {
+            component.indent,
+            component.buffers
+          },
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = {}
+        },
+        sections = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = {
+            component.vim_mode,
+            component.filesize,
+            component.location,
+            component.indent,
+            component.lsp_server,
+            component.lsp_diagnostic
+          },
+          lualine_x = {
+            component.interpreter,
+            component.diff,
+            component.git_branch,
+          },
+          lualine_y = {},
+          lualine_z = {},
+        },
+      })
+  end,
+  dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
+}
