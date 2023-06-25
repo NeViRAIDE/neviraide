@@ -2,8 +2,8 @@ local component = require('plugins.lualine.components')
 
 return {
   'nvim-lualine/lualine.nvim',
-  init   = function() require("utils").lazy_load "lualine.nvim" end,
-  config = function()
+  init         = function() require("utils").lazy_load "lualine.nvim" end,
+  config       = function()
     require("lualine").setup(
       {
         extensions = {
@@ -39,7 +39,7 @@ return {
           lualine_a = {},
           lualine_b = {},
           lualine_c = {
-            component.indent,
+            { function() return '%=' end },
             component.buffers
           },
           lualine_x = {},
@@ -53,12 +53,15 @@ return {
             component.vim_mode,
             component.filesize,
             component.location,
-            component.indent,
+            { function() return '%=' end, cond = require('plugins.lualine.lualine_utils').conditions.hide_in_width },
+            component.interpreter,
             component.lsp_server,
             component.lsp_diagnostic
           },
           lualine_x = {
-            component.interpreter,
+            component.spaces,
+            component.encoding,
+            component.format,
             component.diff,
             component.git_branch,
           },

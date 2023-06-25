@@ -33,7 +33,7 @@ M.setup = function()
       b = { '<cmd>Neotree buffers focus float<cr>', 'Buffers list' },
       x = { '<cmd>bd<cr>', 'Delete buffer' },
       c = require('mappings.colorpicker'),
-      g = { '<cmd>Neotree position=right git_status toggle<cr>', 'GIT' },
+      G = { '<cmd>Neotree position=right git_status toggle<cr>', 'GIT' },
       t = require('mappings.telescope_keys'),
       n = require('mappings.todos'),
     }

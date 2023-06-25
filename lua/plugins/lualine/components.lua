@@ -39,7 +39,9 @@ return {
 
   interpreter = {
     utils.interpreter,
-    color = 'Comment'
+    color = 'Comment',
+    padding = { right = 1 },
+    cond = require('plugins.lualine.lualine_utils').conditions.hide_in_width
   },
 
   lsp_server = {
@@ -47,6 +49,7 @@ return {
     icon = ' ',
     color = 'Comment',
     on_click = function() vim.fn.execute('LspInfo') end,
+    cond = require('plugins.lualine.lualine_utils').conditions.hide_in_width
   },
 
   lsp_diagnostic = {
@@ -79,12 +82,7 @@ return {
     on_click = function()
       vim.fn.execute('Neotree position=right git_status toggle')
     end,
-    padding = { right = 3 },
-  },
-
-  indent = {
-    function() return '%=' end,
-    cond = require('plugins.lualine.lualine_utils').conditions.hide_in_width,
+    padding = { left = 1, right = 3 },
   },
 
   location = {
@@ -121,5 +119,34 @@ return {
   filesize = {
     'filesize',
     color = "Comment"
+  },
+
+  format = {
+    'fileformat',
+    icons_enabled = true,
+    cond = utils.conditions.hide_in_width or utils.conditions.buffer_not_empty,
+    color = 'Comment',
+    symbols = {
+      unix = 'LF ',
+      dos = 'CRLF ',
+      mac = 'CR ',
+    },
+    padding = { left = 1, right = 3 },
+  },
+
+  encoding = {
+    'o:encoding',
+    fmt = string.upper,
+    icons_enabled = true,
+    cond = utils.conditions.hide_in_width or utils.conditions.buffer_not_empty,
+    color = 'Comment',
+    padding = { left = 1, right = 1 },
+  },
+
+  spaces = {
+    function() return vim.o.tabstop .. ' spaces' end,
+    cond = utils.conditions.hide_in_width or utils.conditions.buffer_not_empty,
+    color = 'Comment',
+    padding = { left = 1, right = 1 },
   }
 }

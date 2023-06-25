@@ -1,31 +1,31 @@
 return {
   name = 'TODO notes',
   l = {
-    ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}}<cr>',
+    ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}} border={} borderchars={"","","","","","","",""}<cr>',
     'Notes list ',
   },
   f = {
     'OFIX: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
-    'FIX ',
+    'Fix ',
   },
   t = {
     'OTODO: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
-    'TODO ',
+    'To do ',
   },
   h = {
     'OHACK: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
-    'HACK ',
+    'Hack ',
   },
   w = {
     'OWARN: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
-    'WARN ',
+    'Warning',
   },
   p = {
     'OPERF: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
-    'PERF ',
+    'Performance ',
   },
   n = {
     'ONOTE: <esc>:lua require("Comment.api").toggle.linewise.current()<cr>A',
-    'NOTE ',
+    'Note ',
   },
 }
