@@ -1,5 +1,5 @@
 return {
-  name = 'TODO notes',
+  name = 'TODO notes ',
   l = {
     ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}} border={} borderchars={"","","","","","","",""}<cr>',
     'Notes list ',

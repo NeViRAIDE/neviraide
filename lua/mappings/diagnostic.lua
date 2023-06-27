@@ -7,7 +7,7 @@ M.attach_diagnostic = function(bufnr)
   mappings({
     ['<leader>'] = {
       d = {
-        name = 'Diagnostics ' .. '﫵',
+        name = 'Diagnostics ',
         w = { ':Telescope diagnostics<cr>', 'Workspace diagnostics' },
         l = {
           ':lua vim.diagnostic.open_float()<cr>',
