@@ -107,10 +107,16 @@ return {
       ['neo-tree'] = "NeoTree"
     },
     buffers_color = {
+      active = function()
+        return {
+          fg = vim.bo.modified and '#aa3355' or '#33aa88',
+          gui = vim.bo.modified and 'italic' or 'bold'
+        }
+      end,
       inactive = 'Comment',
     },
     symbols = {
-      modified = ' ●',
+      modified = ' 󰴓',
       alternate_file = '',
       directory = '',
     },
