@@ -23,7 +23,7 @@ autocmd_multi("GoLangNvim", {
     {
       pattern = "go",
       callback = function()
-        require("mappings.go").attach_go()
+        require("mappings.golang").attach_go()
       end,
     }
   }
@@ -91,6 +91,7 @@ autocmd_multi('NEVIRAIDE_CONF', {
         'startuptime',
         'tsplayground',
         'PlenaryTestPopup',
+        'guihua'
       },
       desc = 'Use q to close the window',
       command = 'nnoremap <buffer> q <cmd>quit<cr>',

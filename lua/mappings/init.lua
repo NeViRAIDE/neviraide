@@ -3,25 +3,31 @@ local mappings = require("utils").load_mappings
 local M = {}
 
 M.setup = function()
+  -- TODO: add jj/kk keymaps to return into normal mode
   mappings({
     ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
-    ["<C-h>"] = { "<C-w>h", "Window left" },
-    ["<C-l>"] = { "<C-w>l", "Window right" },
-    ["<C-j>"] = { "<C-w>j", "Window down" },
-    ["<C-k>"] = { "<C-w>k", "Window up" },
-    ['<c-s>'] = { ':w<cr>', 'Save file ' },
+
+    ['<c-s>'] = { '<cmd>lua require("utils").save_and_format()<cr>', 'Save file ' },
+
     ['<c-n>'] = {
       ':Neotree reveal toggle<cr>',
       'File explorer ',
     },
+
     ["<c-/>"] = {
       function()
         require("Comment.api").toggle.linewise.current()
       end,
       "Toggle comment",
     },
+
     ['<tab>'] = { ':bnext<cr>', 'Next buffer' },
     ['<s-tab>'] = { ':bprev<cr>', 'Previous buffer' },
+
+    ["<C-h>"] = { "<C-w>h", "Window left" },
+    ["<C-l>"] = { "<C-w>l", "Window right" },
+    ["<C-j>"] = { "<C-w>j", "Window down" },
+    ["<C-k>"] = { "<C-w>k", "Window up" },
 
     ['<a-h>'] = { ':ToggleTerm direction=horizontal<cr>', 'Horizontal terminal' },
     ['<a-f>'] = { ':ToggleTerm direction=float<cr>', 'Float terminal' },
@@ -32,6 +38,7 @@ M.setup = function()
       name = 'Plugins and features ',
       b = { '<cmd>Neotree buffers focus float<cr>', 'Buffers list ' },
       x = { '<cmd>bd<cr>', 'Delete buffer ' },
+      N = { '<cmd>lua require("utils.another").newFile()<cr>', 'New file' },
       c = require('mappings.colorpicker'),
       G = { '<cmd>Neotree position=right git_status toggle<cr>', 'GIT ' },
       t = require('mappings.telescope_keys'),

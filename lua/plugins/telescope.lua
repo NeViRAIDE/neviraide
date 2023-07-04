@@ -129,7 +129,7 @@ return {
         },
       },
 
-      extensions_list = { "todo-comments" },
+      extensions_list = { "todo-comments", "notify" },
     }
 
     return options

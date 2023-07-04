@@ -5,7 +5,7 @@ return {
     function()
       local mode_icons = {
         n = "",
-        i = "󰏪",
+        i = "󰴓",
         c = "",
         v = " ",
         V = " " .. '-Line',
@@ -59,7 +59,7 @@ return {
       error = ' ',
       warn = ' ',
       info = ' ',
-      hint = ' ',
+      hint = '󰌵 ',
     },
     on_click = function() vim.fn.execute('Telescope diagnostics') end,
   },

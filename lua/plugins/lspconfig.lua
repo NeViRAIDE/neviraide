@@ -34,9 +34,10 @@ local signature_config = {
 
 local function on_attach(client, bufnr)
   require('lsp_signature').on_attach(signature_config, bufnr)
+
   require('mappings.lsp').attach_lsp(bufnr)
   require('mappings.diagnostic').attach_diagnostic(bufnr)
-  vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+  -- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
   if client.server_capabilities.documentHighlightProvider then
     autocmd_multi('lsp_document_highlight', {
       {
@@ -82,9 +83,9 @@ capabilities.textDocument.completion.completionItem = {
 
 return {
   "neovim/nvim-lspconfig",
-
-  init = function() require("utils").lazy_load "nvim-lspconfig" end,
-
+  -- init = function() require("utils").lazy_load "nvim-lspconfig" end,
+  event = { "BufReadPost", "BufNewFile" },
+  cmd = { "LspInfo", "LspInstall", "LspUninstall" },
   config = function()
     require("lspconfig").gopls.setup({
       on_attach = on_attach,
