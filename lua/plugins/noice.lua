@@ -1,6 +1,8 @@
 return {
   "folke/noice.nvim",
-  keys = { ":", "<cmd>" },
+  init = function()
+    require("utils").lazy_load "noice.nvim"
+  end,
   opts = {
     lsp = {
       signature = {

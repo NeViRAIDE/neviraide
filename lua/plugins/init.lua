@@ -10,4 +10,10 @@ return {
       vim.cmd([[colorscheme tokyonight]])
     end,
   },
+  {
+    'ggandor/lightspeed.nvim',
+    init = function()
+      require("utils").lazy_load "lightspeed.nvim"
+    end,
+  }
 }
