@@ -19,6 +19,15 @@ autocmd_multi("GoLangNvim", {
       end,
     }
   },
+  {
+    { "CursorHold" },
+    {
+      pattern = "*.go",
+      callback = function()
+        vim.fn.execute('GoToggleInlay')
+      end,
+    }
+  },
   { "FileType",
     {
       pattern = "go",
@@ -35,12 +44,15 @@ autocmd_multi('NEVIRAIDE_CONF', {
       pattern = '*',
       desc = 'Set previous cursor position when file is open',
       callback = function()
-        if
-            vim.fn.line('\'"') > 0 and vim.fn.line('\'"') <= vim.fn.line('$')
-        then
-          vim.fn.setpos('.', vim.fn.getpos('\'"'))
-          vim.api.nvim_feedkeys('zz', 'n', true)
-          vim.api.nvim_feedkeys('zx', 'n', true)
+        local exclude = { "gitcommit" }
+        local buf = vim.api.nvim_get_current_buf()
+        if vim.tbl_contains(exclude, vim.bo[buf].filetype) then
+          return
+        end
+        local mark = vim.api.nvim_buf_get_mark(buf, '"')
+        local lcount = vim.api.nvim_buf_line_count(buf)
+        if mark[1] > 0 and mark[1] <= lcount then
+          pcall(vim.api.nvim_win_set_cursor, 0, mark)
         end
       end,
     },
@@ -94,7 +106,10 @@ autocmd_multi('NEVIRAIDE_CONF', {
         'guihua'
       },
       desc = 'Use q to close the window',
-      command = 'nnoremap <buffer> q <cmd>quit<cr>',
+      callback = function(event)
+        vim.bo[event.buf].buflisted = false
+        vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+      end,
     },
   },
   {

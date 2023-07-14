@@ -1,8 +1,6 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
-  init = function()
-    require("utils").lazy_load "indent-blankline.nvim"
-  end,
+  event = { "BufReadPost", "BufNewFile" },
   opts = function()
     local options = {
       indentLine_enabled = 1,

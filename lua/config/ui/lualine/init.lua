@@ -1,8 +1,9 @@
-local component = require('plugins.lualine.components')
+-- TODO: return my NEVIRAIDE config
+local component = require('config.ui.lualine.components')
 
 return {
   'nvim-lualine/lualine.nvim',
-  init         = function() require("utils").lazy_load "lualine.nvim" end,
+  event        = "VeryLazy",
   config       = function()
     require("lualine").setup(
       {
@@ -44,7 +45,9 @@ return {
           },
           lualine_x = {},
           lualine_y = {},
-          lualine_z = {}
+          lualine_z = {
+            component.lazy
+          }
         },
         sections = {
           lualine_a = {},
@@ -53,7 +56,7 @@ return {
             component.vim_mode,
             component.filesize,
             component.location,
-            { function() return '%=' end, cond = require('plugins.lualine.lualine_utils').conditions.hide_in_width },
+            { function() return '%=' end, cond = require('config.ui.lualine.lualine_utils').conditions.hide_in_width },
             component.interpreter,
             component.lsp_server,
             component.lsp_diagnostic

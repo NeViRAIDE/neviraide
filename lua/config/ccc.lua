@@ -3,6 +3,7 @@ return {
   init = function()
     require("utils").lazy_load "ccc.nvim"
   end,
+  -- event = "VeryLazy",
   config = function()
     require('ccc').setup({
       highlighter = { auto_enable = true, excludes = { 'neo-tree' } },

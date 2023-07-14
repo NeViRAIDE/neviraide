@@ -15,7 +15,11 @@ vim.opt.rtp:prepend(lazypath)
 require("settings")
 
 require("lazy").setup("plugins", {
-  defaults = { lazy = true },
+  defaults = {
+    lazy = true,
+    version = "*"
+  },
+  -- install = { colorscheme = { "tokyonight", "catppuccin" } },
   checker = { enabled = true },
   performance = {
     rtp = {
@@ -52,3 +56,6 @@ require("lazy").setup("plugins", {
     },
   },
 })
+
+vim.cmd.colorscheme "catppuccin" -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+require("tokyonight").load()

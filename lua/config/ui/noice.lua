@@ -1,8 +1,6 @@
 return {
   "folke/noice.nvim",
-  init = function()
-    require("utils").lazy_load "noice.nvim"
-  end,
+  event = "VeryLazy",
   opts = {
     lsp = {
       signature = {
@@ -35,8 +33,6 @@ return {
       }
     },
 
-    require('settings.override_vim_ui'),
-
     vim.keymap.set({ 'n', 'i', 's' }, '<c-j>', function()
       if not require('noice.lsp').scroll(4) then return ':wincmd j<cr>' end
     end, { silent = true, expr = true }),
@@ -53,15 +49,4 @@ return {
       { desc = 'Redirect Cmdline' }
     )
   },
-  dependencies = {
-    "MunifTanjim/nui.nvim",
-    {
-      "rcarriga/nvim-notify",
-      opts = {
-        timeout = 3000,
-        fps = 60,
-        minimum_width = 10,
-      }
-    },
-  }
 }
