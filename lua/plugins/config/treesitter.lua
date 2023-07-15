@@ -1,8 +1,5 @@
 return {
   'nvim-treesitter/nvim-treesitter',
-  -- init = function()
-  --   require("utils").lazy_load "nvim-treesitter"
-  -- end,
   event = { "BufReadPost", "BufNewFile" },
   build = ':TSUpdate',
   config = function()
@@ -39,10 +36,10 @@ return {
         enable = true,
         lsp_interop = {
           enable = true,
-          peek_definition_code = {
-            ["DF"] = "@function.outer",
-            ["DF"] = "@class.outer"
-          }
+          -- peek_definition_code = {
+          --   ["DF"] = "@function.outer",
+          --   ["DF"] = "@class.outer"
+          -- }
         },
         keymaps = {
           ["iL"] = {

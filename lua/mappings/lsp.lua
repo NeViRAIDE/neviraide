@@ -1,5 +1,5 @@
 local mappings =
-    require('utils').load_mappings
+    require('core.utils').load_mappings
 
 local M = {}
 

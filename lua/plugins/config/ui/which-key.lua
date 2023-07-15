@@ -46,6 +46,6 @@ return {
           '("nvim-treesitter.textsubjects")',
         },
       })
-    require('mappings').setup()
+    require('core.mappings').setup()
   end
 }

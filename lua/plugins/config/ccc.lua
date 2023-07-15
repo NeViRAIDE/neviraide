@@ -1,7 +1,7 @@
 return {
   'uga-rosa/ccc.nvim',
   init = function()
-    require("utils").lazy_load "ccc.nvim"
+    require("core.utils").lazy_load "ccc.nvim"
   end,
   -- event = "VeryLazy",
   config = function()

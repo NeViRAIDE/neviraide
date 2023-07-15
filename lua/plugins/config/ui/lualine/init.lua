@@ -1,6 +1,7 @@
 -- TODO: return my NEVIRAIDE config
-local component = require('config.ui.lualine.components')
+local component = require('plugins.config.ui.lualine.components')
 
+-- TODO: check github issue (navic on click)
 return {
   'nvim-lualine/lualine.nvim',
   event        = "VeryLazy",
@@ -56,7 +57,8 @@ return {
             component.vim_mode,
             component.filesize,
             component.location,
-            { function() return '%=' end, cond = require('config.ui.lualine.lualine_utils').conditions.hide_in_width },
+            { function() return '%=' end,
+              cond = require('plugins.config.ui.lualine.lualine_utils').conditions.hide_in_width },
             component.interpreter,
             component.lsp_server,
             component.lsp_diagnostic

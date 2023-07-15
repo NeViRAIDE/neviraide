@@ -305,7 +305,6 @@ local function goTestRun()
       )
     end,
   })
-  -- TODO: press enter to quit from terminal
   input:on(event.BufLeave, function() input:unmount() end)
   input:mount()
   input:map(

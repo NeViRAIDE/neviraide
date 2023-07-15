@@ -1,3 +1,4 @@
+-- TODO: dynamicly change with lualine
 return {
 
   -- tokyonight

@@ -12,7 +12,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("settings")
+require("core.settings")
 
 require("lazy").setup("plugins", {
   defaults = {
@@ -57,5 +57,8 @@ require("lazy").setup("plugins", {
   },
 })
 
-vim.cmd.colorscheme "catppuccin" -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 require("tokyonight").load()
+vim.cmd.colorscheme "catppuccin-frappe" -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+
+require('core.override_vim_ui.input')
+require('core.override_vim_ui.select')

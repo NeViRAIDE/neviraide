@@ -1,13 +1,12 @@
-local mappings = require("utils").load_mappings
+local mappings = require("core.utils").load_mappings
 
 local M = {}
 
 M.setup = function()
-  -- TODO: add jj/kk keymaps to return into normal mode
   mappings({
     ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
 
-    ['<c-s>'] = { '<cmd>lua require("utils").save_and_format()<cr>', 'Save file ' },
+    ['<c-s>'] = { '<cmd>lua require("core.utils").save_and_format()<cr>', 'Save file ' },
 
     ['<c-n>'] = {
       ':Neotree reveal toggle<cr>',
@@ -67,6 +66,21 @@ M.setup = function()
     ['<C-l>'] = { '<Cmd>wincmd l<CR>', "Window right" },
     ['<esc>'] = { '<C-\\><C-n>', 'NORMAL mode' },
   }, { mode = 't' })
+
+  mappings({
+    j = {
+      j = {
+        "<ESC>",
+        "Return to Normal mode",
+      },
+    },
+    k = {
+      k = {
+        "<ESC>",
+        "Return to Normal mode",
+      },
+    },
+  }, { mode = 'i' })
 end
 
 return M

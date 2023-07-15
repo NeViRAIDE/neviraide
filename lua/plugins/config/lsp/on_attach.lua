@@ -1,4 +1,4 @@
-local autocmd_multi = require("utils").autocmd_multi
+local autocmd_multi = require("core.utils").autocmd_multi
 
 local signature_config = {
   bind = false,
@@ -6,7 +6,7 @@ local signature_config = {
   hint_enable = true,
   use_lspsaga = false,
   hint_prefix = '  ',
-  hint_scheme = 'LspSignatureActiveParameterHint',
+  hint_scheme = 'Comment',
   hi_parameter = 'LspSignatureActiveParameter',
   max_height = 1,
 }

@@ -1,4 +1,4 @@
-local utils = require("config.ui.lualine.lualine_utils")
+local utils = require("plugins.config.ui.lualine.lualine_utils")
 
 return {
   vim_mode = {
@@ -41,7 +41,7 @@ return {
     utils.interpreter,
     color = 'Comment',
     padding = { right = 1 },
-    cond = require('config.ui.lualine.lualine_utils').conditions.hide_in_width
+    cond = require('plugins.config.ui.lualine.lualine_utils').conditions.hide_in_width
   },
 
   lsp_server = {
@@ -49,7 +49,7 @@ return {
     icon = ' ',
     color = 'Comment',
     on_click = function() vim.fn.execute('LspInfo') end,
-    cond = require('config.ui.lualine.lualine_utils').conditions.hide_in_width
+    cond = require('plugins.config.ui.lualine.lualine_utils').conditions.hide_in_width
   },
 
   lsp_diagnostic = {
@@ -91,7 +91,7 @@ return {
       local r, c = unpack(vim.api.nvim_win_get_cursor(0))
       return ' ' .. c .. ':' .. r .. "/" .. lines
     end,
-    cond = require('config.ui.lualine.lualine_utils').conditions.buffer_not_empty,
+    cond = require('plugins.config.ui.lualine.lualine_utils').conditions.buffer_not_empty,
     color = { gui = 'italic' },
     padding = { left = 1, right = 1 },
   },

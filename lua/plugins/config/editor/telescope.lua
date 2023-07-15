@@ -2,7 +2,7 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = { "nvim-treesitter/nvim-treesitter", --[[ 'nvim-telescope/telescope-ui-select.nvim' ]] },
   cmd = "Telescope",
-  version = '0.1.x',
+  -- version = '0.1.x',
   opts = function()
     local options = {
       pickers = {

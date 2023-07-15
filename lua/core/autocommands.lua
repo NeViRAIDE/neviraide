@@ -1,5 +1,5 @@
 local autocmd = vim.api.nvim_create_autocmd
-local autocmd_multi = require("utils").autocmd_multi
+local autocmd_multi = require("core.utils").autocmd_multi
 
 -- dont list quickfix buffers
 autocmd("FileType", {
@@ -11,23 +11,25 @@ autocmd("FileType", {
 
 -- Run gofmt + goimport on save
 autocmd_multi("GoLangNvim", {
-  { "BufWritePre",
-    {
-      pattern = "*.go",
-      callback = function()
-        require('go.format').goimport()
-      end,
-    }
-  },
-  {
-    { "CursorHold" },
-    {
-      pattern = "*.go",
-      callback = function()
-        vim.fn.execute('GoToggleInlay')
-      end,
-    }
-  },
+  -- { "BufWritePre",
+  --   {
+  --     pattern = "*.go",
+  --     callback = function()
+  --       require('go.format').goimport()
+  --     end,
+  --   }
+  -- },
+
+  -- FIX: inlay hints for go
+  -- {
+  --   { "CursorHold" },
+  --   {
+  --     pattern = "*.go",
+  --     callback = function()
+  --       vim.fn.execute('GoToggleInlay')
+  --     end,
+  --   }
+  -- },
   { "FileType",
     {
       pattern = "go",
