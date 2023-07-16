@@ -1,4 +1,5 @@
 local utils = require("plugins.config.ui.lualine.lualine_utils")
+local navic = require('nvim-navic')
 
 return {
   vim_mode = {
@@ -32,15 +33,14 @@ return {
       return {
         fg = mode_color[vim.fn.mode()],
         gui = 'bold',
-        --bg = 'none',
       }
     end,
-    padding = { left = 3, right = 3 },
+    padding = { left = 1, right = 1 },
   },
 
   interpreter = {
     utils.interpreter,
-    -- color = 'Comment',
+    color = 'Comment',
     padding = { right = 1, left = 1 },
     cond = utils.conditions.hide_in_width
   },
@@ -48,7 +48,7 @@ return {
   lsp_server = {
     utils.lsp_source,
     icon = ' ',
-    -- color = 'Comment',
+    color = 'Comment',
     on_click = function() vim.fn.execute('LspInfo') end,
     cond = utils.conditions.hide_in_width
   },
@@ -85,7 +85,7 @@ return {
     on_click = function()
       vim.fn.execute('Neotree position=right git_status toggle')
     end,
-    padding = { left = 1, right = 3 },
+    padding = { left = 1, right = 1 },
   },
 
   location = {
@@ -112,21 +112,15 @@ return {
     buffers_color = {
       active = function()
         return {
-          fg = vim.bo.modified and '#aa3355',
-          bg = "Comment",
+          fg = vim.bo.modified and '#e78284',
+          -- bg = "Comment",
           gui = vim.bo.modified and 'italic' or 'bold'
         }
       end,
-      inactive = function()
-        return {
-          fg = "Comment",
-          -- gui = vim.bo.modified and 'italic' or 'bold'
-        }
-      end,
-
+      inactive = "Comment",
     },
     symbols = {
-      modified = ' ● ',
+      modified = '  ',
       alternate_file = '',
       directory = '',
     },
@@ -141,7 +135,7 @@ return {
     'fileformat',
     icons_enabled = true,
     cond = utils.conditions.hide_in_width or utils.conditions.buffer_not_empty,
-    -- color = 'Comment',
+    color = 'Comment',
     symbols = {
       unix = 'LF ',
       dos = 'CRLF ',
@@ -155,14 +149,14 @@ return {
     fmt = string.upper,
     icons_enabled = true,
     cond = utils.conditions.hide_in_width or utils.conditions.buffer_not_empty,
-    -- color = 'Comment',
+    color = 'Comment',
     padding = { left = 1, right = 1 },
   },
 
   spaces = {
     function() return vim.o.tabstop .. ' spaces' end,
     cond = utils.conditions.hide_in_width or utils.conditions.buffer_not_empty,
-    -- color = 'Comment',
+    color = 'Comment',
     padding = { left = 1, right = 1 },
   },
 
@@ -173,8 +167,49 @@ return {
   },
 
   time = {
-    utils.clock,
-    color = { gui = 'bold' },
+    'datetime',
+    -- options: default, us, uk, iso, or your own format string ("%H:%M", etc..)
+    style = 'default',
+    color = 'Comment',
+  },
+
+  file_path = {
+    utils.get_file_path,
+    cond = utils.conditions.hide_in_width or utils.conditions.buffer_not_empty,
+    padding = { left = 0, right = 0 },
+    on_click = function() vim.fn.execute('Neotree reveal toggle') end,
+  },
+
+  file_icon = {
+    'filetype',
+    icon_only = true,
+    cond = utils.conditions.buffer_not_empty,
+    padding = { left = 0, right = 0 },
+  },
+
+  file_name = {
+    utils.custom_fname,
+    newfile_status = true,
+    cond = utils.conditions.buffer_not_empty,
+    padding = { left = 1, right = 0 },
+    on_click = function() vim.fn.execute('Neotree buffers focus float') end,
+  },
+
+  indent_with_triange = {
+    function() return ' ▶' end,
+    cond = navic.is_available and utils.conditions.buffer_not_empty,
+    color = "BreadcrumbSep",
+    padding = { left = 0, right = 0 },
+  },
+
+  navic_location = {
+    -- TODO: on_click function to get location in code
+    function()
+      return navic.get_location()
+    end,
+    cond = function()
+      return navic.is_available()
+    end
   },
 
 }

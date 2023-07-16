@@ -76,13 +76,6 @@ return {
   get_file_path = get_file_path,
   custom_fname = custom_fname,
 
-
-  ---Current time (hours and minutes).
-  ---@return string
-  clock = function()
-    return '' .. ' ' .. os.date('%H:%M')
-  end,
-
   -- local conditions = {
   --   ---If buffer not empty.
   --   ---@return boolean

@@ -29,10 +29,14 @@ return {
         },
         component_separators = '',
         section_separators = '',
+        theme = {
+          normal = { c = { bg = "none" } },
+          inactive = { c = { bg = "none" } },
+        },
         globalstatus = true,
       },
       winbar = require("plugins.config.ui.lualine.modules.breadcrumb"),
-      tabline = require("plugins.config.ui.lualine.modules.winbar"),
+      tabline = require("plugins.config.ui.lualine.modules.bufferline"),
       sections = require("plugins.config.ui.lualine.modules.statusline"),
     }
 
