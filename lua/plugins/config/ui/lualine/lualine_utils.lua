@@ -1,8 +1,3 @@
--- local utils = require("core.utils")
---
--- utils.hi('BreadcrumbSep', { link = "ErrorMsg" })
--- utils.hi('BreadcrumbDir', { fg = "Yellow" })
-
 ---Filepath breadcrumb of your
 --workspace with separators.
 ---@return string
@@ -15,8 +10,8 @@ local function get_file_path()
   for _, cur in ipairs(path_list) do
     file_path = (cur == '.' or cur == '~') and ''
         or file_path
-        .. ' %#BreadcrumbDir#'
-        .. '📂 '
+        .. '%#BreadcrumbDir#'
+        .. ' '
         .. cur
         .. ' %#BreadcrumbSep#'
         .. '▶ '
@@ -75,20 +70,6 @@ end
 return {
   get_file_path = get_file_path,
   custom_fname = custom_fname,
-
-  -- local conditions = {
-  --   ---If buffer not empty.
-  --   ---@return boolean
-  --   buffer_not_empty = function() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end,
-  --   ---If windows width less than 100.
-  --   ---@return boolean
-  --   hide_in_width = function() return vim.fn.winwidth(0) > 100 end,
-  --   ---Hide if no diffs
-  --   ---@return boolean
-  --   gitdiff = function()
-  --     return vim.b.gitsigns_status ~= '' and vim.b.gitsigns_status ~= nil
-  --   end,
-  -- }
 
   ---Get added, modified and
   ---removed diffs from the

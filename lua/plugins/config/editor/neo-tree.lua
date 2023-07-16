@@ -15,6 +15,23 @@ return {
       -- },
 
       sources = { "filesystem", "buffers", "git_status", "document_symbols" },
+      default_component_configs = {
+        git_status = {
+          symbols = {
+            added = ' ',
+            modified = ' ',
+            deleted = ' ',
+          },
+        },
+        icon = {
+          folder_closed = "",
+          folder_open = '',
+          folder_empty = '',
+        },
+        modified = {
+          symbol = "",
+        },
+      },
       filesystem = {
         components = {
           name = function(config, node, state)

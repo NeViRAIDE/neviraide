@@ -1,6 +1,7 @@
 local utils = require("plugins.config.ui.lualine.lualine_utils")
 local navic = require('nvim-navic')
 
+-- TODO: create colorscheme component for dynamic change themes
 return {
   vim_mode = {
     function()
@@ -176,7 +177,7 @@ return {
   file_path = {
     utils.get_file_path,
     cond = utils.conditions.hide_in_width or utils.conditions.buffer_not_empty,
-    padding = { left = 0, right = 0 },
+    padding = { left = 1, right = 0 },
     on_click = function() vim.fn.execute('Neotree reveal toggle') end,
   },
 
