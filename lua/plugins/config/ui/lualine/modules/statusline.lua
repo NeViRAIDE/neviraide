@@ -7,8 +7,8 @@ local left_panel_elements = {
 
 local center_panel_elements = {
   component.vim_mode,
-  component.location,
   component.filesize,
+  component.location,
   component.format,
   component.encoding,
   component.spaces,

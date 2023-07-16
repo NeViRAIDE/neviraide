@@ -5,10 +5,9 @@ local navic = require('nvim-navic')
 return {
   vim_mode = {
     function()
-      -- TODO: spaces
       local mode_icons = {
         n = "",
-        i = "󰴓",
+        i = "",
         c = "",
         v = " ",
         V = " " .. '-Line',
@@ -111,13 +110,7 @@ return {
       ['neo-tree'] = "NeoTree",
     },
     buffers_color = {
-      active = function()
-        return {
-          fg = vim.bo.modified and '#e78284',
-          -- bg = "Comment",
-          gui = vim.bo.modified and 'italic' or 'bold'
-        }
-      end,
+      active = "IncSearch",
       inactive = "Comment",
     },
     symbols = {

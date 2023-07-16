@@ -5,7 +5,7 @@ return {
   {
     "folke/tokyonight.nvim",
     priority = 1000,
-    opts = { style = "moon" }, -- day, storm, moon, night
+    opts = { style = "storm" }, -- day, storm, moon, night
   },
 
   -- catppuccin
