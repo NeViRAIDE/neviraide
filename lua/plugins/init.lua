@@ -30,4 +30,6 @@ return {
   --require("config.go"),
   require("plugins.config.toggleterm"),
   require("plugins.config.treesitter"),
+
+  require("plugins.config.navic"),
 }

@@ -3,6 +3,7 @@ local utils = require("plugins.config.ui.lualine.lualine_utils")
 return {
   vim_mode = {
     function()
+      -- TODO: spaces
       local mode_icons = {
         n = "",
         i = "󰴓",
@@ -31,7 +32,7 @@ return {
       return {
         fg = mode_color[vim.fn.mode()],
         gui = 'bold',
-        bg = 'none',
+        --bg = 'none',
       }
     end,
     padding = { left = 3, right = 3 },
@@ -39,17 +40,17 @@ return {
 
   interpreter = {
     utils.interpreter,
-    color = 'Comment',
-    padding = { right = 1 },
-    cond = require('plugins.config.ui.lualine.lualine_utils').conditions.hide_in_width
+    -- color = 'Comment',
+    padding = { right = 1, left = 1 },
+    cond = utils.conditions.hide_in_width
   },
 
   lsp_server = {
     utils.lsp_source,
     icon = ' ',
-    color = 'Comment',
+    -- color = 'Comment',
     on_click = function() vim.fn.execute('LspInfo') end,
-    cond = require('plugins.config.ui.lualine.lualine_utils').conditions.hide_in_width
+    cond = utils.conditions.hide_in_width
   },
 
   lsp_diagnostic = {
@@ -62,6 +63,8 @@ return {
       hint = '󰌵 ',
     },
     on_click = function() vim.fn.execute('Telescope diagnostics') end,
+    always_visible = true,
+    cond = utils.conditions.buffer_not_empty,
   },
 
   diff = {
@@ -91,7 +94,7 @@ return {
       local r, c = unpack(vim.api.nvim_win_get_cursor(0))
       return ' ' .. c .. ':' .. r .. "/" .. lines
     end,
-    cond = require('plugins.config.ui.lualine.lualine_utils').conditions.buffer_not_empty,
+    cond = utils.conditions.buffer_not_empty,
     color = { gui = 'italic' },
     padding = { left = 1, right = 1 },
   },
@@ -109,35 +112,42 @@ return {
     buffers_color = {
       active = function()
         return {
-          fg = vim.bo.modified and '#aa3355' or '#33aa88',
+          fg = vim.bo.modified and '#aa3355',
+          bg = "Comment",
           gui = vim.bo.modified and 'italic' or 'bold'
         }
       end,
-      inactive = 'Comment',
+      inactive = function()
+        return {
+          fg = "Comment",
+          -- gui = vim.bo.modified and 'italic' or 'bold'
+        }
+      end,
+
     },
     symbols = {
-      modified = ' 󰴓',
+      modified = ' ● ',
       alternate_file = '',
-      directory = '',
+      directory = '',
     },
   },
 
   filesize = {
     'filesize',
-    color = "Comment"
+    color = 'Comment',
   },
 
   format = {
     'fileformat',
     icons_enabled = true,
     cond = utils.conditions.hide_in_width or utils.conditions.buffer_not_empty,
-    color = 'Comment',
+    -- color = 'Comment',
     symbols = {
       unix = 'LF ',
       dos = 'CRLF ',
       mac = 'CR ',
     },
-    padding = { left = 1, right = 3 },
+    padding = { left = 1, right = 1 },
   },
 
   encoding = {
@@ -145,19 +155,26 @@ return {
     fmt = string.upper,
     icons_enabled = true,
     cond = utils.conditions.hide_in_width or utils.conditions.buffer_not_empty,
-    color = 'Comment',
+    -- color = 'Comment',
     padding = { left = 1, right = 1 },
   },
 
   spaces = {
     function() return vim.o.tabstop .. ' spaces' end,
     cond = utils.conditions.hide_in_width or utils.conditions.buffer_not_empty,
-    color = 'Comment',
+    -- color = 'Comment',
     padding = { left = 1, right = 1 },
   },
+
   lazy = {
     require("lazy.status").updates,
     cond = require("lazy.status").has_updates,
     color = { fg = "#ff9e64" },
   },
+
+  time = {
+    utils.clock,
+    color = { gui = 'bold' },
+  },
+
 }

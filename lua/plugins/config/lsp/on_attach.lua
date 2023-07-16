@@ -17,6 +17,9 @@ return function(client, bufnr)
   require('mappings.lsp').attach_lsp(bufnr)
   require('mappings.diagnostic').attach_diagnostic(bufnr)
   -- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+  if client.server_capabilities.documentSymbolProvider then
+    require('nvim-navic').attach(client, bufnr)
+  end
   if client.server_capabilities.documentHighlightProvider then
     autocmd_multi('lsp_document_highlight', {
       {

@@ -61,3 +61,4 @@ for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
 end
 
 require("core.autocommands")
+require("core.highlights")
