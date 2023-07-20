@@ -1,10 +1,12 @@
 return {
   "nvim-telescope/telescope.nvim",
-  dependencies = { "nvim-treesitter/nvim-treesitter", --[[ 'nvim-telescope/telescope-ui-select.nvim' ]] },
+
+  dependencies = { "nvim-treesitter/nvim-treesitter" },
+
   cmd = "Telescope",
-  -- version = '0.1.x',
+
   opts = function()
-    local options = {
+    return {
       pickers = {
         find_files = {
           layout_strategy = 'horizontal',
@@ -131,9 +133,8 @@ return {
 
       extensions_list = { "todo-comments", "notify" },
     }
-
-    return options
   end,
+
   config = function(_, opts)
     local telescope = require "telescope"
     telescope.setup(opts)

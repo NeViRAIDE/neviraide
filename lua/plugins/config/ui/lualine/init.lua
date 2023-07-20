@@ -1,8 +1,10 @@
 return {
   'nvim-lualine/lualine.nvim',
-  event  = "VeryLazy",
-  config = function()
-    local config = {
+
+  event = "VeryLazy",
+
+  opts  = function()
+    return {
       extensions = {
         "lazy",
         'man',
@@ -39,7 +41,5 @@ return {
       tabline = require("plugins.config.ui.lualine.modules.bufferline"),
       sections = require("plugins.config.ui.lualine.modules.statusline"),
     }
-
-    require("lualine").setup(config)
   end,
 }

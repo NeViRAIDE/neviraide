@@ -136,13 +136,21 @@ return {
     ---If buffer not empty.
     ---@return boolean
     buffer_not_empty = function() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end,
+
     ---If windows width less than 100.
     ---@return boolean
     hide_in_width = function() return vim.fn.winwidth(0) > 100 end,
+
     ---Hide if no diffs
     ---@return boolean
     gitdiff = function()
       return vim.b.gitsigns_status ~= '' and vim.b.gitsigns_status ~= nil
     end,
+
+    ---Hide navic triangle after filename if no location under cursor
+    ---@return boolean
+    is_navic_location = function()
+      return require('nvim-navic').get_location() ~= ''
+    end
   },
 }

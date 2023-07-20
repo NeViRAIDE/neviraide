@@ -1,9 +1,12 @@
 return {
   'nvim-treesitter/nvim-treesitter',
+
   event = { "BufReadPost", "BufNewFile" },
+
   build = ':TSUpdate',
-  config = function()
-    require('nvim-treesitter.configs').setup({
+
+  opts = function()
+    return {
       ensure_installed = { 'go', 'lua', },
       highlight = {
         enable = true,
@@ -108,8 +111,13 @@ return {
           }
         }
       }
-    })
+    }
   end,
+
+  config = function(_, opts)
+    require('nvim-treesitter.configs').setup(opts)
+  end,
+
   dependencies = {
     "HiPhish/nvim-ts-rainbow2",
     'windwp/nvim-ts-autotag'

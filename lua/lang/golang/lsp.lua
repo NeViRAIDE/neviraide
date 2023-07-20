@@ -1,3 +1,4 @@
+-- TODO: inlay hints for golang (full cofigure gopls)
 require("lspconfig").gopls.setup({
   on_attach = require("plugins.config.lsp.on_attach"),
   capabilities = require("plugins.config.lsp.capabilities"),

@@ -1,6 +1,8 @@
 return {
   "lewis6991/gitsigns.nvim",
+
   ft = { "gitcommit", "diff" },
+
   init = function()
     -- load gitsigns only when a git file is opened
     vim.api.nvim_create_autocmd({ "BufRead" }, {
@@ -16,8 +18,9 @@ return {
       end,
     })
   end,
+
   opts = function()
-    local options = {
+    return {
       signs = {
         add = { text = "│" },
         change = { text = "│" },
@@ -27,9 +30,5 @@ return {
         untracked = { text = "│" },
       },
     }
-    return options
-  end,
-  config = function(_, opts)
-    require("gitsigns").setup(opts)
   end,
 }

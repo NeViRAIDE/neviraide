@@ -1,5 +1,6 @@
 return {
   "rcarriga/nvim-notify",
+
   keys = {
     {
       "dn",
@@ -9,6 +10,7 @@ return {
       desc = "Dismiss all Notifications",
     },
   },
+
   opts = {
     timeout = 3000,
     fps = 60,
@@ -20,6 +22,7 @@ return {
       return math.floor(vim.o.columns * 0.75)
     end,
   },
+
   init = function()
     -- when noice is not enabled, install notify on VeryLazy
     local Util = require("core.utils")

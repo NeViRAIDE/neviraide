@@ -13,6 +13,11 @@ M.setup = function()
       'File explorer ',
     },
 
+    ['<a-s>'] = {
+      ':Neotree document_symbols position=right toggle<cr>',
+      'Document symbols',
+    },
+
     ["<c-/>"] = {
       function()
         require("Comment.api").toggle.linewise.current()
@@ -37,9 +42,9 @@ M.setup = function()
       name = 'Plugins and features ',
       b = { '<cmd>Neotree buffers focus float<cr>', 'Buffers list ' },
       x = { '<cmd>bd<cr>', 'Delete buffer ' },
-      N = { '<cmd>lua require("utils.another").newFile()<cr>', 'New file' },
-      c = require('mappings.colorpicker'),
+      N = { '<cmd>lua require("utils.another").newFile()<cr>', 'New file ' },
       G = { '<cmd>Neotree position=right git_status toggle<cr>', 'GIT ' },
+      c = require('mappings.colorpicker'),
       t = require('mappings.telescope_keys'),
       n = require('mappings.todos'),
     }

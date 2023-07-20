@@ -191,19 +191,15 @@ return {
 
   indent_with_triange = {
     function() return ' ▶' end,
-    cond = navic.is_available and utils.conditions.buffer_not_empty,
+    cond = utils.conditions.is_navic_location,
     color = "BreadcrumbSep",
     padding = { left = 0, right = 0 },
   },
 
   navic_location = {
+    function() return navic.get_location() end,
+    cond = navic.is_available,
     -- TODO: on_click function to get location in code
-    function()
-      return navic.get_location()
-    end,
-    cond = function()
-      return navic.is_available()
-    end
   },
 
 }

@@ -1,19 +1,27 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
+
   cmd = "Neotree",
-  config = function()
+
+  init = function()
+    if vim.fn.argc() == 1 then
+      local stat = vim.loop.fs_stat(vim.fn.argv(0))
+      if stat and stat.type == "directory" then
+        require("neo-tree")
+      end
+    end
+  end,
+
+  opts = function()
     local fc = require("neo-tree.sources.filesystem.components")
 
-    require("neo-tree").setup({
-      -- close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-      -- FIX: close on open
-      -- event_handlers = {
-      --   {
-      --     event = 'file_opened',
-      --     handler = function(file_path) require('neo-tree').close_all() end,
-      --   },
-      -- },
-
+    return {
+      event_handlers = {
+        {
+          event = 'file_opened',
+          handler = function(file_path) require("neo-tree.command").execute({ action = "close" }) end,
+        },
+      },
       sources = { "filesystem", "buffers", "git_status", "document_symbols" },
       default_component_configs = {
         git_status = {
@@ -50,6 +58,6 @@ return {
       nesting_rules = {
         ["js"] = { "js.map" },
       },
-    })
+    }
   end,
 }

@@ -7,7 +7,7 @@ return {
   -- Editor
   require("plugins.config.editor.neo-tree"),
   require("plugins.config.editor.telescope"),
-  require("plugins.config.editor.todos"),
+  require("plugins.config.editor.todo_comments"),
 
   -- UI
   "nvim-tree/nvim-web-devicons",
@@ -30,6 +30,4 @@ return {
   --require("config.go"),
   require("plugins.config.toggleterm"),
   require("plugins.config.treesitter"),
-
-  require("plugins.config.navic"),
 }

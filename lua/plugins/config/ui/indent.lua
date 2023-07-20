@@ -1,8 +1,10 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
+
   event = { "BufReadPost", "BufNewFile" },
+
   opts = function()
-    local options = {
+    return {
       indentLine_enabled = 1,
       filetype_exclude = {
         "help",
@@ -22,9 +24,5 @@ return {
       show_current_context = true,
       show_current_context_start = true,
     }
-    return options
-  end,
-  config = function(_, opts)
-    require("indent_blankline").setup(opts)
   end,
 }
