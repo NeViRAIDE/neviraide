@@ -1,4 +1,4 @@
-local utils = require("utils.lualine.utils")
+local utils = require("config.utils.lualine.utils")
 
 -- TODO: create colorscheme component for dynamic change themes
 return {

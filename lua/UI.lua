@@ -1,9 +1,10 @@
 return {
+  "nvim-tree/nvim-web-devicons",
   {
     'nvim-lualine/lualine.nvim',
     event = "VeryLazy",
     opts  = function()
-      local component = require("utils.lualine.components")
+      local component = require("config.utils.lualine.components")
       return {
         extensions = {
           "lazy",
@@ -74,7 +75,7 @@ return {
             component.lsp_diagnostic,
             {
               function() return '%=' end,
-              cond = require('utils.lualine.utils').conditions.hide_in_width,
+              cond = require('config.utils.lualine.utils').conditions.hide_in_width,
             },
             component.vim_mode,
             component.filesize,
@@ -196,4 +197,10 @@ return {
       }
     end,
   },
+  {
+    'folke/todo-comments.nvim',
+    cmd = "TodoTelescope",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {}
+  }
 }

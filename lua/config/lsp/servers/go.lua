@@ -1,7 +1,7 @@
 -- TODO: inlay hints for golang (full cofigure gopls)
 require("lspconfig").gopls.setup({
-  on_attach = require("lsp.on_attach"),
-  capabilities = require("lsp.capabilities"),
+  on_attach = require("config.lsp.on_attach"),
+  capabilities = require("config.lsp.capabilities"),
   flags = { debounce_text_changes = 150 },
   single_file_support = true,
   settings = {

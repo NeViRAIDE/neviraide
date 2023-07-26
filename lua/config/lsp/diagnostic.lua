@@ -1,4 +1,4 @@
-local opts = require("lsp.options")
+local opts = require("config.lsp.options")
 
 local M = {}
 

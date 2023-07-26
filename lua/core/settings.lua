@@ -41,9 +41,7 @@ o.timeoutlen = 400
 o.undofile = true
 o.updatetime = 250
 o.sessionoptions = 'blank,buffers,curdir,folds,help,options,tabpages,terminal,globals,localoptions,tabpages'
-o.foldmethod = 'expr'
-o.foldexpr = 'nvim_treesitter#foldexpr()'
-o.foldenable = false
+-- TODO: add fold method
 
 require("core.autocommands")
 require("core.highlights")

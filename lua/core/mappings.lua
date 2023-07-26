@@ -57,9 +57,9 @@ M.setup = function()
       x = { '<cmd>bd<cr>', 'Delete buffer ' },
       N = { '<cmd>lua require("utils.another").newFile()<cr>', 'New file ' },
       G = { '<cmd>Neotree position=right git_status toggle<cr>', 'GIT ' },
-      c = require('mappings.colorpicker'),
-      t = require('mappings.telescope_keys'),
-      n = require('mappings.todos'),
+      c = require('config.mappings.colorpicker'),
+      t = require('config.mappings.telescope_keys'),
+      n = require('config.mappings.todos'),
     }
   }, { mode = 'n' })
 

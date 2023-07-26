@@ -1,15 +1,14 @@
 local autocmd_multi = require("core.utils").autocmd_multi
-local opts = require("lsp.options")
+local opts = require("config.lsp.options")
 
 return function(client, bufnr)
   require('lsp_signature').on_attach(opts.signature, bufnr)
 
-  require('mappings.lsp').attach_lsp(bufnr)
-  require('mappings.diagnostic').attach_diagnostic(bufnr)
+  require('config.mappings.lsp').attach_lsp(bufnr)
+  require('config.mappings.diagnostic').attach_diagnostic(bufnr)
 
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)
-    require("nvim-navbuddy").attach(client, bufnr)
   end
 
   local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint

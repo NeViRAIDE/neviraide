@@ -1,6 +1,6 @@
 require("lspconfig").sumneko_lua.setup {
-  on_attach = require("lsp.on_attach"),
-  capabilities = require("lsp.capabilities"),
+  on_attach = require("config.lsp.on_attach"),
+  capabilities = require("config.lsp.capabilities"),
   flags = { debounce_text_changes = 150 },
   single_file_support = true,
   settings = {
@@ -14,12 +14,6 @@ require("lspconfig").sumneko_lua.setup {
         library = vim.api.nvim_get_runtime_file("", true),
         checkThirdParty = false,
       },
-      -- workspace = {
-      --   library = {
-      --     [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-      --     [vim.fn.stdpath('config') .. '/lua'] = true,
-      --   },
-      -- },
       telemetry = { enable = false },
       format = { enable = true },
       hint = { enable = true },
