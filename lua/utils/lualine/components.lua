@@ -1,5 +1,4 @@
-local utils = require("plugins.config.ui.lualine.lualine_utils")
-local navic = require('nvim-navic')
+local utils = require("utils.lualine.utils")
 
 -- TODO: create colorscheme component for dynamic change themes
 return {
@@ -107,6 +106,7 @@ return {
       lazy = 'Lazy',
       mason = 'Mason',
       lspinfo = 'LSP Info',
+      noice = 'NoICE',
       ['neo-tree'] = "NeoTree",
     },
     buffers_color = {
@@ -196,10 +196,29 @@ return {
     padding = { left = 0, right = 0 },
   },
 
+  -- FIX: not working on_click event
   navic_location = {
-    function() return navic.get_location() end,
-    cond = navic.is_available,
-    -- TODO: on_click function to get location in code
+    function()
+      return require("nvim-navic").get_location()
+    end,
+    cond = utils.conditions.is_navic_available,
   },
+
+  -- TODO: realize components exit and settings
+  -- (nui tree)
+  settings = {
+    function()
+      return ""
+    end,
+    padding = { left = 1, right = 2 }
+  },
+
+  exit = {
+    function()
+      return "󰿅"
+    end,
+    color = "ErrorMsg",
+    padding = { right = 1 }
+  }
 
 }

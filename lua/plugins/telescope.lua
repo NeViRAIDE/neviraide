@@ -1,11 +1,12 @@
 return {
   "nvim-telescope/telescope.nvim",
-
   dependencies = { "nvim-treesitter/nvim-treesitter" },
-
   cmd = "Telescope",
-
   opts = function()
+    local action = require('telescope.actions')
+    local action_layout = require('telescope.actions.layout')
+    local sorters = require("telescope.sorters")
+    local previewers = require("telescope.previewers")
     return {
       pickers = {
         find_files = {
@@ -60,6 +61,17 @@ return {
             scroll_speed = 2,
           },
         },
+        -- FIX: not apply for todo-comments
+        ['todo-comments'] = {
+          initial_mode = 'normal',
+          theme = 'ivy',
+          layout_config = {
+            bottom_pane = { height = 12 },
+            preview_width = 0.4,
+          },
+          border = {},
+          borderchars = { "", "", "", "", "", "", "", "" },
+        },
         lsp_references = {
           initial_mode = 'normal',
           theme = 'ivy',
@@ -112,33 +124,45 @@ return {
           height = 0.80,
           preview_cutoff = 120,
         },
-        file_sorter = require("telescope.sorters").get_fuzzy_file,
+        file_sorter = sorters.get_fuzzy_file,
         file_ignore_patterns = { "node_modules" },
-        generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+        generic_sorter = sorters.get_generic_fuzzy_sorter,
         path_display = { "truncate" },
-        winblend = 0,
+        winblend = 10,
         border = {},
         borderchars = { "", "", "", "", "", "", "", "" },
         color_devicons = true,
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-        file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-        grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-        qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-        -- Developer configurations: Not meant for general override
-        buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+        file_previewer = previewers.vim_buffer_cat.new,
+        grep_previewer = previewers.vim_buffer_vimgrep.new,
+        qflist_previewer = previewers.vim_buffer_qflist.new,
+        buffer_previewer_maker = previewers.buffer_previewer_maker,
+        -- dynamic_preview_title = true,
         mappings = {
-          n = { ["q"] = require("telescope.actions").close },
+          i = {
+            ['<C-j>'] = 'preview_scrolling_down',
+            ['<C-k>'] = 'preview_scrolling_up',
+            ['<C-q>'] = action.close,
+            ['<M-p>'] = action_layout.toggle_preview,
+            ['<C-u>'] = false,
+            ['<C-d>'] = action.delete_buffer + action.move_to_top,
+          },
+          n = {
+            q = action.close,
+            ['<C-j>'] = 'preview_scrolling_down',
+            ['<C-k>'] = 'preview_scrolling_up',
+            ['<C-q>'] = action.close,
+            ['<M-p>'] = action_layout.toggle_preview,
+            ['<C-d>'] = action.delete_buffer + action.move_to_top,
+          },
         },
       },
-
       extensions_list = { "todo-comments", "notify" },
     }
   end,
-
   config = function(_, opts)
     local telescope = require "telescope"
     telescope.setup(opts)
-
     for _, ext in ipairs(opts.extensions_list) do
       telescope.load_extension(ext)
     end

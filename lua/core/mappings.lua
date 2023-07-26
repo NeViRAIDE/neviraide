@@ -1,6 +1,21 @@
+local M = {}
 local mappings = require("core.utils").load_mappings
 
-local M = {}
+vim.keymap.set({ 'n', 'i', 's' }, '<c-j>', function()
+  if not require('noice.lsp').scroll(4) then return ':wincmd j<cr>' end
+end, { silent = true, expr = true, desc = "Move to top window/Scroll top LSP documentation" })
+
+vim.keymap.set({ 'n', 'i', 's' }, '<c-k>', function()
+  if not require('noice.lsp').scroll(-4) then return ':wincmd k<cr>' end
+end, { silent = true, expr = true, desc = "Move to bottom window/Scroll down LSP documentation" })
+
+-- execute cmdmode command and stay cmdline open
+vim.keymap.set(
+  'c',
+  '<S-Enter>',
+  function() require('noice').redirect(vim.fn.getcmdline()) end,
+  { desc = 'Redirect Cmdline' }
+)
 
 M.setup = function()
   mappings({
@@ -30,8 +45,6 @@ M.setup = function()
 
     ["<C-h>"] = { "<C-w>h", "Window left" },
     ["<C-l>"] = { "<C-w>l", "Window right" },
-    ["<C-j>"] = { "<C-w>j", "Window down" },
-    ["<C-k>"] = { "<C-w>k", "Window up" },
 
     ['<a-h>'] = { ':ToggleTerm direction=horizontal<cr>', 'Horizontal terminal' },
     ['<a-f>'] = { ':ToggleTerm direction=float<cr>', 'Float terminal' },

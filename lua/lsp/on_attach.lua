@@ -1,26 +1,23 @@
 local autocmd_multi = require("core.utils").autocmd_multi
-
-local signature_config = {
-  bind = false,
-  floating_window = false,
-  hint_enable = true,
-  use_lspsaga = false,
-  hint_prefix = '  ',
-  hint_scheme = 'Comment',
-  hi_parameter = 'LspSignatureActiveParameter',
-  max_height = 1,
-}
+local opts = require("lsp.options")
 
 return function(client, bufnr)
-  require('lsp_signature').on_attach(signature_config, bufnr)
+  require('lsp_signature').on_attach(opts.signature, bufnr)
+
+  require('mappings.lsp').attach_lsp(bufnr)
+  require('mappings.diagnostic').attach_diagnostic(bufnr)
 
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)
     require("nvim-navbuddy").attach(client, bufnr)
   end
 
-  require('mappings.lsp').attach_lsp(bufnr)
-  require('mappings.diagnostic').attach_diagnostic(bufnr)
+  local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
+  if opts.inlay_hints.enabled and inlay_hint then
+    if client.server_capabilities.inlayHintProvider then
+      inlay_hint(bufnr, true)
+    end
+  end
 
   if client.server_capabilities.documentHighlightProvider then
     autocmd_multi('lsp_document_highlight', {

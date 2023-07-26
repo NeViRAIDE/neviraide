@@ -1,3 +1,5 @@
+-- TODO: util for icons
+-- TODO: util for require function
 local M = {}
 
 local function if_require(module, block, errblock)
@@ -13,34 +15,24 @@ local function if_require(module, block, errblock)
 end
 
 
+-- FIX: to read from directory
+function M.config_plugins(plugins)
+  local conf = {}
+  for category, plugins_in_category in pairs(plugins) do
+    for _, el in pairs(plugins_in_category) do
+      if category == 'other' then
+        table.insert(conf, el)
+      else
+        table.insert(conf, require('plugins.config.' .. category .. '.' .. el))
+      end
+    end
+  end
+  return conf
+end
+
 ---@param plugin string
 function M.has(plugin)
   return require("lazy.core.config").spec.plugins[plugin] ~= nil
-end
-
-function M.lazy_load(plugin)
-  vim.api.nvim_create_autocmd({ "BufRead", "BufWinEnter", "BufNewFile" }, {
-    group = vim.api.nvim_create_augroup("BeLazyOnFileOpen" .. plugin, {}),
-    callback = function()
-      local file = vim.fn.expand "%"
-      local condition = file ~= "neo-tree" and file ~= "[lazy]" and file ~= ""
-
-      if condition then
-        vim.api.nvim_del_augroup_by_name("BeLazyOnFileOpen" .. plugin)
-        if plugin ~= "nvim-treesitter" then
-          vim.schedule(function()
-            require("lazy").load { plugins = plugin }
-            if plugin == "nvim-lspconfig" then
-              vim.cmd "silent! do FileType"
-              print('Language Server Protocol was started...')
-            end
-          end, 0)
-        else
-          require("lazy").load { plugins = plugin }
-        end
-      end
-    end,
-  })
 end
 
 function M.load_mappings(...)
@@ -97,6 +89,14 @@ function M.save_and_format()
   end
 end
 
+--Length of filepath.
+------
+--Possible parameters are:
+--  - filename
+--  - directory
+--  - directory and filename
+--  - full path
+---@param length string
 function M.filePath(length)
   if length == 'file' then
     return vim.api.nvim_exec('echo expand("%:t")', '')

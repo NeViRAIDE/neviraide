@@ -1,9 +1,10 @@
+local M = {}
+
 local Input = require('nui.input')
 local Menu = require('nui.menu')
-
 local event = require('nui.utils.autocmd').event
 
-local function newFile()
+function M.newFile()
   local input = Input({
     position = '50%',
     size = {
@@ -51,7 +52,7 @@ local function newFile()
   input:mount()
 end
 
-local sessions = Menu({
+M.sessions = Menu({
   relative = 'editor',
   position = '50%',
   border = {
@@ -103,7 +104,4 @@ local sessions = Menu({
   on_submit = function(item) vim.fn.execute('SessionManager ' .. item.action) end,
 })
 
-return {
-  newFile = newFile,
-  sessions = sessions,
-}
+return M

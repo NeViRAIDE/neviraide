@@ -1,8 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
-
   cmd = "Neotree",
-
   init = function()
     if vim.fn.argc() == 1 then
       local stat = vim.loop.fs_stat(vim.fn.argv(0))
@@ -11,10 +9,8 @@ return {
       end
     end
   end,
-
   opts = function()
     local fc = require("neo-tree.sources.filesystem.components")
-
     return {
       event_handlers = {
         {

@@ -1,6 +1,6 @@
 require("lspconfig").sumneko_lua.setup {
-  on_attach = require("plugins.config.lsp.on_attach"),
-  capabilities = require("plugins.config.lsp.capabilities"),
+  on_attach = require("lsp.on_attach"),
+  capabilities = require("lsp.capabilities"),
   flags = { debounce_text_changes = 150 },
   single_file_support = true,
   settings = {

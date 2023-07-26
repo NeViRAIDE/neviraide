@@ -150,7 +150,16 @@ return {
     ---Hide navic triangle after filename if no location under cursor
     ---@return boolean
     is_navic_location = function()
-      return require('nvim-navic').get_location() ~= ''
+      if next(vim.lsp.get_active_clients()) ~= nil then
+        return require('nvim-navic').get_location() ~= ''
+      end
+    end,
+
+    ---@return boolean
+    is_navic_available = function()
+      if next(vim.lsp.get_active_clients()) ~= nil then
+        return require('nvim-navic').is_available()
+      end
     end
   },
 }

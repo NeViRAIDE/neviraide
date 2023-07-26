@@ -1,8 +1,6 @@
 return {
   'uga-rosa/ccc.nvim',
-
-  event = "VeryLazy",
-
+  event = { "BufReadPost", "BufNewFile" },
   opts = function()
     return {
       highlighter = {

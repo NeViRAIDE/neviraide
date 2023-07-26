@@ -1,64 +1,51 @@
-local opt = vim.opt
-local g = vim.g
+local o = vim.opt
 
-opt.laststatus = 3
-opt.showmode = false
-
-opt.clipboard = "unnamedplus"
-opt.cursorline = true
-
-opt.confirm = true
-opt.scrolloff = 7
-opt.hlsearch = false
-opt.completeopt = 'menuone,noselect,noinsert'
-
-opt.showmatch = true
--- opt.wrap = false
-
--- Indenting
-opt.expandtab = true
-opt.shiftwidth = 2
-opt.smartindent = true
-opt.tabstop = 2
-opt.softtabstop = 2
-
-opt.fillchars = { eob = " " }
-opt.ignorecase = true
-opt.smartcase = true
-opt.mouse = "a"
-opt.mousemoveevent = true
-
--- Numbers
-opt.number = true
-opt.relativenumber = true
-opt.numberwidth = 2
-opt.ruler = false
-
--- disable nvim intro
-opt.shortmess:append "sI"
-
-opt.signcolumn = "yes"
-opt.splitbelow = true
-opt.splitright = true
-opt.termguicolors = true
-opt.timeoutlen = 400
-opt.undofile = true
-
--- interval for writing swap file to disk, also used by gitsigns
-opt.updatetime = 250
-
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
-
-opt.sessionoptions = 'blank,buffers,curdir,folds,help,options,tabpages,terminal,globals,localoptions,tabpages'
-
-g.mapleader = " "
-
--- disable some default providers
 for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
   vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
+o.whichwrap:append "<>[]hl"
+o.shortmess:append({ W = true, I = true, c = true })
+o.laststatus = 3
+o.showmode = false
+o.conceallevel = 3
+o.spelllang = { "en" }
+o.pumblend = 10
+o.pumheight = 10
+o.clipboard = "unnamedplus"
+o.cursorline = true
+o.confirm = true
+o.scrolloff = 7
+o.hlsearch = false
+o.completeopt = 'menuone,noselect,noinsert'
+o.showmatch = true
+o.expandtab = true
+o.shiftwidth = 2
+o.smartindent = true
+o.tabstop = 2
+o.softtabstop = 2
+o.fillchars = { eob = " " }
+o.ignorecase = true
+o.smartcase = true
+o.mouse = "a"
+o.mousemoveevent = true
+o.number = true
+o.relativenumber = true
+o.numberwidth = 2
+o.ruler = false
+o.signcolumn = "yes"
+o.splitbelow = true
+o.splitright = true
+o.termguicolors = true
+o.timeoutlen = 400
+o.undofile = true
+o.updatetime = 250
+o.sessionoptions = 'blank,buffers,curdir,folds,help,options,tabpages,terminal,globals,localoptions,tabpages'
+o.foldmethod = 'expr'
+o.foldexpr = 'nvim_treesitter#foldexpr()'
+o.foldenable = false
+
 require("core.autocommands")
 require("core.highlights")
+
+vim.cmd.colorscheme('catppuccin-frappe')

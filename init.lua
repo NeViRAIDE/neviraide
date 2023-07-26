@@ -11,15 +11,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-
-require("core.settings")
+vim.g.mapleader = " "
 
 require("lazy").setup("plugins", {
-  defaults = {
-    lazy = true,
-    version = "*"
-  },
-  -- install = { colorscheme = { "tokyonight", "catppuccin" } },
+  defaults = { lazy = true, version = "*" },
   checker = { enabled = true },
   performance = {
     rtp = {
@@ -57,8 +52,4 @@ require("lazy").setup("plugins", {
   },
 })
 
-require("tokyonight").load()
-vim.cmd.colorscheme "catppuccin-frappe" -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
-
-require('core.override_vim_ui.input')
-require('core.override_vim_ui.select')
+require("core.settings")

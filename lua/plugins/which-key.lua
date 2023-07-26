@@ -1,19 +1,14 @@
 return {
   "folke/which-key.nvim",
-
   keys = { "<leader>", '"', "'", "`", "<c-n>", "v" },
-
   init = function()
     vim.o.timeout = true
     vim.o.timeoutlen = 300
   end,
-
   opts = function()
     require('core.mappings').setup()
     return {
-      plugins = {
-        spelling = { enabled = true },
-      },
+      plugins = { spelling = { enabled = true } },
       key_labels = {
         ['<space>'] = 'Space',
         ['<cr>'] = 'Enter',
@@ -28,6 +23,7 @@ return {
         ['<C-l>'] = 'Ctrl + l',
       },
       popup_mappings = { scroll_down = '<c-j>', scroll_up = '<c-k>' },
+      window = { winblend = 10 },
       layout = {
         height = { min = 5, max = 30 },
         width = { min = 20, max = 90 },
@@ -49,5 +45,5 @@ return {
         '("nvim-treesitter.textsubjects")',
       },
     }
-  end,
+  end
 }
