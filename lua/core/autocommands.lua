@@ -34,7 +34,7 @@ autocmd_multi("GoLangNvim", {
     {
       pattern = "go",
       callback = function()
-        require("mappings.golang").attach_go()
+        require("core.mappings.golang").attach_go()
       end,
     }
   }

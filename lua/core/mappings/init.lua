@@ -20,32 +20,14 @@ vim.keymap.set(
 M.setup = function()
   mappings({
     ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
-
     ['<c-s>'] = { '<cmd>lua require("core.utils").save_and_format()<cr>', 'Save file ' },
-
-    ['<c-n>'] = {
-      ':Neotree reveal toggle<cr>',
-      'File explorer ',
-    },
-
-    ['<a-s>'] = {
-      ':Neotree document_symbols position=right toggle<cr>',
-      'Document symbols',
-    },
-
-    ["<c-/>"] = {
-      function()
-        require("Comment.api").toggle.linewise.current()
-      end,
-      "Toggle comment",
-    },
-
+    ['<c-n>'] = { ':Neotree reveal toggle<cr>', 'File explorer ' },
+    ['<a-s>'] = { ':Neotree document_symbols position=right toggle<cr>', 'Document symbols' },
+    ["<c-/>"] = { function() require("Comment.api").toggle.linewise.current() end, "Toggle comment" },
     ['<tab>'] = { ':bnext<cr>', 'Next buffer' },
     ['<s-tab>'] = { ':bprev<cr>', 'Previous buffer' },
-
     ["<C-h>"] = { "<C-w>h", "Window left" },
     ["<C-l>"] = { "<C-w>l", "Window right" },
-
     ['<a-h>'] = { ':ToggleTerm direction=horizontal<cr>', 'Horizontal terminal' },
     ['<a-f>'] = { ':ToggleTerm direction=float<cr>', 'Float terminal' },
     ['<a-v>'] = { ':ToggleTerm direction=vertical<cr>', 'Vertical terminal' },
@@ -55,11 +37,12 @@ M.setup = function()
       name = 'Plugins and features ',
       b = { '<cmd>Neotree buffers focus float<cr>', 'Buffers list ' },
       x = { '<cmd>bd<cr>', 'Delete buffer ' },
-      N = { '<cmd>lua require("utils.another").newFile()<cr>', 'New file ' },
+      N = { '<cmd>lua require("core.utils.new_file")()<cr>', 'New file ' },
       G = { '<cmd>Neotree position=right git_status toggle<cr>', 'GIT ' },
-      c = require('config.mappings.colorpicker'),
-      t = require('config.mappings.telescope_keys'),
-      n = require('config.mappings.todos'),
+      s = require('core.mappings.settings'),
+      c = require('core.mappings.colorpicker'),
+      t = require('core.mappings.telescope_keys'),
+      n = require('core.mappings.todos'),
     }
   }, { mode = 'n' })
 

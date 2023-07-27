@@ -1,10 +1,11 @@
 return {
+  { "xiyaowong/transparent.nvim", event = "VeryLazy" },
   "nvim-tree/nvim-web-devicons",
   {
     'nvim-lualine/lualine.nvim',
     event = "VeryLazy",
     opts  = function()
-      local component = require("config.utils.lualine.components")
+      local component = require("core.utils.lualine.components")
       return {
         extensions = {
           "lazy",
@@ -56,13 +57,12 @@ return {
           lualine_a = {},
           lualine_b = {},
           lualine_c = {
-            component.settings,
             component.buffers,
           },
           lualine_x = {
             component.lazy,
             component.time,
-            component.exit
+            component.theme
           },
           lualine_y = {},
           lualine_z = {},
@@ -75,7 +75,7 @@ return {
             component.lsp_diagnostic,
             {
               function() return '%=' end,
-              cond = require('config.utils.lualine.utils').conditions.hide_in_width,
+              cond = require('core.utils.lualine.utils').conditions.hide_in_width,
             },
             component.vim_mode,
             component.filesize,
@@ -96,6 +96,7 @@ return {
     end,
   },
   {
+    -- TODO: add filetypes of created utils to bufferline
     "MunifTanjim/nui.nvim",
     config = function()
       require('core.override_vim_ui.input')

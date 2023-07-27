@@ -1,11 +1,11 @@
 local autocmd_multi = require("core.utils").autocmd_multi
-local opts = require("config.lsp.options")
+local opts = require("core.lsp.options")
 
 return function(client, bufnr)
   require('lsp_signature').on_attach(opts.signature, bufnr)
 
-  require('config.mappings.lsp').attach_lsp(bufnr)
-  require('config.mappings.diagnostic').attach_diagnostic(bufnr)
+  require('core.mappings.lsp').attach_lsp(bufnr)
+  require('core.mappings.diagnostic').attach_diagnostic(bufnr)
 
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)

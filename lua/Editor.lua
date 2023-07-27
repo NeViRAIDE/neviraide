@@ -121,17 +121,6 @@ return {
               scroll_speed = 2,
             },
           },
-          -- FIX: not apply for todo-comments
-          ['todo-comments'] = {
-            initial_mode = 'normal',
-            theme = 'ivy',
-            layout_config = {
-              bottom_pane = { height = 12 },
-              preview_width = 0.4,
-            },
-            border = {},
-            borderchars = { "", "", "", "", "", "", "", "" },
-          },
           lsp_references = {
             initial_mode = 'normal',
             theme = 'ivy',

@@ -1,12 +1,51 @@
--- TODO: dynamicly change with lualine
 return {
+  { 'ellisonleao/gruvbox.nvim' },
+  { 'sainnhe/everforest',      priority = 1000 },
+  {
+    'Mofiqul/dracula.nvim',
+    priority = 1000,
+    opts = {
+      italic_comment = true,
+    }
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    priority = 1000,
+    opts = {
+      compile = true
+    }
+  },
+  {
+    'marko-cerovac/material.nvim',
+    priority = 1000,
+    opts = {
+      contrast = {
+        terminal = true,
+        sidebars = true,
+        floating_windows = true,
+        cursor_line = true,
+        non_current_windows = false,
+        filetypes = { 'neo-tree' },
+      },
+      lualine_style = "stealth",
+      plugins = {
+        "dap",
+        "gitsigns",
+        "indent-blankline",
+        "nvim-cmp",
+        "nvim-navic",
+        "nvim-web-devicons",
+        "telescope",
+        "which-key",
+      },
+    }
+  },
   {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
     opts = {
-      flavour = "frappe", -- latte, frappe, macchiato, mocha
-      transparent_background = false,
+      flavour = "frappe",
       integrations = {
         cmp = true,
         gitsigns = true,
@@ -39,10 +78,6 @@ return {
   {
     "folke/tokyonight.nvim",
     priority = 1000,
-    opts = {
-      style = "storm",
-      -- transparent = true,
-    }, -- day, storm, moon, night
   },
   {
     "olimorris/onedarkpro.nvim",

@@ -16,9 +16,9 @@ return {
       }
     },
     config = function()
-      require('config.lsp.diagnostic').setup()
-      require('config.lsp.servers.lua')
-      require('config.lsp.servers.go')
+      require('core.lsp.diagnostic').setup()
+      require('core.lsp.servers.lua')
+      require('core.lsp.servers.go')
     end,
   },
   'ray-x/lsp_signature.nvim',

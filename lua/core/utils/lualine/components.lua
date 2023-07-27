@@ -1,4 +1,4 @@
-local utils = require("config.utils.lualine.utils")
+local utils = require("core.utils.lualine.utils")
 
 -- TODO: create colorscheme component for dynamic change themes
 return {
@@ -107,6 +107,9 @@ return {
       mason = 'Mason',
       lspinfo = 'LSP Info',
       noice = 'NoICE',
+      nui = 'NUI',
+      nui_themes = 'Colorschemes',
+      nui_new = 'Create file',
       ['neo-tree'] = "NeoTree",
     },
     buffers_color = {
@@ -157,12 +160,12 @@ return {
   lazy = {
     require("lazy.status").updates,
     cond = require("lazy.status").has_updates,
+    on_click = function() vim.fn.execute('Lazy update') end,
     color = { fg = "#ff9e64" },
   },
 
   time = {
     'datetime',
-    -- options: default, us, uk, iso, or your own format string ("%H:%M", etc..)
     style = 'default',
     color = 'Comment',
   },
@@ -204,20 +207,12 @@ return {
     cond = utils.conditions.is_navic_available,
   },
 
-  -- TODO: realize components exit and settings
-  -- (nui tree)
-  settings = {
+  theme = {
     function()
-      return ""
+      return ""
     end,
-    padding = { left = 1, right = 2 }
-  },
-
-  exit = {
-    function()
-      return "󰿅"
-    end,
-    color = "ErrorMsg",
+    on_click = function() vim.fn.execute('lua require("core.utils.change_theme")()') end,
+    color = "FloatTitle",
     padding = { right = 1 }
   }
 
