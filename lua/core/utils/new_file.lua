@@ -3,7 +3,7 @@ local event = require('nui.utils.autocmd').event
 
 return function()
   local input = Input({
-    position = '50%',
+    position = { row = '30%', col = '50%' },
     size = {
       width = 40,
     },

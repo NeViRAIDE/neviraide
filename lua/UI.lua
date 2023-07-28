@@ -1,6 +1,50 @@
 return {
-  { "xiyaowong/transparent.nvim", event = "VeryLazy" },
+  {
+    'goolord/alpha-nvim',
+    event = "VimEnter",
+    opts = function()
+      local version = require("core.utils").nvim_version
+      local alpha_utils = require("core.utils.alpha")
+      return {
+        layout = {
+          alpha_utils.header,
+          { type = 'padding', val = 3 },
+          {
+            type = 'group',
+            val = {
+              alpha_utils.button('', ' Create new file', ':lua require("core.utils.new_file")()<cr>'),
+              alpha_utils.button('', ' Find file', ':Telescope find_files<cr>'),
+              alpha_utils.button('', ' Recent files', ':Telescope oldfiles<cr>'),
+              alpha_utils.button('', ' Find word', ':Telescope live_grep<cr>'),
+              alpha_utils.button('󱑜', ' Session manager',
+                ':lua require("core.utils.session_manager").sessions:mount()<cr>'),
+              alpha_utils.button('', ' TODO list',
+                ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=14}}<cr>'),
+              alpha_utils.button('', ' Check health', ':checkhealth<cr>'),
+              alpha_utils.button('', ' Plugin manager', ':Lazy<cr>'),
+              alpha_utils.button('', ' Exit', ':qa<cr>'),
+            },
+            opts = { hl = 'Constant' },
+          },
+          { type = 'padding', val = 1 },
+          {
+            type = 'text',
+            val = version,
+            opts = { position = 'center', hl = 'Comment' },
+          },
+          { type = 'padding', val = 1 },
+          {
+            type = 'text',
+            val = require('alpha.fortune')(),
+            opts = { position = 'center', hl = 'AlphaFooter' },
+          },
+        },
+      }
+    end,
+  },
+
   "nvim-tree/nvim-web-devicons",
+
   {
     'nvim-lualine/lualine.nvim',
     event = "VeryLazy",
@@ -30,6 +74,7 @@ return {
             'checkhealth',
             'neo-tree-popup',
             'nui',
+            'alpha'
           },
           component_separators = '',
           section_separators = '',
@@ -73,10 +118,7 @@ return {
           lualine_c = {
             component.lsp_server,
             component.lsp_diagnostic,
-            {
-              function() return '%=' end,
-              cond = require('core.utils.lualine.utils').conditions.hide_in_width,
-            },
+            component.indent,
             component.vim_mode,
             component.filesize,
             component.location,
@@ -95,6 +137,7 @@ return {
       }
     end,
   },
+
   {
     -- TODO: add filetypes of created utils to bufferline
     "MunifTanjim/nui.nvim",
@@ -103,17 +146,9 @@ return {
       require('core.override_vim_ui.select')
     end
   },
+
   {
     "rcarriga/nvim-notify",
-    keys = {
-      {
-        "dn",
-        function()
-          require("notify").dismiss({ silent = true, pending = true })
-        end,
-        desc = "Dismiss all Notifications",
-      },
-    },
     opts = {
       timeout = 3000,
       fps = 60,
@@ -126,15 +161,15 @@ return {
       end,
     },
     init = function()
-      -- when noice is not enabled, install notify on VeryLazy
-      local Util = require("core.utils")
-      if not Util.has("noice.nvim") then
-        Util.on_very_lazy(function()
+      local utils = require("core.utils")
+      if not utils.has("noice.nvim") then
+        utils.on_very_lazy(function()
           vim.notify = require("notify")
         end)
       end
     end,
   },
+
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -172,32 +207,32 @@ return {
       },
     },
   },
+
   {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufReadPost", "BufNewFile" },
-    opts = function()
-      return {
-        indentLine_enabled = 1,
-        filetype_exclude = {
-          "help",
-          "terminal",
-          "lazy",
-          "lspinfo",
-          "TelescopePrompt",
-          "TelescopeResults",
-          "mason",
-          "nvdash",
-          "nvcheatsheet",
-          "noice"
-        },
-        buftype_exclude = { "terminal", "nofile" },
-        show_trailing_blankline_indent = false,
-        show_first_indent_level = false,
-        show_current_context = true,
-        show_current_context_start = true,
-      }
-    end,
+    opts = {
+      indentLine_enabled = 1,
+      filetype_exclude = {
+        "help",
+        "terminal",
+        "lazy",
+        "lspinfo",
+        "TelescopePrompt",
+        "TelescopeResults",
+        "mason",
+        "nvdash",
+        "nvcheatsheet",
+        "noice"
+      },
+      buftype_exclude = { "terminal", "nofile" },
+      show_trailing_blankline_indent = false,
+      show_first_indent_level = false,
+      show_current_context = true,
+      show_current_context_start = true,
+    }
   },
+
   {
     'folke/todo-comments.nvim',
     cmd = "TodoTelescope",

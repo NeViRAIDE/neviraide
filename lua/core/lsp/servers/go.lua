@@ -1,4 +1,3 @@
--- TODO: inlay hints for golang (full cofigure gopls)
 require("lspconfig").gopls.setup({
   on_attach = require("core.lsp.on_attach"),
   capabilities = require("core.lsp.capabilities"),
@@ -30,4 +29,4 @@ require("lspconfig").gopls.setup({
       },
     },
   },
-}) -- true: apply go.nvim non-default gopls setup, if it is a list, will merge with gopls setup e.g.
+})

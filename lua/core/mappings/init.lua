@@ -19,6 +19,9 @@ vim.keymap.set(
 
 M.setup = function()
   mappings({
+    d = {
+      n = { function() require("notify").dismiss({ silent = true, pending = true }) end, "Dismiss all Notifications" }
+    },
     ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
     ['<c-s>'] = { '<cmd>lua require("core.utils").save_and_format()<cr>', 'Save file ' },
     ['<c-n>'] = { ':Neotree reveal toggle<cr>', 'File explorer ' },

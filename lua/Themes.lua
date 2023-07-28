@@ -1,6 +1,8 @@
 return {
   { 'ellisonleao/gruvbox.nvim' },
+
   { 'sainnhe/everforest',      priority = 1000 },
+
   {
     'Mofiqul/dracula.nvim',
     priority = 1000,
@@ -8,6 +10,7 @@ return {
       italic_comment = true,
     }
   },
+
   {
     "rebelot/kanagawa.nvim",
     priority = 1000,
@@ -15,6 +18,7 @@ return {
       compile = true
     }
   },
+
   {
     'marko-cerovac/material.nvim',
     priority = 1000,
@@ -40,6 +44,7 @@ return {
       },
     }
   },
+
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -75,10 +80,12 @@ return {
       },
     },
   },
+
   {
     "folke/tokyonight.nvim",
     priority = 1000,
   },
+
   {
     "olimorris/onedarkpro.nvim",
     priority = 1000,

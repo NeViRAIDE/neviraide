@@ -29,7 +29,6 @@ local function inputMod()
     end,
     on_submit = function(value)
       vim.fn.execute('GoModInit ' .. value)
-      -- FIX: change "restart" to "start" and "stop" with 3 second waiting
 
       -- vim.fn.execute('LspRestart')
     end,

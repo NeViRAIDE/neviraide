@@ -1,7 +1,11 @@
 local utils = require("core.utils.lualine.utils")
 
--- TODO: create colorscheme component for dynamic change themes
 return {
+  indent = {
+    function() return '%=' end,
+    cond = require('core.utils.lualine.utils').conditions.hide_in_width,
+  },
+
   vim_mode = {
     function()
       local mode_icons = {
@@ -110,6 +114,7 @@ return {
       nui = 'NUI',
       nui_themes = 'Colorschemes',
       nui_new = 'Create file',
+      nui_sm = "Session Manager",
       ['neo-tree'] = "NeoTree",
     },
     buffers_color = {
@@ -199,7 +204,6 @@ return {
     padding = { left = 0, right = 0 },
   },
 
-  -- FIX: not working on_click event
   navic_location = {
     function()
       return require("nvim-navic").get_location()

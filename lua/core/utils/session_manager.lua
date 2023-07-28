@@ -14,7 +14,7 @@ M.sessions = Menu({
     winhighlight = 'Normal:SessionManagerText,FloatBorder:SessionManagerBorder',
   },
   buf_options = {
-    filetype = 'nui',
+    filetype = 'nui_sm',
   },
 }, {
   lines = {

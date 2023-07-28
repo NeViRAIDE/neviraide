@@ -20,7 +20,6 @@ autocmd_multi("GoLangNvim", {
   --   }
   -- },
 
-  -- FIX: inlay hints for go
   -- {
   --   { "CursorHold" },
   --   {

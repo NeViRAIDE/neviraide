@@ -1,6 +1,14 @@
--- TODO: util for icons
--- TODO: util for require function
 local M = {}
+
+---@return string
+function M.nvim_version()
+  local nvim_full_version_info = vim.fn.execute('version')
+  if nvim_full_version_info:match('NVIM') then
+    return nvim_full_version_info:match('NVIM [^\n]*')
+  else
+    return 'Check your alpha configuration file'
+  end
+end
 
 local function if_require(module, block, errblock)
   local ok, mod = pcall(require, module)
@@ -12,22 +20,6 @@ local function if_require(module, block, errblock)
     vim.api.nvim_err_writeln('Failed to load ' .. module .. ': ' .. mod)
     return nil
   end
-end
-
-
--- FIX: to read from directory
-function M.config_plugins(plugins)
-  local conf = {}
-  for category, plugins_in_category in pairs(plugins) do
-    for _, el in pairs(plugins_in_category) do
-      if category == 'other' then
-        table.insert(conf, el)
-      else
-        table.insert(conf, require('plugins.config.' .. category .. '.' .. el))
-      end
-    end
-  end
-  return conf
 end
 
 ---@param plugin string

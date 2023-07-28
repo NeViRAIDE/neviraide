@@ -1,5 +1,10 @@
 return {
   {
+    "xiyaowong/transparent.nvim",
+    cmd = "TransparentToggle",
+  },
+
+  {
     "nvim-neo-tree/neo-tree.nvim",
     cmd = "Neotree",
     init = function()
@@ -58,6 +63,7 @@ return {
       }
     end,
   },
+
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
@@ -217,6 +223,7 @@ return {
       end
     end,
   },
+
   {
     "folke/which-key.nvim",
     keys = { "<leader>", '"', "'", "`", "<c-n>", "v" },
@@ -266,7 +273,9 @@ return {
       }
     end
   },
+
   { 'ggandor/lightspeed.nvim', event = { "BufReadPost", "BufNewFile" } },
+
   {
     "numToStr/Comment.nvim",
     keys = {
@@ -279,6 +288,7 @@ return {
       require("Comment").setup(opts)
     end,
   },
+
   {
     'uga-rosa/ccc.nvim',
     event = { "BufReadPost", "BufNewFile" },
@@ -291,6 +301,7 @@ return {
       }
     end,
   },
+
   {
     "lewis6991/gitsigns.nvim",
     ft = { "gitcommit", "diff" },
@@ -322,6 +333,7 @@ return {
       }
     end,
   },
+
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
@@ -431,6 +443,7 @@ return {
       }
     end,
   },
+
   {
     'nvim-treesitter/nvim-treesitter',
     event = { "BufReadPost", "BufNewFile" },
@@ -539,6 +552,7 @@ return {
       'windwp/nvim-ts-autotag'
     }
   },
+
   {
     'akinsho/toggleterm.nvim',
     version = '*',

@@ -1,3 +1,4 @@
+-- TODO: restore changed theme after restart nvim
 local NuiTree = require("nui.tree")
 local NuiLine = require("nui.line")
 local event = require('nui.utils.autocmd').event
