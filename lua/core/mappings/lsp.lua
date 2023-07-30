@@ -1,10 +1,5 @@
-local mappings =
-    require('core.utils').load_mappings
-
-local M = {}
-
-M.attach_lsp = function(bufnr)
-  mappings({
+return function(client, bufnr)
+  require('core.utils').wk_reg({
     ['<leader>'] = {
       l = {
         name = 'LSP ',
@@ -21,5 +16,3 @@ M.attach_lsp = function(bufnr)
     },
   }, { buffer = bufnr, mode = 'n' })
 end
-
-return M

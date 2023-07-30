@@ -1,10 +1,5 @@
 return {
   {
-    "xiyaowong/transparent.nvim",
-    cmd = "TransparentToggle",
-  },
-
-  {
     "nvim-neo-tree/neo-tree.nvim",
     cmd = "Neotree",
     init = function()
@@ -232,7 +227,7 @@ return {
       vim.o.timeoutlen = 300
     end,
     opts = function()
-      require('core.mappings').setup()
+      require('core.utils').mappings()()
       return {
         plugins = { spelling = { enabled = true } },
         key_labels = {
@@ -274,34 +269,6 @@ return {
     end
   },
 
-  { 'ggandor/lightspeed.nvim', event = { "BufReadPost", "BufNewFile" } },
-
-  {
-    "numToStr/Comment.nvim",
-    keys = {
-      { "gcc", mode = "n" },
-      { "gc",  mode = "v" },
-      { "gbc", mode = "n" },
-      { "gb",  mode = "v" },
-    },
-    config = function(_, opts)
-      require("Comment").setup(opts)
-    end,
-  },
-
-  {
-    'uga-rosa/ccc.nvim',
-    event = { "BufReadPost", "BufNewFile" },
-    opts = function()
-      return {
-        highlighter = {
-          auto_enable = true,
-          excludes = { 'neo-tree' }
-        },
-      }
-    end,
-  },
-
   {
     "lewis6991/gitsigns.nvim",
     ft = { "gitcommit", "diff" },
@@ -335,225 +302,6 @@ return {
   },
 
   {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-      {
-        "L3MON4D3/LuaSnip",
-        dependencies = {
-          "rafamadriz/friendly-snippets",
-          config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-          end,
-        },
-        opts = { history = true, updateevents = "TextChanged,TextChangedI" },
-      },
-      {
-        "windwp/nvim-autopairs",
-        opts = {
-          fast_wrap = {},
-          disable_filetype = { "TelescopePrompt", "vim" },
-        },
-        config = function(_, opts)
-          require("nvim-autopairs").setup(opts)
-          local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-          require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
-        end,
-      },
-      {
-        "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "lukas-reineke/cmp-under-comparator"
-      },
-    },
-    opts = function()
-      local cmp = require "cmp"
-      return {
-        completion = {
-          completeopt = "menu,menuone",
-        },
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
-        mapping = {
-          ["<C-p>"] = cmp.mapping.select_prev_item(),
-          ["<C-n>"] = cmp.mapping.select_next_item(),
-          ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.close(),
-          ["<CR>"] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Insert,
-            select = true,
-          },
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif require("luasnip").expand_or_jumpable() then
-              vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-            else
-              fallback()
-            end
-          end, {
-            "i",
-            "s",
-          }),
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif require("luasnip").jumpable(-1) then
-              vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
-            else
-              fallback()
-            end
-          end, {
-            "i",
-            "s",
-          }),
-        },
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "buffer" },
-          { name = "nvim_lua" },
-          { name = "path" },
-        },
-        sorting = {
-          comparators = {
-            cmp.config.compare.offset,
-            cmp.config.compare.exact,
-            cmp.config.compare.score,
-            require "cmp-under-comparator".under,
-            cmp.config.compare.kind,
-            cmp.config.compare.sort_text,
-            cmp.config.compare.length,
-            cmp.config.compare.order,
-          },
-        },
-        experimental = {
-          ghost_text = {
-            hl_group = 'Comment',
-          },
-        },
-      }
-    end,
-  },
-
-  {
-    'nvim-treesitter/nvim-treesitter',
-    event = { "BufReadPost", "BufNewFile" },
-    build = ':TSUpdate',
-    opts = function()
-      return {
-        ensure_installed = { 'go', 'lua', },
-        highlight = {
-          enable = true,
-          use_languagetree = true,
-        },
-        indent = { enable = true },
-        rainbow = {
-          enable = true,
-          disable = { 'jsx', 'cpp' },
-          query = 'rainbow-parens',
-          strategy = require('ts-rainbow').strategy.global,
-        },
-        autotag = {
-          enable = true,
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm"
-          }
-        },
-        textobjects = {
-          enable = true,
-          lsp_interop = {
-            enable = true,
-          },
-          keymaps = {
-            ["iL"] = {
-              go = "(function_definition) @function",
-            },
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-            ["aC"] = "@class.outer",
-            ["iC"] = "@class.inner",
-            ["ac"] = "@conditional.outer",
-            ["ic"] = "@conditional.inner",
-            ["ae"] = "@block.outer",
-            ["ie"] = "@block.inner",
-            ["al"] = "@loop.outer",
-            ["il"] = "@loop.inner",
-            ["is"] = "@statement.inner",
-            ["as"] = "@statement.outer",
-            ["ad"] = "@comment.outer",
-            ["am"] = "@call.outer",
-            ["im"] = "@call.inner"
-          },
-          move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-              ["]m"] = "@function.outer",
-              ["]]"] = "@class.outer"
-            },
-            goto_next_end = {
-              ["]M"] = "@function.outer",
-              ["]["] = "@class.outer"
-            },
-            goto_previous_start = {
-              ["[m"] = "@function.outer",
-              ["[["] = "@class.outer"
-            },
-            goto_previous_end = {
-              ["[M"] = "@function.outer",
-              ["[]"] = "@class.outer"
-            }
-          },
-          select = {
-            enable = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-              ["iF"] = {
-                python = "(function_definition) @function",
-                go = "(method_declaration) @function"
-              }
-            }
-          },
-          swap = {
-            enable = true,
-            swap_next = {
-              ["<leader>a"] = "@parameter.inner"
-            },
-            swap_previous = {
-              ["<leader>A"] = "@parameter.inner"
-            }
-          }
-        }
-      }
-    end,
-    config = function(_, opts)
-      require('nvim-treesitter.configs').setup(opts)
-    end,
-    dependencies = {
-      "HiPhish/nvim-ts-rainbow2",
-      'windwp/nvim-ts-autotag'
-    }
-  },
-
-  {
     'akinsho/toggleterm.nvim',
     version = '*',
     cmd = "ToggleTerm",
@@ -574,5 +322,12 @@ return {
         height = function(term) return math.floor(vim.o.lines * 0.5) end,
       },
     }
+  },
+
+  {
+    'folke/todo-comments.nvim',
+    cmd = "TodoTelescope",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {}
   }
 }

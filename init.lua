@@ -11,18 +11,22 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
+
 vim.g.mapleader = " "
 
 require("lazy").setup(
   {
-    { import = 'UI' },
-    { import = 'Themes' },
-    { import = 'LSP' },
     { import = 'Utils' },
+    { import = 'Themes' },
     { import = 'Editor' },
+    { import = 'Tools' },
+    { import = 'UI' },
+    { import = 'LSP' },
+    { import = 'Treesitter' },
+    { import = 'Completion' },
   },
   {
-    defaults = { lazy = true, version = "*" },
+    defaults = { lazy = true, --[[ version = "*" ]] },
     checker = { enabled = true },
     performance = {
       rtp = {

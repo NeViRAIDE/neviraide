@@ -1,4 +1,4 @@
-require("lspconfig").sumneko_lua.setup {
+return {
   on_attach = require("core.lsp.on_attach"),
   capabilities = require("core.lsp.capabilities"),
   flags = { debounce_text_changes = 150 },
@@ -17,6 +17,7 @@ require("lspconfig").sumneko_lua.setup {
       telemetry = { enable = false },
       format = { enable = true },
       hint = { enable = true },
+      codeLens = { enable = true }
     },
   },
 }

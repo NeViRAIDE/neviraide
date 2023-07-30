@@ -218,6 +218,6 @@ return {
     on_click = function() vim.fn.execute('lua require("core.utils.change_theme")()') end,
     color = "FloatTitle",
     padding = { right = 1 }
-  }
+  },
 
 }

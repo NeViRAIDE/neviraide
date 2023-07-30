@@ -16,8 +16,6 @@ return {
               alpha_utils.button('', ' Find file', ':Telescope find_files<cr>'),
               alpha_utils.button('', ' Recent files', ':Telescope oldfiles<cr>'),
               alpha_utils.button('', ' Find word', ':Telescope live_grep<cr>'),
-              alpha_utils.button('󱑜', ' Session manager',
-                ':lua require("core.utils.session_manager").sessions:mount()<cr>'),
               alpha_utils.button('', ' TODO list',
                 ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=14}}<cr>'),
               alpha_utils.button('', ' Check health', ':checkhealth<cr>'),
@@ -139,7 +137,6 @@ return {
   },
 
   {
-    -- TODO: add filetypes of created utils to bufferline
     "MunifTanjim/nui.nvim",
     config = function()
       require('core.override_vim_ui.input')
@@ -192,7 +189,6 @@ return {
         bottom_search = true,
         command_palette = true,
         long_message_to_split = true,
-        -- lsp_doc_border = true,
       },
       routes = {
         {
@@ -232,11 +228,4 @@ return {
       show_current_context_start = true,
     }
   },
-
-  {
-    'folke/todo-comments.nvim',
-    cmd = "TodoTelescope",
-    event = { "BufReadPost", "BufNewFile" },
-    opts = {}
-  }
 }

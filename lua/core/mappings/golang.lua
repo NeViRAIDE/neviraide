@@ -1,10 +1,5 @@
-local mappings =
-    require('core.utils').load_mappings
-
-local M = {}
-
-M.attach_go = function(bufnr)
-  mappings({
+return function(bufnr)
+  require('core.utils').wk_reg({
     ['<leader>'] = {
       g = {
         name = 'GoLang ',
@@ -39,5 +34,3 @@ M.attach_go = function(bufnr)
     },
   }, { buffer = bufnr, mode = 'n' })
 end
-
-return M

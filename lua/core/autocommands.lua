@@ -1,16 +1,7 @@
-local autocmd = vim.api.nvim_create_autocmd
-local autocmd_multi = require("core.utils").autocmd_multi
-
--- dont list quickfix buffers
-autocmd("FileType", {
-  pattern = "qf",
-  callback = function()
-    vim.opt_local.buflisted = false
-  end,
-})
+local utils = require("core.utils")
 
 -- Run gofmt + goimport on save
-autocmd_multi("GoLangNvim", {
+utils.autocmd_multi("GoLangNvim", {
   -- { "BufWritePre",
   --   {
   --     pattern = "*.go",
@@ -33,13 +24,22 @@ autocmd_multi("GoLangNvim", {
     {
       pattern = "go",
       callback = function()
-        require("core.mappings.golang").attach_go()
+        utils.mappings("golang")()
       end,
     }
   }
 })
 
-autocmd_multi('NEVIRAIDE_CONF', {
+utils.autocmd_multi('NEVIRAIDE_CONF', {
+  {
+    "FileType",
+    {
+      pattern = "qf",
+      callback = function()
+        vim.opt_local.buflisted = false -- dont list quickfix buffers
+      end,
+    }
+  },
   { 'BufReadPost',
     {
       pattern = '*',
@@ -124,7 +124,7 @@ autocmd_multi('NEVIRAIDE_CONF', {
   },
 })
 
-autocmd_multi('NEVIRAIDE_CURSOR', {
+utils.autocmd_multi('NEVIRAIDE_CURSOR', {
   {
     { 'BufEnter', 'WinEnter' },
     {
@@ -159,4 +159,33 @@ autocmd_multi('NEVIRAIDE_CURSOR', {
       callback = function() vim.o.formatoptions = 'jcrql' end,
     },
   },
+})
+
+utils.autocmd('NEVIRIDE_CODELENS', { 'InsertLeave', 'BufWritePost' }, {
+  pattern = { '*.go', '*.mod', '*.vue', '*.js', '*.ts', '*.lua' },
+  callback = function() vim.lsp.codelens.refresh() end,
+})
+
+-- auto open float window on diagnostic line
+utils.autocmd("NEVIRIDE_auto_diag", "LspAttach", {
+  callback = function(args)
+    -- the buffer where the lsp attached
+    ---@type number
+    local buffer = args.buf
+    -- create the autocmd to show diagnostics
+    utils.autocmd("NEVIRIDE_auto_diag", "CursorHold", {
+      group = vim.api.nvim_create_augroup("_auto_diag", { clear = true }),
+      buffer = buffer,
+      callback = function()
+        vim.diagnostic.open_float(nil, {
+          focusable = false,
+          close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+          border = "none",
+          source = "always",
+          prefix = " ",
+          scope = "cursor",
+        })
+      end,
+    })
+  end,
 })

@@ -1,5 +1,4 @@
-local M = {}
-local mappings = require("core.utils").load_mappings
+local utils = require("core.utils")
 
 vim.keymap.set({ 'n', 'i', 's' }, '<c-j>', function()
   if not require('noice.lsp').scroll(4) then return ':wincmd j<cr>' end
@@ -17,8 +16,8 @@ vim.keymap.set(
   { desc = 'Redirect Cmdline' }
 )
 
-M.setup = function()
-  mappings({
+return function()
+  utils.wk_reg({
     d = {
       n = { function() require("notify").dismiss({ silent = true, pending = true }) end, "Dismiss all Notifications" }
     },
@@ -42,14 +41,14 @@ M.setup = function()
       x = { '<cmd>bd<cr>', 'Delete buffer ' },
       N = { '<cmd>lua require("core.utils.new_file")()<cr>', 'New file ' },
       G = { '<cmd>Neotree position=right git_status toggle<cr>', 'GIT ' },
-      s = require('core.mappings.settings'),
-      c = require('core.mappings.colorpicker'),
-      t = require('core.mappings.telescope_keys'),
-      n = require('core.mappings.todos'),
+      s = utils.mappings('settings'),
+      c = utils.mappings('colorpicker'),
+      t = utils.mappings('telescope_keys'),
+      n = utils.mappings('todos'),
     }
   }, { mode = 'n' })
 
-  mappings({
+  utils.wk_reg({
     ["<c-/>"] = {
       "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
       "Toggle comment",
@@ -59,7 +58,7 @@ M.setup = function()
     },
   }, { mode = 'v' })
 
-  mappings({
+  utils.wk_reg({
     ['<a-h>'] = { '<ESC><cmd>ToggleTerm direction=horizontal<cr>', 'Horizontal terminal' },
     ['<a-f>'] = { '<ESC><cmd>ToggleTerm direction=float<cr>', 'Float terminal' },
     ['<a-v>'] = { '<ESC><cmd>ToggleTerm direction=vertical<cr>', 'Vertical terminal' },
@@ -71,7 +70,7 @@ M.setup = function()
     ['<esc>'] = { '<C-\\><C-n>', 'NORMAL mode' },
   }, { mode = 't' })
 
-  mappings({
+  utils.wk_reg({
     j = {
       j = {
         "<ESC>",
@@ -86,5 +85,3 @@ M.setup = function()
     },
   }, { mode = 'i' })
 end
-
-return M

@@ -1,11 +1,11 @@
-local autocmd_multi = require("core.utils").autocmd_multi
+local utils = require("core.utils")
 local opts = require("core.lsp.options")
 
 return function(client, bufnr)
   require('lsp_signature').on_attach(opts.signature, bufnr)
 
-  require('core.mappings.lsp').attach_lsp(bufnr)
-  require('core.mappings.diagnostic').attach_diagnostic(bufnr)
+  utils.mappings('lsp')(bufnr)
+  utils.mappings('diagnostic')(bufnr)
 
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)
@@ -19,7 +19,7 @@ return function(client, bufnr)
   end
 
   if client.server_capabilities.documentHighlightProvider then
-    autocmd_multi('lsp_document_highlight', {
+    utils.autocmd_multi('lsp_document_highlight', {
       {
         'CursorHold',
         {

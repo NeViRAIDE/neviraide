@@ -27,19 +27,6 @@ function M.has(plugin)
   return require("lazy.core.config").spec.plugins[plugin] ~= nil
 end
 
-function M.load_mappings(...)
-  local args = { ... }
-  if_require(
-    'which-key',
-    function(wk) return wk.register(unpack(args)) end,
-    function(_)
-      vim.api.nvim_err_writeln(
-        'WhichKeys not installed; cannot apply mappings!'
-      )
-    end
-  )
-end
-
 --- Create autocommand
 ---@param group string
 ---@param events string | table
@@ -115,5 +102,29 @@ end
 --- @param name string highlight group
 --- @param value table keys
 function M.hi(name, value) vim.api.nvim_set_hl(0, name, value) end
+
+function M.wk_reg(...)
+  local args = { ... }
+  if_require(
+    'which-key',
+    function(wk) return wk.register(unpack(args)) end,
+    function(_)
+      vim.api.nvim_err_writeln(
+        'WhichKeys not installed; cannot apply mappings!'
+      )
+    end
+  )
+end
+
+---Wrapper for require('core.mappings')
+---@param keys? string
+---@return function
+function M.mappings(keys)
+  if keys then
+    return require('core.mappings.' .. keys)
+  else
+    return require('core.mappings')
+  end
+end
 
 return M

@@ -1,4 +1,4 @@
-require("lspconfig").gopls.setup({
+return {
   on_attach = require("core.lsp.on_attach"),
   capabilities = require("core.lsp.capabilities"),
   flags = { debounce_text_changes = 150 },
@@ -29,4 +29,4 @@ require("lspconfig").gopls.setup({
       },
     },
   },
-})
+}

@@ -1,10 +1,5 @@
-local mappings =
-    require('core.utils').load_mappings
-
-local M = {}
-
-M.attach_diagnostic = function(bufnr)
-  mappings({
+return function(client, bufnr)
+  require('core.utils').wk_reg({
     ['<leader>'] = {
       d = {
         name = 'Diagnostics ',
@@ -14,11 +9,11 @@ M.attach_diagnostic = function(bufnr)
           'Show diagnostic on line',
         },
         p = {
-          ':lua vim.diagnostic.goto_prev()<cr>',
+          ':lua vim.diagnostic.goto_prev({float=false})<cr>',
           'Jump to previous diagnostic node',
         },
         n = {
-          ':lua vim.diagnostic.goto_next()<cr>',
+          ':lua vim.diagnostic.goto_next({float=false})<cr>',
           'Jump to next diagnostic node',
         },
         d = {
@@ -47,5 +42,3 @@ M.attach_diagnostic = function(bufnr)
     }
   }, { buffer = bufnr, mode = 'n' })
 end
-
-return M
