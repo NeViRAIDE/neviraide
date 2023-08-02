@@ -1,4 +1,4 @@
-local neviraide_conf = require('core.neviraide_conf')
+local neviraide = require('NEVIRAIDE')
 
 local o = vim.opt
 
@@ -31,8 +31,8 @@ o.ignorecase = true
 o.smartcase = true
 o.mouse = 'a'
 o.mousemoveevent = true
-o.number = true
-o.relativenumber = true
+o.number = neviraide.ui.number
+o.relativenumber = neviraide.ui.relative_numbers
 o.numberwidth = 2
 o.ruler = false
 o.signcolumn = 'yes'
@@ -43,14 +43,14 @@ o.timeoutlen = 400
 o.undofile = true
 o.updatetime = 250
 o.sessionoptions =
-'blank,buffers,curdir,folds,help,options,terminal,globals,localoptions,tabpages'
+  'blank,buffers,curdir,folds,help,options,terminal,globals,localoptions,tabpages'
 
 vim.g.everforest_better_performance = 1
-vim.g.everforest_background = neviraide_conf.ui.background_pallete
+vim.g.everforest_background = neviraide.ui.background_pallete
 
 require('core.autocommands')
 require('core.highlights')
 
-vim.o.background = neviraide_conf.ui.background
+vim.o.background = neviraide.ui.background
 
-vim.cmd.colorscheme(neviraide_conf.ui.theme)
+vim.cmd.colorscheme(neviraide.ui.theme)

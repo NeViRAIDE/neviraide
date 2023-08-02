@@ -1,4 +1,3 @@
--- TODO: restore changed theme after restart nvim
 local NuiTree = require('nui.tree')
 local NuiLine = require('nui.line')
 local event = require('nui.utils.autocmd').event
@@ -6,9 +5,9 @@ local Popup = require('nui.popup')
 
 return function()
   ---@type integer number of themes installed
-  local theme_count = #require('Themes')
+  local theme_count = #require('plugins.themes')
   local write_to_conf = require('core.utils').replace_word
-  local ui = require('core.neviraide_conf').ui
+  local ui = require('NEVIRAIDE').ui
   local change_pallete = function(pallete) vim.g.everforest_background = pallete end
 
   local popup = Popup({
@@ -165,7 +164,7 @@ return function()
       end
       write_to_conf(ui.theme, node.theme)
       vim.cmd.colorscheme(node.theme)
-      require('plenary.reload').reload_module('core.neviraide_conf')
+      require('plenary.reload').reload_module('NEVIRAIDE')
       popup:unmount()
     elseif node:collapse() then
       tree:render()

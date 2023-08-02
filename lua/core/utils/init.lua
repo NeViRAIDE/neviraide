@@ -165,9 +165,7 @@ function M.mappings(keys)
 end
 
 function M.replace_word(old, new)
-  local neviraide_conf = vim.fn.stdpath('config')
-    .. '/lua/core/'
-    .. 'neviraide_conf.lua'
+  local neviraide_conf = vim.fn.stdpath('config') .. '/lua/' .. 'NEVIRAIDE.lua'
   local file = io.open(neviraide_conf, 'r')
   local added_pattern = string.gsub(old, '-', '%%-') -- add % before - if exists
   local new_content = file:read('*all'):gsub(added_pattern, new)
@@ -176,5 +174,6 @@ function M.replace_word(old, new)
   file:write(new_content)
   file:close()
 end
+
 
 return M

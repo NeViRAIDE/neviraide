@@ -14,17 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = ' '
 
-require('lazy').setup({
-  { import = 'Utils' },
-  { import = 'Themes' },
-  { import = 'Editor' },
-  { import = 'Tools' },
-  { import = 'UI' },
-  { import = 'LSP' },
-  { import = 'Treesitter' },
-  { import = 'Completion' },
-  { import = 'GoLang' },
-}, {
+require('lazy').setup('plugins', {
   defaults = {
     lazy = true, --[[ version = "*" ]]
   },

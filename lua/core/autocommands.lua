@@ -166,20 +166,22 @@ utils.autocmd_multi('NEVIRAIDE_CURSOR', {
   },
 })
 
-utils.autocmd('NEVIRAIDE_CODELENS', { 'InsertLeave', 'BufWritePost' }, {
-  pattern = { '*.go', '*.mod', '*.vue', '*.js', '*.ts', '*.lua' },
-  callback = function() vim.lsp.codelens.refresh() end,
-})
-
 -- auto open float window on diagnostic line
-utils.autocmd('NEVIRAIDE_auto_diag', 'LspAttach', {
+utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
   callback = function(args)
     -- the buffer where the lsp attached
     ---@type number
     local buffer = args.buf
+
+    utils.autocmd('NEVIRAIDE_codelens', { 'InsertLeave', 'BufWritePost' }, {
+      buffer = buffer,
+      -- pattern = { '*.go', '*.mod', '*.vue', '*.js', '*.ts', '*.lua' },
+      callback = function() vim.lsp.codelens.refresh() end,
+    })
+
     -- create the autocmd to show diagnostics
     utils.autocmd('NEVIRAIDE_auto_diag', 'CursorHold', {
-      group = vim.api.nvim_create_augroup('_auto_diag', { clear = true }),
+      -- group = vim.api.nvim_create_augroup('_auto_diag', { clear = true }),
       buffer = buffer,
       callback = function()
         vim.diagnostic.open_float(nil, {
@@ -197,5 +199,17 @@ utils.autocmd('NEVIRAIDE_auto_diag', 'LspAttach', {
         })
       end,
     })
+  end,
+})
+
+utils.autocmd('NEVIRAIDE_transparency', 'ColorScheme', {
+  pattern = '*',
+  callback = function()
+    local transparency = require('NEVIRAIDE').ui.transparency
+    if transparency then
+      vim.fn.execute('TransparentEnable')
+    else
+      vim.fn.execute('TransparentDisable')
+    end
   end,
 })

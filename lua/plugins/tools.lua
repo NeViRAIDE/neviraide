@@ -6,7 +6,13 @@ return {
 
   {
     'xiyaowong/transparent.nvim',
-    cmd = 'TransparentToggle',
+    cmd = {
+      'TransparentEnable',
+      'TransparentDisable',
+    },
+    opts = {
+      extra_group = { 'NeoTreeNormal', 'NormalFloat' },
+    },
   },
 
   {
