@@ -5,11 +5,11 @@ local function get_file_path()
   if vim.fn.bufname('%') == '' then return '' end
   local sep = '/'
   local path_list =
-      vim.split(string.gsub(vim.fn.expand('%:~:.:h'), '%%', ''), sep)
+    vim.split(string.gsub(vim.fn.expand('%:~:.:h'), '%%', ''), sep)
   local file_path = ''
   for _, cur in ipairs(path_list) do
     file_path = (cur == '.' or cur == '~') and ''
-        or file_path
+      or file_path
         .. '%#BreadcrumbDir#'
         .. ' '
         .. cur
@@ -55,7 +55,7 @@ end
 function custom_fname:newfile()
   local data = custom_fname.super.update_status(self)
   data = highlight.component_format_highlight(self.status_colors.newfile)
-      .. data
+    .. data
   return data
 end
 
@@ -126,7 +126,7 @@ return {
       return 'Go ' .. go_version:match('%d[^ ]*')
     elseif buf_ft == 'python' then
       local python_version =
-          vim.fn.execute(':python import sys; print(sys.version)')
+        vim.fn.execute(':python import sys; print(sys.version)')
       return 'Python ' .. python_version:match('%d[^ ]*')
     end
     return buf_ft:gsub('^%l', string.upper)
@@ -135,7 +135,9 @@ return {
   conditions = {
     ---If buffer not empty.
     ---@return boolean
-    buffer_not_empty = function() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end,
+    buffer_not_empty = function()
+      return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
+    end,
 
     ---If windows width less than 100.
     ---@return boolean
@@ -160,6 +162,6 @@ return {
       if next(vim.lsp.get_active_clients()) ~= nil then
         return require('nvim-navic').is_available()
       end
-    end
+    end,
   },
 }

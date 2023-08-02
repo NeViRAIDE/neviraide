@@ -13,9 +13,9 @@ return function(bufnr)
         },
         t = {
           name = "Tags",
-          a = { ':GoAddTag<cr>', 'Add' },
-          r = { ':GoRmTag<cr>', 'Remove' },
-          c = { ':GoClearTag<cr>', 'Clear' },
+          a = { ':GoTagAdd<cr>', 'Add' },
+          r = { ':GoTagRm<cr>', 'Remove' },
+          c = { ':GoTagClear<cr>', 'Clear' },
         },
         D = {
           name = "Debug",
@@ -23,13 +23,7 @@ return function(bufnr)
           d = { ':GoDebug<cr>', 'Debug' },
           S = { ':GoDbdStop<cr>', 'STOP Debug' },
         },
-        f = {
-          name = "Autofill",
-          i = { ':GoIfErr<cr>', 'Add if err' },
-          s = { ':GoFillStruct<cr>', 'Fill struct' },
-          S = { ':GoFillSwitch<cr>', 'Fill switch' },
-          f = { ':GoFixPlurals<cr>', 'change func foo(b int, a int, r int) -> func foo(b, a, r int)' },
-        },
+        i = { ':GoIfErr<cr>', 'Add if err' },
       }
     },
   }, { buffer = bufnr, mode = 'n' })

@@ -21,7 +21,9 @@ local function override_ui_input()
         },
         padding = { 0, 1 },
       },
-      win_options = { winhighlight = 'Normal:LspInfoTitle,FloatBorder:DevIconC' },
+      win_options = {
+        winhighlight = 'Normal:LspInfoTitle,FloatBorder:DevIconC',
+      },
       buf_options = {
         filetype = 'nui',
       },

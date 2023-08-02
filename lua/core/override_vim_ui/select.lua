@@ -9,7 +9,7 @@ local function override_ui_select()
     local border_top_text = get_prompt_text(opts.prompt, ' Select Item ')
     local kind = opts.kind or 'unknown'
     local format_item = opts.format_item
-        or function(item) return tostring(item.__raw_item or item) end
+      or function(item) return tostring(item.__raw_item or item) end
 
     local popup_options = {
       relative = 'editor',
@@ -37,10 +37,10 @@ local function override_ui_select()
     end
 
     local max_width = popup_options.relative == 'editor' and vim.o.columns - 4
-        or vim.api.nvim_win_get_width(0) - 4
+      or vim.api.nvim_win_get_width(0) - 4
     local max_height = popup_options.relative == 'editor'
         and math.floor(vim.o.lines * 80 / 100)
-        or vim.api.nvim_win_get_height(0)
+      or vim.api.nvim_win_get_height(0)
 
     local menu_items = {}
     for index, item in ipairs(items) do

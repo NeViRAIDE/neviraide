@@ -38,7 +38,7 @@ return function(client, bufnr)
           l = { ':DapShowLog<cr>', 'Show log' },
           R = { ':DapToggleRepl<cr>', 'Toggle REPL' },
         },
-      }
-    }
+      },
+    },
   }, { buffer = bufnr, mode = 'n' })
 end

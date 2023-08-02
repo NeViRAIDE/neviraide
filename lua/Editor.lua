@@ -1,25 +1,25 @@
 return {
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    cmd = "Neotree",
+    'nvim-neo-tree/neo-tree.nvim',
+    cmd = 'Neotree',
     init = function()
       if vim.fn.argc() == 1 then
         local stat = vim.loop.fs_stat(vim.fn.argv(0))
-        if stat and stat.type == "directory" then
-          require("neo-tree")
-        end
+        if stat and stat.type == 'directory' then require('neo-tree') end
       end
     end,
     opts = function()
-      local fc = require("neo-tree.sources.filesystem.components")
+      local fc = require('neo-tree.sources.filesystem.components')
       return {
         event_handlers = {
           {
             event = 'file_opened',
-            handler = function(file_path) require("neo-tree.command").execute({ action = "close" }) end,
+            handler = function(file_path)
+              require('neo-tree.command').execute({ action = 'close' })
+            end,
           },
         },
-        sources = { "filesystem", "buffers", "git_status", "document_symbols" },
+        sources = { 'filesystem', 'buffers', 'git_status', 'document_symbols' },
         default_component_configs = {
           git_status = {
             symbols = {
@@ -29,45 +29,45 @@ return {
             },
           },
           icon = {
-            folder_closed = "",
+            folder_closed = '',
             folder_open = '',
             folder_empty = '',
           },
           modified = {
-            symbol = "",
+            symbol = '',
           },
         },
         filesystem = {
           components = {
             name = function(config, node, state)
               local result = fc.name(config, node, state)
-              if node:get_depth() == 1 and node.type ~= "message" then
-                result.text = vim.fn.fnamemodify(node.path, ":t")
+              if node:get_depth() == 1 and node.type ~= 'message' then
+                result.text = vim.fn.fnamemodify(node.path, ':t')
               end
               return result
             end,
           },
           filtered_items = {
-            always_show = { ".gitignore" },
+            always_show = { '.gitignore' },
           },
-          use_libuv_file_watcher = true
+          use_libuv_file_watcher = true,
         },
         nesting_rules = {
-          ["js"] = { "js.map" },
+          ['js'] = { 'js.map' },
         },
       }
     end,
   },
 
   {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    cmd = "Telescope",
+    'nvim-telescope/telescope.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    cmd = 'Telescope',
     opts = function()
       local action = require('telescope.actions')
       local action_layout = require('telescope.actions.layout')
-      local sorters = require("telescope.sorters")
-      local previewers = require("telescope.previewers")
+      local sorters = require('telescope.sorters')
+      local previewers = require('telescope.previewers')
       return {
         pickers = {
           find_files = {
@@ -100,7 +100,7 @@ return {
               height = 14,
             },
             border = {},
-            borderchars = { "", "", "", "", "", "", "", "" },
+            borderchars = { '', '', '', '', '', '', '', '' },
           },
           help_tags = {
             layout_strategy = 'horizontal',
@@ -130,7 +130,7 @@ return {
               preview_width = 0.4,
             },
             border = {},
-            borderchars = { "", "", "", "", "", "", "", "" },
+            borderchars = { '', '', '', '', '', '', '', '' },
           },
           diagnostics = {
             initial_mode = 'normal',
@@ -140,30 +140,30 @@ return {
               bottom_pane = { height = 12 },
             },
             border = {},
-            borderchars = { "", "", "", "", "", "", "", "" },
+            borderchars = { '', '', '', '', '', '', '', '' },
           },
         },
         defaults = {
           vimgrep_arguments = {
-            "rg",
-            "-L",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
+            'rg',
+            '-L',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
           },
-          prompt_prefix = "   ",
-          selection_caret = "  ",
-          entry_prefix = "  ",
-          initial_mode = "insert",
-          selection_strategy = "reset",
-          sorting_strategy = "ascending",
-          layout_strategy = "horizontal",
+          prompt_prefix = '   ',
+          selection_caret = '  ',
+          entry_prefix = '  ',
+          initial_mode = 'insert',
+          selection_strategy = 'reset',
+          sorting_strategy = 'ascending',
+          layout_strategy = 'horizontal',
           layout_config = {
             horizontal = {
-              prompt_position = "top",
+              prompt_position = 'top',
               preview_width = 0.55,
               results_width = 0.8,
             },
@@ -175,14 +175,14 @@ return {
             preview_cutoff = 120,
           },
           file_sorter = sorters.get_fuzzy_file,
-          file_ignore_patterns = { "node_modules" },
+          file_ignore_patterns = { 'node_modules' },
           generic_sorter = sorters.get_generic_fuzzy_sorter,
-          path_display = { "truncate" },
+          path_display = { 'truncate' },
           winblend = 10,
           border = {},
-          borderchars = { "", "", "", "", "", "", "", "" },
+          borderchars = { '', '', '', '', '', '', '', '' },
           color_devicons = true,
-          set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+          set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
           file_previewer = previewers.vim_buffer_cat.new,
           grep_previewer = previewers.vim_buffer_vimgrep.new,
           qflist_previewer = previewers.vim_buffer_qflist.new,
@@ -207,11 +207,11 @@ return {
             },
           },
         },
-        extensions_list = { "todo-comments", "notify" },
+        extensions_list = { 'todo-comments', 'notify' },
       }
     end,
     config = function(_, opts)
-      local telescope = require "telescope"
+      local telescope = require('telescope')
       telescope.setup(opts)
       for _, ext in ipairs(opts.extensions_list) do
         telescope.load_extension(ext)
@@ -220,8 +220,8 @@ return {
   },
 
   {
-    "folke/which-key.nvim",
-    keys = { "<leader>", '"', "'", "`", "<c-n>", "v" },
+    'folke/which-key.nvim',
+    keys = { '<leader>', '"', "'", '`', '<c-n>', 'v' },
     init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
@@ -266,23 +266,28 @@ return {
           '("nvim-treesitter.textsubjects")',
         },
       }
-    end
+    end,
   },
 
   {
-    "lewis6991/gitsigns.nvim",
-    ft = { "gitcommit", "diff" },
+    'lewis6991/gitsigns.nvim',
+    ft = { 'gitcommit', 'diff' },
     init = function()
       -- load gitsigns only when a git file is opened
-      vim.api.nvim_create_autocmd({ "BufRead" }, {
-        group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
+      vim.api.nvim_create_autocmd({ 'BufRead' }, {
+        group = vim.api.nvim_create_augroup(
+          'GitSignsLazyLoad',
+          { clear = true }
+        ),
         callback = function()
-          vim.fn.system("git -C " .. '"' .. vim.fn.expand "%:p:h" .. '"' .. " rev-parse")
+          vim.fn.system(
+            'git -C ' .. '"' .. vim.fn.expand('%:p:h') .. '"' .. ' rev-parse'
+          )
           if vim.v.shell_error == 0 then
-            vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
-            vim.schedule(function()
-              require("lazy").load { plugins = { "gitsigns.nvim" } }
-            end)
+            vim.api.nvim_del_augroup_by_name('GitSignsLazyLoad')
+            vim.schedule(
+              function() require('lazy').load({ plugins = { 'gitsigns.nvim' } }) end
+            )
           end
         end,
       })
@@ -290,12 +295,12 @@ return {
     opts = function()
       return {
         signs = {
-          add = { text = "│" },
-          change = { text = "│" },
-          delete = { text = "󰍵" },
-          topdelete = { text = "‾" },
-          changedelete = { text = "~" },
-          untracked = { text = "│" },
+          add = { text = '│' },
+          change = { text = '│' },
+          delete = { text = '󰍵' },
+          topdelete = { text = '‾' },
+          changedelete = { text = '~' },
+          untracked = { text = '│' },
         },
       }
     end,
@@ -304,7 +309,7 @@ return {
   {
     'akinsho/toggleterm.nvim',
     version = '*',
-    cmd = "ToggleTerm",
+    cmd = 'ToggleTerm',
     opts = {
       size = function(term)
         if term.direction == 'horizontal' then
@@ -321,13 +326,13 @@ return {
         width = function(term) return math.floor(vim.o.columns * 0.6) end,
         height = function(term) return math.floor(vim.o.lines * 0.5) end,
       },
-    }
+    },
   },
 
   {
     'folke/todo-comments.nvim',
-    cmd = "TodoTelescope",
-    event = { "BufReadPost", "BufNewFile" },
-    opts = {}
-  }
+    cmd = 'TodoTelescope',
+    event = { 'BufReadPost', 'BufNewFile' },
+    opts = {},
+  },
 }

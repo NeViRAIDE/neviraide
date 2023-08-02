@@ -1,7 +1,7 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    event = { "BufReadPost", "BufNewFile" },
+    event = { 'BufReadPost', 'BufNewFile' },
     build = ':TSUpdate',
     opts = function()
       return {
@@ -23,17 +23,14 @@ return {
           lsp_interop = { enable = true },
           move = { enable = true, set_jumps = true },
           select = { enable = true },
-          swap = { enable = true }
-        }
+          swap = { enable = true },
+        },
       }
     end,
-    config = function(_, opts)
-      require('nvim-treesitter.configs').setup(opts)
-    end,
+    config = function(_, opts) require('nvim-treesitter.configs').setup(opts) end,
     dependencies = {
-      "HiPhish/nvim-ts-rainbow2",
-      'windwp/nvim-ts-autotag'
-    }
+      'HiPhish/nvim-ts-rainbow2',
+      'windwp/nvim-ts-autotag',
+    },
   },
-
 }

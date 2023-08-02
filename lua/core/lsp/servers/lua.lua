@@ -1,6 +1,6 @@
 return {
-  on_attach = require("core.lsp.on_attach"),
-  capabilities = require("core.lsp.capabilities"),
+  on_attach = require('core.lsp.on_attach'),
+  capabilities = require('core.lsp.capabilities'),
   flags = { debounce_text_changes = 150 },
   single_file_support = true,
   settings = {
@@ -11,13 +11,13 @@ return {
       },
       diagnostics = { globals = { 'vim' } },
       workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
+        library = vim.api.nvim_get_runtime_file('', true),
         checkThirdParty = false,
       },
       telemetry = { enable = false },
-      format = { enable = true },
+      format = { enable = false },
       hint = { enable = true },
-      codeLens = { enable = true }
+      codeLens = { enable = true },
     },
   },
 }

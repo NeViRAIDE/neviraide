@@ -1,4 +1,4 @@
-local utils = require("core.utils.lualine.utils")
+local utils = require('core.utils.lualine.utils')
 
 return {
   indent = {
@@ -9,15 +9,15 @@ return {
   vim_mode = {
     function()
       local mode_icons = {
-        n = "",
-        i = "",
-        c = "",
-        v = " ",
-        V = " " .. '-Line',
-        [''] = " " .. '-Block',
-        R = "",
-        t = "",
-        s = "󰒅",
+        n = '',
+        i = '',
+        c = '',
+        v = ' ',
+        V = ' ' .. '-Line',
+        [''] = ' ' .. '-Block',
+        R = '',
+        t = '',
+        s = '󰒅',
       }
       return mode_icons[vim.fn.mode()]
     end,
@@ -45,7 +45,7 @@ return {
     utils.interpreter,
     color = 'Comment',
     padding = { right = 1, left = 1 },
-    cond = utils.conditions.hide_in_width
+    cond = utils.conditions.hide_in_width,
   },
 
   lsp_server = {
@@ -53,7 +53,7 @@ return {
     icon = ' ',
     color = 'Comment',
     on_click = function() vim.fn.execute('LspInfo') end,
-    cond = utils.conditions.hide_in_width
+    cond = utils.conditions.hide_in_width,
   },
 
   lsp_diagnostic = {
@@ -95,7 +95,7 @@ return {
     function()
       local lines = vim.api.nvim_buf_line_count(0)
       local r, c = unpack(vim.api.nvim_win_get_cursor(0))
-      return ' ' .. c .. ':' .. r .. "/" .. lines
+      return ' ' .. c .. ':' .. r .. '/' .. lines
     end,
     cond = utils.conditions.buffer_not_empty,
     color = { gui = 'italic' },
@@ -106,25 +106,25 @@ return {
     'buffers',
     mode = 0,
     filetype_names = {
-      TelescopePrompt = 'Telescope',
-      lazy = 'Lazy',
+      TelescopePrompt = ' Telescope',
+      lazy = '󰒲 Lazy',
       mason = 'Mason',
-      lspinfo = 'LSP Info',
-      noice = 'NoICE',
+      lspinfo = ' LSP Info',
+      noice = ' NoICE',
       nui = 'NUI',
-      nui_themes = 'Colorschemes',
-      nui_new = 'Create file',
-      nui_sm = "Session Manager",
-      ['neo-tree'] = "NeoTree",
+      nui_themes = ' Colorschemes',
+      nui_new = ' Create file',
+      nui_sm = 'Session Manager',
+      ['neo-tree'] = '󰙅 NeoTree',
     },
     buffers_color = {
-      active = "IncSearch",
-      inactive = "Comment",
+      active = 'IncSearch',
+      inactive = 'Comment',
     },
     symbols = {
       modified = '  ',
       alternate_file = '',
-      directory = '',
+      directory = ' ',
     },
   },
 
@@ -163,10 +163,10 @@ return {
   },
 
   lazy = {
-    require("lazy.status").updates,
-    cond = require("lazy.status").has_updates,
+    require('lazy.status').updates,
+    cond = require('lazy.status').has_updates,
     on_click = function() vim.fn.execute('Lazy update') end,
-    color = { fg = "#ff9e64" },
+    color = { fg = '#ff9e64' },
   },
 
   time = {
@@ -200,24 +200,21 @@ return {
   indent_with_triange = {
     function() return ' ▶' end,
     cond = utils.conditions.is_navic_location,
-    color = "BreadcrumbSep",
+    color = 'BreadcrumbSep',
     padding = { left = 0, right = 0 },
   },
 
   navic_location = {
-    function()
-      return require("nvim-navic").get_location()
-    end,
+    function() return require('nvim-navic').get_location() end,
     cond = utils.conditions.is_navic_available,
   },
 
   theme = {
-    function()
-      return ""
+    function() return '' end,
+    on_click = function()
+      vim.fn.execute('lua require("core.utils.change_theme")()')
     end,
-    on_click = function() vim.fn.execute('lua require("core.utils.change_theme")()') end,
-    color = "FloatTitle",
-    padding = { right = 1 }
+    color = 'FloatTitle',
+    padding = { right = 1 },
   },
-
 }

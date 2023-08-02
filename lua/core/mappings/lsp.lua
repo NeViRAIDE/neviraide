@@ -12,7 +12,7 @@ return function(client, bufnr)
         d = { ':Telescope lsp_definitions<cr>', 'Definition' },
         t = { ':Telescope lsp_type_definitions<cr>', 'Type definition' },
         c = { ':lua vim.lsp.codelens.run()<cr>', 'Codelens action' },
-      }
+      },
     },
   }, { buffer = bufnr, mode = 'n' })
 end

@@ -216,9 +216,7 @@ local function goRun()
     on_close = function()
       require('notify').notify('Running was canceled!', 'error')
     end,
-    on_submit = function(value)
-      vim.fn.execute('GoRun -F' .. value .. '"')
-    end,
+    on_submit = function(value) vim.fn.execute('GoRun -F' .. value .. '"') end,
   })
   input:on(event.BufLeave, function() input:unmount() end)
   input:mount()

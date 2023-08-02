@@ -8,15 +8,15 @@ return {
     priority = 1000,
     opts = {
       italic_comment = true,
-    }
+    },
   },
 
   {
-    "rebelot/kanagawa.nvim",
+    'rebelot/kanagawa.nvim',
     priority = 1000,
     opts = {
-      compile = true
-    }
+      compile = true,
+    },
   },
 
   {
@@ -31,26 +31,26 @@ return {
         non_current_windows = false,
         filetypes = { 'neo-tree' },
       },
-      lualine_style = "stealth",
+      lualine_style = 'stealth',
       plugins = {
-        "dap",
-        "gitsigns",
-        "indent-blankline",
-        "nvim-cmp",
-        "nvim-navic",
-        "nvim-web-devicons",
-        "telescope",
-        "which-key",
+        'dap',
+        'gitsigns',
+        'indent-blankline',
+        'nvim-cmp',
+        'nvim-navic',
+        'nvim-web-devicons',
+        'telescope',
+        'which-key',
       },
-    }
+    },
   },
 
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    'catppuccin/nvim',
+    name = 'catppuccin',
     priority = 1000,
     opts = {
-      flavour = "frappe",
+      flavour = 'frappe',
       integrations = {
         cmp = true,
         gitsigns = true,
@@ -59,10 +59,10 @@ return {
         native_lsp = {
           enabled = true,
           underlines = {
-            errors = { "undercurl" },
-            hints = { "undercurl" },
-            warnings = { "undercurl" },
-            information = { "undercurl" },
+            errors = { 'undercurl' },
+            hints = { 'undercurl' },
+            warnings = { 'undercurl' },
+            information = { 'undercurl' },
           },
         },
         noice = true,
@@ -71,23 +71,23 @@ return {
         semantic_tokens = true,
         telescope = {
           enabled = true,
-          style = "nvchad"
+          style = 'nvchad',
         },
         treesitter = true,
         which_key = true,
         lightspeed = true,
-        ts_rainbow2 = true
+        ts_rainbow2 = true,
       },
     },
   },
 
   {
-    "folke/tokyonight.nvim",
+    'folke/tokyonight.nvim',
     priority = 1000,
   },
 
   {
-    "olimorris/onedarkpro.nvim",
+    'olimorris/onedarkpro.nvim',
     priority = 1000,
   },
 }

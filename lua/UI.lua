@@ -1,10 +1,10 @@
 return {
   {
     'goolord/alpha-nvim',
-    event = "VimEnter",
+    event = 'VimEnter',
     opts = function()
-      local version = require("core.utils").nvim_version
-      local alpha_utils = require("core.utils.alpha")
+      local version = require('core.utils').nvim_version
+      local alpha_utils = require('core.utils.alpha')
       return {
         layout = {
           alpha_utils.header,
@@ -12,12 +12,31 @@ return {
           {
             type = 'group',
             val = {
-              alpha_utils.button('', ' Create new file', ':lua require("core.utils.new_file")()<cr>'),
-              alpha_utils.button('', ' Find file', ':Telescope find_files<cr>'),
-              alpha_utils.button('', ' Recent files', ':Telescope oldfiles<cr>'),
-              alpha_utils.button('', ' Find word', ':Telescope live_grep<cr>'),
-              alpha_utils.button('', ' TODO list',
-                ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=14}}<cr>'),
+              alpha_utils.button(
+                '',
+                ' Create new file',
+                ':lua require("core.utils.new_file")()<cr>'
+              ),
+              alpha_utils.button(
+                '',
+                ' Find file',
+                ':Telescope find_files<cr>'
+              ),
+              alpha_utils.button(
+                '',
+                ' Recent files',
+                ':Telescope oldfiles<cr>'
+              ),
+              alpha_utils.button(
+                '',
+                ' Find word',
+                ':Telescope live_grep<cr>'
+              ),
+              alpha_utils.button(
+                '',
+                ' TODO list',
+                ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=14}}<cr>'
+              ),
               alpha_utils.button('', ' Check health', ':checkhealth<cr>'),
               alpha_utils.button('', ' Plugin manager', ':Lazy<cr>'),
               alpha_utils.button('', ' Exit', ':qa<cr>'),
@@ -41,20 +60,20 @@ return {
     end,
   },
 
-  "nvim-tree/nvim-web-devicons",
+  'nvim-tree/nvim-web-devicons',
 
   {
     'nvim-lualine/lualine.nvim',
-    event = "VeryLazy",
-    opts  = function()
-      local component = require("core.utils.lualine.components")
+    event = 'VeryLazy',
+    opts = function()
+      local component = require('core.utils.lualine.components')
       return {
         extensions = {
-          "lazy",
+          'lazy',
           'man',
           'neo-tree',
           'nvim-dap-ui',
-          "quickfix",
+          'quickfix',
           'symbols-outline',
           'toggleterm',
         },
@@ -72,13 +91,13 @@ return {
             'checkhealth',
             'neo-tree-popup',
             'nui',
-            'alpha'
+            'alpha',
           },
           component_separators = '',
           section_separators = '',
           theme = {
-            normal = { c = { bg = "none" } },
-            inactive = { c = { bg = "none" } },
+            normal = { c = { bg = 'none' } },
+            inactive = { c = { bg = 'none' } },
           },
           globalstatus = true,
         },
@@ -105,7 +124,7 @@ return {
           lualine_x = {
             component.lazy,
             component.time,
-            component.theme
+            component.theme,
           },
           lualine_y = {},
           lualine_z = {},
@@ -137,39 +156,33 @@ return {
   },
 
   {
-    "MunifTanjim/nui.nvim",
+    'MunifTanjim/nui.nvim',
     config = function()
       require('core.override_vim_ui.input')
       require('core.override_vim_ui.select')
-    end
+    end,
   },
 
   {
-    "rcarriga/nvim-notify",
+    'rcarriga/nvim-notify',
     opts = {
       timeout = 3000,
       fps = 60,
       minimum_width = 10,
-      max_height = function()
-        return math.floor(vim.o.lines * 0.75)
-      end,
-      max_width = function()
-        return math.floor(vim.o.columns * 0.75)
-      end,
+      max_height = function() return math.floor(vim.o.lines * 0.75) end,
+      max_width = function() return math.floor(vim.o.columns * 0.75) end,
     },
     init = function()
-      local utils = require("core.utils")
-      if not utils.has("noice.nvim") then
-        utils.on_very_lazy(function()
-          vim.notify = require("notify")
-        end)
+      local utils = require('core.utils')
+      if not utils.has('noice.nvim') then
+        utils.on_very_lazy(function() vim.notify = require('notify') end)
       end
     end,
   },
 
   {
-    "folke/noice.nvim",
-    event = "VeryLazy",
+    'folke/noice.nvim',
+    event = 'VeryLazy',
     opts = {
       lsp = {
         signature = {
@@ -198,34 +211,34 @@ return {
       },
       views = {
         split = {
-          enter = true
-        }
+          enter = true,
+        },
       },
     },
   },
 
   {
-    "lukas-reineke/indent-blankline.nvim",
-    event = { "BufReadPost", "BufNewFile" },
+    'lukas-reineke/indent-blankline.nvim',
+    event = { 'BufReadPost', 'BufNewFile' },
     opts = {
       indentLine_enabled = 1,
       filetype_exclude = {
-        "help",
-        "terminal",
-        "lazy",
-        "lspinfo",
-        "TelescopePrompt",
-        "TelescopeResults",
-        "mason",
-        "nvdash",
-        "nvcheatsheet",
-        "noice"
+        'help',
+        'terminal',
+        'lazy',
+        'lspinfo',
+        'TelescopePrompt',
+        'TelescopeResults',
+        'mason',
+        'nvdash',
+        'nvcheatsheet',
+        'noice',
       },
-      buftype_exclude = { "terminal", "nofile" },
+      buftype_exclude = { 'terminal', 'nofile' },
       show_trailing_blankline_indent = false,
       show_first_indent_level = false,
       show_current_context = true,
       show_current_context_start = true,
-    }
+    },
   },
 }
