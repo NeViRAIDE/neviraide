@@ -10,9 +10,22 @@ return {
       'TransparentEnable',
       'TransparentDisable',
     },
-    opts = {
-      extra_group = { 'NeoTreeNormal', 'NormalFloat' },
-    },
+    config = function()
+      vim.api.nvim_set_hl(
+        0,
+        'NotifyBackground',
+        vim.api.nvim_get_hl_by_name('Normal', true)
+      )
+      require('transparent').setup({
+        extra_groups = {
+          'FloatBorder',
+          'NeoTreeNormal',
+          'NeoTreeNormalNC',
+          'NeoTreeEndOfBuffer',
+          'NeoTreeStatusLine',
+        },
+      })
+    end,
   },
 
   {

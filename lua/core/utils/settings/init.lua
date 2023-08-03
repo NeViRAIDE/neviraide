@@ -1,40 +1,59 @@
 local M = {}
 
-local utils = require('core.utils')
+local write = require('core.utils').replace_word
+local o = vim.opt
 
 function M.toggle_relative_numbers()
-  local rel_nums = require('NEVIRAIDE').ui.relative_numbers
-  if rel_nums == false then
-    vim.opt.relativenumber = true
-    utils.replace_word('relative_numbers = false', 'relative_numbers = true')
+  if require('NEVIRAIDE').ui.number.relative == false then
+    o.relativenumber = true
+    write('relative = false', 'relative = true')
   else
-    vim.opt.relativenumber = false
-    utils.replace_word('relative_numbers = true', 'relative_numbers = false')
+    o.relativenumber = false
+    write('relative = true', 'relative = false')
   end
   require('plenary.reload').reload_module('NEVIRAIDE')
 end
 
 function M.toggle_numbers()
-  local nums = require('NEVIRAIDE').ui.number
-  if nums == false then
-    vim.opt.number = true
-    utils.replace_word('number = false', 'number = true')
+  if require('NEVIRAIDE').ui.number.enabled == false then
+    o.number = true
+    write('enabled = false', 'enabled = true')
   else
-    vim.opt.number = false
-    utils.replace_word('number = true', 'number = false')
+    o.number = false
+    write('enabled = true', 'enabled = false')
   end
   require('plenary.reload').reload_module('NEVIRAIDE')
 end
 
 function M.toggle_transparency()
-  local transparency = require('NEVIRAIDE').ui.transparency
-  if transparency == false then
-    utils.replace_word('transparency = false', 'transparency = true')
+  if require('NEVIRAIDE').ui.transparency == false then
+    write('transparency = false', 'transparency = true')
   else
-    utils.replace_word('transparency = true', 'transparency = false')
+    write('transparency = true', 'transparency = false')
   end
   require('plenary.reload').reload_module('NEVIRAIDE')
   vim.fn.execute('TransparentToggle')
 end
 
+function M.toggle_cursor_line()
+  if require('NEVIRAIDE').ui.cursor.line == false then
+    o.cursorline = true
+    write('line = false', 'line = true')
+  else
+    o.cursorline = false
+    write('line = true', 'line = false')
+  end
+  require('plenary.reload').reload_module('NEVIRAIDE')
+end
+
+function M.toggle_cursor_column()
+  if require('NEVIRAIDE').ui.cursor.column == false then
+    o.cursorcolumn = true
+    write('column = false', 'column = true')
+  else
+    o.cursorcolumn = false
+    write('column = true', 'column = false')
+  end
+  require('plenary.reload').reload_module('NEVIRAIDE')
+end
 return M

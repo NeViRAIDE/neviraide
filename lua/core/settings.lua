@@ -15,7 +15,10 @@ o.spelllang = { 'en' }
 o.pumblend = 10
 o.pumheight = 10
 o.clipboard = 'unnamedplus'
-o.cursorline = true
+o.cursorline = neviraide.ui.cursor.line
+o.cursorcolumn = neviraide.ui.cursor.column
+o.number = neviraide.ui.number.enabled
+o.relativenumber = neviraide.ui.number.relative
 o.confirm = true
 o.scrolloff = 7
 o.hlsearch = false
@@ -31,8 +34,6 @@ o.ignorecase = true
 o.smartcase = true
 o.mouse = 'a'
 o.mousemoveevent = true
-o.number = neviraide.ui.number
-o.relativenumber = neviraide.ui.relative_numbers
 o.numberwidth = 2
 o.ruler = false
 o.signcolumn = 'yes'
@@ -51,6 +52,6 @@ vim.g.everforest_background = neviraide.ui.background_pallete
 require('core.autocommands')
 require('core.highlights')
 
-vim.o.background = neviraide.ui.background
+o.background = neviraide.ui.background
 
 vim.cmd.colorscheme(neviraide.ui.theme)

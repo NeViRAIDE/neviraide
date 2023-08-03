@@ -91,6 +91,8 @@ return {
             'checkhealth',
             'neo-tree-popup',
             'nui',
+            'nui_themes',
+            'nui_new',
             'alpha',
           },
           component_separators = '',
@@ -166,6 +168,7 @@ return {
   {
     'rcarriga/nvim-notify',
     opts = {
+      -- background_colour = '#ff0000',
       timeout = 3000,
       fps = 60,
       minimum_width = 10,

@@ -90,6 +90,9 @@ return {
         ['gopls'] = function(_)
           lspconfig.gopls.setup(require('core.lsp.servers.go'))
         end,
+        ['volar'] = function(_)
+          lspconfig.volar.setup(require('core.lsp.servers.vue'))
+        end,
       })
 
       require('core.lsp.diagnostic').setup()

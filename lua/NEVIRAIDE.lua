@@ -1,10 +1,16 @@
 return {
   ui = {
-    theme = 'onedark',
+    theme = 'catppuccin-frappe',
     background = 'dark',
     pallete = 'soft',
     transparency = true,
-    number = true,
-    relative_numbers = true,
+    number = {
+      enabled = true,
+      relative = true,
+    },
+    cursor = {
+      line = true,
+      column = false,
+    },
   },
 }

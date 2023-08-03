@@ -115,6 +115,7 @@ return {
       nui_themes = ' Colorschemes',
       nui_new = ' Create file',
       nui_sm = 'Session Manager',
+      nofile = 'Empty',
       ['neo-tree'] = '󰙅 NeoTree',
     },
     buffers_color = {

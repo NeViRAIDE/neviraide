@@ -15,7 +15,7 @@ return function()
     size = { width = 20, height = theme_count },
     enter = true,
     focusable = true,
-    zindex = 50,
+    zindex = 999,
     relative = 'editor',
     border = {
       padding = {
@@ -37,7 +37,6 @@ return function()
       filetype = 'nui_themes',
     },
     win_options = {
-      winblend = 10,
       winhighlight = 'Normal:Normal,FloatBorder:FloatBorder',
     },
   })
@@ -61,6 +60,8 @@ return function()
       pallete = pallete,
     })
   end
+  -- FIX: highlight in transparent mode
+  -- TODO: close node, when open another
 
   local tree = NuiTree({
     winid = popup.winid,
@@ -147,6 +148,11 @@ return function()
       line:append(node.text)
       return line
     end,
+  }, {
+    bufhidden = 'hide',
+    buflisted = false,
+    buftype = 'nofile',
+    swapfile = false,
   })
 
   local map_options = { noremap = true, nowait = true }
@@ -156,13 +162,22 @@ return function()
     if node.theme then
       if node.background then
         if node.pallete then
-          write_to_conf(ui.pallete, node.pallete)
+          write_to_conf(
+            "pallete = '" .. ui.pallete .. "'",
+            "pallete = '" .. node.pallete .. "'"
+          )
           change_pallete(node.pallete)
         end
-        write_to_conf(ui.background, node.background)
+        write_to_conf(
+          "background = '" .. ui.background .. "'",
+          "background = '" .. node.background .. "'"
+        )
         vim.o.background = node.background
       end
-      write_to_conf(ui.theme, node.theme)
+      write_to_conf(
+        "theme = '" .. ui.theme .. "'",
+        "theme = '" .. node.theme .. "'"
+      )
       vim.cmd.colorscheme(node.theme)
       require('plenary.reload').reload_module('NEVIRAIDE')
       popup:unmount()
