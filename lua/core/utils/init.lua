@@ -175,5 +175,4 @@ function M.replace_word(old, new)
   file:close()
 end
 
-
 return M
