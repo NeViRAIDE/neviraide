@@ -60,7 +60,6 @@ return function()
       pallete = pallete,
     })
   end
-  -- FIX: highlight in transparent mode
   -- TODO: close node, when open another
 
   local tree = NuiTree({
@@ -142,10 +141,11 @@ return function()
       line:append(string.rep('  ', node:get_depth() - 1))
       if node:has_children() then
         line:append(node:is_expanded() and ' ' or ' ', 'SpecialChar')
+        line:append(node.text)
       else
         line:append('  ')
+        line:append(node.text, 'Comment')
       end
-      line:append(node.text)
       return line
     end,
   }, {

@@ -94,6 +94,7 @@ return {
             'nui_themes',
             'nui_new',
             'alpha',
+            'help',
           },
           component_separators = '',
           section_separators = '',

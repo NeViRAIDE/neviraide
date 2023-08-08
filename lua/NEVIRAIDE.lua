@@ -1,9 +1,9 @@
 return {
   ui = {
-    theme = 'catppuccin-frappe',
+    theme = 'everforest',
     background = 'dark',
     pallete = 'soft',
-    transparency = true,
+    transparency = false,
     number = {
       enabled = true,
       relative = true,

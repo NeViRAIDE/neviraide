@@ -3,15 +3,14 @@ return {
   capabilities = require('core.lsp.capabilities'),
   flags = { debounce_text_changes = 150 },
   single_file_support = true,
-  filetypes = {
-    'typescript',
-    'javascript',
-    'javascriptreact',
-    'typescriptreact',
-    'vue',
-    'json',
-  },
   settings = {
+    vue = {
+      inlayHints = {
+        inlineHandlerLeading = true,
+        missingProps = true,
+        optionsWrapper = true,
+      },
+    },
     volar = {
       codeLens = {
         references = true,

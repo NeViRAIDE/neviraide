@@ -1,25 +1,6 @@
 local utils = require('core.utils')
 
--- Run gofmt + goimport on save
 utils.autocmd_multi('GoLangNvim', {
-  -- { "BufWritePre",
-  --   {
-  --     pattern = "*.go",
-  --     callback = function()
-  --       require('go.format').goimport()
-  --     end,
-  --   }
-  -- },
-
-  -- {
-  --   { "CursorHold" },
-  --   {
-  --     pattern = "*.go",
-  --     callback = function()
-  --       vim.fn.execute('GoToggleInlay')
-  --     end,
-  --   }
-  -- },
   {
     'FileType',
     {
@@ -166,42 +147,6 @@ utils.autocmd_multi('NEVIRAIDE_CURSOR', {
   },
 })
 
--- auto open float window on diagnostic line
-utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
-  callback = function(args)
-    -- the buffer where the lsp attached
-    ---@type number
-    local buffer = args.buf
-
-    utils.autocmd('NEVIRAIDE_codelens', { 'InsertLeave', 'BufWritePost' }, {
-      buffer = buffer,
-      -- pattern = { '*.go', '*.mod', '*.vue', '*.js', '*.ts', '*.lua' },
-      callback = function() vim.lsp.codelens.refresh() end,
-    })
-
-    -- create the autocmd to show diagnostics
-    utils.autocmd('NEVIRAIDE_auto_diag', 'CursorHold', {
-      -- group = vim.api.nvim_create_augroup('_auto_diag', { clear = true }),
-      buffer = buffer,
-      callback = function()
-        vim.diagnostic.open_float(nil, {
-          focusable = false,
-          close_events = {
-            'BufLeave',
-            'CursorMoved',
-            'InsertEnter',
-            'FocusLost',
-          },
-          border = 'none',
-          source = 'always',
-          prefix = ' ',
-          scope = 'cursor',
-        })
-      end,
-    })
-  end,
-})
-
 utils.autocmd('NEVIRAIDE_transparency', 'ColorScheme', {
   pattern = '*',
   callback = function()
@@ -213,3 +158,5 @@ utils.autocmd('NEVIRAIDE_transparency', 'ColorScheme', {
     end
   end,
 })
+
+require('core.lsp.autocommands')
