@@ -69,7 +69,6 @@ return {
     name = 'catppuccin',
     priority = 1000,
     opts = {
-      -- compile_path = vim.fn.stdpath('cache') .. '/catppuccin',
       transparent_background = vim.g.transparent_enabled,
       integrations = {
         alpha = true,

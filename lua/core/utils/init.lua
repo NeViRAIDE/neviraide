@@ -50,22 +50,12 @@ end
 
 function M.save_and_format()
   local file_name = vim.fn.expand('%:t')
-  if vim.lsp.buf.server_ready() == true then
-    vim.lsp.buf.format()
-    vim.cmd('silent! wa')
-    vim.notify(
-      'File "' .. file_name .. '" was formated and saved',
-      2,
-      { title = 'Saved and formated', icon = '✓' }
-    )
-  else
-    vim.cmd('silent! wa')
-    vim.notify(
-      'File "' .. file_name .. '" was saved',
-      2,
-      { title = 'Saved', icon = '✓' }
-    )
-  end
+  vim.cmd('silent! wa')
+  vim.notify(
+    'File "' .. file_name .. '" was saved',
+    2,
+    { title = 'Saved', icon = '✓' }
+  )
 end
 
 local count_bufs_by_type = function(loaded_only)
@@ -110,11 +100,12 @@ end
 --Length of filepath.
 ------
 --Possible parameters are:
---  - filename
---  - directory
---  - directory and filename
---  - full path
+--  'file' - filename
+--  'dir_only' - directory
+--  'dir_file' - directory and filename
+--  'full' - full path
 ---@param length string
+---@return string
 function M.filePath(length)
   if length == 'file' then
     return vim.api.nvim_exec('echo expand("%:t")', '')

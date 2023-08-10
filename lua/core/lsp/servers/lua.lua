@@ -16,7 +16,11 @@ return {
       },
       telemetry = { enable = false },
       format = { enable = false },
-      hint = { enable = true },
+      semantic = { keyword = true },
+      hint = {
+        enable = true,
+        setType = true,
+      },
       codeLens = { enable = true },
     },
   },

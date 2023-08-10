@@ -16,7 +16,7 @@ vim.g.mapleader = ' '
 
 require('lazy').setup('plugins', {
   defaults = {
-    lazy = true, --[[ version = "*" ]]
+    lazy = true,
   },
   checker = { enabled = true },
   performance = {

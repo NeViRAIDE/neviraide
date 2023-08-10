@@ -151,11 +151,7 @@ utils.autocmd('NEVIRAIDE_transparency', 'ColorScheme', {
   pattern = '*',
   callback = function()
     local transparency = require('NEVIRAIDE').ui.transparency
-    if transparency then
-      vim.fn.execute('TransparentEnable')
-    else
-      vim.fn.execute('TransparentDisable')
-    end
+    if transparency then vim.fn.execute('TransparentEnable') end
   end,
 })
 

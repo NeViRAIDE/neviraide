@@ -185,6 +185,7 @@ return {
   },
 
   {
+    -- FIX: strange in go files (show not lsp server)
     'folke/noice.nvim',
     event = 'VeryLazy',
     opts = {

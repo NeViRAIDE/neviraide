@@ -1,30 +1,20 @@
 local utils = require('core.utils')
 
-vim.keymap.set(
-  { 'n', 'i', 's' },
-  '<c-j>',
-  function()
-    if not require('noice.lsp').scroll(4) then return ':wincmd j<cr>' end
-  end,
-  {
-    silent = true,
-    expr = true,
-    desc = 'Move to top window/Scroll top LSP documentation',
-  }
-)
+vim.keymap.set({ 'n', 'i', 's' }, '<c-j>', function()
+  if not require('noice.lsp').scroll(4) then return ':wincmd j<cr>' end
+end, {
+  silent = true,
+  expr = true,
+  desc = 'Move to top window/Scroll top LSP documentation',
+})
 
-vim.keymap.set(
-  { 'n', 'i', 's' },
-  '<c-k>',
-  function()
-    if not require('noice.lsp').scroll(-4) then return ':wincmd k<cr>' end
-  end,
-  {
-    silent = true,
-    expr = true,
-    desc = 'Move to bottom window/Scroll down LSP documentation',
-  }
-)
+vim.keymap.set({ 'n', 'i', 's' }, '<c-k>', function()
+  if not require('noice.lsp').scroll(-4) then return ':wincmd k<cr>' end
+end, {
+  silent = true,
+  expr = true,
+  desc = 'Move to bottom window/Scroll down LSP documentation',
+})
 
 -- execute cmdmode command and stay cmdline open
 vim.keymap.set(
@@ -42,6 +32,8 @@ return function()
         'Dismiss all Notifications',
       },
     },
+    ['<ScrollWheelUp>'] = { 'k', 'Scroll up by one line' },
+    ['<ScrollWheelDown>'] = { 'j', 'Scroll down by one line' },
     ['<Esc>'] = { ':noh <CR>', 'Clear highlights' },
     ['<c-s>'] = {
       '<cmd>lua require("core.utils").save_and_format()<cr>',

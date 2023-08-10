@@ -50,12 +50,13 @@ return {
     cmd = {
       'TransparentEnable',
       'TransparentDisable',
+      'TransparentToggle',
     },
     config = function()
       vim.api.nvim_set_hl(
         0,
         'NotifyBackground',
-        vim.api.nvim_get_hl_by_name('Normal', true)
+        vim.api.nvim_get_hl(0, { name = 'Normal' })
       )
       require('transparent').setup({
         extra_groups = {

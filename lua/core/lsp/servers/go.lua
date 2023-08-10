@@ -11,6 +11,7 @@ return {
         unusedparams = true,
         shadow = true,
       },
+      semanticTokens = true,
       staticcheck = true,
       usePlaceholders = false,
       codelenses = {

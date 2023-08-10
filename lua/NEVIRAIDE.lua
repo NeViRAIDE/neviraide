@@ -1,7 +1,7 @@
 return {
   ui = {
-    theme = 'everforest',
-    background = 'dark',
+    theme = 'onedark',
+    background = 'light',
     pallete = 'soft',
     transparency = false,
     number = {
@@ -13,4 +13,5 @@ return {
       column = false,
     },
   },
+  -- TODO: add lsp settings (virtual text, ...)
 }

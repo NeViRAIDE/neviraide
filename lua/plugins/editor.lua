@@ -246,8 +246,8 @@ return {
         popup_mappings = { scroll_down = '<c-j>', scroll_up = '<c-k>' },
         window = { winblend = 10 },
         layout = {
-          height = { min = 5, max = 30 },
-          width = { min = 20, max = 90 },
+          height = { min = 5, max = 80 },
+          width = { min = 20, max = 80 },
           spacing = 14,
           align = 'center',
         },
