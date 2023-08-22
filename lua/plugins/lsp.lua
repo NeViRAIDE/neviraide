@@ -5,6 +5,9 @@ return {
     build = ':MasonUpdate',
     opts = {
       ui = {
+        border = NEVIRAIDE().border,
+        width = 0.6,
+        height = 0.8,
         icons = {
           package_installed = '✓',
           package_pending = '➜',
@@ -22,22 +25,41 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'ray-x/lsp_signature.nvim',
       {
-        -- FIX: not working on click
-        'SmiteshP/nvim-navic',
+        'Bekaboo/dropbar.nvim',
+        version = '*',
         opts = {
-          separator = ' ▶ ',
-          highlight = true,
-          depth_limit = 7,
-          depth_limit_indicator = '...',
-          click = true,
+          sources = {
+            path = {
+              modified = function(sym)
+                return sym:merge({
+                  name = sym.name .. '  ',
+                  icon = ' ',
+                  name_hl = 'DiagnosticError',
+                  icon_hl = 'DiagnosticError',
+                })
+              end,
+            },
+          },
+          icons = {
+            ui = {
+              bar = {
+                separator = '  ',
+                extends = '…',
+              },
+            },
+          },
         },
       },
       {
         'hrsh7th/cmp-nvim-lsp',
-        cond = function() return require('core.utils').has('nvim-cmp') end,
+        cond = function() return require('neviraide.utils').has('nvim-cmp') end,
       },
     },
     config = function()
+      require('lspconfig.ui.windows').default_options.border =
+        NEVIRAIDE().border
+      require('neviraide.lsp.diagnostic').setup()
+
       local lspconfig = require('lspconfig')
       local mason_lsp_config = require('mason-lspconfig')
       mason_lsp_config.setup({
@@ -51,22 +73,20 @@ return {
       mason_lsp_config.setup_handlers({
         function(server_name)
           lspconfig[server_name].setup({
-            on_attach = require('core.lsp.on_attach'),
-            capabilities = require('core.lsp.capabilities'),
+            on_attach = require('neviraide.lsp.on_attach'),
+            capabilities = require('neviraide.lsp.capabilities'),
           })
         end,
         ['lua_ls'] = function(_)
-          lspconfig.lua_ls.setup(require('core.lsp.servers.lua'))
+          lspconfig.lua_ls.setup(require('neviraide.lsp.servers.lua'))
         end,
         ['gopls'] = function(_)
-          lspconfig.gopls.setup(require('core.lsp.servers.go'))
+          lspconfig.gopls.setup(require('neviraide.lsp.servers.go'))
         end,
         ['volar'] = function(_)
-          lspconfig.volar.setup(require('core.lsp.servers.vue'))
+          lspconfig.volar.setup(require('neviraide.lsp.servers.vue'))
         end,
       })
-
-      require('core.lsp.diagnostic').setup()
     end,
   },
 
@@ -85,6 +105,7 @@ return {
       local diagnostics = null_ls.builtins.diagnostics
       local hover = null_ls.builtins.hover
       local code_action = null_ls.builtins.code_actions
+      local completion = null_ls.builtins.completion
 
       return {
         root_dir = require('null-ls.utils').root_pattern(
@@ -95,6 +116,7 @@ return {
         ),
         null_ls.setup({
           sources = {
+            completion.luasnip,
             code_action.gitsigns,
             hover.dictionary,
             formatting.fish_indent,

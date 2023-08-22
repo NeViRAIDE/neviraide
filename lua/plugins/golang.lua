@@ -1,6 +1,7 @@
 return {
   {
     'olexsmir/gopher.nvim',
+    version = '*',
     ft = 'go',
     config = function()
       require('gopher').setup({

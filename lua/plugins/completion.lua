@@ -1,6 +1,9 @@
+-- TODO: dynamicly change cmp theme
+
 return {
   {
     'hrsh7th/nvim-cmp',
+    version = '*',
     event = 'InsertEnter',
     dependencies = {
       {
@@ -37,6 +40,7 @@ return {
       },
     },
     opts = function()
+      local border = require('neviraide.utils').border()
       local cmp = require('cmp')
       return {
         completion = {
@@ -44,6 +48,10 @@ return {
         },
         snippet = {
           expand = function(args) require('luasnip').lsp_expand(args.body) end,
+        },
+        window = {
+          completion = { border = border },
+          documentation = { border = border },
         },
         mapping = {
           ['<C-p>'] = cmp.mapping.select_prev_item(),

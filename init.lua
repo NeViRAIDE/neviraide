@@ -12,47 +12,47 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+-- TODO: choose best variant
+
+---Returns all data from main
+---configuration file as table.
+_G.NEVIRAIDE = function()
+  local neviraide_conf = vim.fn.stdpath('config') .. '/lua/' .. 'NEVIRAIDE.lua'
+  local file = io.open(neviraide_conf, 'r')
+
+  if file ~= nil then
+    io.close(file)
+    return require('NEVIRAIDE')
+  else
+    vim.notify([[
+
+    #############################################################
+    #                                                           #
+    #      "NEVIRAIDE.lua" is required                          #
+    #                        in your "~/.config/nvim/lua/"      #
+    #                                                           #
+    #############################################################
+  ]])
+  end
+  -----------------------------------------------------------------------
+  -- local ok, config = pcall(require, 'NEVIRAIDE')
+  -- if ok then
+  --   return config
+  -- else
+  --   vim.notify('ERROR: ' .. config)
+  --   vim.notify([[
+  --
+  --   #############################################################
+  --   #                                                           #
+  --   #      "NEVIRAIDE.lua" is required                          #
+  --   #                        in your "~/.config/nvim/lua/"      #
+  --   #                                                           #
+  --   #############################################################
+  -- ]])
+  -- end
+end
+
 vim.g.mapleader = ' '
 
-require('lazy').setup('plugins', {
-  defaults = {
-    lazy = true,
-  },
-  checker = { enabled = true },
-  performance = {
-    rtp = {
-      disabled_plugins = {
-        '2html_plugin',
-        'tohtml',
-        'getscript',
-        'getscriptPlugin',
-        'gzip',
-        'logipat',
-        'netrw',
-        'netrwPlugin',
-        'netrwSettings',
-        'netrwFileHandlers',
-        'matchit',
-        'tar',
-        'tarPlugin',
-        'rrhelper',
-        'spellfile_plugin',
-        'vimball',
-        'vimballPlugin',
-        'zip',
-        'zipPlugin',
-        'tutor',
-        'rplugin',
-        'syntax',
-        'synmenu',
-        'optwin',
-        'compiler',
-        'bugreport',
-        'ftplugin',
-        'editorconfig',
-      },
-    },
-  },
-})
-
-require('core.settings')
+require('neviraide.lazy')
+require('neviraide.settings')
