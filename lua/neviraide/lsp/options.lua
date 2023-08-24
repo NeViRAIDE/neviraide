@@ -1,5 +1,5 @@
 local function virt_text()
-  if NEVIRAIDE().lsp.diagnostic.virtual_text then
+  if NEVIRAIDE().diagnostic_virtual_text then
     return {
       source = 'if_many',
       spacing = 4,
@@ -12,7 +12,7 @@ end
 
 return {
   inlay_hints = {
-    enabled = NEVIRAIDE().lsp.inlay_hints,
+    enabled = NEVIRAIDE().lsp_inlay_hints,
   },
   signature = {
     bind = false,
@@ -29,7 +29,7 @@ return {
       border = require('neviraide.utils').border(),
       source = 'if_many',
     },
-    signs = NEVIRAIDE().lsp.diagnostic.diagnostic_signs,
+    signs = NEVIRAIDE().diagnostic_signs,
     underline = true,
     update_in_insert = false,
     virtual_text = virt_text(),

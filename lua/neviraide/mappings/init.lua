@@ -1,20 +1,5 @@
+-- TODO: change all icons
 local utils = require('neviraide.utils')
-
-vim.keymap.set({ 'n', 'i', 's' }, '<c-j>', function()
-  if not require('noice.lsp').scroll(4) then return ':wincmd j<cr>' end
-end, {
-  silent = true,
-  expr = true,
-  desc = 'Move to top window/Scroll top LSP documentation',
-})
-
-vim.keymap.set({ 'n', 'i', 's' }, '<c-k>', function()
-  if not require('noice.lsp').scroll(-4) then return ':wincmd k<cr>' end
-end, {
-  silent = true,
-  expr = true,
-  desc = 'Move to bottom window/Scroll down LSP documentation',
-})
 
 -- execute cmdmode command and stay cmdline open
 vim.keymap.set(
@@ -55,8 +40,14 @@ return function()
       function() require('Comment.api').toggle.linewise.current() end,
       'Toggle comment',
     },
-    ['<tab>'] = { ':bnext<cr>', 'Next buffer' },
-    ['<s-tab>'] = { ':bprev<cr>', 'Previous buffer' },
+    ['<tab>'] = {
+      function() require('neviraide-ui.buftabline.buftabline').tabuflineNext() end,
+      'Goto next buffer',
+    },
+    ['<S-tab>'] = {
+      function() require('neviraide-ui.buftabline.buftabline').tabuflinePrev() end,
+      'Goto prev buffer',
+    },
     ['<C-h>'] = { '<C-w>h', 'Window left' },
     ['<C-l>'] = { '<C-w>l', 'Window right' },
     ['<a-h>'] = {
@@ -71,8 +62,8 @@ return function()
       name = 'Plugins and features ',
       b = { '<cmd>Neotree buffers focus float<cr>', 'Buffers list ' },
       x = {
-        '<cmd>lua require("neviraide.utils").close_buffer()<cr>',
-        'Delete buffer ',
+        function() require('neviraide-ui.buftabline.buftabline').close_buffer() end,
+        'Close buffer ',
       },
       N = {
         '<cmd>lua require("neviraide.utils.new_file")()<cr>',

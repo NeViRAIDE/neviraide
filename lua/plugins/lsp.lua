@@ -1,3 +1,5 @@
+local icon = require('neviraide-ui.icons.utils').icon
+
 return {
   {
     'williamboman/mason.nvim',
@@ -9,9 +11,9 @@ return {
         width = 0.6,
         height = 0.8,
         icons = {
-          package_installed = '✓',
-          package_pending = '➜',
-          package_uninstalled = '✗',
+          package_installed = icon('check') .. ' ',
+          package_pending = icon('sync') .. ' ',
+          package_uninstalled = icon('x') .. ' ',
         },
       },
     },
@@ -33,7 +35,7 @@ return {
               modified = function(sym)
                 return sym:merge({
                   name = sym.name .. '  ',
-                  icon = ' ',
+                  icon = icon('pencil') .. '  ',
                   name_hl = 'DiagnosticError',
                   icon_hl = 'DiagnosticError',
                 })
@@ -41,9 +43,13 @@ return {
             },
           },
           icons = {
+            kinds = {
+              use_devicons = true,
+              symbol = require('neviraide-ui.icons.lspkind'),
+            },
             ui = {
               bar = {
-                separator = '  ',
+                separator = ' ' .. icon('chevron-right') .. ' ',
                 extends = '…',
               },
             },

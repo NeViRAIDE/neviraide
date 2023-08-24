@@ -1,5 +1,3 @@
--- TODO: dynamicly change cmp theme
-
 return {
   {
     'hrsh7th/nvim-cmp',
@@ -8,6 +6,7 @@ return {
     dependencies = {
       {
         'L3MON4D3/LuaSnip',
+        version = '*',
         dependencies = {
           'rafamadriz/friendly-snippets',
           config = function()
@@ -18,6 +17,7 @@ return {
       },
       {
         'windwp/nvim-autopairs',
+        version = '*',
         opts = {
           fast_wrap = {},
           disable_filetype = { 'TelescopePrompt', 'vim' },
@@ -42,6 +42,7 @@ return {
     opts = function()
       local border = require('neviraide.utils').border()
       local cmp = require('cmp')
+
       return {
         completion = {
           completeopt = 'menu,menuone',
@@ -50,7 +51,10 @@ return {
           expand = function(args) require('luasnip').lsp_expand(args.body) end,
         },
         window = {
-          completion = { border = border },
+          completion = {
+            border = border,
+            winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
+          },
           documentation = { border = border },
         },
         mapping = {
@@ -123,6 +127,20 @@ return {
             cmp.config.compare.length,
             cmp.config.compare.order,
           },
+        },
+        formatting = {
+          fields = {
+            cmp.ItemField.Kind,
+            cmp.ItemField.Abbr,
+            cmp.ItemField.Menu,
+          },
+          format = function(_, item)
+            item.kind = string.format(
+              '%s ',
+              require('neviraide-ui.icons.lspkind')[item.kind]
+            )
+            return item
+          end,
         },
         experimental = {
           ghost_text = {

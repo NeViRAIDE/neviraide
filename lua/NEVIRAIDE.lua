@@ -1,8 +1,10 @@
+-- NOTE: add?! for what?!
+-- _G.yes = true
+-- _G.no = false
+
 -- TODO: reload lazy when changed
 return {
-  dashboard_on_startup = true,
-
-  theme = 'tokyonight-storm',
+  theme = 'catppuccin-frappe',
   background = 'dark',
   pallete = 'soft',
 
@@ -25,7 +27,9 @@ return {
   ---• "shadow": A drop shadow effect by blending with the background.
   ---@type string
   border = 'rounded',
-  -- TODO: add gitsigns (current line blame)
+
+  gitsigns_current_line_blame = false,
+  gitsigns_signs = true,
 
   -- TODO: how to change font from nvim
   font = {
@@ -33,12 +37,8 @@ return {
     font_size = '14.0',
   },
 
-  lsp = {
-    diagnostic = {
-      virtual_text = false,
-      diagnostic_signs = true,
-    },
-    inlay_hints = true,
-  },
+  lsp_inlay_hints = true,
+
+  diagnostic_virtual_text = false,
+  diagnostic_signs = true,
 }
--- TODO: add kitty settings (font, size, family)

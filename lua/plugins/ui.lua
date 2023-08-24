@@ -1,6 +1,5 @@
--- TODO: add dynamic option for all borders
-
--- TODO: add dynamic util for nonicons
+local border = require('neviraide.utils.settings.float_win')
+local icon = require('neviraide-ui.icons.utils').icon
 
 ---@param themes table
 ---@return table
@@ -15,88 +14,12 @@ end
 local icons = {
   'nvim-tree/nvim-web-devicons',
   version = '*',
-}
-
-local statusline = {
-  'nvim-lualine/lualine.nvim',
-  version = '*',
-  event = 'VeryLazy',
   opts = function()
-    local component = require('neviraide.utils.lualine.components')
-    return {
-      extensions = {
-        'lazy',
-        'man',
-        'neo-tree',
-        'nvim-dap-ui',
-        'quickfix',
-        'symbols-outline',
-        'toggleterm',
-      },
-      options = {
-        disabled_filetypes = {
-          winbar = {
-            'neo-tree',
-            'toggleterm',
-          },
-          'lspinfo',
-          'mason',
-          'filesystem',
-          'TelescopePrompt',
-          'help',
-          'checkhealth',
-          'neo-tree-popup',
-          'nui',
-          'nui_themes',
-          'nui_new',
-          'neviraideDashboard',
-          'help',
-        },
-        component_separators = '',
-        section_separators = '',
-        theme = {
-          normal = { c = { bg = 'none' } },
-          inactive = { c = { bg = 'none' } },
-        },
-        globalstatus = true,
-      },
-      tabline = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {
-          component.buffers,
-        },
-        lualine_x = {
-          component.lazy,
-          component.time,
-          component.theme,
-        },
-        lualine_y = {},
-        lualine_z = {},
-      },
-      sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {
-          component.lsp_server,
-          component.lsp_diagnostic,
-          component.indent,
-          component.vim_mode,
-          component.filesize,
-          component.location,
-          component.format,
-          component.encoding,
-          component.spaces,
-          component.interpreter,
-        },
-        lualine_x = {
-          component.diff,
-          component.git_branch,
-        },
-        lualine_y = {},
-        lualine_z = {},
-      },
-    }
+    return { override = require('neviraide-ui.icons.devicons') }
+  end,
+  config = function(_, opts)
+    -- dofile(vim.g.base46_cache .. "devicons")
+    require('nvim-web-devicons').setup(opts)
   end,
 }
 
@@ -135,6 +58,13 @@ local notifications = {
     end,
     timeout = 3000,
     fps = 60,
+    icons = {
+      ERROR = icon('x-circle') .. ' ',
+      WARN = icon('alert') .. ' ',
+      INFO = icon('info') .. ' ',
+      DEBUG = icon('bug') .. ' ',
+      TRACE = icon('play') .. ' ',
+    },
     minimum_width = 10,
     max_height = function() return math.floor(vim.o.lines * 0.75) end,
     max_width = function() return math.floor(vim.o.columns * 0.75) end,
@@ -152,8 +82,6 @@ local indents = {
   version = '*',
   event = { 'BufReadPost', 'BufNewFile' },
   opts = {
-    -- NOTE: compatible indents with SKOBKI
-
     space_char_blankline = ' ',
     char_highlight_list = {
       'IndentBlanklineIndent1',
@@ -163,15 +91,6 @@ local indents = {
       'IndentBlanklineIndent5',
       'IndentBlanklineIndent6',
     },
-    -- space_char_blankline = '',
-    -- space_char_highlight_list = {
-    --   'IndentBlanklineIndent1',
-    --   'IndentBlanklineIndent2',
-    --   'IndentBlanklineIndent3',
-    --   'IndentBlanklineIndent4',
-    --   'IndentBlanklineIndent5',
-    --   'IndentBlanklineIndent6',
-    -- },
     indentLine_enabled = 1,
     filetype_exclude = {
       'help',
@@ -200,22 +119,30 @@ local nui = {
   end,
 }
 
-local border = require('neviraide.utils.settings.float_win')
-
 local cmdline = {
-  -- FIX: strange in go files (show not lsp server)
   'folke/noice.nvim',
   version = '*',
   event = 'VeryLazy',
   opts = {
     cmdline = {
       format = {
-        cmdline = { icon = ' ' },
-        search_down = { icon = '  ' },
-        search_up = { icon = '  ' },
-        fish = { pattern = '^:%s*!', icon = '󰈺 ', lang = 'fish' },
-        highlights = { pattern = '^:%s*hi?g?h?l?i?g?h?t?%s+', icon = ' ' },
-        lua = { icon = ' ' },
+        cmdline = { icon = icon('vim') .. ' ' },
+        search_down = {
+          icon = '  ' .. icon('search') .. ' ' .. icon('chevron-down') .. ' ',
+        },
+        search_up = {
+          icon = '  ' .. icon('search') .. ' ' .. icon('chevron-up') .. ' ',
+        },
+        fish = {
+          pattern = '^:%s*!',
+          icon = icon('terminal') .. ' ',
+          lang = 'fish',
+        },
+        highlights = {
+          pattern = '^:%s*hi?g?h?l?i?g?h?t?%s+',
+          icon = icon('paintbrush') .. ' ',
+        },
+        lua = { icon = icon('lua') .. ' ' },
         filter = false,
       },
     },
@@ -251,7 +178,6 @@ local cmdline = {
 return {
   get_themes(require('neviraide.utils.settings.change_theme.themes')),
   icons,
-  -- statusline,
   cmdline,
   notifications,
   indents,

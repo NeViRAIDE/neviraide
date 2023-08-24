@@ -125,7 +125,7 @@ return {
       inactive = 'Comment',
     },
     symbols = {
-      modified = '  ',
+      modified = '  ',
       alternate_file = '',
       directory = ' ',
     },

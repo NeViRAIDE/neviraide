@@ -1,10 +1,7 @@
-local border = require('neviraide.utils').border
-
-return function(client, bufnr)
+return function(_, bufnr)
+  local border = require('neviraide.utils').border
   local utils = require('neviraide.utils')
   local opts = require('neviraide.lsp.options')
-
-  -- TODO: show scrollbar for hover and make keymaps
 
   vim.lsp.handlers['textDocument/hover'] =
     vim.lsp.with(vim.lsp.handlers.hover, {
@@ -14,14 +11,12 @@ return function(client, bufnr)
   vim.lsp.handlers['textDocument/signatureHelp'] =
     vim.lsp.with(vim.lsp.handlers.signature_help, {
       border = border(),
+      focusable = false,
+      relative = 'cursor',
     })
 
   require('lsp_signature').on_attach(opts.signature, bufnr)
 
   utils.mappings('lsp')(bufnr)
   utils.mappings('diagnostic')(bufnr)
-
-  if client.server_capabilities.documentSymbolProvider then
-    require('nvim-navic').attach(client, bufnr)
-  end
 end

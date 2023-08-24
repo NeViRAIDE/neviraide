@@ -1,4 +1,5 @@
 local utils = require('neviraide.utils')
+local icon = require('neviraide-ui.icons.utils').icon
 
 local terminal = {
   'akinsho/toggleterm.nvim',
@@ -27,6 +28,7 @@ local terminal = {
   },
 }
 
+-- FIX: can't git push from neotree(not input for ssh password)
 local file_explorer = {
   'nvim-neo-tree/neo-tree.nvim',
   version = '*',
@@ -46,18 +48,18 @@ local file_explorer = {
       default_component_configs = {
         git_status = {
           symbols = {
-            added = ' ',
-            modified = ' ',
-            deleted = ' ',
+            added = icon('diff-added'),
+            modified = icon('diff-modified'),
+            deleted = icon('diff-removed'),
           },
         },
         icon = {
-          folder_closed = '',
-          folder_open = '',
-          folder_empty = '',
+          folder_closed = icon('file-directory-fill'),
+          folder_open = icon('file-directory-open-fill'),
+          folder_empty = icon('file-directory-outline'),
         },
         modified = {
-          symbol = '',
+          symbol = icon('pencil'),
         },
       },
       filesystem = {
@@ -227,7 +229,7 @@ local telescope = {
           '--column',
           '--smart-case',
         },
-        prompt_prefix = '   ',
+        prompt_prefix = ' ' .. icon('search') .. '  ',
         selection_caret = '  ',
         entry_prefix = '  ',
         initial_mode = 'insert',
