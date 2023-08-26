@@ -106,7 +106,7 @@ local motion = {
 return {
   debug,
   motion,
-  transparent,
+  -- transparent,
   colorpicker,
   comment,
   markdown_preview,

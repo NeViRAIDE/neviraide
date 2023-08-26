@@ -27,7 +27,10 @@ return {
         swap = { enable = true },
       },
     },
-    config = function(_, opts) require('nvim-treesitter.configs').setup(opts) end,
+    config = function(_, opts)
+      dofile(vim.g.neviraide_themes_cache .. 'syntax')
+      require('nvim-treesitter.configs').setup(opts)
+    end,
     dependencies = {
       'HiPhish/nvim-ts-rainbow2',
       'windwp/nvim-ts-autotag',

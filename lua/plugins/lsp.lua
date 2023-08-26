@@ -17,6 +17,17 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      dofile(vim.g.neviraide_themes_cache .. 'mason')
+      require('mason').setup(opts)
+
+      -- custom nvchad cmd to install all mason binaries listed
+      -- vim.api.nvim_create_user_command("MasonInstallAll", function()
+      --   vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
+      -- end, {})
+      --
+      -- vim.g.mason_binaries_list = opts.ensure_installed
+    end,
   },
 
   {
@@ -62,6 +73,7 @@ return {
       },
     },
     config = function()
+      dofile(vim.g.neviraide_themes_cache .. 'lsp')
       require('lspconfig.ui.windows').default_options.border =
         NEVIRAIDE().border
       require('neviraide.lsp.diagnostic').setup()

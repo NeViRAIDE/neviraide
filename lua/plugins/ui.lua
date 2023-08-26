@@ -18,7 +18,7 @@ local icons = {
     return { override = require('neviraide-ui.icons.devicons') }
   end,
   config = function(_, opts)
-    -- dofile(vim.g.base46_cache .. "devicons")
+    dofile(vim.g.neviraide_themes_cache .. 'devicons')
     require('nvim-web-devicons').setup(opts)
   end,
 }
@@ -108,6 +108,10 @@ local indents = {
     show_current_context = true,
     show_current_context_start = true,
   },
+  config = function(_, opts)
+    dofile(vim.g.neviraide_themes_cache .. 'blankline')
+    require('indent_blankline').setup(opts)
+  end,
 }
 
 local nui = {
@@ -176,7 +180,7 @@ local cmdline = {
 }
 
 return {
-  get_themes(require('neviraide.utils.settings.change_theme.themes')),
+  -- get_themes(require('neviraide.utils.settings.change_theme.themes')),
   icons,
   cmdline,
   notifications,

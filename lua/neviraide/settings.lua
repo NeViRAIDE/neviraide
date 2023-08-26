@@ -46,8 +46,11 @@ o.sessionoptions =
 
 vim.g.transparent_enabled = NEVIRAIDE().transparency
 
-vim.g.everforest_better_performance = 1
-vim.g.everforest_background = NEVIRAIDE().background_pallete
+-- g.toggle_theme_icon = "   "
+vim.g.transparency = NEVIRAIDE().transparency
+
+-- vim.g.everforest_better_performance = 1
+-- vim.g.everforest_background = NEVIRAIDE().background_pallete
 -- local my_dict = vim.g.my_dict   --
 -- my_dict.field1 = 'value'        -- Instead do
 -- vim.g.my_dict = my_dict         --
@@ -57,4 +60,5 @@ require('neviraide.highlights')
 
 o.background = NEVIRAIDE().background
 
-vim.cmd.colorscheme(NEVIRAIDE().theme)
+-- vim.cmd.colorscheme(NEVIRAIDE().theme)
+-- vim.cmd.colorscheme('habamax')

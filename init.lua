@@ -54,5 +54,12 @@ end
 
 vim.g.mapleader = ' '
 
+vim.g.neviraide_themes_cache = vim.fn.stdpath('data')
+  .. '/neviraide_ui/neviraide_themes'
+vim.g.toggle_theme_icon = '   '
+vim.g.neviraide_theme = NEVIRAIDE().theme
+
 require('neviraide.lazy')
 require('neviraide.settings')
+
+dofile(vim.g.neviraide_themes_cache .. 'defaults')

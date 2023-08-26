@@ -41,11 +41,11 @@ return function()
       'Toggle comment',
     },
     ['<tab>'] = {
-      function() require('neviraide-ui.buftabline.buftabline').tabuflineNext() end,
+      function() require('neviraide-ui.buftabline').tabuflineNext() end,
       'Goto next buffer',
     },
     ['<S-tab>'] = {
-      function() require('neviraide-ui.buftabline.buftabline').tabuflinePrev() end,
+      function() require('neviraide-ui.buftabline').tabuflinePrev() end,
       'Goto prev buffer',
     },
     ['<C-h>'] = { '<C-w>h', 'Window left' },
@@ -62,7 +62,7 @@ return function()
       name = 'Plugins and features ',
       b = { '<cmd>Neotree buffers focus float<cr>', 'Buffers list ' },
       x = {
-        function() require('neviraide-ui.buftabline.buftabline').close_buffer() end,
+        function() require('neviraide-ui.buftabline').close_buffer() end,
         'Close buffer ',
       },
       N = {

@@ -149,5 +149,9 @@ return {
         },
       }
     end,
+    config = function(_, opts)
+      dofile(vim.g.neviraide_themes_cache .. 'cmp')
+      require('cmp').setup(opts)
+    end,
   },
 }

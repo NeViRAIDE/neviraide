@@ -56,7 +56,7 @@ local file_explorer = {
         icon = {
           folder_closed = icon('file-directory-fill'),
           folder_open = icon('file-directory-open-fill'),
-          folder_empty = icon('file-directory-outline'),
+          folder_empty = icon('file-directory'),
         },
         modified = {
           symbol = icon('pencil'),
@@ -81,6 +81,10 @@ local file_explorer = {
         ['js'] = { 'js.map' },
       },
     }
+  end,
+  config = function(_, opts)
+    dofile(vim.g.neviraide_themes_cache .. 'neotree')
+    require('neo-tree').setup(opts)
   end,
 }
 
@@ -286,6 +290,7 @@ local telescope = {
     }
   end,
   config = function(_, opts)
+    dofile(vim.g.neviraide_themes_cache .. 'telescope')
     local telescope = require('telescope')
     telescope.setup(opts)
     for _, ext in ipairs(opts.extensions_list) do
@@ -349,6 +354,10 @@ local whichkey = {
       },
     }
   end,
+  config = function(_, opts)
+    dofile(vim.g.neviraide_themes_cache .. 'whichkey')
+    require('which-key').setup(opts)
+  end,
 }
 
 local gitsigns = {
@@ -383,6 +392,10 @@ local gitsigns = {
         untracked = { text = '│' },
       },
     }
+  end,
+  config = function(_, opts)
+    dofile(vim.g.neviraide_themes_cache .. 'git')
+    require('gitsigns').setup(opts)
   end,
 }
 
