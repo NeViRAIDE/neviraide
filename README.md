@@ -19,3 +19,8 @@ You need only define what you want and what you need._**
   - [Auto]()
   - [Manual]()
 - [Used plugins]()
+
+#### Used plugins
+
+- [NEVIRAIDE UI](https://github.com/RAprogramm/neviraide-ui.nvim) 
+- [Terminal](https://github.com/nvchad/nvterm)
