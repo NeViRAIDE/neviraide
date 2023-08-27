@@ -22,5 +22,5 @@ You need only define what you want and what you need._**
 
 ### Used plugins
 
-- [NEVIRAIDE UI](https://github.com/RAprogramm/neviraide-ui.nvim) 
+- [UI](https://github.com/RAprogramm/neviraide-ui.nvim) 
 - [Terminal](https://github.com/nvchad/nvterm)
