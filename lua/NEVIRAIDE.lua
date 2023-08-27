@@ -1,28 +1,9 @@
--- NOTE: add?! for what?!
--- _G.yes = true
--- _G.no = false
+---lsjdlfksjdlfj
 
 -- TODO: reload lazy when changed
 return {
   theme = 'everforest',
-  background = 'dark',
-  pallete = 'dark',
-  hl_add = {},
-  hl_override = {},
   theme_toggle = { 'everforest', 'everforest_light' },
-  lsp_semantic_tokens = true, -- needs nvim v0.9, just adds highlight groups for lsp semantic tokens
-  changed_themes = {},
-
-  telescope = {
-    style = 'bordered',
-  },
-  cmp = {
-    icons = true,
-    lspkind_text = true,
-    style = 'default', -- default/flat_light/flat_dark/atom/atom_colored
-    border_color = 'grey_fg', -- only applicable for "default" style, use color names from base30 variables
-    selected_item_bg = 'simple', -- colored / simple
-  },
 
   transparency = false,
 
@@ -43,6 +24,7 @@ return {
   ---• "shadow": A drop shadow effect by blending with the background.
   ---@type string
   border = 'rounded',
+  -- FIX: bug with shadow border
 
   gitsigns_current_line_blame = false,
   gitsigns_signs = true,

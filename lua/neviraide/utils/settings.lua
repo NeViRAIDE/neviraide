@@ -23,16 +23,6 @@ function M.toggle_numbers()
   o.number = not numbers
 end
 
-function M.toggle_transparency()
-  local trans = NEVIRAIDE().transparency
-  write(
-    'transparency = ' .. tostring(trans),
-    'transparency = ' .. tostring(not trans)
-  )
-  require('plenary.reload').reload_module('NEVIRAIDE')
-  vim.fn.execute('TransparentToggle')
-end
-
 function M.toggle_cursor_line()
   local line = NEVIRAIDE().cursor_line
   write(

@@ -1,3 +1,4 @@
+--hhhhh
 local border = require('neviraide.utils.settings.float_win')
 local icon = require('neviraide-ui.icons.utils').icon
 
@@ -173,7 +174,7 @@ local cmdline = {
 
 return {
   icons,
-  cmdline,
+  -- cmdline,
   notifications,
   indents,
   nui,

@@ -1,5 +1,7 @@
+vim.g.mapleader = ' '
+
 require('lazy').setup('plugins', {
-  defaults = { lazy = true },
+  defaults = { lazy = true, version = '*' },
   ui = { border = require('neviraide.utils').border() },
   checker = { enabled = true },
   performance = {

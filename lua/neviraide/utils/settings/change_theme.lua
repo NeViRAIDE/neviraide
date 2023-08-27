@@ -1,6 +1,17 @@
+-- one
+--two
+-- idlskfjslkdjfl
+local autocmd = require('nui.utils.autocmd')
+local event = require('nui.utils.autocmd').event
+
+local function reload_theme(name)
+  vim.g.neviraide_theme = name
+  require('neviraide-ui.themes').load_all_highlights()
+  vim.api.nvim_exec_autocmds('User', { pattern = 'NeviraideThemeReload' })
+end
+
 return function()
   local write_to_conf = require('neviraide.utils').replace_word
-  local change_pallete = function(pallete) vim.g.everforest_background = pallete end
 
   local popup = require('neviraide.utils.settings.change_theme.popup')()
 
@@ -8,36 +19,33 @@ return function()
     require('nui.utils.autocmd').event.BufLeave,
     function() popup:unmount() end
   )
+  popup:on('BufLeave', function() popup:unmount() end, { once = true })
+
   popup:mount()
 
   local tree = require('neviraide.utils.settings.change_theme.tree')(popup)
 
   local map_options = { noremap = true, nowait = true }
 
+  -- local bufnr = vim.api.nvim_get_current_buf()
+  -- autocmd.buf.define(bufnr, event.CursorMoved, function()
+  --   require('neviraide.utils').autocmd('Preview_Theme', 'CursorHold', {
+  --     buffer = bufnr,
+  --     callback = function()
+  --       if tree:get_node().name then reload_theme(tree:get_node().name) end
+  --     end,
+  --   })
+  -- end, { once = true })
+
   popup:map('n', 'q', function() popup:unmount() end, map_options)
 
   popup:map('n', '<CR>', function()
     local node = tree:get_node()
-    if node.theme then
-      if node.background then
-        if node.pallete then
-          write_to_conf(
-            "pallete = '" .. NEVIRAIDE().pallete .. "'",
-            "pallete = '" .. node.pallete .. "'"
-          )
-          change_pallete(node.pallete)
-        end
-        write_to_conf(
-          "background = '" .. NEVIRAIDE().background .. "'",
-          "background = '" .. node.background .. "'"
-        )
-        vim.o.background = node.background
-      end
+    if node.name then
       write_to_conf(
         "theme = '" .. NEVIRAIDE().theme .. "'",
-        "theme = '" .. node.theme .. "'"
+        "theme = '" .. node.name .. "'"
       )
-      vim.cmd.colorscheme(node.theme)
       require('plenary.reload').reload_module('NEVIRAIDE')
       popup:unmount()
     elseif node:collapse() then
@@ -50,26 +58,11 @@ return function()
 
   popup:map('n', '<LeftMouse>', function()
     local node = tree:get_node()
-    if node.theme then
-      if node.background then
-        if node.pallete then
-          write_to_conf(
-            "pallete = '" .. NEVIRAIDE().pallete .. "'",
-            "pallete = '" .. node.pallete .. "'"
-          )
-          change_pallete(node.pallete)
-        end
-        write_to_conf(
-          "background = '" .. NEVIRAIDE().background .. "'",
-          "background = '" .. node.background .. "'"
-        )
-        vim.o.background = node.background
-      end
+    if node.name then
       write_to_conf(
         "theme = '" .. NEVIRAIDE().theme .. "'",
-        "theme = '" .. node.theme .. "'"
+        "theme = '" .. node.name .. "'"
       )
-      vim.cmd.colorscheme(node.theme)
       require('plenary.reload').reload_module('NEVIRAIDE')
       popup:unmount()
     elseif node:collapse() then

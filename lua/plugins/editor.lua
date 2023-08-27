@@ -58,6 +58,7 @@ local file_explorer = {
   end,
 }
 
+-- FIX: not correct borders
 local telescope = {
   'nvim-telescope/telescope.nvim',
   version = '*',

@@ -1,5 +1,4 @@
 local M = {}
-local merge_tb = vim.tbl_deep_extend
 
 local function if_require(module, block, errblock)
   local ok, mod = pcall(require, module)
@@ -36,45 +35,6 @@ function M.autocmd_multi(group, cmds, clear)
     local opts = c[2]
     opts.group = group
     vim.api.nvim_create_autocmd(c[1], opts)
-  end
-end
-
-local count_bufs_by_type = function(loaded_only)
-  loaded_only = (loaded_only == nil and true or loaded_only)
-  local count = {
-    normal = 0,
-    acwrite = 0,
-    help = 0,
-    nofile = 0,
-    nowrite = 0,
-    quickfix = 0,
-    terminal = 0,
-    prompt = 0,
-    term = 0,
-  }
-  local buftypes = vim.api.nvim_list_bufs()
-  for _, bufname in pairs(buftypes) do
-    if not loaded_only or vim.api.nvim_buf_is_loaded(bufname) then
-      local buftype = vim.api.nvim_buf_get_option(bufname, 'buftype')
-      buftype = buftype ~= '' and buftype or 'normal'
-      count[buftype] = count[buftype] + 1
-    end
-  end
-  return count
-end
-
-function M.close_buffer()
-  local bufTable = count_bufs_by_type()
-  if bufTable.normal <= 1 then
-    if vim.bo.buftype == 'terminal' then
-      vim.api.nvim_exec([[:bd!]], true)
-    else
-      vim.api.nvim_exec(':bd', true)
-      vim.api.nvim_exec(':Dashboard', true)
-      vim.api.nvim_exec(':bd#', true)
-    end
-  else
-    vim.api.nvim_exec(':bd', true)
   end
 end
 

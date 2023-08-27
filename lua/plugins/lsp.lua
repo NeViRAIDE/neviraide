@@ -2,41 +2,34 @@ local icon = require('neviraide-ui.icons.utils').icon
 
 return {
   {
-    'williamboman/mason.nvim',
-    cmd = 'Mason',
-    build = ':MasonUpdate',
-    opts = {
-      ui = {
-        border = NEVIRAIDE().border,
-        width = 0.6,
-        height = 0.8,
-        icons = {
-          package_installed = icon('check') .. ' ',
-          package_pending = icon('sync') .. ' ',
-          package_uninstalled = icon('x') .. ' ',
-        },
-      },
-    },
-    config = function(_, opts)
-      dofile(vim.g.neviraide_themes_cache .. 'mason')
-      require('mason').setup(opts)
-
-      -- custom nvchad cmd to install all mason binaries listed
-      -- vim.api.nvim_create_user_command("MasonInstallAll", function()
-      --   vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
-      -- end, {})
-      --
-      -- vim.g.mason_binaries_list = opts.ensure_installed
-    end,
-  },
-
-  {
     'neovim/nvim-lspconfig',
+    version = false,
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      'mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      'ray-x/lsp_signature.nvim',
+      {
+        'williamboman/mason.nvim',
+        version = '*',
+        cmd = 'Mason',
+        build = ':MasonUpdate',
+        opts = {
+          ui = {
+            border = NEVIRAIDE().border,
+            width = 0.6,
+            height = 0.8,
+            icons = {
+              package_installed = icon('check') .. ' ',
+              package_pending = icon('sync') .. ' ',
+              package_uninstalled = icon('x') .. ' ',
+            },
+          },
+        },
+        config = function(_, opts)
+          dofile(vim.g.neviraide_themes_cache .. 'mason')
+          require('mason').setup(opts)
+        end,
+      },
+      { 'williamboman/mason-lspconfig.nvim', version = '*' },
+      { 'ray-x/lsp_signature.nvim', version = '*' },
       {
         'Bekaboo/dropbar.nvim',
         version = '*',
@@ -69,6 +62,7 @@ return {
       },
       {
         'hrsh7th/cmp-nvim-lsp',
+        version = '*',
         cond = function() return require('neviraide.utils').has('nvim-cmp') end,
       },
     },
@@ -110,6 +104,7 @@ return {
 
   {
     'jay-babu/mason-null-ls.nvim',
+    version = '*',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'williamboman/mason.nvim',

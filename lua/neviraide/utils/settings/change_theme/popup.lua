@@ -1,7 +1,15 @@
+local themes = {
+  'everforest',
+  'everforest_light',
+  'nordic',
+  'onedark',
+  'tokyonight',
+}
+
 return function()
   local Popup = require('nui.popup')
   ---@type integer number of themes installed
-  local theme_count = #require('neviraide.utils.settings.change_theme.themes')
+  local theme_count = #themes
 
   local utils = require('neviraide.override_vim_ui.utils')
 
