@@ -5,32 +5,6 @@ local markdown_preview = {
   config = function() vim.g.mkdp_filetypes = { 'markdown' } end,
 }
 
-local transparent = {
-  'xiyaowong/transparent.nvim',
-  version = '*',
-  cmd = {
-    'TransparentEnable',
-    'TransparentDisable',
-    'TransparentToggle',
-  },
-  config = function()
-    vim.api.nvim_set_hl(
-      0,
-      'NotifyBackground',
-      vim.api.nvim_get_hl(0, { name = 'Normal' })
-    )
-    require('transparent').setup({
-      extra_groups = {
-        'FloatBorder',
-        'NeoTreeNormal',
-        'NeoTreeNormalNC',
-        'NeoTreeEndOfBuffer',
-        'NeoTreeStatusLine',
-      },
-    })
-  end,
-}
-
 local colorpicker = {
   'uga-rosa/ccc.nvim',
   version = '*',
@@ -49,10 +23,12 @@ local comment = {
   'numToStr/Comment.nvim',
   version = '*',
   keys = {
-    { 'gcc', mode = 'n' },
-    { 'gc', mode = 'v' },
-    { 'gbc', mode = 'n' },
-    { 'gb', mode = 'v' },
+    { 'gcc', mode = 'n', desc = 'Comment toggle current line' },
+    { 'gc', mode = { 'n', 'o' }, desc = 'Comment toggle linewise' },
+    { 'gc', mode = 'x', desc = 'Comment toggle linewise (visual)' },
+    { 'gbc', mode = 'n', desc = 'Comment toggle current block' },
+    { 'gb', mode = { 'n', 'o' }, desc = 'Comment toggle blockwise' },
+    { 'gb', mode = 'x', desc = 'Comment toggle blockwise (visual)' },
   },
   config = function(_, opts) require('Comment').setup(opts) end,
 }
@@ -67,6 +43,7 @@ local debug = {
     { 'leoluz/nvim-dap-go', config = true },
   },
   config = function()
+    dofile(vim.g.neviraide_themes_cache .. 'dap')
     local dap = require('dap')
     local dapui = require('dapui')
 
@@ -104,9 +81,26 @@ local motion = {
 }
 
 return {
+  {
+    'NvChad/nvterm',
+    opts = {
+      terminals = {
+        type_opts = {
+          float = {
+            border = require('neviraide.utils').border(),
+          },
+          horizontal = { location = 'rightbelow', split_ratio = 0.3 },
+          vertical = { location = 'rightbelow', split_ratio = 0.5 },
+        },
+      },
+    },
+    config = function(_, opts)
+      require('neviraide-ui.themes.term')
+      require('nvterm').setup(opts)
+    end,
+  },
   debug,
   motion,
-  -- transparent,
   colorpicker,
   comment,
   markdown_preview,

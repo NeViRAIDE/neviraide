@@ -138,4 +138,36 @@ function M.border()
   end
 end
 
+---@param plugin string
+---@param link? string
+function M.check_missing(plugin, link)
+  local ok, check = pcall(require, plugin)
+  local message = {
+    main = 'Plugin "' .. plugin .. '" NOT found!',
+    separator = '\n   --------------------   ',
+    helper = {
+      main = '\nCheck:\n  1. Plugins configuration',
+      link = '\n  2. ' .. link,
+    },
+  }
+  if ok then
+    return check
+  else
+    if link then
+      return vim.notify(
+        message.main
+          .. message.separator
+          .. message.helper.main
+          .. message.helper.link,
+        4
+      )
+    else
+      return vim.notify(
+        message.main .. message.separator .. message.helper.main,
+        4
+      )
+    end
+  end
+end
+
 return M

@@ -8,9 +8,8 @@ return {
   background = 'dark',
   pallete = 'dark',
   hl_add = {},
-  extended_integrations = {},
   hl_override = {},
-  theme_toggle = { 'onedark', 'one_light' },
+  theme_toggle = { 'everforest', 'everforest_light' },
   lsp_semantic_tokens = true, -- needs nvim v0.9, just adds highlight groups for lsp semantic tokens
   changed_themes = {},
 

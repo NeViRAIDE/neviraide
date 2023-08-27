@@ -1,7 +1,7 @@
 return {
   name = 'Settings ',
   b = {
-    '<cmd>lua require"neviraide.utils.settings".toggle_transparency()<cr>',
+    '<cmd>lua require"neviraide-ui.themes".toggle_transparency()<cr>',
     'Background transparency',
   },
   c = {

@@ -1,39 +1,13 @@
 local utils = require('neviraide.utils')
 local icon = require('neviraide-ui.icons.utils').icon
 
-local terminal = {
-  'akinsho/toggleterm.nvim',
-  version = '*',
-  cmd = 'ToggleTerm',
-  opts = {
-    size = function(term)
-      if term.direction == 'horizontal' then
-        return vim.o.lines * 0.4
-      elseif term.direction == 'vertical' then
-        return vim.o.columns * 0.4
-      end
-    end,
-    winbar = {
-      enabled = true,
-    },
-    highlights = {
-      NormalFloat = { link = 'NormalFloat' },
-      FloatBorder = { link = 'NormalFloat' },
-    },
-    float_opts = {
-      border = utils.border(),
-      width = function(term) return math.floor(vim.o.columns * 0.6) end,
-      height = function(term) return math.floor(vim.o.lines * 0.5) end,
-    },
-  },
-}
-
 -- FIX: can't git push from neotree(not input for ssh password)
 local file_explorer = {
   'nvim-neo-tree/neo-tree.nvim',
   version = '*',
   cmd = 'Neotree',
   opts = function()
+    dofile(vim.g.neviraide_themes_cache .. 'neotree')
     local fc = require('neo-tree.sources.filesystem.components')
     return {
       event_handlers = {
@@ -82,41 +56,14 @@ local file_explorer = {
       },
     }
   end,
-  config = function(_, opts)
-    dofile(vim.g.neviraide_themes_cache .. 'neotree')
-    require('neo-tree').setup(opts)
-  end,
 }
-
--- local TelescopePrompt = {
---     TelescopePromptNormal = {
---         bg = '#2d3149',
---     },
---     TelescopePromptBorder = {
---         bg = '#2d3149',
---     },
---     TelescopePromptTitle = {
---         fg = '#2d3149',
---         bg = '#2d3149',
---     },
---     TelescopePreviewTitle = {
---         fg = '#1F2335',
---         bg = '#1F2335',
---     },
---     TelescopeResultsTitle = {
---         fg = '#1F2335',
---         bg = '#1F2335',
---     },
--- }
--- for hl, col in pairs(TelescopePrompt) do
---     vim.api.nvim_set_hl(0, hl, col)
--- end
 
 local telescope = {
   'nvim-telescope/telescope.nvim',
   version = '*',
   cmd = 'Telescope',
   opts = function()
+    dofile(vim.g.neviraide_themes_cache .. 'telescope')
     ---@return table
     local function tel_border()
       local types = {
@@ -290,7 +237,6 @@ local telescope = {
     }
   end,
   config = function(_, opts)
-    dofile(vim.g.neviraide_themes_cache .. 'telescope')
     local telescope = require('telescope')
     telescope.setup(opts)
     for _, ext in ipairs(opts.extensions_list) do
@@ -308,6 +254,7 @@ local whichkey = {
     vim.o.timeoutlen = 300
   end,
   opts = function()
+    dofile(vim.g.neviraide_themes_cache .. 'whichkey')
     utils.mappings()()
 
     return {
@@ -354,10 +301,6 @@ local whichkey = {
       },
     }
   end,
-  config = function(_, opts)
-    dofile(vim.g.neviraide_themes_cache .. 'whichkey')
-    require('which-key').setup(opts)
-  end,
 }
 
 local gitsigns = {
@@ -382,6 +325,7 @@ local gitsigns = {
     })
   end,
   opts = function()
+    dofile(vim.g.neviraide_themes_cache .. 'git')
     return {
       signs = {
         add = { text = '│' },
@@ -392,10 +336,6 @@ local gitsigns = {
         untracked = { text = '│' },
       },
     }
-  end,
-  config = function(_, opts)
-    dofile(vim.g.neviraide_themes_cache .. 'git')
-    require('gitsigns').setup(opts)
   end,
 }
 
@@ -412,6 +352,5 @@ return {
   telescope,
   whichkey,
   gitsigns,
-  terminal,
   todo_comments,
 }

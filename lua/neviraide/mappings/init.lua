@@ -1,13 +1,6 @@
 -- TODO: change all icons
 local utils = require('neviraide.utils')
-
--- execute cmdmode command and stay cmdline open
-vim.keymap.set(
-  'c',
-  '<S-Enter>',
-  function() require('noice').redirect(vim.fn.getcmdline()) end,
-  { desc = 'Redirect Cmdline' }
-)
+local term_util = require('neviraide.utils.terminal')
 
 return function()
   utils.wk_reg({
@@ -16,6 +9,10 @@ return function()
         function() require('notify').dismiss({ silent = true, pending = true }) end,
         'Dismiss all Notifications',
       },
+    },
+    ['p'] = {
+      'p:let @+=@0<CR>:let @"=@0<CR>',
+      'Paste (dont copy replaced text)',
     },
     ['<ScrollWheelUp>'] = { 'k', 'Scroll up by one line' },
     ['<ScrollWheelDown>'] = { 'j', 'Scroll down by one line' },
@@ -50,13 +47,19 @@ return function()
     },
     ['<C-h>'] = { '<C-w>h', 'Window left' },
     ['<C-l>'] = { '<C-w>l', 'Window right' },
+
     ['<a-h>'] = {
-      ':ToggleTerm direction=horizontal<cr>',
+      function() term_util.term_toggle('horizontal') end,
       'Horizontal terminal',
     },
-    ['<a-f>'] = { ':ToggleTerm direction=float<cr>', 'Float terminal' },
-    ['<a-v>'] = { ':ToggleTerm direction=vertical<cr>', 'Vertical terminal' },
-    ['<a-t>'] = { ':ToggleTerm direction=tab<cr>', 'Tab terminal' },
+    ['<a-f>'] = {
+      function() term_util.term_toggle('float') end,
+      'Float terminal',
+    },
+    ['<a-v>'] = {
+      function() term_util.term_toggle('vertical') end,
+      'Vertical terminal',
+    },
 
     ['<leader>'] = {
       name = 'Plugins and features ',
@@ -78,6 +81,15 @@ return function()
     },
   }, { mode = 'n' })
 
+  -- FIX: not working in which-key
+  utils.wk_reg({
+    -- execute cmdmode command and stay cmdline open
+    ['<S-Enter>'] = {
+      function() require('noice').redirect(vim.fn.getcmdline()) end,
+      'Redirect Cmdline',
+    },
+  }, { mode = 'c' })
+
   utils.wk_reg({
     ['<c-/>'] = {
       "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
@@ -90,15 +102,17 @@ return function()
 
   utils.wk_reg({
     ['<a-h>'] = {
-      '<ESC><cmd>ToggleTerm direction=horizontal<cr>',
+      function() term_util.term_toggle('horizontal') end,
       'Horizontal terminal',
     },
-    ['<a-f>'] = { '<ESC><cmd>ToggleTerm direction=float<cr>', 'Float terminal' },
+    ['<a-f>'] = {
+      function() term_util.term_toggle('float') end,
+      'Float terminal',
+    },
     ['<a-v>'] = {
-      '<ESC><cmd>ToggleTerm direction=vertical<cr>',
+      function() term_util.term_toggle('vertical') end,
       'Vertical terminal',
     },
-    ['<a-t>'] = { '<ESC><cmd>ToggleTerm direction=tab<cr>', 'Tab terminal' },
     ['<C-j>'] = { '<Cmd>wincmd j<CR>', 'Window down' },
     ['<C-k>'] = { '<Cmd>wincmd k<CR>', 'Window up' },
     ['<C-h>'] = { '<Cmd>wincmd h<CR>', 'Window left' },

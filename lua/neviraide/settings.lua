@@ -56,7 +56,7 @@ vim.g.transparency = NEVIRAIDE().transparency
 -- vim.g.my_dict = my_dict         --
 
 require('neviraide.autocommands')
-require('neviraide.highlights')
+-- require('neviraide.highlights')
 
 o.background = NEVIRAIDE().background
 
