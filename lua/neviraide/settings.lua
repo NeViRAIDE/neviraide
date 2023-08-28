@@ -1,11 +1,18 @@
-vim.g.neviraide_themes_cache = vim.fn.stdpath('data') .. '/neviraide_ui/'
-vim.g.neviraide_theme = NEVIRAIDE().theme
-vim.g.transparency = NEVIRAIDE().transparency
+local g = vim.g
+
+---@type string
+g.neviraide_themes_cache = vim.fn.stdpath('data') .. '/neviraide_ui/'
+---@type string
+g.neviraide_theme = NEVIRAIDE().theme
+---@type boolean
+g.transparency = NEVIRAIDE().transparency
+---@type string
+g.borders = NEVIRAIDE().border
 
 local o = vim.opt
 
 for _, provider in ipairs({ 'node', 'perl', 'python3', 'ruby' }) do
-  vim.g['loaded_' .. provider .. '_provider'] = 0
+  g['loaded_' .. provider .. '_provider'] = 0
 end
 
 o.whichwrap:append('<>[]hl')
@@ -17,10 +24,6 @@ o.spelllang = { 'en' }
 o.pumblend = 10
 o.pumheight = 10
 o.clipboard = 'unnamedplus'
-o.cursorline = NEVIRAIDE().cursor_line
-o.cursorcolumn = NEVIRAIDE().cursor_column
-o.number = NEVIRAIDE().numbers
-o.relativenumber = NEVIRAIDE().relative_numbers
 o.confirm = true
 o.scrolloff = 7
 o.hlsearch = false
@@ -28,6 +31,10 @@ o.completeopt = 'menuone,noselect,noinsert'
 o.showmatch = true
 o.expandtab = true
 o.smartindent = true
+o.cursorline = NEVIRAIDE().cursor_line
+o.cursorcolumn = NEVIRAIDE().cursor_column
+o.number = NEVIRAIDE().numbers
+o.relativenumber = NEVIRAIDE().relative_numbers
 o.shiftwidth = NEVIRAIDE().indents
 o.tabstop = NEVIRAIDE().indents
 o.softtabstop = NEVIRAIDE().indents

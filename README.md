@@ -2,8 +2,6 @@
 
 ## Fast, comfortable and light IDE
 
-![Welcome]()
-
 ### This is my setup of NEOVIM
 
 **_Remember that it's only modifications of config files and collect of different plugins.
@@ -13,7 +11,6 @@ You need only define what you want and what you need._**
 
 #### Content
 
-- [Screenshots](#screenshots)
 - [Dependencies]()
 - [Instalation]()
   - [Auto]()
@@ -22,5 +19,5 @@ You need only define what you want and what you need._**
 
 ### Used plugins
 
-- [UI](https://github.com/RAprogramm/neviraide-ui.nvim) 
+- [UI](https://github.com/RAprogramm/neviraide-ui.nvim)
 - [Terminal](https://github.com/nvchad/nvterm)

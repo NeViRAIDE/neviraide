@@ -1,15 +1,11 @@
--- TODO: choose best variant
-
 ---Returns all data from main
 ---configuration file as table.
 _G.NEVIRAIDE = function()
-  local neviraide_conf = vim.fn.stdpath('config') .. '/lua/' .. 'NEVIRAIDE.lua'
-  local file = io.open(neviraide_conf, 'r')
-
-  if file ~= nil then
-    io.close(file)
-    return require('NEVIRAIDE')
+  local ok, config = pcall(require, 'NEVIRAIDE')
+  if ok then
+    return config
   else
+    vim.notify('ERROR: ' .. config)
     vim.notify([[
 
     #############################################################
@@ -20,22 +16,6 @@ _G.NEVIRAIDE = function()
     #############################################################
   ]])
   end
-  -----------------------------------------------------------------------
-  -- local ok, config = pcall(require, 'NEVIRAIDE')
-  -- if ok then
-  --   return config
-  -- else
-  --   vim.notify('ERROR: ' .. config)
-  --   vim.notify([[
-  --
-  --   #############################################################
-  --   #                                                           #
-  --   #      "NEVIRAIDE.lua" is required                          #
-  --   #                        in your "~/.config/nvim/lua/"      #
-  --   #                                                           #
-  --   #############################################################
-  -- ]])
-  -- end
 end
 
 require('neviraide.settings')

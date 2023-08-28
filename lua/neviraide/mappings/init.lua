@@ -47,6 +47,8 @@ return function()
     },
     ['<C-h>'] = { '<C-w>h', 'Window left' },
     ['<C-l>'] = { '<C-w>l', 'Window right' },
+    ['<C-j>'] = { '<C-w>j', 'Window down' },
+    ['<C-k>'] = { '<C-w>k', 'Window up' },
 
     ['<a-h>'] = {
       function() term_util.term_toggle('horizontal') end,
@@ -82,13 +84,13 @@ return function()
   }, { mode = 'n' })
 
   -- FIX: not working in which-key
-  utils.wk_reg({
-    -- execute cmdmode command and stay cmdline open
-    ['<S-Enter>'] = {
-      function() require('noice').redirect(vim.fn.getcmdline()) end,
-      'Redirect Cmdline',
-    },
-  }, { mode = 'c' })
+  -- utils.wk_reg({
+  --   -- execute cmdmode command and stay cmdline open
+  --   ['<S-Enter>'] = {
+  --     function() require('noice').redirect(vim.fn.getcmdline()) end,
+  --     'Redirect Cmdline',
+  --   },
+  -- }, { mode = 'c' })
 
   utils.wk_reg({
     ['<c-/>'] = {
