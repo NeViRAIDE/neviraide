@@ -13,7 +13,7 @@ return {
   window = {
     completion = {
       border = border,
-      winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
+      winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenu,Search:IncSearch',
     },
     documentation = { border = border },
   },
@@ -44,10 +44,7 @@ return {
       else
         fallback()
       end
-    end, {
-      'i',
-      's',
-    }),
+    end, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -64,17 +61,14 @@ return {
       else
         fallback()
       end
-    end, {
-      'i',
-      's',
-    }),
+    end, { 'i', 's' }),
   },
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'buffer' },
     { name = 'nvim_lua' },
-    { name = 'path' },
+    { name = 'async_path' },
   },
   sorting = {
     comparators = {
@@ -95,14 +89,14 @@ return {
       cmp.ItemField.Menu,
     },
     format = function(_, item)
-      item.kind =
-        string.format('%s ', require('neviraide-ui.icons.lspkind')[item.kind])
+      item.kind = string.format(
+        '%s ',
+        require('neviraide.utils').icons().lspkind[item.kind]
+      )
       return item
     end,
   },
   experimental = {
-    ghost_text = {
-      hl_group = 'Comment',
-    },
+    ghost_text = { hl_group = 'LspInlayHint' },
   },
 }

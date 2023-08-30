@@ -21,6 +21,7 @@ end
 -- FIX: border for blame
 M.opts = function()
   dofile(vim.g.neviraide_themes_cache .. 'git')
+
   return {
     signs = {
       add = { text = '│' },

@@ -1,9 +1,6 @@
----lsjdlfksjdlfj
-
 -- TODO: reload lazy when changed
 return {
-  theme = 'everforest',
-  theme_toggle = { 'everforest', 'everforest_light' },
+  theme = './nord',
 
   transparency = false,
 
@@ -22,9 +19,13 @@ return {
   ---• "rounded": Like "single", but with rounded corners
   ---• "solid": Adds padding by a single whitespace cell.
   ---• "shadow": A drop shadow effect by blending with the background.
-  ---@type string
+  ---@type 'none'|'single'|'double'|'rounded'|'solid'|'shadow'
   border = 'rounded',
+  ---@type string
+  borderchars = '{ "─", "│", "─", "│", "╭", "╮", "╯", "╰" }',
   -- FIX: bug with shadow border
+
+  nonicons = true,
 
   gitsigns_current_line_blame = false,
   gitsigns_signs = true,

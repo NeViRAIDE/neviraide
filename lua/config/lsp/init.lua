@@ -1,6 +1,6 @@
 dofile(vim.g.neviraide_themes_cache .. 'lsp')
 
-require('lspconfig.ui.windows').default_options.border = NEVIRAIDE().border
+require('lspconfig.ui.windows').default_options.border = vim.g.borders
 require('neviraide.lsp.diagnostic').setup()
 
 local lspconfig = require('lspconfig')

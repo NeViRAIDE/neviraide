@@ -20,7 +20,7 @@ return {
   },
   popup_mappings = { scroll_down = '<c-j>', scroll_up = '<c-k>' },
   window = {
-    winblend = 10,
+    winblend = 5,
     border = utils.border(),
     margin = { 1, 5, 1, 5 },
   },

@@ -1,6 +1,6 @@
 -- TODO: change all icons
 local utils = require('neviraide.utils')
-local term_util = require('neviraide.utils.terminal')
+local term_util = require('neviraide.utils').term_toggle
 
 return function()
   utils.wk_reg({
@@ -10,7 +10,7 @@ return function()
         'Dismiss all Notifications',
       },
     },
-    ['p'] = {
+    p = {
       'p:let @+=@0<CR>:let @"=@0<CR>',
       'Paste (dont copy replaced text)',
     },
@@ -51,15 +51,15 @@ return function()
     ['<C-k>'] = { '<C-w>k', 'Window up' },
 
     ['<a-h>'] = {
-      function() term_util.term_toggle('horizontal') end,
+      function() term_util('horizontal') end,
       'Horizontal terminal',
     },
     ['<a-f>'] = {
-      function() term_util.term_toggle('float') end,
+      function() term_util('float') end,
       'Float terminal',
     },
     ['<a-v>'] = {
-      function() term_util.term_toggle('vertical') end,
+      function() term_util('vertical') end,
       'Vertical terminal',
     },
 
@@ -71,7 +71,7 @@ return function()
         'Close buffer ',
       },
       N = {
-        '<cmd>lua require("neviraide.utils.new_file")()<cr>',
+        '<cmd>lua require("neviraide-ui.utils.new_file")()<cr>',
         'New file ',
       },
       -- m = utils.mappings('markdown_keys'),
@@ -104,15 +104,15 @@ return function()
 
   utils.wk_reg({
     ['<a-h>'] = {
-      function() term_util.term_toggle('horizontal') end,
+      function() term_util('horizontal') end,
       'Horizontal terminal',
     },
     ['<a-f>'] = {
-      function() term_util.term_toggle('float') end,
+      function() term_util('float') end,
       'Float terminal',
     },
     ['<a-v>'] = {
-      function() term_util.term_toggle('vertical') end,
+      function() term_util('vertical') end,
       'Vertical terminal',
     },
     ['<C-j>'] = { '<Cmd>wincmd j<CR>', 'Window down' },

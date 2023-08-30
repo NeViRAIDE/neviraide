@@ -1,25 +1,25 @@
--- --Length of filepath.
--- ------
--- --Possible parameters are:
--- --  'file' - filename
--- --  'dir_only' - directory
--- --  'dir_file' - directory and filename
--- --  'full' - full path
--- ---@param length string
--- ---@return string
--- function M.filePath(length)
---   if length == 'file' then
---     return vim.api.nvim_exec('echo expand("%:t")', false )
---   elseif length == 'dir_file' then
---     return vim.api.nvim_exec('echo @%', '')
---   elseif length == 'dir_only' then
---     return vim.api.nvim_exec('echo expand("%:h")', '')
---   elseif length == 'full' then
---     return vim.api.nvim_exec('echo expand("%:p")', '')
---   end
--- end
---
--- local filePath = require('utils').filePath
+--Length of filepath.
+------
+--Possible parameters are:
+--  'file' - filename
+--  'dir' - directory
+--  'dirFile' - directory and filename
+--  'full' - full path
+---@param length string
+local function filePath(length)
+  if length == 'file' then
+    return vim.api.nvim_exec2('echo expand("%:t")', { output = false })
+  elseif length == 'dirFile' then
+    return vim.api.nvim_exec2('echo @%', {})
+  elseif length == 'dir' then
+    return vim.api.nvim_exec2('echo expand("%:h")', {})
+  elseif length == 'full' then
+    return vim.api.nvim_exec2('echo expand("%:p")', {})
+  end
+end
+
+local M = {}
+
 -- TODO: realize GOLANG commands
 local Input = require('nui.input')
 local Menu = require('nui.menu')
@@ -27,7 +27,7 @@ local Menu = require('nui.menu')
 local event = require('nui.utils.autocmd').event
 
 ---wrapper for go mod init
-local function inputMod()
+function M.inputMod()
   local input = Input({
     position = '50%',
     size = { width = 40 },
@@ -70,7 +70,7 @@ local function inputMod()
   input:mount()
 end
 
-local function goGet()
+function M.goGet()
   local input = Input({
     position = '50%',
     size = { width = 70 },
@@ -113,7 +113,7 @@ local function goGet()
   )
 end
 
-local tagsAdd = Menu({
+M.tagsAdd = Menu({
   position = { row = -1, col = 1 },
   size = { width = 10, height = 3 },
   border = {
@@ -144,7 +144,7 @@ local tagsAdd = Menu({
   end,
 })
 
-local tagsRemove = Menu({
+M.tagsRemove = Menu({
   position = { row = -1, col = 1 },
   size = { width = 12, height = 3 },
   border = {
@@ -174,7 +174,7 @@ local tagsRemove = Menu({
   on_submit = function(item) vim.fn.execute('GoTagRm ' .. item.text) end,
 })
 
-local function goInterface()
+function M.goInterface()
   local input = Input({
     position = { row = -1, col = 1 },
     size = { width = 40 },
@@ -216,7 +216,7 @@ local function goInterface()
   )
 end
 
-local function goRun()
+function M.goRun()
   local input = Input({
     position = '50%',
     size = { width = 35 },
@@ -255,7 +255,7 @@ local function goRun()
   )
 end
 
-local function goBuild()
+function M.goBuild()
   local input = Input({
     position = '50%',
     size = { width = 35 },
@@ -296,7 +296,7 @@ local function goBuild()
   )
 end
 
-local function goTestRun()
+function M.goTestRun()
   local input = Input({
     position = '50%',
     size = { width = 35 },
@@ -339,18 +339,8 @@ local function goTestRun()
   )
 end
 
-local function goTestAll()
+function M.goTestAll()
   vim.fn.execute('TermExec direction=float cmd="go test -v  ./..."')
 end
 
-return {
-  inputMod = inputMod,
-  goGet = goGet,
-  goRun = goRun,
-  goBuild = goBuild,
-  goInterface = goInterface,
-  tagsAdd = tagsAdd,
-  tagsRemove = tagsRemove,
-  goTestRun = goTestRun,
-  goTestAll = goTestAll,
-}
+return M

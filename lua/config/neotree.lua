@@ -1,3 +1,4 @@
+-- TODO: open tree on open dir from :e
 dofile(vim.g.neviraide_themes_cache .. 'neotree')
 
 local icon = require('neviraide-ui.icons.utils').icon
@@ -16,18 +17,21 @@ return {
   default_component_configs = {
     git_status = {
       symbols = {
-        added = icon('diff-added'),
-        modified = icon('diff-modified'),
-        deleted = icon('diff-removed'),
+        added = icon('', 'diff-added'),
+        modified = icon('', 'diff-modified'),
+        deleted = icon('', 'diff-removed'),
       },
     },
     icon = {
-      folder_closed = icon('file-directory-fill'),
-      folder_open = icon('file-directory-open-fill'),
-      folder_empty = icon('file-directory'),
+      folder_closed = '',
+      folder_open = '',
+      folder_empty = '',
+      -- folder_closed = icon('', 'file-directory-fill'),
+      -- folder_open = icon('', 'file-directory-open-fill'),
+      -- folder_empty = icon('', 'file-directory'),
     },
     modified = {
-      symbol = icon('pencil'),
+      symbol = icon('', 'pencil'),
     },
   },
   filesystem = {

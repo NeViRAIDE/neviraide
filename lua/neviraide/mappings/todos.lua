@@ -1,6 +1,7 @@
 return {
   name = 'TODO notes ',
   l = {
+    -- FIX: problem with borders
     ":TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}} borderchars={'','','','','','','',''}<cr>",
     'Notes list ',
   },

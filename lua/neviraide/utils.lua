@@ -75,14 +75,21 @@ function M.mappings(keys)
   end
 end
 
-function M.border()
-  local border_in_config = NEVIRAIDE().border
-  local none = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' }
-  if border_in_config == 'none' then
-    return none
-  else
-    return border_in_config
+---@param direction string
+M.term_toggle = function(direction)
+  local check =
+    M.check_missing('nvterm.terminal', 'https://github.com/NvChad/nvterm')
+  if check ~= nil then
+    if check['toggle'] ~= nil then return check.toggle(direction) end
   end
+end
+
+function M.border()
+  local border_in_config = vim.g.borders
+  if border_in_config == 'none' then
+    return { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' }
+  end
+  return border_in_config
 end
 
 ---@param plugin string
@@ -115,6 +122,20 @@ function M.check_missing(plugin, link)
       )
     end
   end
+end
+
+---@return table
+M.icons = function()
+  if vim.g.nonicons then
+    return {
+      global = require('neviraide-ui.icons.nonicons'),
+      lspkind = require('neviraide-ui.icons.nonicons.lspkind'),
+    }
+  end
+  return {
+    global = require('neviraide-ui.icons.devicons'),
+    lspkind = require('neviraide-ui.icons.devicons.lspkind'),
+  }
 end
 
 return M

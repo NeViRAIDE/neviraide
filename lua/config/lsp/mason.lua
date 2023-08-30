@@ -8,9 +8,9 @@ require('mason').setup({
     width = 0.6,
     height = 0.8,
     icons = {
-      package_installed = icon('check') .. ' ',
-      package_pending = icon('sync') .. ' ',
-      package_uninstalled = icon('x') .. ' ',
+      package_installed = icon('', 'check', 0, 1),
+      package_pending = icon('', 'sync', 0, 1),
+      package_uninstalled = icon('', 'x', 0, 1),
     },
   },
 })

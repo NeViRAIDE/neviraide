@@ -12,10 +12,10 @@ return {
   {
     'nvim-tree/nvim-web-devicons',
     opts = function()
-      return { override = require('neviraide-ui.icons.devicons') }
+      return { override = require('neviraide.utils').icons().global }
     end,
     config = function(_, opts)
-      dofile(vim.g.neviraide_themes_cache .. 'devicons')
+      dofile(vim.g.neviraide_themes_cache .. 'icons')
       require('nvim-web-devicons').setup(opts)
     end,
   },
@@ -41,59 +41,26 @@ return {
     end,
   },
 
-  --  {
-  --   'folke/noice.nvim',
-  --   event = 'VeryLazy',
-  --   opts = {
-  --     cmdline = {
-  --       format = {
-  --         cmdline = { icon = icon('vim') .. ' ' },
-  --         search_down = {
-  --           icon = '  ' .. icon('search') .. ' ' .. icon('chevron-down') .. ' ',
-  --         },
-  --         search_up = {
-  --           icon = '  ' .. icon('search') .. ' ' .. icon('chevron-up') .. ' ',
-  --         },
-  --         fish = {
-  --           pattern = '^:%s*!',
-  --           icon = icon('terminal') .. ' ',
-  --           lang = 'fish',
-  --         },
-  --         highlights = {
-  --           pattern = '^:%s*hi?g?h?l?i?g?h?t?%s+',
-  --           icon = icon('paintbrush') .. ' ',
-  --         },
-  --         lua = { icon = icon('lua') .. ' ' },
-  --         filter = false,
-  --       },
-  --     },
-  --     lsp = {
-  --       override = {
-  --         ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-  --         ['vim.lsp.util.stylize_markdown'] = true,
-  --         ['cmp.entry.get_documentation'] = true,
-  --       },
-  --       signature = { enabled = false },
-  --       hover = { enabled = false },
-  --     },
-  --     presets = {
-  --       bottom_search = true,
-  --       command_palette = true,
-  --       long_message_to_split = true,
-  --     },
-  --     routes = {
-  --       {
-  --         view = 'vsplit',
-  --         filter = { min_width = 1000 },
-  --       },
-  --     },
-  --     views = {
-  --       cmdline_popup = border(),
-  --       split = {
-  --         enter = true,
-  --       },
+  -- {
+  --   'VonHeikemen/fine-cmdline.nvim',
+  --   -- init = function()
+  --   -- end
+  --   keys = {
+  --     {
+  --       ':',
+  --       '<cmd>FineCmdline<cr>',
+  --       mode = 'n',
+  --       desc = 'Open float command line',
   --     },
   --   },
+  --
+  --   -- cmd = { 'FileCmdline' },
+  --   -- event = 'VeryLazy',
+  -- },
+  -- {
+  --   'folke/noice.nvim',
+  --   event = 'VeryLazy',
+  --   opts = function() require('config.noice') end,
   -- },
 
   {
@@ -145,8 +112,8 @@ return {
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
       'lukas-reineke/cmp-under-comparator',
+      'FelipeLema/cmp-async-path',
     },
     opts = function() return require('config.cmp') end,
   },
@@ -237,6 +204,7 @@ return {
     config = function(_, opts) require('Comment').setup(opts) end,
   },
 
+  -- TODO: open new window instead new tab
   {
     'iamcco/markdown-preview.nvim',
     build = 'cd app && ./install.sh',
@@ -275,11 +243,10 @@ return {
     opts = function() return require('config.neotree') end,
   },
 
-  -- FIX: not correct borders
   {
     'nvim-telescope/telescope.nvim',
     cmd = 'Telescope',
-    opts = function() return require('config.telescope').opts() end,
+    opts = function() return require('config.telescope') end,
     config = function(_, opts)
       local telescope = require('telescope')
       telescope.setup(opts)

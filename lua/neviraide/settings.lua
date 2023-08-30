@@ -2,12 +2,18 @@ local g = vim.g
 
 ---@type string
 g.neviraide_themes_cache = vim.fn.stdpath('data') .. '/neviraide_ui/'
+
 ---@type string
 g.neviraide_theme = NEVIRAIDE().theme
+
 ---@type boolean
 g.transparency = NEVIRAIDE().transparency
+
 ---@type string
 g.borders = NEVIRAIDE().border
+
+---@type boolean
+g.nonicons = NEVIRAIDE().nonicons
 
 local o = vim.opt
 
@@ -21,7 +27,7 @@ o.laststatus = 3
 o.showmode = false
 o.conceallevel = 3
 o.spelllang = { 'en' }
-o.pumblend = 10
+o.pumblend = 5
 o.pumheight = 10
 o.clipboard = 'unnamedplus'
 o.confirm = true
