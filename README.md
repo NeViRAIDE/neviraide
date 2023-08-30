@@ -24,5 +24,8 @@ You need only define what you want and what you need._**
 - [UI](https://github.com/RAprogramm/neviraide-ui.nvim)
 - [Terminal](https://github.com/nvchad/nvterm)
 
+### Support
+If you find this useful and want to support my efforts, buy me a coffee ☕.
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/D1D4OOJNA)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/D1D4OOJNA) or [here](https://www.buymeacoffee.com/RAprogramm)
+
