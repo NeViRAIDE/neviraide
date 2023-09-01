@@ -10,6 +10,14 @@ return {
   },
 
   {
+    dir = '~/Study/nvim_plugins/nekifoch.nvim',
+    cmd = 'Nekifoch',
+    opts = {
+      kitty_conf_path = vim.fn.expand('~/.config/kitty/kitty.conf'),
+    },
+  },
+
+  {
     'nvim-tree/nvim-web-devicons',
     opts = function()
       return { override = require('neviraide.utils').icons().global }

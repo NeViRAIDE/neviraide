@@ -23,12 +23,9 @@ return {
       },
     },
     icon = {
-      folder_closed = '',
-      folder_open = '',
-      folder_empty = '',
-      -- folder_closed = icon('', 'file-directory-fill'),
-      -- folder_open = icon('', 'file-directory-open-fill'),
-      -- folder_empty = icon('', 'file-directory'),
+      folder_closed = icon('', 'file-directory-fill'),
+      folder_open = icon('', 'file-directory-open-fill'),
+      folder_empty = icon('', 'file-directory'),
     },
     modified = {
       symbol = icon('', 'pencil'),

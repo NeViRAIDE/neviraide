@@ -10,10 +10,7 @@ return function()
         'Dismiss all Notifications',
       },
     },
-    p = {
-      'p:let @+=@0<CR>:let @"=@0<CR>',
-      'Paste (dont copy replaced text)',
-    },
+
     ['<ScrollWheelUp>'] = { 'k', 'Scroll up by one line' },
     ['<ScrollWheelDown>'] = { 'j', 'Scroll down by one line' },
     ['<Esc>'] = { ':noh <CR>', 'Clear highlights' },
@@ -83,19 +80,14 @@ return function()
     },
   }, { mode = 'n' })
 
-  -- FIX: not working in which-key
-  -- utils.wk_reg({
-  --   -- execute cmdmode command and stay cmdline open
-  --   ['<S-Enter>'] = {
-  --     function() require('noice').redirect(vim.fn.getcmdline()) end,
-  --     'Redirect Cmdline',
-  --   },
-  -- }, { mode = 'c' })
-
   utils.wk_reg({
     ['<c-/>'] = {
       "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
       'Toggle comment',
+    },
+    p = {
+      'p:let @+=@0<CR>:let @"=@0<CR>',
+      'Paste (dont copy replaced text)',
     },
     ['<leader>'] = {
       name = 'Plugins and features ',
