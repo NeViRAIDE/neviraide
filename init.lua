@@ -36,4 +36,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require('neviraide.lazy')
 
+require('neviraide.utils').autocmd('ReloadNeviraide', 'BufWritePost', {
+  pattern = vim.fn.stdpath('config') .. '/lua/NEVIRAIDE.lua',
+  desc = 'Reload NEVIRAIDE on change some fields',
+  callback = require('neviraide.utils.reload_config').reload_config,
+}, true)
+
 dofile(vim.g.neviraide_themes_cache .. 'defaults')

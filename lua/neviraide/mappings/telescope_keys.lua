@@ -1,5 +1,7 @@
+local icon = require('neviraide-ui.icons.utils').icon
+
 return {
-  name = 'Telescope ' .. '',
+  name = 'Telescope' .. icon('', 'telescope', 1),
   a = { '<cmd>Telescope autocommands<cr>', 'Autocommands' },
   n = { '<cmd>Telescope notify<cr>', 'Notifications' },
   m = { '<cmd>Telescope man_pages<cr>', 'Manual pages' },

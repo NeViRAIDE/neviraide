@@ -1,9 +1,11 @@
+local icon = require('neviraide-ui.icons.utils').icon
+
 local function virt_text()
   if NEVIRAIDE().diagnostic_virtual_text then
     return {
       source = 'if_many',
       spacing = 4,
-      prefix = '●',
+      prefix = icon('●', 'dot-fill'),
     }
   else
     return false
@@ -19,14 +21,14 @@ return {
     floating_window = false,
     hint_enable = true,
     use_lspsaga = false,
-    hint_prefix = '  ',
+    hint_prefix = icon('', 'eye', 0, 2),
     hint_scheme = 'Comment',
     hi_parameter = 'LspSignatureActiveParameter',
     max_height = 1,
   },
   diagnostic = {
     float = {
-      border = require('neviraide.utils').border(),
+      border = vim.g.borders,
       source = 'if_many',
     },
     signs = NEVIRAIDE().diagnostic_signs,

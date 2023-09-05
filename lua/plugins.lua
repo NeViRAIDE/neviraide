@@ -4,13 +4,13 @@ return {
 
   {
     -- 'RAprogramm/neviraide-ui.nvim',
-    dir = '~/Study/nvim_plugins/neviraide-ui.nvim',
+    dir = '~/GitHub/nvim_plugins/neviraide-ui.nvim',
     name = 'UI',
     event = 'VeryLazy',
   },
 
   {
-    dir = '~/Study/nvim_plugins/nekifoch.nvim',
+    dir = '~/GitHub/nvim_plugins/nekifoch.nvim',
     cmd = 'Nekifoch',
     opts = {
       kitty_conf_path = vim.fn.expand('~/.config/kitty/kitty.conf'),
@@ -49,36 +49,12 @@ return {
     end,
   },
 
-  -- {
-  --   'VonHeikemen/fine-cmdline.nvim',
-  --   -- init = function()
-  --   -- end
-  --   keys = {
-  --     {
-  --       ':',
-  --       '<cmd>FineCmdline<cr>',
-  --       mode = 'n',
-  --       desc = 'Open float command line',
-  --     },
-  --   },
-  --
-  --   -- cmd = { 'FileCmdline' },
-  --   -- event = 'VeryLazy',
-  -- },
-  -- {
-  --   'folke/noice.nvim',
-  --   event = 'VeryLazy',
-  --   opts = function() require('config.noice') end,
-  -- },
-
   {
     'NvChad/nvterm',
     opts = {
       terminals = {
         type_opts = {
-          float = {
-            border = require('neviraide.utils').border(),
-          },
+          float = { border = vim.g.borders },
         },
       },
     },
@@ -266,7 +242,7 @@ return {
 
   {
     'folke/which-key.nvim',
-    keys = { '<leader>', '"', "'", '`', '<c-n>', 'v' },
+    keys = { '<leader>', '"', "'", '`', '<c-n>', '<c-s>', 'v' },
     init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
@@ -286,5 +262,10 @@ return {
     cmd = 'TodoTelescope',
     event = { 'BufReadPost', 'BufNewFile' },
     opts = {},
+  },
+
+  {
+    'wakatime/vim-wakatime',
+    event = 'VeryLazy',
   },
 }

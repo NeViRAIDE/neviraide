@@ -84,14 +84,6 @@ M.term_toggle = function(direction)
   end
 end
 
-function M.border()
-  local border_in_config = vim.g.borders
-  if border_in_config == 'none' then
-    return { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' }
-  end
-  return border_in_config
-end
-
 ---@param plugin string
 ---@param link? string
 function M.check_missing(plugin, link)

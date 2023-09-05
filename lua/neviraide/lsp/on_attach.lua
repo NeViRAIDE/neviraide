@@ -1,16 +1,15 @@
 return function(_, bufnr)
-  local border = require('neviraide.utils').border
   local utils = require('neviraide.utils')
   local opts = require('neviraide.lsp.options')
 
   vim.lsp.handlers['textDocument/hover'] =
     vim.lsp.with(vim.lsp.handlers.hover, {
-      border = border(),
+      border = vim.g.borders,
     })
 
   vim.lsp.handlers['textDocument/signatureHelp'] =
     vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = border(),
+      border = vim.g.borders,
       focusable = false,
       relative = 'cursor',
     })

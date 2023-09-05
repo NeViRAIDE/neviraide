@@ -2,7 +2,7 @@ vim.g.mapleader = ' '
 
 require('lazy').setup('plugins', {
   defaults = { lazy = true, version = '*' },
-  ui = { border = require('neviraide.utils').border() },
+  ui = { border = vim.g.borders },
   checker = { enabled = true },
   performance = {
     rtp = {

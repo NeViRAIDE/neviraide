@@ -1,8 +1,10 @@
+local icon = require('neviraide-ui.icons.utils').icon
+
 return function(client, bufnr)
   require('neviraide.utils').wk_reg({
     ['<leader>'] = {
       l = {
-        name = 'LSP ',
+        name = 'LSP'..  icon('','server',1),
         a = { ':lua vim.lsp.buf.code_action()<cr>', 'Code action' },
         c = { ':lua vim.lsp.codelens.run()<cr>', 'Codelens action' },
         d = { ':Telescope lsp_definitions<cr>', 'Definition' },

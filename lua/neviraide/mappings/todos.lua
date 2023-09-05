@@ -1,8 +1,9 @@
+local icon = require('neviraide-ui.icons.utils').icon
+
 return {
-  name = 'TODO notes ',
+  name = 'TODO notes' .. icon('', 'tasklist', 1),
   l = {
-    -- FIX: problem with borders
-    ":TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}} borderchars={'','','','','','','',''}<cr>",
+    ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}}<cr>',
     'Notes list ',
   },
   f = {

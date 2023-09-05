@@ -4,7 +4,7 @@ dofile(vim.g.neviraide_themes_cache .. 'mason')
 
 require('mason').setup({
   ui = {
-    border = NEVIRAIDE().border,
+    border = vim.g.borders,
     width = 0.6,
     height = 0.8,
     icons = {

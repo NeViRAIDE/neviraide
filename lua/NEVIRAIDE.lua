@@ -1,10 +1,9 @@
--- TODO: reload lazy when changed
 return {
-  theme = './nord',
+  theme = 'nord',
 
   transparency = false,
 
-  numbers = true,
+  numbers_enabled = true,
   relative_numbers = true,
 
   cursor_line = true,
@@ -23,18 +22,11 @@ return {
   border = 'rounded',
   ---@type string
   borderchars = '{ "─", "│", "─", "│", "╭", "╮", "╯", "╰" }',
-  -- FIX: bug with shadow border
 
   nonicons = true,
 
   gitsigns_current_line_blame = false,
   gitsigns_signs = true,
-
-  -- TODO: how to change font from nvim
-  font = {
-    font_family = 'JetBrainsMono Nerd Font',
-    font_size = '14.0',
-  },
 
   lsp_inlay_hints = true,
 

@@ -1,6 +1,5 @@
 dofile(vim.g.neviraide_themes_cache .. 'cmp')
 
-local border = require('neviraide.utils').border()
 local cmp = require('cmp')
 
 return {
@@ -12,10 +11,10 @@ return {
   },
   window = {
     completion = {
-      border = border,
+      border = vim.g.borders,
       winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenu,Search:IncSearch',
     },
-    documentation = { border = border },
+    documentation = { border = vim.g.borders },
   },
   mapping = {
     ['<C-p>'] = cmp.mapping.select_prev_item(),

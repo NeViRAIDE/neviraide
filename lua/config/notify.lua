@@ -13,7 +13,7 @@ return {
           },
         },
         title_pos = 'center',
-        border = require('neviraide.utils').border(),
+        border = vim.g.borders,
       })
     end
   end,

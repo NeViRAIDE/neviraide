@@ -1,6 +1,6 @@
--- TODO: change all icons
 local utils = require('neviraide.utils')
 local term_util = require('neviraide.utils').term_toggle
+local icon = require('neviraide-ui.icons.utils').icon
 
 return function()
   utils.wk_reg({
@@ -16,23 +16,25 @@ return function()
     ['<Esc>'] = { ':noh <CR>', 'Clear highlights' },
     ['<c-s>'] = {
       function()
-        vim.cmd('silent! wa')
-        vim.notify(
-          'File "' .. vim.fn.expand('%:t') .. '" was saved',
-          2,
-          { title = 'Saved', icon = '✓' }
-        )
+        if vim.bo.modified then
+          vim.cmd('silent! w')
+          vim.notify(
+            'File "' .. vim.fn.expand('%:t') .. '" was saved',
+            2,
+            { title = 'Saved', icon = icon('✓', 'check', 0, 1) }
+          )
+        end
       end,
-      'Save file ',
+      'Save file',
     },
-    ['<c-n>'] = { ':Neotree reveal toggle<cr>', 'File explorer ' },
+    ['<c-n>'] = { ':Neotree reveal toggle<cr>', 'File explorer' },
     ['<a-s>'] = {
       ':Neotree document_symbols position=right toggle<cr>',
       'Document symbols',
     },
     ['<c-/>'] = {
       function() require('Comment.api').toggle.linewise.current() end,
-      'Toggle comment',
+      'Toggle comment' .. icon('', 'comment', 1),
     },
     ['<tab>'] = {
       function() require('neviraide-ui.buftabline').tabuflineNext() end,
@@ -61,19 +63,25 @@ return function()
     },
 
     ['<leader>'] = {
-      name = 'Plugins and features ',
-      b = { '<cmd>Neotree buffers focus float<cr>', 'Buffers list ' },
+      name = 'Plugins and features' .. icon('', 'rocket', 1),
+      b = {
+        '<cmd>Neotree buffers focus float<cr>',
+        'Buffers list' .. icon('', 'list-unordered', 1),
+      },
       x = {
         function() require('neviraide-ui.buftabline').close_buffer() end,
-        'Close buffer ',
+        'Close buffer' .. icon('', 'trash', 1),
       },
       N = {
         '<cmd>lua require("neviraide-ui.utils.new_file")()<cr>',
-        'New file ',
+        'New file' .. icon('', 'plus-circle', 1),
       },
       -- m = utils.mappings('markdown_keys'),
-      G = { '<cmd>Neotree position=right git_status toggle<cr>', 'GIT ' },
-      s = utils.mappings('settings'),
+      G = {
+        '<cmd>Neotree position=right git_status toggle<cr>',
+        'GIT' .. icon('', 'mark-github', 1),
+      },
+      -- s = utils.mappings('settings'),
       c = utils.mappings('colorpicker'),
       t = utils.mappings('telescope_keys'),
       n = utils.mappings('todos'),
@@ -88,9 +96,6 @@ return function()
     p = {
       'p:let @+=@0<CR>:let @"=@0<CR>',
       'Paste (dont copy replaced text)',
-    },
-    ['<leader>'] = {
-      name = 'Plugins and features ',
     },
   }, { mode = 'v' })
 

@@ -21,7 +21,7 @@ return {
   popup_mappings = { scroll_down = '<c-j>', scroll_up = '<c-k>' },
   window = {
     winblend = 5,
-    border = utils.border(),
+    border = vim.g.borders,
     margin = { 1, 5, 1, 5 },
   },
   layout = {

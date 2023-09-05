@@ -1,5 +1,7 @@
+local icon = require('neviraide-ui.icons.utils').icon
+
 return {
-  name = 'Settings ',
+  name = 'Settings' .. icon('', 'gear', 1),
   b = {
     '<cmd>lua require"neviraide-ui.themes".toggle_transparency()<cr>',
     'Background transparency',

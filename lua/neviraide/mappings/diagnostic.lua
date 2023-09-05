@@ -1,11 +1,30 @@
+local icon = require('neviraide-ui.icons.utils').icon
+
 return function(client, bufnr)
   require('neviraide.utils').wk_reg({
     ['<leader>'] = {
       d = {
-        name = 'Diagnostics ',
-        w = { ':Telescope diagnostics<cr>', 'Workspace diagnostics' },
+        name = 'Diagnostics' .. icon('', 'pulse', 1),
+        w = {
+          ':Telescope diagnostics severity_bound=ERROR<cr>',
+          'Workspace diagnostics',
+        },
         l = {
-          ':lua vim.diagnostic.open_float()<cr>',
+          function()
+            vim.diagnostic.open_float(nil, {
+              focusable = true,
+              close_events = {
+                'BufLeave',
+                'CursorMoved',
+                'InsertEnter',
+                'FocusLost',
+              },
+              border = require('neviraide.lsp.options').diagnostic.float.border,
+              source = 'always',
+              prefix = ' ',
+              scope = 'cursor',
+            })
+          end,
           'Show diagnostic on line',
         },
         p = {
