@@ -121,7 +121,7 @@ return {
     file_ignore_patterns = { 'node_modules' },
     generic_sorter = sorters.get_generic_fuzzy_sorter,
     path_display = { 'truncate' },
-    winblend = 5,
+    winblend = vim.g.blend,
     borderchars = border,
     color_devicons = true,
     set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,

@@ -1,19 +1,20 @@
 local g = vim.g
+local conf = NEVIRAIDE()
 
 ---@type string
 g.neviraide_themes_cache = vim.fn.stdpath('data') .. '/neviraide_ui/'
 
 ---@type string
-g.neviraide_theme = NEVIRAIDE().theme
+g.neviraide_theme = conf.theme
 
 ---@type boolean
-g.transparency = NEVIRAIDE().transparency
+g.transparency = conf.transparency
 
 ---@type string
-g.borders = NEVIRAIDE().border
+g.borders = conf.border
 
 ---@type boolean
-g.nonicons = NEVIRAIDE().nonicons
+g.nonicons = conf.nonicons
 
 local o = vim.opt
 
@@ -27,7 +28,6 @@ o.laststatus = 3
 o.showmode = false
 o.conceallevel = 3
 o.spelllang = { 'en' }
-o.pumblend = 5
 o.pumheight = 10
 o.clipboard = 'unnamedplus'
 o.confirm = true
@@ -37,13 +37,13 @@ o.completeopt = 'menuone,noselect,noinsert'
 o.showmatch = true
 o.expandtab = true
 o.smartindent = true
-o.cursorline = NEVIRAIDE().cursor_line
-o.cursorcolumn = NEVIRAIDE().cursor_column
-o.number = NEVIRAIDE().numbers_enabled
-o.relativenumber = NEVIRAIDE().relative_numbers
-o.shiftwidth = NEVIRAIDE().indents
-o.tabstop = NEVIRAIDE().indents
-o.softtabstop = NEVIRAIDE().indents
+o.cursorline = conf.cursor_line
+o.cursorcolumn = conf.cursor_column
+o.number = conf.numbers_enabled
+o.relativenumber = conf.relative_numbers
+o.shiftwidth = conf.indents
+o.tabstop = conf.indents
+o.softtabstop = conf.indents
 o.fillchars = { eob = ' ' }
 o.ignorecase = true
 o.smartcase = true

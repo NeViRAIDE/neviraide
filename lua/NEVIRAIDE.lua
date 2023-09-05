@@ -1,5 +1,5 @@
 return {
-  theme = 'nord',
+  theme = 'everforest',
 
   transparency = false,
 
@@ -25,6 +25,7 @@ return {
 
   nonicons = true,
 
+  -- TODO: do for git and lsp
   gitsigns_current_line_blame = false,
   gitsigns_signs = true,
 
