@@ -1,3 +1,5 @@
+-- local icon = require('neviraide-ui.icons.utils').icon
+
 return {
   'nvim-lua/plenary.nvim',
   'MunifTanjim/nui.nvim',
@@ -32,10 +34,9 @@ return {
     'rcarriga/nvim-notify',
     opts = function() return require('config.notify') end,
     init = function()
-      local utils = require('neviraide.utils')
-      if not utils.has('noice.nvim') then
-        utils.on_very_lazy(function() vim.notify = require('notify') end)
-      end
+      require('neviraide.utils').on_very_lazy(
+        function() vim.notify = require('notify') end
+      )
     end,
   },
 
@@ -95,6 +96,7 @@ return {
       },
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'lukas-reineke/cmp-under-comparator',
       'FelipeLema/cmp-async-path',
@@ -188,12 +190,19 @@ return {
     config = function(_, opts) require('Comment').setup(opts) end,
   },
 
-  -- TODO: open new window instead new tab
   {
     'iamcco/markdown-preview.nvim',
     build = 'cd app && ./install.sh',
     ft = { 'markdown' },
-    config = function() vim.g.mkdp_filetypes = { 'markdown' } end,
+    config = function()
+      vim.cmd([[
+        function OpenMarkdownPreview (url)
+          execute "silent ! firefox-developer-edition --new-window " . a:url
+        endfunction
+      ]])
+      vim.g.mkdp_browserfunc = 'OpenMarkdownPreview'
+      vim.g.mkdp_filetypes = { 'markdown' }
+    end,
   },
 
   {
@@ -261,7 +270,17 @@ return {
     'folke/todo-comments.nvim',
     cmd = 'TodoTelescope',
     event = { 'BufReadPost', 'BufNewFile' },
-    opts = {},
+    opts = {
+      keywords = {
+        FIX = { icon = ' ' },
+        TODO = { icon = ' ' },
+        HACK = { icon = ' ' },
+        WARN = { icon = ' ' },
+        PERF = { icon = ' ' },
+        NOTE = { icon = ' ' },
+        TEST = { icon = '⏲ ' },
+      },
+    },
   },
 
   {

@@ -9,6 +9,23 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
     if client ~= nil then
+      vim.lsp.handlers['textDocument/hover'] =
+        vim.lsp.with(vim.lsp.handlers.hover, {
+          border = vim.g.borders,
+        })
+
+      vim.lsp.handlers['textDocument/signatureHelp'] =
+        vim.lsp.with(vim.lsp.handlers.signature_help, {
+          border = vim.g.borders,
+          focusable = false,
+          relative = 'cursor',
+        })
+
+local opts = require('neviraide.lsp.options')
+      require('lsp_signature').on_attach(opts.signature, buffer)
+
+      utils.mappings('lsp')(buffer)
+      utils.mappings('diagnostic')(buffer)
       -- enable inlay hints
       if client.server_capabilities.inlayHintProvider then
         vim.lsp.inlay_hint(args.buf, true)

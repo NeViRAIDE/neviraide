@@ -10,6 +10,15 @@ utils.autocmd_multi('GoLangNvim', {
   },
 })
 
+utils.autocmd('Edit_folder', 'BufEnter', {
+  pattern = '*',
+  desc = 'Open Neotree when trying to edit directories.',
+  callback = function()
+    local path = vim.fn.expand('%')
+    if vim.fn.isdirectory(path) == 1 then vim.cmd('Neotree current') end
+  end,
+})
+
 utils.autocmd('NEVIRAIDE_Markdown', 'FileType', {
   pattern = 'markdown',
   desc = 'Add markdown features',

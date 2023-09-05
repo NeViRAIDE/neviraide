@@ -5,6 +5,7 @@ local icon = require('neviraide-ui.icons.utils').icon
 local fc = require('neo-tree.sources.filesystem.components')
 
 return {
+  popup_border_style = vim.g.borders,
   event_handlers = {
     {
       event = 'file_opened',

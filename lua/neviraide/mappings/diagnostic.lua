@@ -13,16 +13,7 @@ return function(client, bufnr)
           function()
             vim.diagnostic.open_float(nil, {
               focusable = true,
-              close_events = {
-                'BufLeave',
-                'CursorMoved',
-                'InsertEnter',
-                'FocusLost',
-              },
               border = require('neviraide.lsp.options').diagnostic.float.border,
-              source = 'always',
-              prefix = ' ',
-              scope = 'cursor',
             })
           end,
           'Show diagnostic on line',

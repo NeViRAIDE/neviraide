@@ -1,5 +1,5 @@
 return {
-  on_attach = require('neviraide.lsp.on_attach'),
+  -- on_attach = require('neviraide.lsp.on_attach'),
   capabilities = require('neviraide.lsp.capabilities'),
   flags = { debounce_text_changes = 150 },
   single_file_support = true,
@@ -22,6 +22,7 @@ return {
         setType = true,
       },
       codeLens = { enable = true },
+      completion = { callSnippet = 'Enable' },
     },
   },
 }

@@ -27,7 +27,7 @@ return function()
       end,
       'Save file',
     },
-    ['<c-n>'] = { ':Neotree reveal toggle<cr>', 'File explorer' },
+    ['<c-n>'] = { ':Neotree reveal toggle left<cr>', 'File explorer' },
     ['<a-s>'] = {
       ':Neotree document_symbols position=right toggle<cr>',
       'Document symbols',

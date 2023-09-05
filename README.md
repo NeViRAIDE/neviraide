@@ -1,5 +1,6 @@
 <div style="text-align: center;">
   <h1>🌟 NEVIRAIDE 🌟</h1>
+    <p>For Linux</p>
   <p><strong>Crafting an IDE Oasis in Neovim</strong></p>
 
   <p>"Remember, Neovim is your canvas for shaping a personalized IDE or a serene text sanctuary. Your desires and needs steer the way."</p>

@@ -16,7 +16,8 @@ return {
     },
     documentation = { border = vim.g.borders },
   },
-  mapping = {
+  select_behavior = cmp.SelectBehavior.Insert,
+  mapping = cmp.mapping.preset.insert({
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-k>'] = cmp.mapping.scroll_docs(-4),
@@ -61,8 +62,9 @@ return {
         fallback()
       end
     end, { 'i', 's' }),
-  },
+  }),
   sources = {
+    -- FIX: not expand lsp snippets
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'buffer' },
@@ -74,11 +76,11 @@ return {
       cmp.config.compare.offset,
       cmp.config.compare.exact,
       cmp.config.compare.score,
-      require('cmp-under-comparator').under,
       cmp.config.compare.kind,
       cmp.config.compare.sort_text,
       cmp.config.compare.length,
       cmp.config.compare.order,
+      require('cmp-under-comparator').under,
     },
   },
   formatting = {
