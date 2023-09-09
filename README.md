@@ -16,6 +16,9 @@
   </ul>
 </div>
 
+  <h2 id='dependencies'  style="text-align: center;">DEPENDENCIES</h2>
+fd, rg
+
   <h2 id='installation'  style="text-align: center;">INSTALLATION</h2>
 <div>
 

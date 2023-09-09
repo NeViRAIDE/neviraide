@@ -1,15 +1,6 @@
--- local icon = require('neviraide-ui.icons.utils').icon
-
 return {
   'nvim-lua/plenary.nvim',
   'MunifTanjim/nui.nvim',
-
-  {
-    -- 'RAprogramm/neviraide-ui.nvim',
-    dir = '~/GitHub/nvim_plugins/neviraide-ui.nvim',
-    name = 'UI',
-    event = 'VeryLazy',
-  },
 
   {
     dir = '~/GitHub/nvim_plugins/nekifoch.nvim',
@@ -270,17 +261,7 @@ return {
     'folke/todo-comments.nvim',
     cmd = 'TodoTelescope',
     event = { 'BufReadPost', 'BufNewFile' },
-    opts = {
-      keywords = {
-        FIX = { icon = ' ' },
-        TODO = { icon = ' ' },
-        HACK = { icon = ' ' },
-        WARN = { icon = ' ' },
-        PERF = { icon = ' ' },
-        NOTE = { icon = ' ' },
-        TEST = { icon = '⏲ ' },
-      },
-    },
+    opts = function() return require('config.todo') end,
   },
 
   {
