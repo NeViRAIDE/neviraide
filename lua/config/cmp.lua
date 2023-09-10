@@ -12,7 +12,7 @@ return {
   window = {
     completion = {
       border = vim.g.borders,
-      winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenu,Search:IncSearch',
+      winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenu,Search:IncSearch,CursorLine:CmpSel',
     },
     documentation = { border = vim.g.borders },
   },

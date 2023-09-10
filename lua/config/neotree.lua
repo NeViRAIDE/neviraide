@@ -1,11 +1,15 @@
--- TODO: open tree on open dir from :e
 dofile(vim.g.neviraide_themes_cache .. 'neotree')
 
 local icon = require('neviraide-ui.icons.utils').icon
 local fc = require('neo-tree.sources.filesystem.components')
 
+local function borders()
+  local b = vim.g.borders
+  if b == 'none' or b == 'shadow' then return 'single' end
+end
+
 return {
-  popup_border_style = vim.g.borders,
+  popup_border_style = borders(),
   event_handlers = {
     {
       event = 'file_opened',

@@ -1,66 +1,101 @@
 local M = {}
 
+local function refresh_highlights()
+  require('neviraide-ui.themes').load_all_highlights()
+end
+
+---Reload module with plenary
+---@param module string|table
+local function reload_plenary(module)
+  if type(module) == 'table' then
+    ---@param each string
+    for _, each in pairs(module) do
+      require('plenary.reload').reload_module(each)
+    end
+  else
+    require('plenary.reload').reload_module(module)
+  end
+end
+
+---Reload module with lazy
+---@param module string|table
+local function reload_lazy(module)
+  if type(module) == 'table' then
+    ---@param each string
+    for _, each in pairs(module) do
+      vim.cmd('Lazy reload ' .. each)
+    end
+  else
+    vim.cmd('Lazy reload ' .. module)
+  end
+end
+
+---@param type string
+local function info(type)
+  vim.notify(
+    type:gsub('^%l', string.upper) .. ' reloaded...',
+    2,
+    { title = 'Reload' }
+  )
+end
+
 M.reload_transparency = function()
-  require('plenary.reload').reload_module('NEVIRAIDE')
-
+  reload_plenary('NEVIRAIDE')
   vim.g.transparency = NEVIRAIDE().transparency
-
-  vim.cmd('Lazy reload nvim-web-devicons')
-  require('plenary.reload').reload_module('config.telescope')
-  vim.cmd('Lazy reload telescope.nvim')
-  require('plenary.reload').reload_module('config.whichkey')
-  vim.cmd('Lazy reload which-key.nvim')
-
-  vim.notify('Transparency reloaded...', 2, { title = 'Reload' })
+  reload_plenary({ 'config.telescope', 'config.whichkey' })
+  reload_lazy({ 'nvim-web-devicons', 'telescope.nvim', 'which-key.nvim' })
+  refresh_highlights()
+  info('transparency')
 end
 
 M.reload_borders = function()
-  require('plenary.reload').reload_module('NEVIRAIDE')
-
+  reload_plenary('NEVIRAIDE')
   vim.g.borders = NEVIRAIDE().border
-
-  require('plenary.reload').reload_module('config.telescope')
-  vim.cmd('Lazy reload telescope.nvim')
-  require('plenary.reload').reload_module('config.whichkey')
-  vim.cmd('Lazy reload which-key.nvim')
-  require('plenary.reload').reload_module('config.lsp.mason')
-  vim.cmd('Lazy reload mason.nvim')
-  require('plenary.reload').reload_module('neviraide.lsp.options')
-  vim.cmd('Lazy reload gitsigns.nvim')
-
-  vim.notify('Borders reloaded...', 2, { title = 'Reload' })
+  reload_plenary({
+    'config.telescope',
+    'config.whichkey',
+    'config.lsp.mason',
+    'config.lsp.options',
+  })
+  reload_lazy({
+    'telescope.nvim',
+    'which-key.nvim',
+    'mason.nvim',
+    'gitsigns.nvim',
+  })
+  refresh_highlights()
+  info('borders')
 end
 
 M.reload_icons = function()
-  require('plenary.reload').reload_module('NEVIRAIDE')
+  reload_plenary('NEVIRAIDE')
+  vim.g.nonicons = NEVIRAIDE().nonicons
 
-  local config = NEVIRAIDE()
+  reload_plenary({
+    'config.telescope',
+    'config.whichkey',
+    'config.lsp.mason',
+    'config.lsp.options',
+    'neviraide-ui.statusline',
+    'neviraide-ui.buftabline.modules',
+  })
 
-  vim.g.nonicons = config.nonicons
+  reload_lazy({
+    'nvim-web-devicons',
+    'telescope.nvim',
+    'which-key.nvim',
+    'mason.nvim',
+  })
 
-  vim.cmd('Lazy reload nvim-web-devicons')
-  require('plenary.reload').reload_module('config.telescope')
-  vim.cmd('Lazy reload telescope.nvim')
-  require('plenary.reload').reload_module('config.whichkey')
-  vim.cmd('Lazy reload which-key.nvim')
-  require('plenary.reload').reload_module('config.lsp.mason')
-  vim.cmd('Lazy reload mason.nvim')
-  require('plenary.reload').reload_module('neviraide.lsp.options')
-
-  -- statusline
-  require('plenary.reload').reload_module('neviraide-ui.statusline')
   vim.opt.statusline = "%!v:lua.require('neviraide-ui.statusline').run()"
-
-  -- tabufline
-  require('plenary.reload').reload_module('neviraide-ui.buftabline.modules')
   vim.opt.tabline = "%!v:lua.require('neviraide-ui.buftabline.modules')()"
 
-  vim.notify('Config reloaded...', 2, { title = 'Reload' })
+  refresh_highlights()
+  info('icons')
 end
 
 M.reload_config = function()
-  require('plenary.reload').reload_module('NEVIRAIDE')
-
+  reload_plenary('NEVIRAIDE')
   local config = NEVIRAIDE()
 
   vim.g.neviraide_theme = config.theme
@@ -68,7 +103,6 @@ M.reload_config = function()
   vim.g.blend = config.blend
   vim.g.borders = config.border
   vim.g.nonicons = config.nonicons
-
   vim.o.cursorline = config.cursor_line
   vim.o.pumblend = config.blend
   vim.o.cursorcolumn = config.cursor_column
@@ -78,23 +112,28 @@ M.reload_config = function()
   vim.o.tabstop = config.indents
   vim.o.softtabstop = config.indents
 
-  vim.cmd('Lazy reload nvim-web-devicons')
-  require('plenary.reload').reload_module('config.telescope')
-  vim.cmd('Lazy reload telescope.nvim')
-  require('plenary.reload').reload_module('config.whichkey')
-  vim.cmd('Lazy reload which-key.nvim')
-  require('plenary.reload').reload_module('config.lsp.mason')
-  vim.cmd('Lazy reload mason.nvim')
-  require('plenary.reload').reload_module('neviraide.lsp.options')
-  vim.cmd('Lazy reload gitsigns.nvim')
-  -- statusline
-  require('plenary.reload').reload_module('neviraide-ui.statusline')
+  reload_plenary({
+    'config.telescope',
+    'config.whichkey',
+    'config.lsp.mason',
+    'config.lsp.options',
+    'neviraide-ui.statusline',
+    'neviraide-ui.buftabline.modules',
+  })
+
+  reload_lazy({
+    'nvim-web-devicons',
+    'telescope.nvim',
+    'which-key.nvim',
+    'mason.nvim',
+    'gitsigns.nvim',
+  })
+
   vim.opt.statusline = "%!v:lua.require('neviraide-ui.statusline').run()"
-  -- tabufline
-  require('plenary.reload').reload_module('neviraide-ui.buftabline.modules')
   vim.opt.tabline = "%!v:lua.require('neviraide-ui.buftabline.modules')()"
 
-  vim.notify('Config reloaded...', 2, { title = 'Reload' })
+  refresh_highlights()
+  info('config')
 end
 
 return M

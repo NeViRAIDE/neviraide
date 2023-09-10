@@ -19,9 +19,9 @@ return {
   ---• "solid": Adds padding by a single whitespace cell.
   ---• "shadow": A drop shadow effect by blending with the background.
   ---@type 'none'|'single'|'double'|'rounded'|'solid'|'shadow'
-  border = 'single',
+  border = 'rounded',
   ---@type string
-  borderchars = '{ "─", "│", "─", "│", "┌", "┐", "┘", "└" }',
+  borderchars = '{ "─", "│", "─", "│", "╭", "╮", "╯", "╰" }',
 
   nonicons = true,
 
