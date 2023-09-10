@@ -43,8 +43,9 @@ M.reload_transparency = function()
   reload_plenary('NEVIRAIDE')
   vim.g.transparency = NEVIRAIDE().transparency
   reload_plenary({ 'config.telescope', 'config.whichkey' })
-  reload_lazy({ 'nvim-web-devicons', 'telescope.nvim', 'which-key.nvim' })
   refresh_highlights()
+  reload_lazy({ 'nvim-web-devicons', 'telescope.nvim', 'which-key.nvim' })
+  vim.opt.tabline = "%!v:lua.require('neviraide-ui.buftabline.modules')()"
   info('transparency')
 end
 
@@ -57,13 +58,13 @@ M.reload_borders = function()
     'config.lsp.mason',
     'config.lsp.options',
   })
+  refresh_highlights()
   reload_lazy({
     'telescope.nvim',
     'which-key.nvim',
     'mason.nvim',
     'gitsigns.nvim',
   })
-  refresh_highlights()
   info('borders')
 end
 
@@ -79,7 +80,7 @@ M.reload_icons = function()
     'neviraide-ui.statusline',
     'neviraide-ui.buftabline.modules',
   })
-
+  refresh_highlights()
   reload_lazy({
     'nvim-web-devicons',
     'telescope.nvim',
@@ -90,7 +91,6 @@ M.reload_icons = function()
   vim.opt.statusline = "%!v:lua.require('neviraide-ui.statusline').run()"
   vim.opt.tabline = "%!v:lua.require('neviraide-ui.buftabline.modules')()"
 
-  refresh_highlights()
   info('icons')
 end
 
@@ -120,7 +120,7 @@ M.reload_config = function()
     'neviraide-ui.statusline',
     'neviraide-ui.buftabline.modules',
   })
-
+  refresh_highlights()
   reload_lazy({
     'nvim-web-devicons',
     'telescope.nvim',
@@ -132,7 +132,6 @@ M.reload_config = function()
   vim.opt.statusline = "%!v:lua.require('neviraide-ui.statusline').run()"
   vim.opt.tabline = "%!v:lua.require('neviraide-ui.buftabline.modules')()"
 
-  refresh_highlights()
   info('config')
 end
 
