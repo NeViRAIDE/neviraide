@@ -1,5 +1,13 @@
 local M = {}
 
+M.mason_path = function()
+  local path_to_add = vim.fn.expand('~/.local/share/nvim/mason/bin')
+  local current_path = vim.fn.getenv('PATH')
+  if not string.find(current_path, tostring(path_to_add), 1, true) then
+    vim.fn.setenv('PATH', current_path .. ':' .. path_to_add)
+  end
+end
+
 local function if_require(module, block, errblock)
   local ok, mod = pcall(require, module)
   if ok then
