@@ -3,10 +3,17 @@ return {
 
   transparency = false,
 
+  ---Print the line number in front of each line.
   numbers_enabled = true,
+  ---Show the line number relative to the line with the cursor in front of each line.
+  ---Relative line numbers help you use the |count| you can precede some vertical motion commands (e.g. j k + -) with, without having to calculate it yourself.
   relative_numbers = true,
 
+  ---Highlight the text line of the cursor with CursorLine. Useful to easily spot the cursor.  Will make screen redrawing slower. When Visual mode is active the highlighting isn't used to make it easier to see the selected text.
+  ---@type boolean
   cursor_line = true,
+  ---Highlight the screen column of the cursor with CursorColumn. Useful to align text. Will make screen redrawing slower.
+  ---@type boolean
   cursor_column = false,
 
   indents = 4,

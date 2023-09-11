@@ -1,6 +1,5 @@
 local icon = require('neviraide-ui.icons.utils').icon
 
--- FIX: remove after go out from .md
 return function(bufnr)
   require('neviraide.utils').wk_reg({
     ['<leader>'] = {

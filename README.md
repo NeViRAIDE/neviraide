@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div align="center">
 <img title="NEVIRAIDE" alt="NEoVIm Rozanov Andrei Integrated Development Environment" src="./preview/logo.png">
 <hr>
 
