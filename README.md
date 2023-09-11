@@ -1,20 +1,20 @@
-<div style="text-align: center;">
+<div align="center">
 <img title="NEVIRAIDE" alt="NEoVIm Rozanov Andrei Integrated Development Environment" src="./preview/logo.png">
-<hr>
 
+---
    <p>For Linux</p>
   <p><strong>Crafting an IDE Oasis in Neovim</strong></p>
 
   <p>"Remember, Neovim is your canvas for shaping a personalized IDE or a serene text sanctuary. Your desires and needs steer the way."</p>
+</div>
 
   <h2>📜 CONTENTS 📜</h2>
-  <ul style='list-style: none';>
+  <ul style="list-style-type:none;">
     <li><a href='#dependencies'>Dependencies</a></li>
     <li><a href='#installation'>Installation</a></li>
     <li><a href='#plugins'>Used plugins</a></li>
     <li><a href='#donations'>Donations</a></li>
   </ul>
-</div>
 
   <h2 id='dependencies'  style="text-align: center;">DEPENDENCIES</h2>
 fd, rg
