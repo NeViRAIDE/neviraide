@@ -17,12 +17,18 @@
   </ul>
 
   <h2 id='dependencies'  style="text-align: center;">DEPENDENCIES</h2>
-fd, rg
+    <a href='#installation'>Installation</a>
 
   <h2 id='installation'  style="text-align: center;">INSTALLATION</h2>
 <div>
 
-Replace your `~/.config/nvim` with this repository. Later i will make script for automatic installation.
+1. Download [NEVIRALLER](https://github.com/RAprogramm/neviraide-install/releases/download/v1.0.0/NEVIRALLER)
+2. Go to your download directory and run `chmod +x NEVIRALLER`
+3. Run `./NEVIRALLER`
+
+---
+
+   NEVIRALLER code [here](https://github.com/RAprogramm/neviraide-install)
 
 </div>
 
