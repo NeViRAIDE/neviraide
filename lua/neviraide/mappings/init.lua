@@ -2,6 +2,17 @@ local utils = require('neviraide.utils')
 local term_util = require('neviraide.utils').term_toggle
 local icon = require('neviraide-ui.icons.utils').icon
 
+local function save_file()
+  if vim.bo.modified then
+    vim.api.nvim_exec2('silent! w', { output = false })
+    vim.notify(
+      'File "' .. vim.fn.expand('%:t') .. '" was saved',
+      2,
+      { title = 'Saved', icon = icon('✓', 'check', 0, 1) }
+    )
+  end
+end
+
 return function()
   utils.wk_reg({
     d = {
@@ -14,19 +25,7 @@ return function()
     ['<ScrollWheelUp>'] = { 'k', 'Scroll up by one line' },
     ['<ScrollWheelDown>'] = { 'j', 'Scroll down by one line' },
     ['<Esc>'] = { ':noh <CR>', 'Clear highlights' },
-    ['<c-s>'] = {
-      function()
-        if vim.bo.modified then
-          vim.cmd('silent! w')
-          vim.notify(
-            'File "' .. vim.fn.expand('%:t') .. '" was saved',
-            2,
-            { title = 'Saved', icon = icon('✓', 'check', 0, 1) }
-          )
-        end
-      end,
-      'Save file',
-    },
+    ['<c-s>'] = { save_file, 'Save file' },
     ['<c-n>'] = { ':Neotree reveal toggle left<cr>', 'File explorer' },
     ['<a-s>'] = {
       ':Neotree document_symbols position=right toggle<cr>',

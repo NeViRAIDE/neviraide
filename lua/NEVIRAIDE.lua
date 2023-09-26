@@ -1,5 +1,5 @@
 return {
-  theme = 'everforest',
+  theme = 'tokyonight',
 
   transparency = false,
 
@@ -32,7 +32,7 @@ return {
 
   nonicons = true,
 
-  -- TODO: do for git and lsp
+  -- TODO: do for all above
   gitsigns_current_line_blame = false,
   gitsigns_signs = true,
 
@@ -40,4 +40,7 @@ return {
 
   diagnostic_virtual_text = false,
   diagnostic_signs = true,
+  -- TODO: apply on filechange
+  font_family = 'JetBrainsMono Nerd Font',
+  font_size = 14,
 }

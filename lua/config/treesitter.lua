@@ -1,15 +1,16 @@
+-- FIX: for_each_child will be deprecated in nvim 0.11
 return {
   highlight = {
     enable = true,
-    use_languagetree = true,
+    -- use_languagetree = true,
   },
   context_commentstring = { enable = true },
   indent = { enable = true },
-  rainbow = {
-    enable = true,
-    disable = { 'jsx', 'cpp' },
-    query = 'rainbow-parens',
-  },
+  -- rainbow = {
+  --   enable = true,
+  --   disable = { 'jsx', 'cpp' },
+  --   query = 'rainbow-parens',
+  -- },
   tree_docs = { enable = true },
   autotag = { enable = true },
   incremental_selection = { enable = true },
