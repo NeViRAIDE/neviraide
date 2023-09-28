@@ -1,28 +1,40 @@
 return {
-  space_char_blankline = ' ',
-
-  -- char_highlight_list = {
-  --   'IndentBlanklineIndent1',
-  --   'IndentBlanklineIndent2',
-  --   'IndentBlanklineIndent3',
-  --   'IndentBlanklineIndent4',
-  --   'IndentBlanklineIndent5',
-  --   'IndentBlanklineIndent6',
-  -- },
-  indentLine_enabled = 1,
-  filetype_exclude = {
-    'help',
-    'terminal',
-    'lazy',
-    'lspinfo',
-    'TelescopePrompt',
-    'TelescopeResults',
-    'mason',
-    'noice',
+  -- remove_blankline_trail = true,
+  indent = {
+    highlight = {
+      'IndentBlanklineChar',
+    },
   },
-  buftype_exclude = { 'terminal', 'nofile' },
-  show_trailing_blankline_indent = false,
-  show_first_indent_level = false,
-  show_current_context = true,
-  show_current_context_start = true,
+  exclude = {
+    filetypes = {
+      'help',
+      'terminal',
+      'lazy',
+      'lspinfo',
+      'TelescopePrompt',
+      'TelescopeResults',
+      'mason',
+      'noice',
+    },
+  },
+  scope = {
+    include = {
+      node_type = { ['*'] = { 'return_statement', 'table_constructor' } },
+    },
+    exclude = {
+      node_type = {
+        ['*'] = { 'source_file', 'program' },
+        lua = { 'chunk' },
+        python = { 'module' },
+      },
+    },
+    highlight = {
+      'IndentBlanklineIndent1',
+      'IndentBlanklineIndent2',
+      'IndentBlanklineIndent3',
+      'IndentBlanklineIndent4',
+      'IndentBlanklineIndent5',
+      'IndentBlanklineIndent6',
+    },
+  },
 }

@@ -30,14 +30,18 @@ return {
       )
     end,
   },
-
   {
     'lukas-reineke/indent-blankline.nvim',
     event = { 'BufReadPost', 'BufNewFile' },
     opts = function() return require('config.indentblankline') end,
     config = function(_, opts)
       dofile(vim.g.neviraide_themes_cache .. 'blankline')
-      require('indent_blankline').setup(opts)
+      require('ibl').setup(opts)
+      local hooks = require('ibl.hooks')
+      hooks.register(
+        hooks.type.WHITESPACE,
+        hooks.builtin.hide_first_tab_indent_level
+      )
     end,
   },
 

@@ -21,7 +21,7 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
           relative = 'cursor',
         })
 
-local opts = require('neviraide.lsp.options')
+      local opts = require('neviraide.lsp.options')
       require('lsp_signature').on_attach(opts.signature, buffer)
 
       utils.mappings('lsp')(buffer)
