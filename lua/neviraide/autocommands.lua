@@ -1,14 +1,27 @@
 local utils = require('neviraide.utils')
 
-utils.autocmd_multi('GoLangNvim', {
-  {
-    'FileType',
-    {
-      pattern = 'go',
-      callback = function() utils.mappings('golang')() end,
-    },
-  },
+utils.autocmd('Gopher_Nvim', 'FileType', {
+  pattern = 'go',
+  callback = function() utils.mappings('golang')() end,
 })
+
+--utils.autocmd('Neotest_Nvim', 'BufRead,BufNewFile', {
+--  pattern = '*test*.go',
+--  callback = function()
+--    utils.mappings('testing')()
+--    -- vim.cmd('Neotest summary')
+--  end,
+--})
+
+-- TODO: open summary on enter "..._test.go" file
+
+-- utils.autocmd('Neotest_Nvim', 'BufRead,BufNewFile', {
+--   pattern = '*test*.go',
+--   callback = function()
+--     utils.mappings('testing')()
+--     vim.cmd('Neotest summary')
+--   end,
+-- })
 
 utils.autocmd('Edit_folder', 'BufEnter', {
   pattern = '*',
@@ -101,6 +114,8 @@ utils.autocmd_multi('NEVIRAIDE_CONF', {
         'tsplayground',
         'PlenaryTestPopup',
         'guihua',
+        'neotest-summary',
+        'neotest-output',
       },
       desc = 'Use q to close the window',
       callback = function(event)

@@ -15,12 +15,12 @@ end
 
 return function()
   utils.wk_reg({
-    d = {
-      n = {
-        function() require('notify').dismiss({ silent = true, pending = true }) end,
-        'Dismiss all Notifications',
-      },
-    },
+    -- d = {
+    --   n = {
+    --     function() require('notify').dismiss({ silent = true, pending = true }) end,
+    --     'Dismiss all Notifications',
+    --   },
+    -- },
 
     ['<ScrollWheelUp>'] = { 'k', 'Scroll up by one line' },
     ['<ScrollWheelDown>'] = { 'j', 'Scroll down by one line' },

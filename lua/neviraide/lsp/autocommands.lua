@@ -28,7 +28,7 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
       utils.mappings('diagnostic')(buffer)
       -- enable inlay hints
       if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint(args.buf, true)
+        vim.lsp.inlay_hint.enable(args.buf, true)
       end
 
       -- enable document symbol highlighting

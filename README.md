@@ -2,6 +2,7 @@
 <img title="NEVIRAIDE" alt="NEoVIm Rozanov Andrei Integrated Development Environment" src="./preview/logo.png">
 
 ---
+
    <p>For Linux</p>
   <p><strong>Crafting an IDE Oasis in Neovim</strong></p>
 
@@ -28,7 +29,7 @@
 
 ---
 
-   NEVIRALLER code [here](https://github.com/RAprogramm/neviraide-install)
+NEVIRALLER code [here](https://github.com/RAprogramm/neviraide-install)
 
 </div>
 

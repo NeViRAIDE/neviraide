@@ -4,7 +4,9 @@ require('lazy').setup({
   { import = 'neviraide.ui' },
   { import = 'plugins' },
 }, {
-  defaults = { lazy = true, version = '*' },
+  defaults = {
+    lazy = true --[[ , version = '*' ]],
+  },
   ui = { border = vim.g.borders },
   checker = { enabled = true },
   performance = {

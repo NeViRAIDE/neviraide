@@ -40,7 +40,7 @@ function M.inputMod()
       padding = { 0, 2 },
     },
     relative = 'editor',
-    win_options = { winhighlight = 'Normal:Normal,FloatBorder:VertSplit' },
+    win_options = { winhighlight = 'Normal:Normal,FloatBorder:WinSeparator' },
     buf_options = { filetype = 'nui' },
   }, {
     prompt = '',
@@ -84,7 +84,7 @@ function M.goGet()
       padding = { 0.5, 1 },
     },
     relative = 'editor',
-    win_options = { winhighlight = 'Normal:Normal,FloatBorder:VertSplit' },
+    win_options = { winhighlight = 'Normal:Normal,FloatBorder:WinSeparator' },
     buf_options = { filetype = 'nui' },
   }, {
     prompt = '',
@@ -187,7 +187,7 @@ function M.goInterface()
       padding = { 0, 1 },
     },
     relative = 'cursor',
-    win_options = { winhighlight = 'Normal:Normal,FloatBorder:VertSplit' },
+    win_options = { winhighlight = 'Normal:Normal,FloatBorder:WinSeparator' },
     buf_options = { filetype = 'nui' },
   }, {
     prompt = '',

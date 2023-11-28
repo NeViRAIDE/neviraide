@@ -21,27 +21,39 @@ return {
     end,
   },
 
-  {
-    'rcarriga/nvim-notify',
-    opts = function() return require('config.notify') end,
-    init = function()
-      require('neviraide.utils').on_very_lazy(
-        function() vim.notify = require('notify') end
-      )
-    end,
-  },
+  -- {
+  --   'rcarriga/nvim-notify',
+  --   opts = function() return require('config.notify') end,
+  --   init = function()
+  --     require('neviraide.utils').on_very_lazy(
+  --       function() vim.notify = require('notify') end
+  --     )
+  --   end,
+  -- },
   {
     'lukas-reineke/indent-blankline.nvim',
     event = { 'BufReadPost', 'BufNewFile' },
     opts = function() return require('config.indentblankline') end,
     config = function(_, opts)
       dofile(vim.g.neviraide_themes_cache .. 'blankline')
+      vim.g.rainbow_delimiters = { highlight = opts.highlight }
       require('ibl').setup(opts)
+      -- local hooks = require('ibl.hooks')
+      -- hooks.register(
+      --   hooks.type.WHITESPACE,
+      --   hooks.builtin.hide_first_tab_indent_level
+      -- )
+      --
+      -- hooks.register(
+      --   hooks.type.SCOPE_HIGHLIGHT,
+      --   hooks.builtin.scope_highlight_from_extmark
+      -- )
       local hooks = require('ibl.hooks')
       hooks.register(
         hooks.type.WHITESPACE,
-        hooks.builtin.hide_first_tab_indent_level
+        hooks.builtin.hide_first_space_indent_level
       )
+      require('ibl').setup(opts)
     end,
   },
 
@@ -59,21 +71,78 @@ return {
       require('nvterm').setup(opts)
     end,
   },
-
   {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
       {
         'L3MON4D3/LuaSnip',
-        dependencies = {
-          'rafamadriz/friendly-snippets',
-          config = function()
-            require('luasnip.loaders.from_vscode').lazy_load()
-          end,
-        },
+        dependencies = 'rafamadriz/friendly-snippets',
         opts = { history = true, updateevents = 'TextChanged,TextChangedI' },
+        config = function(_, opts)
+          require('luasnip').config.set_config(opts)
+
+          -- vscode format
+          require('luasnip.loaders.from_vscode').lazy_load()
+          require('luasnip.loaders.from_vscode').lazy_load({
+            paths = vim.g.vscode_snippets_path or '',
+          })
+
+          -- snipmate format
+          require('luasnip.loaders.from_snipmate').load()
+          require('luasnip.loaders.from_snipmate').lazy_load({
+            paths = vim.g.snipmate_snippets_path or '',
+          })
+
+          -- lua format
+          require('luasnip.loaders.from_lua').load()
+          require('luasnip.loaders.from_lua').lazy_load({
+            paths = vim.g.lua_snippets_path or '',
+          })
+
+          vim.api.nvim_create_autocmd('InsertLeave', {
+            callback = function()
+              if
+                require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
+                and not require('luasnip').session.jump_active
+              then
+                require('luasnip').unlink_current()
+              end
+            end,
+          })
+          -- if opts then require('luasnip').config.setup(opts) end
+          -- vim.tbl_map(
+          --   function(type) require('luasnip.loaders.from_' .. type).lazy_load() end,
+          --   { 'vscode', 'snipmate', 'lua' }
+          -- )
+          -- -- friendly-snippets - enable standardized comments snippets
+          -- require('luasnip').filetype_extend('typescript', { 'tsdoc' })
+          -- require('luasnip').filetype_extend('javascript', { 'jsdoc' })
+          -- require('luasnip').filetype_extend('lua', { 'luadoc' })
+          -- require('luasnip').filetype_extend('python', { 'pydoc' })
+          -- require('luasnip').filetype_extend('rust', { 'rustdoc' })
+          -- -- require('luasnip').filetype_extend('cs', { 'csharpdoc' })
+          -- -- require('luasnip').filetype_extend('java', { 'javadoc' })
+          -- -- require('luasnip').filetype_extend('c', { 'cdoc' })
+          -- -- require('luasnip').filetype_extend('cpp', { 'cppdoc' })
+          -- -- require('luasnip').filetype_extend('php', { 'phpdoc' })
+          -- -- require('luasnip').filetype_extend('kotlin', { 'kdoc' })
+          -- -- require('luasnip').filetype_extend('ruby', { 'rdoc' })
+          -- require('luasnip').filetype_extend('sh', { 'shelldoc' })
+          -- require('luasnip').filetype_extend('go', { 'godoc' })
+        end,
       },
+      -- {
+      --   'L3MON4D3/LuaSnip',
+      --   dependencies = {
+      --     'rafamadriz/friendly-snippets',
+      --     config = function()
+      --       require('luasnip.loaders.from_vscode').lazy_load()
+      --     end,
+      --   },
+      --   opts = { history = true, updateevents = 'TextChanged,TextChangedI' },
+      --   build = 'make install_jsregexp',
+      -- },
       {
         'windwp/nvim-autopairs',
         opts = {
@@ -101,23 +170,27 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter',
+    -- NOTE: for correct markdown in lsp hover
     event = { 'BufReadPost', 'BufNewFile' },
     build = ':TSUpdate',
     opts = function() return require('config.treesitter') end,
     config = function(_, opts)
       dofile(vim.g.neviraide_themes_cache .. 'syntax')
+      dofile(vim.g.neviraide_themes_cache .. 'treesitter')
       require('nvim-treesitter.configs').setup(opts)
     end,
     dependencies = {
-      'HiPhish/nvim-ts-rainbow2',
       'windwp/nvim-ts-autotag',
-      'JoosepAlviste/nvim-ts-context-commentstring',
     },
   },
 
   {
+    'HiPhish/rainbow-delimiters.nvim',
+    event = { 'BufReadPost', 'BufNewFile' },
+  },
+
+  {
     'neovim/nvim-lspconfig',
-    version = false,
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       {
@@ -271,5 +344,73 @@ return {
   {
     'wakatime/vim-wakatime',
     event = 'VeryLazy',
+  },
+
+  {
+    'nvim-neotest/neotest',
+    ft = 'go',
+    dependencies = {
+      'nvim-neotest/neotest-go',
+    },
+    config = function()
+      -- get neotest namespace (api call creates or returns namespace)
+      local neotest_ns = vim.api.nvim_create_namespace('neotest')
+      vim.diagnostic.config({
+        virtual_text = {
+          format = function(diagnostic)
+            local message = diagnostic.message
+              :gsub('\n', ' ')
+              :gsub('\t', ' ')
+              :gsub('%s+', ' ')
+              :gsub('^%s+', '')
+            return message
+          end,
+        },
+      }, neotest_ns)
+      require('neotest').setup({
+        adapters = {
+          require('neotest-go')({
+            status = {
+              enabled = true,
+              signs = true,
+              virtual_text = true,
+            },
+            running = {
+              concurrent = true,
+            },
+            output = {
+              enabled = true,
+              open_on_run = 'short',
+            },
+            icons = {
+              child_indent = '│',
+              child_prefix = '├',
+              collapsed = '─',
+              expanded = '╮',
+              failed = '',
+              final_child_indent = ' ',
+              final_child_prefix = '╰',
+              non_collapsible = '─',
+              passed = '',
+              running = '',
+              running_animated = { '/', '|', '\\', '-', '/', '|', '\\', '-' },
+              skipped = '',
+              unknown = '',
+              watching = '',
+            },
+            floating = {
+              border = 'rounded',
+              max_height = 0.6,
+              max_width = 0.6,
+              options = {},
+            },
+            experimental = {
+              test_table = true,
+            },
+            args = { '-v', '-count=1', '-timeout=60s' },
+          }),
+        },
+      })
+    end,
   },
 }

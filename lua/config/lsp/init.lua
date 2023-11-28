@@ -1,5 +1,12 @@
 dofile(vim.g.neviraide_themes_cache .. 'lsp')
 
+---server returns lsp servers configuration.
+---@param filetype string
+---@return function
+local function server(filetype)
+  return require('neviraide.lsp.servers.' .. filetype)
+end
+
 require('lspconfig.ui.windows').default_options.border = vim.g.borders
 require('neviraide.lsp.diagnostic').setup()
 
@@ -17,17 +24,15 @@ mason_lsp_config.setup({
 mason_lsp_config.setup_handlers({
   function(server_name)
     lspconfig[server_name].setup({
-      on_attach = require('neviraide.lsp.on_attach'),
       capabilities = require('neviraide.lsp.capabilities'),
     })
   end,
-  ['lua_ls'] = function(_)
-    lspconfig.lua_ls.setup(require('neviraide.lsp.servers.lua'))
-  end,
-  ['gopls'] = function(_)
-    lspconfig.gopls.setup(require('neviraide.lsp.servers.go'))
-  end,
-  ['volar'] = function(_)
-    lspconfig.volar.setup(require('neviraide.lsp.servers.vue'))
+  ['lua_ls'] = function(_) lspconfig.lua_ls.setup(server('lua')) end,
+  ['gopls'] = function(_) lspconfig.gopls.setup(server('go')) end,
+  ['rust_analyzer'] = function(_) lspconfig.rust_analyzer.setup(server('rs')) end,
+  ['volar'] = function(_) lspconfig.volar.setup(server('vue')) end,
+  ['html'] = function(_) lspconfig.html.setup(server('html')) end,
+  ['emmet_language_server'] = function(_)
+    lspconfig.emmet_language_server.setup(server('emmet'))
   end,
 })

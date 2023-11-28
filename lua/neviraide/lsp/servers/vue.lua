@@ -1,5 +1,4 @@
 return {
-  on_attach = require('neviraide.lsp.on_attach'),
   capabilities = require('neviraide.lsp.capabilities'),
   flags = { debounce_text_changes = 150 },
   single_file_support = true,

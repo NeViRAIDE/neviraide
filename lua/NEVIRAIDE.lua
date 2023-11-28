@@ -1,5 +1,5 @@
 return {
-  theme = 'tokyonight',
+  theme = 'decay',
 
   transparency = false,
 

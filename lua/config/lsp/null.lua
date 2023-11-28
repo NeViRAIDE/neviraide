@@ -20,6 +20,8 @@ return {
       code_action.gitsigns,
       hover.dictionary,
       formatting.fish_indent,
+      formatting.golines,
+      diagnostics.revive,
       diagnostics.fish,
       formatting.stylua.with({
         extra_args = {

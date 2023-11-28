@@ -1,3 +1,4 @@
+-- FIX: not markdown in float windows
 local utils = require('neviraide.utils')
 ---Returns all data from main
 ---configuration file as table.

@@ -149,5 +149,7 @@ return {
       },
     },
   },
-  extensions_list = { 'todo-comments', 'notify' },
+  extensions_list = {
+    'todo-comments', --[[ 'notify' ]]
+  },
 }
