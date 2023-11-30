@@ -1,5 +1,5 @@
 <div align="center">
-<img title="NEVIRAIDE" alt="NEoVIm Rozanov Andrei Integrated Development Environment" src="./preview/logo.png">
+<img title="NEVIRAIDE" alt="NEoVIm Rozanov Andrei Integrated Development Environment" src="./.preview/logo.png">
 
 ---
 

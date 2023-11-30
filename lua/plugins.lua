@@ -3,11 +3,10 @@ return {
   'MunifTanjim/nui.nvim',
 
   {
+    -- 'RAprogramm/nekifoch',
     dir = '~/GitHub/nvim_plugins/nekifoch.nvim',
     cmd = 'Nekifoch',
-    opts = {
-      kitty_conf_path = vim.fn.expand('~/.config/kitty/kitty.conf'),
-    },
+    opts = {},
   },
 
   {

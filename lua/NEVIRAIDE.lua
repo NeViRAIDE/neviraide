@@ -1,10 +1,11 @@
 return {
-  theme = 'decay',
+  theme = 'Tokyo-Night',
 
   transparency = false,
 
   ---Print the line number in front of each line.
   numbers_enabled = true,
+
   ---Show the line number relative to the line with the cursor in front of each line.
   ---Relative line numbers help you use the |count| you can precede some vertical motion commands (e.g. j k + -) with, without having to calculate it yourself.
   relative_numbers = true,
