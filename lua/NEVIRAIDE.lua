@@ -1,5 +1,5 @@
 return {
-  theme = 'Tokyo-Night',
+  theme = 'Gruvbox-Retro',
 
   transparency = false,
 
