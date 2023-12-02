@@ -1,5 +1,5 @@
 return {
-  theme = 'Gruvbox-Retro',
+  theme = 'Catppuccin-Mocha',
 
   transparency = false,
 

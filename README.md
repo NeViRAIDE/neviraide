@@ -3,19 +3,46 @@
 
 ---
 
+<br>
+
+&ensp;[<kbd> <br> Startup time <br> </kbd>](#startuptime)&ensp;
+&ensp;[<kbd> <br> Dependencies <br> </kbd>](#dependencies)&ensp;
+&ensp;[<kbd> <br> Installation <br> </kbd>](#installation)&ensp;
+&ensp;[<kbd> <br> Used plugins <br> </kbd>](#plugins)&ensp;
+&ensp;[<kbd> <br> Donations <br> </kbd>](#donations)&ensp;
+<br><br>
+
+<hr>
    <p>For Linux</p>
   <p><strong>Crafting an IDE Oasis in Neovim</strong></p>
 
-  <p>"Remember, Neovim is your canvas for shaping a personalized IDE or a serene text sanctuary. Your desires and needs steer the way."</p>
-</div>
+<!-- https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/4f1c5c1e-8715-4195-9236-167edea910e1 -->
 
-  <h2>📜 CONTENTS 📜</h2>
-  <ul style="list-style-type:none;">
-    <li><a href='#dependencies'>Dependencies</a></li>
-    <li><a href='#installation'>Installation</a></li>
-    <li><a href='#plugins'>Used plugins</a></li>
-    <li><a href='#donations'>Donations</a></li>
-  </ul>
+_*<p>"Remember, Neovim is your canvas for shaping a personalized IDE or a serene text sanctuary. Your desires and needs steer the way."</p>*_
+
+<hr>
+
+</div>
+  <h2 id='startuptime'  style="text-align: center;">STARTUP TIME</h2>
+<div>
+
+<table>
+<tr>
+
+<td><img src="./.preview/startup/speed2.png"></td>
+<td><img src="./.preview/startup/speed1.png"></td>
+
+</tr>
+
+<tr>
+
+<img align="center" src="./.preview/startup/speed3.png">
+
+</tr>
+
+</table>
+</div>
+<hr>
 
   <h2 id='dependencies'  style="text-align: center;">DEPENDENCIES</h2>
     <a href='#installation'>Installation</a>
@@ -29,13 +56,13 @@
 
 ---
 
-NEVIRALLER code [here](https://github.com/RAprogramm/neviraide-install)
+NEVIRALLER code [here](https://github.com/RAprogramm/neviraide-install).
 
 </div>
 
-  <h2 id='plugins'  style="text-align: center;">🛠️ USED PLUGINS 🛠️</h2>
+  <h2 id='plugins'  style="text-align: center;">USED PLUGINS</h2>
 
-UI and Interface:
+### UI and Interface:
 
 <ul>
   <li>
@@ -46,10 +73,20 @@ UI and Interface:
   </li>
   <li>
     <a href="https://github.com/RAprogramm/neviraide-ui.nvim">neviraide-ui.nvim</a>: Elevating your interface experience.
+        <table>
+            <tr>
+                <th>Dashboard</th>
+            </tr>
+            <tr>
+                <td><img src="./.preview/dashboard.png"</td>
+            </tr>
+        </table>
   </li>
 </ul>
 
-Terminal and Kitty Integration:
+### Terminal and Kitty Integration:
+
+<!-- terminal video -->
 
 <ul>
   <li>
@@ -60,21 +97,21 @@ Terminal and Kitty Integration:
   </li>
 </ul>
 
-Icons and Visual Enhancements:
+### Icons and Visual Enhancements:
 
 <ul>
   <li>
     <a href="https://github.com/nvim-tree/nvim-web-devicons">nvim-web-devicons</a>: Enhancing icon support for Neovim.
   </li>
-  <li>
-    <a href="https://github.com/rcarriga/nvim-notify">nvim-notify</a>: A notification plugin for Neovim.
-  </li>
+  <!-- <li> -->
+  <!--   <a href="https://github.com/rcarriga/nvim-notify">nvim-notify</a>: A notification plugin for Neovim. -->
+  <!-- </li> -->
   <li>
     <a href="https://github.com/lukas-reineke/indent-blankline.nvim">indent-blankline.nvim</a>: Display indent guides in Neovim.
   </li>
 </ul>
 
-Completion and LSP:
+### Completion and LSP:
 
 <ul>
   <li>
@@ -90,8 +127,13 @@ Completion and LSP:
     <a href="https://github.com/jay-babu/mason-null-ls.nvim">mason-null-ls.nvim</a>: Mason integration for null-ls.nvim.
   </li>
 </ul>
+<table>
+    <tr>
+        <img src="./.preview/lsp.png">
+    </tr>
+</table>
 
-Syntax Highlighting and Treesitter:
+### Syntax Highlighting and Treesitter:
 
 <ul>
   <li>
@@ -99,7 +141,7 @@ Syntax Highlighting and Treesitter:
   </li>
 </ul>
 
-Debugging:
+### Debugging:
 
 <ul>
 <li><a href='https://github.com/mfussenegger/nvim-dap'>dap</a>: Debug Adapter Protocol client implementation for Neovim. nvim-dap allows you to:
@@ -111,7 +153,7 @@ Debugging:
 </li>
 </ul>
 
-Markdown and Preview:
+### Markdown and Preview:
 
 <ul>
   <li>
@@ -119,7 +161,7 @@ Markdown and Preview:
   </li>
 </ul>
 
-Commenting and Code Management:
+### Commenting and Code Management:
 
 <ul>
   <li>
@@ -127,7 +169,7 @@ Commenting and Code Management:
   </li>
 </ul>
 
-Git Integration:
+### Git Integration:
 
 <ul>
   <li>
@@ -135,19 +177,20 @@ Git Integration:
   </li>
 </ul>
 
-TODO Comments:
+### TODO Comments:
 
 <ul>
   <li>
     <a href="https://github.com/folke/todo-comments.nvim">todo-comments.nvim</a>: A plugin for managing TODO comments in your code.
   </li>
 </ul>
-    <p>🌠 Your Neovim journey, enriched by thoughtful choices, is a captivating exploration. Should you seek guidance or delve into the nuanced facets of your setup, our assistance is readily available. Don't hesitate to reach out!</p>
+
+> _*<p>Your Neovim journey, enriched by thoughtful choices, is a captivating exploration. Should you seek guidance or delve into the nuanced facets of your setup, our assistance is readily available. Don't hesitate to reach out!</p>*_
 
   </div>
     <h2 id='donations'  style="text-align: center;">DONATIONS</h2>
 
-If you find this helpful and would like to support its development, you can buy me a coffee through the following platforms:
+> If you find this helpful and would like to support its development, you can buy me a coffee through the following platforms:
 
 <div style="text-align: center;">
 
@@ -155,6 +198,6 @@ If you find this helpful and would like to support its development, you can buy 
 
 [![buymeacoffee](https://img.buymeacoffee.com/button-api/?username=YOUR_BMC_USERNAME&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000)](https://www.buymeacoffee.com/raprogramm)
 
-Your support is greatly appreciated!
+**_Your support is greatly appreciated!_**
 
 </div>
