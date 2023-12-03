@@ -5,7 +5,8 @@ require('lazy').setup({
   { import = 'plugins' },
 }, {
   defaults = {
-    lazy = true --[[ , version = '*' ]],
+    lazy = true,
+    version = '*',
   },
   ui = { border = vim.g.borders },
   checker = { enabled = true },

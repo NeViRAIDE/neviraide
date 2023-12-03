@@ -1,7 +1,9 @@
-return {
-  -- indent = { highlight = 'IblChar' },
-  -- scope = { highlight = 'IblScopeChar' },
-}
+return function()
+  return {
+    -- indent = { highlight = 'IblChar' },
+    -- scope = { highlight = 'IblScopeChar' },
+  }
+end
 -- return {
 --   -- remove_blankline_trail = true,
 --   indent = {

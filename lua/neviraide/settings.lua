@@ -1,21 +1,27 @@
 local g = vim.g
 local conf = NEVIRAIDE()
 ------------------------------
+
 ---@type string
 g.neviraide_themes_cache = vim.fn.stdpath('data') .. '/neviraide_ui/'
 ------------------------------
+
 ---@type string
 g.neviraide_theme = conf.theme
 ------------------------------
+
 ---@type boolean
 g.transparency = conf.transparency
 ------------------------------
+
 ---@type string
 g.borders = conf.border
 ------------------------------
+
 ---@type boolean
 g.nonicons = conf.nonicons
 ------------------------------
+
 local o = vim.opt
 
 for _, provider in ipairs({ 'node', 'perl', 'python3', 'ruby' }) do
@@ -25,6 +31,7 @@ end
 o.whichwrap:append('<>[]hl')
 o.shortmess:append({ W = true, I = true, c = true })
 ------------------------------
+
 --The value of this option influences when the last window will have a
 --status line:
 --	0: never
@@ -35,11 +42,13 @@ o.shortmess:append({ W = true, I = true, c = true })
 --windows, but it takes another screen line. `status-line`
 o.laststatus = 3
 ------------------------------
+
 --If in Insert, Replace or Visual mode put a message on the last line.
 --The `hl-ModeMsg` highlight group determines the highlighting.
 --The option has no effect when `cmdheight` is zero.
 o.showmode = false
 ------------------------------
+
 --Sets the modes in which text in the cursor line can also be concealed.
 --When the current mode is listed then concealing happens just like in
 --other lines.
@@ -56,6 +65,7 @@ o.showmode = false
 --displayed.  E.g., when moving vertically it may change column.
 o.concealcursor = 'nc'
 ------------------------------
+
 --Determine how text with the "conceal" syntax attribute `:syn-conceal`
 --is shown:
 --***Value***		***Effect***
@@ -74,6 +84,7 @@ o.concealcursor = 'nc'
 --option.
 o.conceallevel = 3
 ------------------------------
+
 o.spelllang = { 'en_us' }
 o.pumheight = 10
 o.clipboard = 'unnamedplus'
@@ -91,7 +102,7 @@ o.relativenumber = conf.relative_numbers
 o.shiftwidth = conf.indents
 o.tabstop = conf.indents
 o.softtabstop = conf.indents
-o.fillchars = { eob = ' ' }
+-- o.fillchars = { eob = '' }
 o.ignorecase = true
 o.smartcase = true
 o.mouse = 'a'

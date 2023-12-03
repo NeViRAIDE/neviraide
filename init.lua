@@ -1,7 +1,5 @@
--- FIX: not markdown in float windows
 local utils = require('neviraide.utils')
----Returns all data from main
----configuration file as table.
+---Returns all data from main configuration file as table.
 _G.NEVIRAIDE = function()
   local ok, config = pcall(require, 'NEVIRAIDE')
   if ok then

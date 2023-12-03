@@ -1,5 +1,5 @@
 return {
-  theme = 'Catppuccin-Mocha',
+  theme = 'Gruvbox-Retro',
 
   transparency = false,
 
@@ -27,9 +27,9 @@ return {
   ---• "solid": Adds padding by a single whitespace cell.
   ---• "shadow": A drop shadow effect by blending with the background.
   ---@type 'none'|'single'|'double'|'rounded'|'solid'|'shadow'
-  border = 'rounded',
+  border = 'single',
   ---@type string
-  borderchars = '{ "─", "│", "─", "│", "╭", "╮", "╯", "╰" }',
+  borderchars = '{ "─", "│", "─", "│", "┌", "┐", "┘", "└" }',
 
   nonicons = true,
 

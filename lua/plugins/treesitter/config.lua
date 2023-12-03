@@ -1,0 +1,28 @@
+local utils = require('plugins.treesitter.utils')
+
+return function(_, opts)
+  dofile(vim.g.neviraide_themes_cache .. 'syntax')
+  dofile(vim.g.neviraide_themes_cache .. 'treesitter')
+  require('nvim-treesitter.configs').setup(opts)
+
+  local function add(lang)
+    if type(opts.ensure_installed) == 'table' then
+      table.insert(opts.ensure_installed, lang)
+    end
+  end
+
+  vim.filetype.add({
+    extension = { rasi = 'rasi' },
+    pattern = {
+      ['.*/waybar/config'] = 'jsonc',
+      ['.*/mako/config'] = 'dosini',
+      ['.*/kitty/*.conf'] = 'bash',
+    },
+  })
+
+  add('git_config')
+
+  if utils.have('fish') then add('fish') end
+
+  if utils.have('rofi') or utils.have('wofi') then add('rasi') end
+end

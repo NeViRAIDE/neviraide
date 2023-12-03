@@ -42,7 +42,7 @@ end
 M.reload_transparency = function()
   reload_plenary('NEVIRAIDE')
   vim.g.transparency = NEVIRAIDE().transparency
-  reload_plenary({ 'config.telescope', 'config.whichkey' })
+  reload_plenary({ 'plugins.config.telescope', 'plugins.config.whichkey' })
   refresh_highlights()
   reload_lazy({ 'nvim-web-devicons', 'telescope.nvim', 'which-key.nvim' })
   vim.opt.tabline = "%!v:lua.require('neviraide-ui.buftabline.modules')()"
@@ -53,10 +53,10 @@ M.reload_borders = function()
   reload_plenary('NEVIRAIDE')
   vim.g.borders = NEVIRAIDE().border
   reload_plenary({
-    'config.telescope',
-    'config.whichkey',
-    'config.lsp.mason',
-    'config.lsp.options',
+    'plugins.config.telescope',
+    'plugins.config.whichkey',
+    'plugins.config.lsp.mason',
+    'plugins.config.lsp.options',
   })
   refresh_highlights()
   reload_lazy({
@@ -73,10 +73,10 @@ M.reload_icons = function()
   vim.g.nonicons = NEVIRAIDE().nonicons
 
   reload_plenary({
-    'config.telescope',
-    'config.whichkey',
-    'config.lsp.mason',
-    'config.lsp.options',
+    'plugins.config.telescope',
+    'plugins.config.whichkey',
+    'plugins.config.lsp.mason',
+    'plugins.config.lsp.options',
     'neviraide-ui.statusline',
     'neviraide-ui.buftabline.modules',
   })
@@ -113,10 +113,10 @@ M.reload_config = function()
   vim.o.softtabstop = config.indents
 
   reload_plenary({
-    'config.telescope',
-    'config.whichkey',
-    'config.lsp.mason',
-    'config.lsp.options',
+    'plugins.config.telescope',
+    'plugins.config.whichkey',
+    'plugins.config.lsp.mason',
+    'plugins.config.lsp.options',
     'neviraide-ui.statusline',
     'neviraide-ui.buftabline.modules',
   })
