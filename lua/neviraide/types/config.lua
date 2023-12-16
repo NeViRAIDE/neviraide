@@ -1,0 +1,42 @@
+---@class NeviraideConfig
+---Using programming languages
+---@field lang table<string>
+---Already configured Hyprland themes
+---@field theme "Gruvbox-Retro"|"Decay-Green"|"Catppuccin-Latte"|"Catppuccin-Mocha"|"Cyberpank-Egde"|"Frosted-Glass"|"Graphite-Mono"|"Material-Sakura"|"Rose-Pine"|"Tokyo-Night"
+---Transparency neviraide
+---@field transparency boolean
+---Print the line number in front of each line.
+---@field numbers_enabled boolean
+---Show the line number relative to the line with the cursor in front of each line.
+---Relative line numbers help you use the |count| you can precede some vertical motion commands (e.g. j k + -) with, without having to calculate it yourself.
+---@field relative_numbers boolean
+---Highlight the text line of the cursor with CursorLine. Useful to easily spot the cursor.  Will make screen redrawing slower. When Visual mode is active the highlighting isn't used to make it easier to see the selected text.
+---@field cursor_line boolean
+---Highlight the screen column of the cursor with CursorColumn. Useful to align text. Will make screen redrawing slower.
+---@field cursor_column boolean
+---@field indents integer
+---Borders for all floating windows and popups.
+---• "none": No border.
+---• "single": A single line box.
+---• "double": A double line box.
+---• "rounded": Like "single", but with rounded corners
+---• "solid": Adds padding by a single whitespace cell.
+---• "shadow": A drop shadow effect by blending with the background.
+---@field border 'none'|'single'|'double'|'rounded'|'solid'|'shadow'
+---Symbols for rendering border
+---@field borderchars string
+---@field nonicons boolean
+---@field gitsigns_current_line_blame boolean
+---@field gitsigns_signs boolean
+---Using terminal font
+---@field font_family string
+---Terminal font size
+---@field font_size integer
+
+---@class NeviraideLSP
+---@field inlay_hints boolean
+
+---@class NeviraideDiagnostic
+---Signs are defined for each diagnostic severity. The default text for each sign is the first letter of the severity name (for example, "E" for ERROR).
+---@field signs boolean
+---@field virtual_text boolean

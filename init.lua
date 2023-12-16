@@ -1,6 +1,7 @@
 local utils = require('neviraide.utils')
 
 ---Returns all data from main configuration file as table.
+---@return NeviraideConfig
 _G.NEVIRAIDE = function()
   local ok, config = pcall(require, 'NEVIRAIDE')
   if ok then

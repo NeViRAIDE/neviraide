@@ -25,22 +25,24 @@ local signs = {
 local M = {}
 
 function M.setup()
-for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  for type, icon in pairs(signs) do
+    local hl = 'DiagnosticSign' .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  end
 end
 
-vim.diagnostic.config({
-  float = {
-    border = vim.g.borders,
-    source = 'if_many',
-  },
-  signs = conf.lsp.diagnostic.signs,
-  underline = true,
-  update_in_insert = false,
-  virtual_text = virt_text(),
-  severity_sort = true,
-})
+M.config = function()
+  vim.diagnostic.config({
+    float = {
+      border = vim.g.borders,
+      source = 'if_many',
+    },
+    signs = conf.lsp.diagnostic.signs,
+    underline = true,
+    update_in_insert = false,
+    virtual_text = virt_text(),
+    severity_sort = true,
+  })
 end
 
 return M

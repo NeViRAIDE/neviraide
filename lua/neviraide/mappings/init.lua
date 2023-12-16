@@ -18,7 +18,7 @@ return function()
     d = {
       n = {
         function() require('notify').dismiss({ silent = true, pending = true }) end,
-        'Dismiss all Notifications',
+        'Dismiss all Notifications'..i('󰎟','inbox',1),
       },
     },
 
@@ -63,17 +63,24 @@ return function()
       function() term_util('vertical') end,
       'Toggle vertical terminal' .. i('', 'terminal', 1),
     },
+
     ['<a-d>'] = {
       '<cmd>NeviraideUIDashboard<CR>',
-      'Toggle dashboard',
+      'Toggle dashboard' .. i('󰕮', 'tmux', 1),
+    },
+
+    ['<a-b>'] = {
+      '<cmd>Neotree buffers focus float toggle<cr>',
+      'Toggle buffers list (Neotree)' .. i('', 'list-unordered', 1),
+    },
+
+    ['<a-g>'] = {
+      '<cmd>Neotree position=right git_status toggle<cr>',
+      'Toggle GIT status (Neotree)' .. i('', 'mark-github', 1),
     },
 
     ['<leader>'] = {
       name = 'Plugins and features' .. i('', 'rocket', 1),
-      b = {
-        '<cmd>Neotree buffers focus float<cr>',
-        'Buffers list' .. i('', 'list-unordered', 1),
-      },
       x = {
         function() require('neviraide-ui.buftabline').close_buffer() end,
         'Close buffer' .. i('', 'trash', 1),
@@ -83,10 +90,6 @@ return function()
         'New file' .. i('', 'plus-circle', 1),
       },
       -- m = utils.mappings('markdown_keys'),
-      G = {
-        '<cmd>Neotree position=right git_status toggle<cr>',
-        'GIT' .. i('', 'mark-github', 1),
-      },
       -- s = utils.mappings('settings'),
       c = utils.mappings('colorpicker'),
       t = utils.mappings('telescope_keys'),

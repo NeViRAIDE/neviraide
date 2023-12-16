@@ -28,14 +28,16 @@ return {
     ['<C-K>'] = 'Ctrl + k',
     ['<C-N>'] = 'Ctrl + n',
 
-    ['<ScrollWheelUp>'] = 'Mouse wheel up',
-    ['<ScrollWheelDown>'] = 'Mouse wheel down',
+    ['<ScrollWheelUp>'] = 'Scroll up',
+    ['<ScrollWheelDown>'] = 'Scroll down',
 
     ['<M-d>'] = 'Alt + d',
     ['<M-v>'] = 'Alt + v',
     ['<M-f>'] = 'Alt + f',
     ['<M-s>'] = 'Alt + s',
     ['<M-h>'] = 'Alt + h',
+    ['<M-b>'] = 'Alt + b',
+    ['<M-g>'] = 'Alt + g',
   },
   popup_mappings = { scroll_down = '<c-j>', scroll_up = '<c-k>' },
   window = {
