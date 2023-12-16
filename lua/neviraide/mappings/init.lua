@@ -27,7 +27,7 @@ return function()
 
     ['<Esc>'] = { ':noh <CR>', 'Clear highlights' },
     ['<c-s>'] = { save_file, 'Save file' },
-    ['<c-n>'] = { ':Neotree reveal toggle left<cr>', 'File explorer' },
+    ['<c-n>'] = { ':Neotree reveal toggle left<cr>', 'File explorer (Neotree)' },
     ['<a-s>'] = {
       ':Neotree document_symbols position=right toggle<cr>',
       'Document symbols',
@@ -39,33 +39,33 @@ return function()
 
     ['<tab>'] = {
       function() require('neviraide-ui.buftabline').tabuflineNext() end,
-      'Goto next buffer',
+      'Goto to the next buffer',
     },
     ['<S-tab>'] = {
       function() require('neviraide-ui.buftabline').tabuflinePrev() end,
-      'Goto prev buffer',
+      'Goto to the previous buffer',
     },
 
-    ['<C-h>'] = { '<C-w>h', 'Window left' },
-    ['<C-l>'] = { '<C-w>l', 'Window right' },
-    ['<C-j>'] = { '<C-w>j', 'Window down' },
-    ['<C-k>'] = { '<C-w>k', 'Window up' },
+    ['<C-h>'] = { '<C-w>h', 'Go to the left window' },
+    ['<C-l>'] = { '<C-w>l', 'Go to the right window' },
+    ['<C-j>'] = { '<C-w>j', 'Go to the bottom window' },
+    ['<C-k>'] = { '<C-w>k', 'Go to the top window' },
 
     ['<a-h>'] = {
       function() term_util('horizontal') end,
-      'Horizontal terminal',
+      'Toggle horizontal terminal' .. i('', 'terminal', 1),
     },
     ['<a-f>'] = {
       function() term_util('float') end,
-      'Float terminal',
+      'Toggle floating terminal' .. i('', 'terminal', 1),
     },
     ['<a-v>'] = {
       function() term_util('vertical') end,
-      'Vertical terminal',
+      'Toggle vertical terminal' .. i('', 'terminal', 1),
     },
     ['<a-d>'] = {
       '<cmd>NeviraideUIDashboard<CR>',
-      'Dashboard',
+      'Toggle dashboard',
     },
 
     ['<leader>'] = {
@@ -97,7 +97,7 @@ return function()
   utils.wk_reg({
     ['<c-/>'] = {
       "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-      'Toggle comment',
+      'Toggle comment' .. i('', 'comment', 1),
     },
     p = {
       'p:let @+=@0<CR>:let @"=@0<CR>',
@@ -108,20 +108,20 @@ return function()
   utils.wk_reg({
     ['<a-h>'] = {
       function() term_util('horizontal') end,
-      'Horizontal terminal',
+      'Toggle horizontal terminal' .. i('', 'terminal', 1),
     },
     ['<a-f>'] = {
       function() term_util('float') end,
-      'Float terminal',
+      'Toggle floating terminal' .. i('', 'terminal', 1),
     },
     ['<a-v>'] = {
       function() term_util('vertical') end,
-      'Vertical terminal',
+      'Toggle vertical terminal' .. i('', 'terminal', 1),
     },
-    ['<C-j>'] = { '<Cmd>wincmd j<CR>', 'Window down' },
-    ['<C-k>'] = { '<Cmd>wincmd k<CR>', 'Window up' },
-    ['<C-h>'] = { '<Cmd>wincmd h<CR>', 'Window left' },
-    ['<C-l>'] = { '<Cmd>wincmd l<CR>', 'Window right' },
+    ['<C-h>'] = { '<Cmd>wincmd h<CR>', 'Go to the left window' },
+    ['<C-l>'] = { '<Cmd>wincmd l<CR>', 'Go to the right window' },
+    ['<C-j>'] = { '<Cmd>wincmd j<CR>', 'Go to the bottom window' },
+    ['<C-k>'] = { '<Cmd>wincmd k<CR>', 'Go to the top window' },
     ['<esc>'] = { '<C-\\><C-n>', 'NORMAL mode' },
   }, { mode = 't' })
 
