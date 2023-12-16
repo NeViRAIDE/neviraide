@@ -1,15 +1,15 @@
+dofile(vim.g.neviraide_themes_cache .. 'lsp')
+
+---server returns lsp servers configuration.
+---@param filetype string
+---@return function
+local function server(filetype)
+  return require('neviraide.lsp.servers.' .. filetype)
+end
+
 return function()
-  dofile(vim.g.neviraide_themes_cache .. 'lsp')
-
-  ---server returns lsp servers configuration.
-  ---@param filetype string
-  ---@return function
-  local function server(filetype)
-    return require('neviraide.lsp.servers.' .. filetype)
-  end
-
+  require('neviraide.lsp.diagnostic')
   require('lspconfig.ui.windows').default_options.border = vim.g.borders
-  require('neviraide.lsp.diagnostic').setup()
 
   local lspconfig = require('lspconfig')
   local mason_lsp_config = require('mason-lspconfig')

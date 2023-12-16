@@ -1,11 +1,13 @@
 local icon = require('neviraide-ui.icons.utils').icon
+local conf = NEVIRAIDE()
 
+---@return table|boolean
 local function virt_text()
-  if NEVIRAIDE().diagnostic_virtual_text then
+  if conf.lsp.diagnostic.virtual_text then
     return {
       source = 'if_many',
       spacing = 4,
-      prefix = icon('●', 'dot-fill'),
+      prefix = icon('●', 'dot-fill', 0, 1),
     }
   else
     return false
@@ -14,24 +16,14 @@ end
 
 return {
   inlay_hints = {
-    enabled = NEVIRAIDE().lsp_inlay_hints,
-  },
-  signature = {
-    bind = false,
-    floating_window = false,
-    hint_enable = true,
-    use_lspsaga = false,
-    hint_prefix = icon('', 'eye', 0, 2),
-    hint_scheme = 'Comment',
-    hi_parameter = 'LspSignatureActiveParameter',
-    max_height = 1,
+    enabled = conf.lsp.inlay_hints,
   },
   diagnostic = {
     float = {
       border = vim.g.borders,
       source = 'if_many',
     },
-    signs = NEVIRAIDE().diagnostic_signs,
+    signs = conf.lsp.diagnostic.signs,
     underline = true,
     update_in_insert = false,
     virtual_text = virt_text(),

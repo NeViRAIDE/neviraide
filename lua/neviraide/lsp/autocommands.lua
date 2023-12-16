@@ -9,26 +9,11 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
     if client ~= nil then
-      -- BUG: rendering markdown
-      -- vim.lsp.handlers['textDocument/hover'] =
-      --   vim.lsp.with(vim.lsp.handlers.hover, {
-      --     border = vim.g.borders,
-      --     max_width = 80,
-      --   })
-      --
-      -- vim.lsp.handlers['textDocument/signatureHelp'] =
-      --   vim.lsp.with(vim.lsp.handlers.signature_help, {
-      --     border = vim.g.borders,
-      --     focusable = false,
-      --     max_width = 70,
-      --     relative = 'cursor',
-      --   })
-      --
-      local opts = require('neviraide.lsp.options')
-      require('lsp_signature').on_attach(opts.signature, buffer)
-
       utils.mappings('lsp')(buffer)
+
+      require('neviraide.lsp.diagnostic').setup()
       utils.mappings('diagnostic')(buffer)
+
       -- enable inlay hints
       if client.server_capabilities.inlayHintProvider then
         vim.lsp.inlay_hint.enable(args.buf, true)
@@ -58,14 +43,10 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
 
       -- enable codelenses
       if client.server_capabilities.codeLensProvider then
-        utils.autocmd(
-          'NEVIRAIDE_codelens',
-          { 'BufEnter', 'CursorHold', 'InsertLeave' },
-          {
-            buffer = buffer,
-            callback = function() vim.lsp.codelens.refresh() end,
-          }
-        )
+        utils.autocmd('NEVIRAIDE_codelens', { 'BufEnter', 'InsertLeave' }, {
+          buffer = buffer,
+          callback = function() vim.lsp.codelens.refresh() end,
+        })
       end
     end
 
@@ -87,8 +68,8 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
             'InsertEnter',
             'FocusLost',
           },
-          border = require('neviraide.lsp.options').diagnostic.float.border,
-          source = 'always',
+          border = vim.g.borders,
+          source = 'if_many',
           prefix = ' ',
           scope = 'cursor',
         })

@@ -108,7 +108,6 @@ return function()
     }),
 
     sources = {
-      -- FIX: not expand lsp snippets and get error
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
       {

@@ -1,5 +1,5 @@
 return function(_, opts)
-  dofile(vim.g.neviraide_themes_cache .. 'blankline')
+  -- dofile(vim.g.neviraide_themes_cache .. 'blankline')
   vim.g.rainbow_delimiters = { highlight = opts.highlight }
 
   local hooks = require('ibl.hooks')

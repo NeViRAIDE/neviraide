@@ -138,4 +138,18 @@ M.icons = function()
   }
 end
 
+---Return plugins options
+---@param plugin_name string
+---@return function
+M.con = function(plugin_name)
+  return require('plugins.' .. plugin_name .. '.config')
+end
+
+---Return plugins options
+---@param plugin_name string
+---@return function
+M.opt = function(plugin_name)
+  return require('plugins.' .. plugin_name .. '.options')
+end
+
 return M

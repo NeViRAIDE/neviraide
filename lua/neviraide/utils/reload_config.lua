@@ -124,7 +124,6 @@ M.reload_config = function()
   reload_lazy({
     'nvim-web-devicons',
     'telescope.nvim',
-    'which-key.nvim',
     'mason.nvim',
     'gitsigns.nvim',
   })

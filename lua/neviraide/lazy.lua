@@ -4,10 +4,8 @@ require('lazy').setup({
   { import = 'neviraide.ui' },
   { import = 'plugins' },
 }, {
-  defaults = {
-    lazy = true,
-    version = '*',
-  },
+  defaults = { lazy = true, version = '*' },
+  dev = { path = '~/GitHub/nvim_plugins' },
   ui = { border = vim.g.borders },
   checker = { enabled = true },
   performance = {
@@ -41,6 +39,14 @@ require('lazy').setup({
         'bugreport',
         'ftplugin',
         'editorconfig',
+        'gzip',
+        'matchit',
+        'matchparen',
+        'netrwPlugin',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
       },
     },
   },

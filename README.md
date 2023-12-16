@@ -16,11 +16,7 @@
    <p>For Linux</p>
   <p><strong>Crafting an IDE Oasis in Neovim</strong></p>
 
-
-
 https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/6ccc7571-e69c-4f14-95b7-e5ac68639ca7
-
-
 
 _*<p>"Remember, Neovim is your canvas for shaping a personalized IDE or a serene text sanctuary. Your desires and needs steer the way."</p>*_
 
@@ -79,14 +75,6 @@ NEVIRALLER code [here](https://github.com/RAprogramm/neviraide-install).
     <a href="https://github.com/RAprogramm/neviraide-ui.nvim">neviraide-ui.nvim</a>: Elevating your interface experience.
   </li>
 </ul>
-<table>
-            <tr>
-                <th>Dashboard</th>
-            </tr>
-            <tr>
-                <td><img src="./.preview/dashboard.png"</td>
-            </tr>
-        </table>
 
 ### Terminal and Kitty Integration:
 
@@ -99,11 +87,7 @@ NEVIRALLER code [here](https://github.com/RAprogramm/neviraide-install).
   </li>
 </ul>
 
-
-
 https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-c512e4fc2763
-
-
 
 ### Icons and Visual Enhancements:
 

@@ -1,3 +1,5 @@
+local util = require('neviraide.utils')
+
 return {
   { 'nvim-lua/plenary.nvim' },
 
@@ -5,8 +7,10 @@ return {
 
   { 'wakatime/vim-wakatime', event = 'VeryLazy' },
 
+  { 'rcarriga/nvim-notify' },
+
   {
-    -- 'RAprogramm/nekifoch',
+    'RAprogramm/nekifoch',
     dir = '~/GitHub/nvim_plugins/nekifoch.nvim',
     cmd = 'Nekifoch',
     opts = {},
@@ -14,9 +18,7 @@ return {
 
   {
     'nvim-tree/nvim-web-devicons',
-    opts = function()
-      return { override = require('neviraide.utils').icons().global }
-    end,
+    opts = function() return { override = util.icons().global } end,
     config = function(_, opts)
       dofile(vim.g.neviraide_themes_cache .. 'icons')
       require('nvim-web-devicons').setup(opts)
@@ -24,28 +26,10 @@ return {
   },
 
   {
-    'folke/noice.nvim',
-    -- version = false,
-    event = 'VeryLazy',
-    opts = require('plugins.noice.options'),
-    dependencies = {},
-  },
-
-  {
-    'rcarriga/nvim-notify',
-    opts = function() return require('plugins.notify.options') end,
-    init = function()
-      require('neviraide.utils').on_very_lazy(
-        function() vim.notify = require('notify') end
-      )
-    end,
-  },
-
-  {
     'lukas-reineke/indent-blankline.nvim',
     event = { 'BufReadPost', 'BufNewFile' },
-    opts = require('plugins.indent-blankline.opts'),
-    config = require('plugins.indent-blankline.config'),
+    opts = util.opt('ui.indent-blankline'),
+    config = util.con('ui.indent-blankline'),
   },
 
   {
@@ -116,24 +100,20 @@ return {
     version = false,
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      {
-        'Bekaboo/dropbar.nvim',
-        opts = require('plugins.dropbar.options'),
-      },
+      { 'Bekaboo/dropbar.nvim', opts = util.opt('dropbar') },
       {
         'hrsh7th/cmp-nvim-lsp',
-        cond = function() return require('neviraide.utils').has('nvim-cmp') end,
+        cond = function() return util.has('nvim-cmp') end,
       },
       {
         'williamboman/mason.nvim',
         cmd = 'Mason',
         build = ':MasonUpdate',
-        config = require('plugins.mason.config'),
+        config = util.con('lsp.mason'),
       },
       { 'williamboman/mason-lspconfig.nvim' },
-      { 'ray-x/lsp_signature.nvim' },
     },
-    config = require('plugins.lspconfig.config'),
+    config = util.con('lsp.lspconfig'),
   },
 
   {
@@ -143,21 +123,13 @@ return {
     config = require('plugins.lsp.null'),
   },
 
-  {
-    'olexsmir/gopher.nvim',
-    ft = 'go',
-    config = require('plugins.gopher.config'),
-  },
+  { 'olexsmir/gopher.nvim', ft = 'go', config = util.con('gopher') },
 
-  {
-    'ggandor/lightspeed.nvim',
-    event = { 'BufReadPost', 'BufNewFile' },
-  },
+  { 'ggandor/lightspeed.nvim', event = { 'BufReadPost', 'BufNewFile' } },
 
   {
     'numToStr/Comment.nvim',
     keys = require('plugins.comment.keys'),
-    -- opts = require('plugins.comment.options'),
     config = function(_, opts) require('Comment').setup(opts) end,
   },
 
@@ -165,7 +137,7 @@ return {
     'iamcco/markdown-preview.nvim',
     build = 'cd app && ./install.sh',
     ft = { 'markdown' },
-    config = require('plugins.markdown-preview.config'),
+    config = util.con('markdown-preview'),
   },
 
   {
@@ -189,21 +161,21 @@ return {
       { 'rcarriga/nvim-dap-ui', config = true },
       { 'leoluz/nvim-dap-go', config = true },
     },
-    config = require('plugins.dap.config'),
+    config = util.con('dap'),
   },
 
   -- FIX: can't git push from neotree(not input for ssh password)
   {
     'nvim-neo-tree/neo-tree.nvim',
     cmd = 'Neotree',
-    opts = require('plugins.neotree.options'),
+    opts = util.opt('neotree'),
   },
 
   {
     'nvim-telescope/telescope.nvim',
     cmd = 'Telescope',
-    opts = require('plugins.telescope.options'),
-    config = require('plugins.telescope.config'),
+    opts = util.opt('telescope'),
+    config = util.con('telescope'),
   },
 
   {
@@ -220,7 +192,7 @@ return {
     'lewis6991/gitsigns.nvim',
     ft = { 'gitcommit', 'diff' },
     init = require('plugins.gitsigns.start'),
-    opts = require('plugins.gitsigns.options'),
+    opts = util.opt('gitsigns'),
   },
 
   {
@@ -234,6 +206,6 @@ return {
     'nvim-neotest/neotest',
     ft = 'go',
     dependencies = { 'nvim-neotest/neotest-go' },
-    config = require('plugins.neotest.config'),
+    config = util.con('neotest'),
   },
 }

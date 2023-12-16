@@ -1,4 +1,5 @@
 local utils = require('neviraide.utils')
+
 ---Returns all data from main configuration file as table.
 _G.NEVIRAIDE = function()
   local ok, config = pcall(require, 'NEVIRAIDE')
@@ -21,7 +22,7 @@ end
 require('neviraide.settings')
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     'git',
     'clone',
@@ -37,11 +38,5 @@ vim.opt.rtp:prepend(lazypath)
 utils.mason_path()
 
 require('neviraide.lazy')
-
-utils.autocmd('ReloadNeviraide', 'BufWritePost', {
-  pattern = vim.fn.stdpath('config') .. '/lua/NEVIRAIDE.lua',
-  desc = 'Reload NEVIRAIDE on change some fields',
-  callback = require('neviraide.utils.reload_config').reload_config,
-}, true)
 
 dofile(vim.g.neviraide_themes_cache .. 'defaults')

@@ -5,24 +5,6 @@ utils.autocmd('Gopher_Nvim', 'FileType', {
   callback = function() utils.mappings('golang')() end,
 })
 
---utils.autocmd('Neotest_Nvim', 'BufRead,BufNewFile', {
---  pattern = '*test*.go',
---  callback = function()
---    utils.mappings('testing')()
---    -- vim.cmd('Neotest summary')
---  end,
---})
-
--- TODO: open summary on enter "..._test.go" file
-
--- utils.autocmd('Neotest_Nvim', 'BufRead,BufNewFile', {
---   pattern = '*test*.go',
---   callback = function()
---     utils.mappings('testing')()
---     vim.cmd('Neotest summary')
---   end,
--- })
-
 utils.autocmd('Edit_folder', 'BufEnter', {
   pattern = '*',
   desc = 'Open Neotree when trying to edit directories.',

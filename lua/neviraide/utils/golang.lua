@@ -20,7 +20,6 @@ end
 
 local M = {}
 
--- TODO: realize GOLANG commands
 local Input = require('nui.input')
 local Menu = require('nui.menu')
 

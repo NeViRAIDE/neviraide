@@ -1,4 +1,7 @@
+---@class NeviraideConfig
 return {
+  lang = { 'lua', 'rust', 'go' },
+
   theme = 'Gruvbox-Retro',
 
   transparency = false,
@@ -27,21 +30,24 @@ return {
   ---• "solid": Adds padding by a single whitespace cell.
   ---• "shadow": A drop shadow effect by blending with the background.
   ---@type 'none'|'single'|'double'|'rounded'|'solid'|'shadow'
-  border = 'single',
+  border = 'rounded',
+  ---Symbols for rendering border
   ---@type string
-  borderchars = '{ "─", "│", "─", "│", "┌", "┐", "┘", "└" }',
+  borderchars = '{ "─", "│", "─", "│", "╭", "╮", "╯", "╰" }',
 
   nonicons = true,
 
-  -- TODO: do for all above
   gitsigns_current_line_blame = false,
   gitsigns_signs = true,
 
-  lsp_inlay_hints = true,
+  lsp = {
+    inlay_hints = true,
+    diagnostic = {
+      signs = true,
+      virtual_text = false,
+    },
+  },
 
-  diagnostic_virtual_text = false,
-  diagnostic_signs = true,
-  -- TODO: apply on filechange
   font_family = 'JetBrainsMono Nerd Font',
   font_size = 14,
 }
