@@ -1,0 +1,4 @@
+---@class NeviraideUtils
+---@field autocmd? fun(group: string, events: string | table, opts: table, clear?: boolean) Create autocommand. More information about |autocommands|
+---@field has? fun(plugin: string): boolean Check if a plugin is configured.
+---@field mason_path? function Add the mason bin directory to the PATH environment variable.

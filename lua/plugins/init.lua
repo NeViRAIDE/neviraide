@@ -208,4 +208,123 @@ return {
     dependencies = { 'nvim-neotest/neotest-go' },
     config = util.con('neotest'),
   },
+
+  -- {
+  -- 	"stevearc/conform.nvim",
+  -- 	event = { "BufWritePre" },
+  -- 	cmd = { "ConformInfo" },
+  -- 	keys = {
+  -- 		{
+  -- 			-- Customize or remove this keymap to your liking
+  -- 			"<leader>m",
+  -- 			function()
+  -- 				require("conform").format({ async = true, lsp_fallback = true })
+  -- 			end,
+  -- 			mode = "",
+  -- 			desc = "Format buffer",
+  -- 		},
+  -- 	},
+  -- 	-- Everything in opts will be passed to setup()
+  -- 	opts = {
+  -- 		-- Define your formatters
+  -- 		formatters_by_ft = {
+  -- 			lua = { "stylua" },
+  -- 			-- python = { 'isort', 'black' },
+  -- 			javascript = { { "prettierd", "prettier" } },
+  -- 		},
+  -- 		-- Set up format-on-save
+  -- 		format_on_save = { timeout_ms = 500, lsp_fallback = true },
+  -- 		-- Customize formatters
+  -- 		formatters = {
+  -- 			shfmt = {
+  -- 				prepend_args = { "-i", "2" },
+  -- 			},
+  -- 		},
+  -- 	},
+  -- 	init = function()
+  -- 		-- If you want the formatexpr, here is the place to set it
+  -- 		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+  -- 	end,
+  -- },
+  {
+    'simrat39/rust-tools.nvim',
+    ft = 'rust',
+    opts = function()
+      local ok, mason_registry = pcall(require, 'mason-registry')
+      local adapter ---@type any
+      if ok then
+        -- rust tools configuration for debugging support
+        local codelldb = mason_registry.get_package('codelldb')
+        local extension_path = codelldb:get_install_path() .. '/extension/'
+        local codelldb_path = extension_path .. 'adapter/codelldb'
+        local liblldb_path = ''
+        if vim.uv.os_uname().sysname:find('Windows') then
+          liblldb_path = extension_path .. 'lldb\\bin\\liblldb.dll'
+        elseif vim.fn.has('mac') == 1 then
+          liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
+        else
+          liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
+        end
+        adapter = require('rust-tools.dap').get_codelldb_adapter(
+          codelldb_path,
+          liblldb_path
+        )
+      end
+      -- local rt = require('rust-tools')
+      return {
+        -- server = {
+        -- on_attach = function(_, bufnr)
+        --   -- Hover actions
+        --   vim.keymap.set(
+        --     'n',
+        --     '<C-space>',
+        --     rt.hover_actions.hover_actions,
+        --     { buffer = bufnr }
+        --   )
+        --   -- Code action groups
+        --   vim.keymap.set(
+        --     'n',
+        --     '<Leader>a',
+        --     rt.code_action_group.code_action_group,
+        --     { buffer = bufnr }
+        --   )
+        -- end,
+        -- },
+        dap = {
+          adapter = adapter,
+        },
+        tools = {
+          on_initialized = function()
+            vim.cmd([[
+                  augroup RustLSP
+                    autocmd CursorHold                      *.rs silent! lua vim.lsp.buf.document_highlight()
+                    autocmd CursorMoved,InsertEnter         *.rs silent! lua vim.lsp.buf.clear_references()
+                    autocmd BufEnter,CursorHold,InsertLeave *.rs silent! lua vim.lsp.codelens.refresh()
+                  augroup END
+                ]])
+          end,
+        },
+      }
+    end,
+    config = function(_, opts) require('rust-tools').setup(opts) end,
+  },
+  {
+    'saecki/crates.nvim',
+    event = { 'BufRead Cargo.toml' },
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      local null_ls = require('null-ls')
+      require('crates').setup({
+        null_ls = {
+          enabled = true,
+          name = 'crates.nvim',
+        },
+        -- src = {
+        --   cmp = {
+        --     enabled = true,
+        --   },
+        -- },
+      })
+    end,
+  },
 }

@@ -6,6 +6,7 @@ return function()
       path = {
         modified = function(sym)
           return sym:merge({
+            -- TODO: add nonicons
             name = sym.name .. '  ',
             icon = icon('', 'pencil', 0, 2),
             name_hl = 'DiagnosticError',

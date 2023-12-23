@@ -26,15 +26,16 @@ return function()
     function(server_name)
       lspconfig[server_name].setup({
         capabilities = require('neviraide.lsp.capabilities'),
+        single_file_support = true,
       })
     end,
     ['lua_ls'] = function(_) lspconfig.lua_ls.setup(server('lua')) end,
-    ['gopls'] = function(_) lspconfig.gopls.setup(server('go')) end,
-    ['rust_analyzer'] = function(_) lspconfig.rust_analyzer.setup(server('rs')) end,
-    ['volar'] = function(_) lspconfig.volar.setup(server('vue')) end,
-    ['html'] = function(_) lspconfig.html.setup(server('html')) end,
-    ['emmet_language_server'] = function(_)
-      lspconfig.emmet_language_server.setup(server('emmet'))
-    end,
+    -- ['gopls'] = function(_) lspconfig.gopls.setup(server('go')) end,
+    -- ['rust_analyzer'] = function(_) lspconfig.rust_analyzer.setup(server('rs')) end,
+    -- ['volar'] = function(_) lspconfig.volar.setup(server('vue')) end,
+    -- ['html'] = function(_) lspconfig.html.setup(server('html')) end,
+    -- ['emmet_language_server'] = function(_)
+    -- lspconfig.emmet_language_server.setup(server('emmet'))
+    -- end,
   })
 end

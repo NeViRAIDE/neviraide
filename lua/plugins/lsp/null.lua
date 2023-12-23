@@ -17,11 +17,15 @@ return function()
     null_ls.setup({
       sources = {
         code_action.gitsigns,
+
         hover.dictionary,
-        formatting.fish_indent,
+
         formatting.golines,
         diagnostics.revive,
+
         diagnostics.fish,
+        formatting.fish_indent,
+
         formatting.stylua.with({
           extra_args = {
             '--quote-style',

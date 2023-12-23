@@ -18,12 +18,12 @@ return function()
     d = {
       n = {
         function() require('notify').dismiss({ silent = true, pending = true }) end,
-        'Dismiss all Notifications'..i('󰎟','inbox',1),
+        'Dismiss all Notifications' .. i('󰎟', 'inbox', 1),
       },
     },
 
-    ['<ScrollWheelUp>'] = { 'k', 'Scroll up by one line' },
-    ['<ScrollWheelDown>'] = { 'j', 'Scroll down by one line' },
+    ['<ScrollWheelUp>'] = { '<C-y>', 'Scroll up' },
+    ['<ScrollWheelDown>'] = { '<C-e>', 'Scroll down' },
 
     ['<Esc>'] = { ':noh <CR>', 'Clear highlights' },
     ['<c-s>'] = { save_file, 'Save file' },

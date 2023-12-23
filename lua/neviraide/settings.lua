@@ -1,26 +1,16 @@
 local g = vim.g
 local conf = NEVIRAIDE()
-------------------------------
 
 ---@type string
 g.neviraide_themes_cache = vim.fn.stdpath('data') .. '/neviraide_ui/'
-------------------------------
-
----@type string
+---@type HyprlandThemes
 g.neviraide_theme = conf.theme
-------------------------------
-
 ---@type boolean
 g.transparency = conf.transparency
-------------------------------
-
----@type string
+---@type BorderType
 g.borders = conf.border
-------------------------------
-
 ---@type boolean
 g.nonicons = conf.nonicons
-------------------------------
 
 local o = vim.opt
 
@@ -43,6 +33,7 @@ o.completeopt = 'menuone,noselect,noinsert'
 o.showmatch = true
 o.expandtab = true
 o.smartindent = true
+o.smoothscroll = true
 o.cursorline = conf.cursor_line
 o.cursorcolumn = conf.cursor_column
 o.number = conf.numbers_enabled
@@ -65,5 +56,21 @@ o.undofile = true
 o.updatetime = 250
 o.sessionoptions =
   'blank,buffers,curdir,folds,help,options,terminal,globals,localoptions,tabpages'
+
+-- NOTE: folds or not?!
+
+-- o.fillchars = {
+--   foldopen = '',
+--   foldclose = '',
+--   -- fold = "⸱",
+--   fold = ' ',
+--   foldsep = ' ',
+--   diff = '╱',
+--   eob = ' ',
+-- }
+-- vim.opt.foldmethod = 'expr'
+-- vim.opt.foldexpr = "v:lua.require'neviraide.utils'.foldexpr()"
+
+-- vim.o.formatexpr = "v:lua.require'neviraide.utils'.formatexpr()"
 
 require('neviraide.autocommands')

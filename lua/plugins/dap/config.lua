@@ -12,6 +12,7 @@ return function()
   end
   dap.listeners.before.event_exited['dapui_config'] = function() dapui.close() end
 
+  -- TODO: add icons from neviraideUI
   vim.fn.sign_define('DapBreakpoint', {
     text = ' ',
     texthl = 'NotifyERRORIcon',

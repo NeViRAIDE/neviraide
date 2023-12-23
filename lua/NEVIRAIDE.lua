@@ -1,4 +1,6 @@
----@class NeviraideConfig
+-- TODO: make all options dynamically
+
+---@type NeviraideConfig
 return {
   lang = { 'lua', 'rust', 'go' },
   theme = 'Gruvbox-Retro',
@@ -13,10 +15,8 @@ return {
   nonicons = true,
   gitsigns_current_line_blame = false,
   gitsigns_signs = true,
-  ---@class NeviraideLSP
   lsp = {
     inlay_hints = true,
-    ---@class NeviraideDiagnostic
     diagnostic = {
       signs = true,
       virtual_text = false,

@@ -1,4 +1,12 @@
 return function()
+  -- vim.api.nvim_create_autocmd('BufRead', {
+  --   group = vim.api.nvim_create_augroup('CmpSourceCargo', { clear = true }),
+  --   pattern = 'Cargo.toml',
+  --   callback = function()
+  --     cmp.setup.buffer({ sources = { { name = 'crates' } } })
+  --   end,
+  -- })
+  --
   dofile(vim.g.neviraide_themes_cache .. 'cmp')
 
   -- local has_words_before = function()
@@ -11,7 +19,6 @@ return function()
   --         :match('%s')
   --       == nil
   -- end
-
   local cmp = require('cmp')
   local luasnip = require('luasnip')
 
@@ -118,6 +125,7 @@ return function()
       },
       { name = 'nvim_lua' },
       { name = 'async_path' },
+      { name = 'crates' },
     },
     sorting = {
       comparators = {

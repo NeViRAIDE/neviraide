@@ -1,3 +1,4 @@
+-- TODO: make available only if golang in the NEVIRAIDE config
 return function()
   require('gopher').setup({
     commands = {

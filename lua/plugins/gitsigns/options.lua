@@ -2,6 +2,7 @@ dofile(vim.g.neviraide_themes_cache .. 'git')
 
 return {
   signcolumn = NEVIRAIDE().gitsigns_signs,
+  -- TODO: add nonicons
   signs = {
     add = { text = '│' },
     change = { text = '│' },

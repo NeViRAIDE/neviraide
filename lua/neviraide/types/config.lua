@@ -1,8 +1,13 @@
+---@alias BorderType 'none'|'single'|'double'|'rounded'|'solid'|'shadow'
+---@alias HyprlandThemes "Gruvbox-Retro"|"Decay-Green"|"Catppuccin-Latte"|"Catppuccin-Mocha"|"Cyberpunk-Egde"|"Frosted-Glass"|"Graphite-Mono"|"Material-Sakura"|"Rose-Pine"|"Tokyo-Night"
+
 ---@class NeviraideConfig
 ---Using programming languages
 ---@field lang table<string>
----Already configured Hyprland themes
----@field theme "Gruvbox-Retro"|"Decay-Green"|"Catppuccin-Latte"|"Catppuccin-Mocha"|"Cyberpank-Egde"|"Frosted-Glass"|"Graphite-Mono"|"Material-Sakura"|"Rose-Pine"|"Tokyo-Night"
+---WIN+SHIFT+T - list of available hyprland themes
+------
+---Already configured Hyprland themesk
+---@field theme HyprlandThemes
 ---Transparency neviraide
 ---@field transparency boolean
 ---Print the line number in front of each line.
@@ -16,13 +21,7 @@
 ---@field cursor_column boolean
 ---@field indents integer
 ---Borders for all floating windows and popups.
----• "none": No border.
----• "single": A single line box.
----• "double": A double line box.
----• "rounded": Like "single", but with rounded corners
----• "solid": Adds padding by a single whitespace cell.
----• "shadow": A drop shadow effect by blending with the background.
----@field border 'none'|'single'|'double'|'rounded'|'solid'|'shadow'
+---@field border BorderType
 ---Symbols for rendering border
 ---@field borderchars string
 ---@field nonicons boolean
@@ -32,9 +31,12 @@
 ---@field font_family string
 ---Terminal font size
 ---@field font_size integer
+---Neviraide LSP
+---@field lsp NeviraideLSP
 
 ---@class NeviraideLSP
 ---@field inlay_hints boolean
+---@field diagnostic NeviraideDiagnostic
 
 ---@class NeviraideDiagnostic
 ---Signs are defined for each diagnostic severity. The default text for each sign is the first letter of the severity name (for example, "E" for ERROR).
