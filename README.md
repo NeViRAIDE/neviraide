@@ -9,6 +9,7 @@
 &ensp;[<kbd> <br> Dependencies <br> </kbd>](#dependencies)&ensp;
 &ensp;[<kbd> <br> Installation <br> </kbd>](#installation)&ensp;
 &ensp;[<kbd> <br> Used plugins <br> </kbd>](#plugins)&ensp;
+&ensp;[<kbd> <br> Themes <br> </kbd>](#themes)&ensp;
 &ensp;[<kbd> <br> Donations <br> </kbd>](#donations)&ensp;
 <br><br>
 
@@ -180,8 +181,6 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 > _*<p>Your Neovim journey, enriched by thoughtful choices, is a captivating exploration. Should you seek guidance or delve into the nuanced facets of your setup, our assistance is readily available. Don't hesitate to reach out!</p>*_
 
 ## Themes
-
-### Hyprland themes
 
 [![Catppuccin-Mocha](https://placehold.co/130x30/b4befe/11111b?text=Catppuccin-Mocha&font=Oswald)](#-Catppuccin-Mocha)
 [![Catppuccin-Latte](https://placehold.co/130x30/dd7878/eff1f5?text=Catppuccin-Latte&font=Oswald)](#-Catppuccin-Latte)
