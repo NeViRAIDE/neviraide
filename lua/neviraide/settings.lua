@@ -59,15 +59,15 @@ o.sessionoptions =
 
 -- NOTE: folds or not?!
 
--- o.fillchars = {
---   foldopen = '',
---   foldclose = '',
---   -- fold = "⸱",
---   fold = ' ',
---   foldsep = ' ',
---   diff = '╱',
---   eob = ' ',
--- }
+o.fillchars = {
+  --   foldopen = '',
+  --   foldclose = '',
+  --   -- fold = "⸱",
+  --   fold = ' ',
+  --   foldsep = ' ',
+  --   diff = '╱',
+  eob = ' ',
+}
 -- vim.opt.foldmethod = 'expr'
 -- vim.opt.foldexpr = "v:lua.require'neviraide.utils'.foldexpr()"
 

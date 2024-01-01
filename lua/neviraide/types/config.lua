@@ -27,12 +27,16 @@
 ---@field nonicons boolean
 ---@field gitsigns_current_line_blame boolean
 ---@field gitsigns_signs boolean
----Using terminal font
----@field font_family string
----Terminal font size
----@field font_size integer
 ---Neviraide LSP
 ---@field lsp NeviraideLSP
+---NeviraideFont
+---@field font NeviraideFont
+
+---@class NeviraideFont
+---Using terminal font
+---@field family string
+---Terminal font size
+---@field size integer
 
 ---@class NeviraideLSP
 ---@field inlay_hints boolean

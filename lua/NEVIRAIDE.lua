@@ -22,6 +22,8 @@ return {
       virtual_text = false,
     },
   },
-  font_family = 'JetBrainsMono Nerd Font',
-  font_size = 14,
+  font = {
+    family = 'JetBrainsMono Nerd Font',
+    size = 14,
+  },
 }
