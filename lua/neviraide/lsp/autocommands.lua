@@ -9,7 +9,7 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
     if client ~= nil then
-      utils.mappings('lsp')(buffer)
+      -- utils.mappings('lsp')(buffer)
 
       require('neviraide.lsp.diagnostic').setup()
       utils.mappings('diagnostic')(buffer)

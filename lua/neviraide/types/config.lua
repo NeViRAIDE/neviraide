@@ -2,40 +2,50 @@
 ---@alias HyprlandThemes "Gruvbox-Retro"|"Decay-Green"|"Catppuccin-Latte"|"Catppuccin-Mocha"|"Cyberpunk-Egde"|"Frosted-Glass"|"Graphite-Mono"|"Material-Sakura"|"Rose-Pine"|"Tokyo-Night"
 
 ---@class NeviraideConfig
----Using programming languages
----@field lang table<string>
----WIN+SHIFT+T - list of available hyprland themes
+---Using programming languages.
+---@field lang string[]
+---WIN+SHIFT+T - list of available hyprland themes.
 ------
----Already configured Hyprland themesk
+---Already configured Hyprland themes.
 ---@field theme HyprlandThemes
----Transparency neviraide
+---Transparency neviraide.
 ---@field transparency boolean
 ---Print the line number in front of each line.
 ---@field numbers_enabled boolean
----Show the line number relative to the line with the cursor in front of each line.
----Relative line numbers help you use the |count| you can precede some vertical motion commands (e.g. j k + -) with, without having to calculate it yourself.
+---Show the line number relative to the line
+---with the cursor in front of each line.
+---Relative line numbers help you use the |count|
+---you can precede some vertical motion
+---commands (e.g. j k + -) with, without having
+---to calculate it yourself.
 ---@field relative_numbers boolean
----Highlight the text line of the cursor with CursorLine. Useful to easily spot the cursor.  Will make screen redrawing slower. When Visual mode is active the highlighting isn't used to make it easier to see the selected text.
+---Highlight the text line of the cursor with
+---CursorLine. Useful to easily spot the cursor.
+---Will make screen redrawing slower. When Visual
+---mode is active the highlighting isn't used to
+---make it easier to see the selected text.
 ---@field cursor_line boolean
----Highlight the screen column of the cursor with CursorColumn. Useful to align text. Will make screen redrawing slower.
+---Highlight the screen column of the cursor
+---with CursorColumn. Useful to align text.
+---Will make screen redrawing slower.
 ---@field cursor_column boolean
 ---@field indents integer
 ---Borders for all floating windows and popups.
 ---@field border BorderType
----Symbols for rendering border
+---Symbols for rendering border.
 ---@field borderchars string
 ---@field nonicons boolean
 ---@field gitsigns_current_line_blame boolean
 ---@field gitsigns_signs boolean
----Neviraide LSP
+---Neviraide LSP.
 ---@field lsp NeviraideLSP
----NeviraideFont
+---NeviraideFont.
 ---@field font NeviraideFont
 
 ---@class NeviraideFont
----Using terminal font
+---Using terminal font.
 ---@field family string
----Terminal font size
+---Terminal font size.
 ---@field size integer
 
 ---@class NeviraideLSP
@@ -43,6 +53,8 @@
 ---@field diagnostic NeviraideDiagnostic
 
 ---@class NeviraideDiagnostic
----Signs are defined for each diagnostic severity. The default text for each sign is the first letter of the severity name (for example, "E" for ERROR).
+---Signs are defined for each diagnostic severity.
+---The default text for each sign is the first letter
+---of the severity name (for example, "E" for ERROR).
 ---@field signs boolean
 ---@field virtual_text boolean

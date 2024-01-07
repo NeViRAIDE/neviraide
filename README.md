@@ -10,6 +10,7 @@
 &ensp;[<kbd> <br> Installation <br> </kbd>](#installation)&ensp;
 &ensp;[<kbd> <br> Used plugins <br> </kbd>](#plugins)&ensp;
 &ensp;[<kbd> <br> Themes <br> </kbd>](#themes)&ensp;
+&ensp;[<kbd> <br> Contributing <br> </kbd>](#contributing)&ensp;
 &ensp;[<kbd> <br> Donations <br> </kbd>](#donations)&ensp;
 <br><br>
 
@@ -309,6 +310,11 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 </td></table>
 
 </div>
+
+<h2>Contributing</h2>
+
+<p>Feel free to contribute by opening issues or creating pull requests.</p>
+
 <h2 id='donations'  style="text-align: center;">DONATIONS</h2>
 
 > If you find this helpful and would like to support its development, you can buy me a coffee through the following platforms:

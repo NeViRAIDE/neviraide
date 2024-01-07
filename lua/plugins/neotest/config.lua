@@ -16,6 +16,7 @@ return function()
 
   require('neotest').setup({
     adapters = {
+      require('neotest-rust'),
       require('neotest-go')({
         status = {
           enabled = true,

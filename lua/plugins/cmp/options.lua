@@ -22,6 +22,15 @@ return function()
   local cmp = require('cmp')
   local luasnip = require('luasnip')
 
+  vim.api.nvim_create_autocmd('BufRead', {
+    group = vim.api.nvim_create_augroup('CmpSourceCargo', { clear = true }),
+    pattern = 'Cargo.toml',
+    callback = function()
+      require('crates.src.cmp').setup()
+      cmp.setup.buffer({ sources = { { name = 'crates' } } })
+    end,
+  })
+
   return {
     -- completion = {
     --   completeopt = 'menu,menuone',
@@ -125,7 +134,7 @@ return function()
       },
       { name = 'nvim_lua' },
       { name = 'async_path' },
-      { name = 'crates' },
+      -- { name = 'crates' },
     },
     sorting = {
       comparators = {

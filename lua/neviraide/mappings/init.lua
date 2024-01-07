@@ -1,3 +1,5 @@
+-- TODO: add tabs buttons
+
 local utils = require('neviraide.utils')
 local term_util = require('neviraide.utils').term_toggle
 local i = require('neviraide-ui.icons.utils').icon
@@ -91,6 +93,7 @@ return function()
       },
       -- m = utils.mappings('markdown_keys'),
       -- s = utils.mappings('settings'),
+      l = utils.mappings('lsp'),
       c = utils.mappings('colorpicker'),
       t = utils.mappings('telescope_keys'),
       n = utils.mappings('todos'),

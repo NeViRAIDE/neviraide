@@ -16,7 +16,6 @@ return function()
 
   mason_lsp_config.setup({
     ensure_installed = {
-      'gopls',
       'lua_ls',
     },
     automatic_installation = true,
@@ -24,10 +23,12 @@ return function()
 
   mason_lsp_config.setup_handlers({
     function(server_name)
-      lspconfig[server_name].setup({
-        capabilities = require('neviraide.lsp.capabilities'),
-        single_file_support = true,
-      })
+      if server_name ~= 'rust_analyzer' then
+        lspconfig[server_name].setup({
+          capabilities = require('neviraide.lsp.capabilities'),
+          single_file_support = true,
+        })
+      end
     end,
     ['lua_ls'] = function(_) lspconfig.lua_ls.setup(server('lua')) end,
     -- ['gopls'] = function(_) lspconfig.gopls.setup(server('go')) end,
