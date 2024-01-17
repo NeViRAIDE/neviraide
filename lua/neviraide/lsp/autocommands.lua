@@ -12,7 +12,7 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
       -- utils.mappings('lsp')(buffer)
 
       require('neviraide.lsp.diagnostic').setup()
-      utils.mappings('diagnostic')(buffer)
+      require('plugins.which-key.mappings.diagnostic')(buffer)
 
       -- enable inlay hints
       if client.server_capabilities.inlayHintProvider then

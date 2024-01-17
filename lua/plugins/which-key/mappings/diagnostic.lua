@@ -1,7 +1,8 @@
+local wk = require('which-key')
 local icon = require('neviraide-ui.icons.utils').icon
 
 return function(client, bufnr)
-  require('neviraide.utils').wk_reg({
+  wk.register({
     ['<leader>'] = {
       d = {
         name = 'Diagnostics' .. icon('', 'pulse', 1),

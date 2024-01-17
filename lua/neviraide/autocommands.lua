@@ -1,10 +1,5 @@
 local utils = require('neviraide.utils')
 
-utils.autocmd('Gopher_Nvim', 'FileType', {
-  pattern = 'go',
-  callback = function() utils.mappings('golang')() end,
-})
-
 utils.autocmd('Edit_folder', 'BufEnter', {
   pattern = '*',
   desc = 'Open Neotree when trying to edit directories.',
@@ -17,7 +12,7 @@ utils.autocmd('Edit_folder', 'BufEnter', {
 utils.autocmd('NEVIRAIDE_Markdown', 'FileType', {
   pattern = 'markdown',
   desc = 'Add markdown features',
-  callback = function() utils.mappings('markdown_keys')() end,
+  callback = function() require('plugins.which-key.mappings.md')() end,
 })
 
 utils.autocmd_multi('NEVIRAIDE_CONF', {

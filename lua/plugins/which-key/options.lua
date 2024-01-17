@@ -1,10 +1,71 @@
 local utils = require('neviraide.utils')
 
+require('plugins.which-key.mappings')()
+
 dofile(vim.g.neviraide_themes_cache .. 'whichkey')
-utils.mappings()()
 
 return {
-  plugins = { spelling = { enabled = true } },
+  plugins = {
+    marks = true, -- shows a list of your marks on ' and `
+    registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+    -- the presets plugin, adds help for a bunch of default keybindings in Neovim
+    -- No actual key bindings are created
+    spelling = {
+      enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+      suggestions = 20, -- how many suggestions should be shown in the list?
+    },
+    presets = {
+      operators = true, -- adds help for operators like d, y, ...
+      motions = true, -- adds help for motions
+      text_objects = true, -- help for text objects triggered after entering an operator
+      windows = true, -- default bindings on <c-w>
+      nav = true, -- misc bindings to work with windows
+      z = true, -- bindings for folds, spelling and others prefixed with z
+      g = true, -- bindings for prefixed with g
+    },
+  },
+  -- add operators that will trigger motion and text object completion
+  -- to enable all native operators, set the preset / operators plugin above
+  operators = { gc = 'Comments' },
+  motions = {
+    count = true,
+  },
+  icons = {
+    -- TODO: nonicons
+    breadcrumb = '»', -- symbol used in the command line area that shows your active key combo
+    separator = '➜', -- symbol used between a key and it's label
+    group = '+', -- symbol prepended to a group
+  },
+  ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
+  show_help = true, -- show a help message in the command line for using WhichKey
+  show_keys = true, -- show the currently pressed key and its label as a message in the command line
+  triggers = 'auto', -- automatically setup triggers
+  -- triggers = {"<leader>"} -- or specifiy a list manually
+  -- list of triggers, where WhichKey should not wait for timeoutlen and show immediately
+  triggers_nowait = {
+    -- marks
+    '`',
+    "'",
+    'g`',
+    "g'",
+    -- registers
+    '"',
+    '<c-r>',
+    -- spelling
+    'z=',
+  },
+  triggers_blacklist = {
+    -- list of mode / prefixes that should never be hooked by WhichKey
+    -- this is mostly relevant for keymaps that start with a native binding
+    i = { 'j', 'k' },
+    v = { 'j', 'k' },
+  },
+  -- disable the WhichKey popup for certain buf types and file types.
+  -- Disabled by default for Telescope
+  disable = {
+    buftypes = {},
+    filetypes = {},
+  },
   key_labels = {
     ['<space>'] = 'Space',
     ['<leader>'] = 'Leader(Space)',

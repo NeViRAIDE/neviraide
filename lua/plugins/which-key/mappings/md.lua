@@ -1,7 +1,8 @@
+local wk = require('which-key')
 local icon = require('neviraide-ui.icons.utils').icon
 
 return function(bufnr)
-  require('neviraide.utils').wk_reg({
+  wk.register({
     ['<leader>'] = {
       M = {
         '<cmd>MarkdownPreviewToggle<cr>',

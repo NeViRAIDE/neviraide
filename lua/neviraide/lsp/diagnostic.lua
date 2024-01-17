@@ -14,7 +14,6 @@ local function virt_text()
   end
 end
 
--- BUG: diagnostic sings icons not rendering in column
 local signs = {
   Error = i('', 'x-circle', 0, 1),
   Warn = i('', 'alert', 0, 1),

@@ -116,29 +116,29 @@ end
 --- @param value table keys
 function M.hi(name, value) vim.api.nvim_set_hl(0, name, value) end
 
-function M.wk_reg(...)
-  local args = { ... }
-  if_require(
-    'which-key',
-    function(wk) return wk.register(unpack(args)) end,
-    function(_)
-      vim.api.nvim_err_writeln(
-        'WhichKeys not installed; cannot apply mappings!'
-      )
-    end
-  )
-end
+-- function M.wk_reg(...)
+--   local args = { ... }
+--   if_require(
+--     'which-key',
+--     function(wk) return wk.register(unpack(args)) end,
+--     function(_)
+--       vim.api.nvim_err_writeln(
+--         'WhichKeys not installed; cannot apply mappings!'
+--       )
+--     end
+--   )
+-- end
 
----Wrapper for require('neviraide.mappings')
----@param keys? string
----@return function
-function M.mappings(keys)
-  if keys then
-    return require('neviraide.mappings.' .. keys)
-  else
-    return require('neviraide.mappings')
-  end
-end
+-- ---Wrapper for require('neviraide.mappings')
+-- ---@param keys? string
+-- ---@return function
+-- function M.mappings(keys)
+--   if keys then
+--     return require('neviraide.mappings.' .. keys)
+--   else
+--     return require('neviraide.mappings')
+--   end
+-- end
 
 ---@param direction string
 M.term_toggle = function(direction)
