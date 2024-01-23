@@ -1,7 +1,7 @@
 local i = require('neviraide-ui.icons.utils').icon
 
 return {
-  name = 'Buffers',
+  name = 'Buffers' .. i('b', 'tmux', 1),
   d = {
     name = 'Delete' .. i('', 'trash', 1),
     c = {
@@ -13,7 +13,10 @@ return {
       'All, except current',
     },
     A = {
-      function() require('neviraide-ui.buftabline').closeAllBufs() end,
+      function()
+        require('neviraide-ui.buftabline').closeAllBufs()
+        require('neviraide-ui.buftabline').close_buffer()
+      end,
       'All',
     },
     l = {

@@ -315,6 +315,19 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 
 <p>Feel free to contribute by opening issues or creating pull requests.</p>
 
+### Todo
+
+- [ ] make ui for non UI interfaces (for example servers or fresh installed arch)
+- [ ] dynamic settings
+  - [ ] color schemes auto changing
+  - [ ] setting all needed language tools when language added in NEVIRAIDE conf
+- [ ] modern IDE features
+  - statusline
+    - [ ] todos counter
+    - [ ] version of language interpreter
+
+---
+
 <h2 id='donations'  style="text-align: center;">DONATIONS</h2>
 
 > If you find this helpful and would like to support its development, you can buy me a coffee through the following platforms:

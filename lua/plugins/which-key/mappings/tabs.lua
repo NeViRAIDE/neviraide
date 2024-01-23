@@ -1,7 +1,7 @@
 local i = require('neviraide-ui.icons.utils').icon
 
 return {
-  name = 'Tabs',
+  name = 'Tabs' .. i('t', 'tab-external', 1),
   c = {
     name = 'Close' .. i('', 'trash', 1),
     c = {
