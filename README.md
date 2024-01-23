@@ -318,13 +318,19 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 ### Todo
 
 - [ ] make ui for non UI interfaces (for example servers or fresh installed arch)
-- [ ] dynamic settings
+- dynamic settings
   - [ ] color schemes auto changing
   - [ ] setting all needed language tools when language added in NEVIRAIDE conf
-- [ ] modern IDE features
+- modern IDE features
+  - [ ] settings ui (for example, nui window with parsed NEVIRAIDE conf)
   - statusline
     - [ ] todos counter
     - [ ] version of language interpreter
+- colorschemes
+  - [ ] make colors better (more readable on a different backgrounds)
+- [ ] more comfartable working with diffs
+- [ ] dynamic sizing
+- [ ] working with sessions
 
 ---
 
