@@ -3,7 +3,7 @@
 ---@type NeviraideConfig
 return {
   lang = { 'lua', 'rust', 'go' },
-  theme = 'Gruvbox-Retro',
+  theme = 'Synth-Wave',
   transparency = false,
   numbers_enabled = true,
   relative_numbers = true,
