@@ -1,6 +1,7 @@
 vim.g.mapleader = ' '
 
 require('lazy').setup({
+  { import = 'neviraide.deps' },
   { import = 'neviraide.ui' },
   { import = 'plugins' },
 }, {

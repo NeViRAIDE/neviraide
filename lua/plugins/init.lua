@@ -1,15 +1,11 @@
 local util = require('neviraide.utils')
 
 return {
-  { 'nvim-lua/plenary.nvim' },
-
-  { 'MunifTanjim/nui.nvim' },
-
   { 'wakatime/vim-wakatime', event = 'VeryLazy' },
 
   {
     'RAprogramm/nekifoch',
-    dir = '~/GitHub/nvim_plugins/nekifoch.nvim',
+    -- dir = '~/GitHub/nvim_plugins/nekifoch.nvim',
     cmd = 'Nekifoch',
     opts = {},
   },

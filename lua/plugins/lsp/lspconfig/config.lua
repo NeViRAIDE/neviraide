@@ -31,6 +31,7 @@ return function()
       end
     end,
     ['lua_ls'] = function(_) lspconfig.lua_ls.setup(server('lua')) end,
+    ['tsserver'] = function(_) lspconfig.tsserver.setup(server('ts_js')) end,
     -- ['gopls'] = function(_) lspconfig.gopls.setup(server('go')) end,
     -- ['rust_analyzer'] = function(_) lspconfig.rust_analyzer.setup(server('rs')) end,
     -- ['volar'] = function(_) lspconfig.volar.setup(server('vue')) end,
