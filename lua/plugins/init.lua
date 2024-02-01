@@ -1,6 +1,14 @@
 local util = require('neviraide.utils')
 
 return {
+  {
+    'rcarriga/nvim-notify',
+    opts = function()
+      dofile(vim.g.neviraide_themes_cache .. 'notify')
+      return { minimum_width = 10 }
+    end,
+  },
+
   { 'wakatime/vim-wakatime', event = 'VeryLazy' },
 
   {
