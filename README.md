@@ -27,18 +27,20 @@ _*<p>"Remember, Neovim is your canvas for shaping a personalized IDE or a serene
 <hr>
 
 <h2 id='participation'>YOUR PARTICIPATION</h2>
+</div>
 
-<div align="left">
+> [!IMPORTANT]  
+> Any types of participation is **absolutely voluntary**
 
-> [!IMPORTANT] 
-> Any types of participation is ==absolutely voluntary==
 
 <ul>
 <li>Issues</li>
 
 > [!TIP]
 > [UI](https://github.com/RAprogramm/neviraide-ui.nvim/issues) (Everything related to display and user interface).
+> 
 > [Installation](https://github.com/RAprogramm/neviraide-install/issues) (Everything related to installation process).
+> 
 > [Neivraide functions, workings and other](https://github.com/RAprogramm/NEVIRAIDE/issues)
 
 <li><a href='#contributing'>Contributing</a></li>
@@ -46,11 +48,12 @@ _*<p>"Remember, Neovim is your canvas for shaping a personalized IDE or a serene
 
 <li><a href='#donations'>Donations<a/></li>
 </ul>
-</div>
 <hr>
-
-</div>
+    
+<div align="center">
 <h2 id='startuptime'  style="text-align: center;">STARTUP TIME</h2>
+</div>
+
 <div>
 
 <table>
@@ -66,7 +69,9 @@ _*<p>"Remember, Neovim is your canvas for shaping a personalized IDE or a serene
 </div>
 <hr>
 
+<div align="center">
 <h2 id='dependencies'  style="text-align: center;">DEPENDENCIES</h2>
+</div>
 
 <table>
     <tr>
@@ -137,8 +142,9 @@ yay -S git nonicons ripgrep fd unzip wget curl gzip
 NEVIRALLER code [here](https://github.com/RAprogramm/neviraide-install).
 
 </div>
-
+<div align="center">
 <h2 id='plugins'  style="text-align: center;">USED PLUGINS</h2>
+</div>
 
 ### UI and Interface:
 
@@ -344,7 +350,9 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 
 </div>
 
+<div align="center">
 <h2 id='contributing'>Contributing</h2>
+</div>
 
 > [!TIP]
 > Feel free to contribute by opening issues or creating pull requests.
@@ -367,13 +375,14 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 - [ ] working with sessions
 
 ---
-
+<div align="center">
 <h2 id='donations'  style="text-align: center;">DONATIONS</h2>
+</div>
 
 > [!NOTE]
 > If you find this helpful and would like to support its development, you can buy me a coffee through the following platforms:
 
-<div style="text-align: center;">
+<div align="center">
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/rozanov)
 
