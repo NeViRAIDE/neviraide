@@ -5,23 +5,48 @@
 
 <br>
 
+&ensp;[<kbd> <br> Participation <br> </kbd>](#participation)&ensp;
 &ensp;[<kbd> <br> Startup time <br> </kbd>](#startuptime)&ensp;
 &ensp;[<kbd> <br> Dependencies <br> </kbd>](#dependencies)&ensp;
 &ensp;[<kbd> <br> Installation <br> </kbd>](#installation)&ensp;
 &ensp;[<kbd> <br> Used plugins <br> </kbd>](#plugins)&ensp;
 &ensp;[<kbd> <br> Themes <br> </kbd>](#themes)&ensp;
 &ensp;[<kbd> <br> Contributing <br> </kbd>](#contributing)&ensp;
+&ensp;[<kbd> <br> Todo <br> </kbd>](#todo)&ensp;
 &ensp;[<kbd> <br> Donations <br> </kbd>](#donations)&ensp;
 <br><br>
 
 <hr>
-<p>For Linux</p>
+<p>For Arch Linux</p>
 <p><strong>Crafting an IDE Oasis in Neovim</strong></p>
 
 https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/6ccc7571-e69c-4f14-95b7-e5ac68639ca7
 
 _*<p>"Remember, Neovim is your canvas for shaping a personalized IDE or a serene text sanctuary. Your desires and needs steer the way."</p>*_
 
+<hr>
+
+<h2 id='participation'>YOUR PARTICIPATION</h2>
+
+<div align="left">
+
+> [!IMPORTANT] 
+> Any types of participation is ==absolutely voluntary==
+
+<ul>
+<li>Issues</li>
+
+> [!TIP]
+> [UI](https://github.com/RAprogramm/neviraide-ui.nvim/issues) (Everything related to display and user interface).
+> [Installation](https://github.com/RAprogramm/neviraide-install/issues) (Everything related to installation process).
+> [Neivraide functions, workings and other](https://github.com/RAprogramm/NEVIRAIDE/issues)
+
+<li><a href='#contributing'>Contributing</a></li>
+<li><a href='https://github.com/RAprogramm/NEVIRAIDE/discussions'>Discussions</a></li>
+
+<li><a href='#donations'>Donations<a/></li>
+</ul>
+</div>
 <hr>
 
 </div>
@@ -230,6 +255,7 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 </li>
 </ul>
 
+> [!NOTE]
 > _*<p>Your Neovim journey, enriched by thoughtful choices, is a captivating exploration. Should you seek guidance or delve into the nuanced facets of your setup, our assistance is readily available. Don't hesitate to reach out!</p>*_
 
 ## Themes
@@ -318,11 +344,12 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 
 </div>
 
-<h2>Contributing</h2>
+<h2 id='contributing'>Contributing</h2>
 
-<p>Feel free to contribute by opening issues or creating pull requests.</p>
+> [!TIP]
+> Feel free to contribute by opening issues or creating pull requests.
 
-### Todo
+<h3 id='todo'>Todo</h3>
 
 - [ ] make ui for non UI interfaces (for example servers or fresh installed arch)
 - dynamic settings
@@ -343,6 +370,7 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 
 <h2 id='donations'  style="text-align: center;">DONATIONS</h2>
 
+> [!NOTE]
 > If you find this helpful and would like to support its development, you can buy me a coffee through the following platforms:
 
 <div style="text-align: center;">
