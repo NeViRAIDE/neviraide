@@ -50,6 +50,8 @@ utils.autocmd_multi('NEVIRAIDE_CONF', {
         'vue',
         'javascript',
         'typescript',
+        'javascriptreact',
+        'typescriptreact',
         'json',
         'htmldjango',
         'html',
