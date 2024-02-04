@@ -46,6 +46,8 @@ utils.autocmd_multi('NEVIRAIDE_CONF', {
     'FileType',
     {
       pattern = {
+        'toml',
+        'yaml',
         'lua',
         'vue',
         'javascript',
@@ -56,6 +58,7 @@ utils.autocmd_multi('NEVIRAIDE_CONF', {
         'htmldjango',
         'html',
         'css',
+        'scss',
       },
       desc = 'Set up indent size',
       callback = function()

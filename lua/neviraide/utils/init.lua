@@ -68,18 +68,6 @@ M.mason_path = function()
   end
 end
 
-local function if_require(module, block, errblock)
-  local ok, mod = pcall(require, module)
-  if ok then
-    return block(mod)
-  elseif errblock then
-    return errblock(mod)
-  else
-    vim.api.nvim_err_writeln('Failed to load ' .. module .. ': ' .. mod)
-    return nil
-  end
-end
-
 ---@param plugin string
 function M.has(plugin)
   return require('lazy.core.config').spec.plugins[plugin] ~= nil
@@ -103,7 +91,6 @@ function M.autocmd_multi(group, cmds, clear)
   end
 end
 
----@param fn fun()
 function M.on_very_lazy(fn)
   vim.api.nvim_create_autocmd('User', {
     pattern = 'VeryLazy',
@@ -111,36 +98,8 @@ function M.on_very_lazy(fn)
   })
 end
 
---- Set global highlight
---- @param name string highlight group
---- @param value table keys
 function M.hi(name, value) vim.api.nvim_set_hl(0, name, value) end
 
--- function M.wk_reg(...)
---   local args = { ... }
---   if_require(
---     'which-key',
---     function(wk) return wk.register(unpack(args)) end,
---     function(_)
---       vim.api.nvim_err_writeln(
---         'WhichKeys not installed; cannot apply mappings!'
---       )
---     end
---   )
--- end
-
--- ---Wrapper for require('neviraide.mappings')
--- ---@param keys? string
--- ---@return function
--- function M.mappings(keys)
---   if keys then
---     return require('neviraide.mappings.' .. keys)
---   else
---     return require('neviraide.mappings')
---   end
--- end
-
----@param direction string
 M.term_toggle = function(direction)
   local check =
     M.check_missing('nvterm.terminal', 'https://github.com/NvChad/nvterm')
@@ -149,8 +108,6 @@ M.term_toggle = function(direction)
   end
 end
 
----@param plugin string
----@param link? string
 function M.check_missing(plugin, link)
   local ok, check = pcall(require, plugin)
   local message = {
@@ -181,7 +138,6 @@ function M.check_missing(plugin, link)
   end
 end
 
----@return table
 M.icons = function()
   if vim.g.nonicons then
     return {
@@ -195,18 +151,17 @@ M.icons = function()
   }
 end
 
----Return plugins options
----@param plugin_name string
----@return function
 M.con = function(plugin_name)
   return require('plugins.' .. plugin_name .. '.config')
 end
 
----Return plugins options
----@param plugin_name string
----@return function
 M.opt = function(plugin_name)
   return require('plugins.' .. plugin_name .. '.options')
+end
+
+M.latest = function()
+  if vim.g.latest_plugins then return '*' end
+  return false
 end
 
 return M

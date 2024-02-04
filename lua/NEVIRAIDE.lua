@@ -2,6 +2,7 @@
 
 ---@type NeviraideConfig
 return {
+  latest = true,
   lang = { 'lua', 'rust', 'go' },
   theme = 'Gruvbox-Retro',
   transparency = false,
@@ -24,6 +25,6 @@ return {
   },
   font = {
     family = 'JetBrainsMono Nerd Font',
-    size = 14,
+    size = 13,
   },
 }

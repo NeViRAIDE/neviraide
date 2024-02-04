@@ -98,13 +98,14 @@ M.reload_config = function()
   reload_plenary('NEVIRAIDE')
   local config = NEVIRAIDE()
 
+  -- vim.g.blend = config.blend
+  -- vim.o.pumblend = config.blend
+
   vim.g.neviraide_theme = config.theme
   vim.g.transparency = config.transparency
-  -- vim.g.blend = config.blend
   vim.g.borders = config.border
   vim.g.nonicons = config.nonicons
   vim.o.cursorline = config.cursor_line
-  -- vim.o.pumblend = config.blend
   vim.o.cursorcolumn = config.cursor_column
   vim.o.number = config.numbers_enabled
   vim.o.relativenumber = config.relative_numbers

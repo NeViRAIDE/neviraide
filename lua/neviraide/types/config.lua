@@ -41,6 +41,8 @@
 ---@field lsp NeviraideLSP
 ---NeviraideFont.
 ---@field font NeviraideFont
+---Use latest plugins versions
+---@field latest boolean
 
 ---@class NeviraideFont
 ---Using terminal font.
@@ -55,6 +57,7 @@
 ---@class NeviraideDiagnostic
 ---Signs are defined for each diagnostic severity.
 ---The default text for each sign is the first letter
----of the severity name (for example, "E" for ERROR).
+---of the severity name (for example, "" ("E" in
+---non UI environment) for ERROR).
 ---@field signs boolean
 ---@field virtual_text boolean

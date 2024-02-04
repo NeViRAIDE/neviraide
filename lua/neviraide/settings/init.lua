@@ -1,22 +1,6 @@
-local g = vim.g
+require('neviraide.settings.global')
 local conf = NEVIRAIDE()
-
----@type string
-g.neviraide_themes_cache = vim.fn.stdpath('data') .. '/neviraide_ui/'
----@type HyprlandThemes
-g.neviraide_theme = conf.theme
----@type boolean
-g.transparency = conf.transparency
----@type BorderType
-g.borders = conf.border
----@type boolean
-g.nonicons = conf.nonicons
-
 local o = vim.opt
-
-for _, provider in ipairs({ 'node', 'perl', 'python3', 'ruby' }) do
-  g['loaded_' .. provider .. '_provider'] = 0
-end
 
 o.whichwrap:append('<>[]hl')
 o.shortmess:append({ W = true, I = true, c = true })

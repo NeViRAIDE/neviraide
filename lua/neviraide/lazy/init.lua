@@ -1,11 +1,11 @@
 vim.g.mapleader = ' '
 
 require('lazy').setup({
-  { import = 'neviraide.deps' },
-  { import = 'neviraide.ui' },
+  { import = 'neviraide.lazy.deps' },
+  { import = 'neviraide.lazy.ui' },
   { import = 'plugins' },
 }, {
-  defaults = { lazy = true, version = '*' },
+  defaults = { lazy = true, version = require('neviraide.utils').latest() },
   dev = { path = '~/GitHub/nvim_plugins' },
   ui = { border = vim.g.borders },
   checker = { enabled = true },
