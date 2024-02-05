@@ -2,6 +2,11 @@ vim.g.mapleader = ' '
 
 require('lazy').setup({
   { import = 'neviraide.lazy.deps' },
+  -- {
+  --   config = function()
+  --     require('neviraide.lazy.ui') -- Это загружает ваш модуль
+  --   end,
+  -- },
   { import = 'plugins' },
 }, {
   defaults = { lazy = true, version = require('neviraide.utils').latest() },
