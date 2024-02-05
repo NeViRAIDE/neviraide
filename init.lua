@@ -1,4 +1,4 @@
-require('update')
+require('update').check_for_updates()
 
 local utils = require('neviraide.utils')
 

@@ -1,4 +1,6 @@
-local function check_for_updates()
+local M = {}
+
+M.check_for_updates = function()
   local config_path = '~/.config/nvim'
 
   local fetch_cmd = 'cd ' .. config_path .. ' && git fetch'
@@ -12,7 +14,9 @@ local function check_for_updates()
     vim.notify(
       'NEVIRAIDE updates detected. Run `git pull` in ~/.config/nvim for updating.'
     )
+  else
+    vim.notify('Neviraide is up to date')
   end
 end
 
-return check_for_updates
+return M
