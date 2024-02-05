@@ -1,4 +1,4 @@
-local i = require('neviraide-ui.icons.utils').icon
+local i = require('neviraide.ui.neviraide-ui.icons.utils').icon
 
 return {
   ['<c-/>'] = {

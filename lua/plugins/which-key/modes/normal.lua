@@ -1,5 +1,5 @@
 local term_util = require('neviraide.utils').term_toggle
-local i = require('neviraide-ui.icons.utils').icon
+local i = require('neviraide.ui.neviraide-ui.icons.utils').icon
 
 return {
   d = {
@@ -39,11 +39,11 @@ return {
   },
 
   ['<tab>'] = {
-    function() require('neviraide-ui.buftabline').tabuflineNext() end,
+    function() require('neviraide.ui.neviraide-ui.buftabline').tabuflineNext() end,
     'Goto to the next buffer',
   },
   ['<S-tab>'] = {
-    function() require('neviraide-ui.buftabline').tabuflinePrev() end,
+    function() require('neviraide.ui.neviraide-ui.buftabline').tabuflinePrev() end,
     'Goto to the previous buffer',
   },
 
@@ -106,7 +106,7 @@ return {
     },
 
     N = {
-      '<cmd>lua require("neviraide-ui.utils.new_file")()<cr>',
+      '<cmd>lua require("neviraide.ui.neviraide-ui.utils.new_file")()<cr>',
       'New file' .. i('', 'plus-circle', 1),
     },
   },

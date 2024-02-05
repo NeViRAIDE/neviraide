@@ -1,4 +1,4 @@
-local i = require('neviraide-ui.icons.utils').icon
+local i = require('neviraide.ui.neviraide-ui.icons.utils').icon
 
 return {
   name = 'Tabs' .. i('t', 'tab-external', 1),
@@ -40,14 +40,14 @@ return {
     function()
       local number_of_tabs = vim.fn.tabpagenr('$')
       if number_of_tabs > 1 then
-        require('neviraide-ui.utils.set_tab_name')()
+        require('neviraide.ui.neviraide-ui.utils.set_tab_name')()
       end
     end,
     'Rename',
   },
   t = {
     function()
-      require('neviraide-ui.buftabline.modules.components').toggle_tabs()
+      require('neviraide.ui.neviraide-ui.buftabline.modules.components').toggle_tabs()
     end,
     'Toggle tabs panel',
   },

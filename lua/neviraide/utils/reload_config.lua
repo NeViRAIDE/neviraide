@@ -1,7 +1,7 @@
 local M = {}
 
 local function refresh_highlights()
-  require('neviraide-ui.themes').load_all_highlights()
+  require('neviraide.ui.neviraide-ui.themes').load_all_highlights()
 end
 
 ---Reload module with plenary
@@ -45,7 +45,8 @@ M.reload_transparency = function()
   reload_plenary({ 'plugins.config.telescope', 'plugins.config.whichkey' })
   refresh_highlights()
   reload_lazy({ 'nvim-web-devicons', 'telescope.nvim', 'which-key.nvim' })
-  vim.opt.tabline = "%!v:lua.require('neviraide-ui.buftabline.modules')()"
+  vim.opt.tabline =
+    "%!v:lua.require('neviraide.ui.neviraide-ui.buftabline.modules')()"
   info('transparency')
 end
 
@@ -77,8 +78,8 @@ M.reload_icons = function()
     'plugins.config.whichkey',
     'plugins.config.lsp.mason',
     'plugins.config.lsp.options',
-    'neviraide-ui.statusline',
-    'neviraide-ui.buftabline.modules',
+    'neviraide.ui.neviraide-ui.statusline',
+    'neviraide.ui.neviraide-ui.buftabline.modules',
   })
   refresh_highlights()
   reload_lazy({
@@ -88,8 +89,10 @@ M.reload_icons = function()
     'mason.nvim',
   })
 
-  vim.opt.statusline = "%!v:lua.require('neviraide-ui.statusline').run()"
-  vim.opt.tabline = "%!v:lua.require('neviraide-ui.buftabline.modules')()"
+  vim.opt.statusline =
+    "%!v:lua.require('neviraide.ui.neviraide-ui.statusline').run()"
+  vim.opt.tabline =
+    "%!v:lua.require('neviraide.ui.neviraide-ui.buftabline.modules')()"
 
   info('icons')
 end
@@ -118,8 +121,8 @@ M.reload_config = function()
     'plugins.config.whichkey',
     'plugins.config.lsp.mason',
     'plugins.config.lsp.options',
-    'neviraide-ui.statusline',
-    'neviraide-ui.buftabline.modules',
+    'neviraide.ui.neviraide-ui.statusline',
+    'neviraide.ui.neviraide-ui.buftabline.modules',
   })
   refresh_highlights()
   reload_lazy({
@@ -129,8 +132,10 @@ M.reload_config = function()
     'gitsigns.nvim',
   })
 
-  vim.opt.statusline = "%!v:lua.require('neviraide-ui.statusline').run()"
-  vim.opt.tabline = "%!v:lua.require('neviraide-ui.buftabline.modules')()"
+  vim.opt.statusline =
+    "%!v:lua.require('neviraide.ui.neviraide-ui.statusline').run()"
+  vim.opt.tabline =
+    "%!v:lua.require('neviraide.ui.neviraide-ui.buftabline.modules')()"
 
   info('config')
 end

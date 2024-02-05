@@ -4,7 +4,7 @@ return function()
   ---@type table
   local border = load('return ' .. NEVIRAIDE().borderchars)()
 
-  local icon = require('neviraide-ui.icons.utils').icon
+  local icon = require('neviraide.ui.neviraide-ui.icons.utils').icon
 
   local action = require('telescope.actions')
   local action_layout = require('telescope.actions.layout')

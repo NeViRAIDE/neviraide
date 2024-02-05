@@ -1,5 +1,5 @@
 local term_util = require('neviraide.utils').term_toggle
-local i = require('neviraide-ui.icons.utils').icon
+local i = require('neviraide.ui.neviraide-ui.icons.utils').icon
 
 return {
   ['<a-h>'] = {

@@ -1,4 +1,4 @@
-local icon = require('neviraide-ui.icons.utils').icon
+local icon = require('neviraide.ui.neviraide-ui.icons.utils').icon
 
 return {
   name = 'Color Picker' .. icon('', 'paintbrush', 1),

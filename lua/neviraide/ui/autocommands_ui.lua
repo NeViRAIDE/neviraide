@@ -1,7 +1,7 @@
 ---@diagnostic disable: need-check-nil
 
 local api = vim.api
-local autocmd = require('neviraide.ui.neviraide.utils').autocmd
+local autocmd = require('neviraide.utils').autocmd
 
 autocmd('NEVIRAIDE_dashresized', 'VimResized', {
   callback = function()
@@ -18,7 +18,7 @@ autocmd('NEVIRAIDE_lspprog', 'User', {
   callback = function() vim.cmd('redrawstatus') end,
 })
 
--- FIX: set darder bg for help
+-- FIX: set darker bg for help
 autocmd('NeviraideHelpDarkerBG', 'FileType', {
   pattern = 'help',
   callback = function()

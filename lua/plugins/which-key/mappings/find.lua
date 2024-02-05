@@ -1,4 +1,4 @@
-local icon = require('neviraide-ui.icons.utils').icon
+local icon = require('neviraide.ui.neviraide-ui.icons.utils').icon
 
 return {
   name = 'Find' .. icon('', 'search', 1, 1),

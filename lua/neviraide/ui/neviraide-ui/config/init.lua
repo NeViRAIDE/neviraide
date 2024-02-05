@@ -69,7 +69,7 @@ function M.setup(options)
     M.options.popupmenu.kind_icons = {}
   end
 
-  require('nneviraide.ui.eviraide-ui.config.cmdline').setup()
+  require('neviraide.ui.neviraide-ui.config.cmdline').setup()
 
   M.options.routes = Routes.get(M.options.routes)
 

@@ -1,7 +1,7 @@
 return function()
   dofile(vim.g.ntc .. 'neotree')
 
-  local icon = require('neviraide-ui.icons.utils').icon
+  local icon = require('neviraide.ui.neviraide-ui.icons.utils').icon
   local fc = require('neo-tree.sources.filesystem.components')
 
   local function borders()

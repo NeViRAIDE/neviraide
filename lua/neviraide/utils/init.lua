@@ -141,13 +141,13 @@ end
 M.icons = function()
   if vim.g.n then
     return {
-      global = require('neviraide-ui.icons.nonicons'),
-      lspkind = require('neviraide-ui.icons.nonicons.lspkind'),
+      global = require('neviraide.ui.neviraide-ui.icons.nonicons'),
+      lspkind = require('neviraide.ui.neviraide-ui.icons.nonicons.lspkind'),
     }
   end
   return {
-    global = require('neviraide-ui.icons.devicons'),
-    lspkind = require('neviraide-ui.icons.devicons.lspkind'),
+    global = require('neviraide.ui.neviraide-ui.icons.devicons'),
+    lspkind = require('neviraide.ui.neviraide-ui.icons.devicons.lspkind'),
   }
 end
 
