@@ -1,5 +1,3 @@
-require('update').check_for_updates()
-
 local utils = require('neviraide.utils')
 
 ---Returns all data from main configuration file as table.
