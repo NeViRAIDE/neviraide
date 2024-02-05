@@ -1,5 +1,5 @@
 return function()
-  dofile(vim.g.neviraide_themes_cache .. 'telescope')
+  dofile(vim.g.ntc .. 'telescope')
 
   ---@type table
   local border = load('return ' .. NEVIRAIDE().borderchars)()

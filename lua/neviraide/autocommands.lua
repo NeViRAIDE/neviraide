@@ -167,4 +167,3 @@ utils.autocmd('NEVIRAIDE_transparency', 'ColorScheme', {
   end,
 })
 
-require('neviraide.lsp.autocommands')

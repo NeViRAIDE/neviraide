@@ -1,11 +1,11 @@
 return function()
   local icon = require('neviraide-ui.icons.utils').icon
 
-  dofile(vim.g.neviraide_themes_cache .. 'mason')
+  dofile(vim.g.ntc .. 'mason')
 
   require('mason').setup({
     ui = {
-      border = vim.g.borders,
+      border = vim.g.b,
       width = 0.6,
       height = 0.8,
       icons = {

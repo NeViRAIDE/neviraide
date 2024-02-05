@@ -2,7 +2,7 @@
 
 ---@type NeviraideConfig
 return {
-  latest = true,
+  latest_plugins = true,
   lang = { 'lua', 'rust', 'go' },
   theme = 'Gruvbox-Retro',
   transparency = false,
@@ -17,10 +17,13 @@ return {
   gitsigns_current_line_blame = false,
   gitsigns_signs = true,
   lsp = {
+    format_before_save = true,
     inlay_hints = true,
+    code_lenses = true,
     diagnostic = {
       signs = true,
       virtual_text = false,
+      show_on_hover = true,
     },
   },
   font = {

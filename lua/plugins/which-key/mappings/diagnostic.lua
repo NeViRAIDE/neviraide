@@ -14,7 +14,7 @@ return function(client, bufnr)
           function()
             vim.diagnostic.open_float(nil, {
               focusable = true,
-              border = require('neviraide.lsp.options').diagnostic.float.border,
+              border = vim.g.b,
             })
           end,
           'Show diagnostic on line',

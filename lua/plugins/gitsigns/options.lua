@@ -1,4 +1,4 @@
-dofile(vim.g.neviraide_themes_cache .. 'git')
+dofile(vim.g.ntc .. 'git')
 
 return {
   signcolumn = NEVIRAIDE().gitsigns_signs,
@@ -11,7 +11,7 @@ return {
     changedelete = { text = '~' },
     untracked = { text = '│' },
   },
-  preview_config = { border = vim.g.borders },
+  preview_config = { border = vim.g.b },
   current_line_blame = NEVIRAIDE().gitsigns_current_line_blame,
   current_line_blame_opts = {
     virt_text = true,

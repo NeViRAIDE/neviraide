@@ -1,8 +1,8 @@
 local utils = require('plugins.treesitter.utils')
 
 return function(_, opts)
-  dofile(vim.g.neviraide_themes_cache .. 'syntax')
-  dofile(vim.g.neviraide_themes_cache .. 'treesitter')
+  dofile(vim.g.ntc .. 'syntax')
+  dofile(vim.g.ntc .. 'treesitter')
   require('nvim-treesitter.configs').setup(opts)
 
   local function add(lang)

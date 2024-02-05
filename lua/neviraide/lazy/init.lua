@@ -7,7 +7,7 @@ require('lazy').setup({
 }, {
   defaults = { lazy = true, version = require('neviraide.utils').latest() },
   dev = { path = '~/GitHub/nvim_plugins' },
-  ui = { border = vim.g.borders },
+  ui = { border = vim.g.b },
   checker = { enabled = true },
   performance = {
     rtp = {

@@ -4,7 +4,7 @@ return {
   {
     'rcarriga/nvim-notify',
     opts = function()
-      dofile(vim.g.neviraide_themes_cache .. 'notify')
+      dofile(vim.g.ntc .. 'notify')
       return { minimum_width = 10 }
     end,
   },
@@ -22,7 +22,7 @@ return {
     'nvim-tree/nvim-web-devicons',
     opts = function() return { override = util.icons().global } end,
     config = function(_, opts)
-      dofile(vim.g.neviraide_themes_cache .. 'icons')
+      dofile(vim.g.ntc .. 'icons')
       require('nvim-web-devicons').setup(opts)
     end,
   },
@@ -57,7 +57,7 @@ return {
     opts = {
       terminals = {
         type_opts = {
-          float = { border = vim.g.borders },
+          float = { border = vim.g.b },
         },
       },
     },
@@ -248,7 +248,7 @@ return {
       local null_ls = require('null-ls')
       require('crates').setup({
         popup = {
-          border = vim.g.borders,
+          border = vim.g.b,
         },
         null_ls = {
           enabled = true,

@@ -4,11 +4,9 @@ local utils = require('neviraide.utils')
 ---@return NeviraideConfig
 _G.NEVIRAIDE = function()
   local ok, config = pcall(require, 'NEVIRAIDE')
-  if ok then
-    return config
-  else
-    vim.notify('ERROR: ' .. config)
-    vim.notify([[
+  if ok then return config end
+  vim.notify('ERROR: ' .. config)
+  vim.notify([[
 
     #############################################################
     #                                                           #
@@ -17,7 +15,6 @@ _G.NEVIRAIDE = function()
     #                                                           #
     #############################################################
   ]])
-  end
 end
 
 require('neviraide.settings')
@@ -40,4 +37,4 @@ utils.mason_path()
 
 require('neviraide.lazy')
 
-dofile(vim.g.neviraide_themes_cache .. 'defaults')
+dofile(vim.g.ntc .. 'defaults')

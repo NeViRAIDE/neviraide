@@ -1,11 +1,11 @@
 return function()
-  dofile(vim.g.neviraide_themes_cache .. 'neotree')
+  dofile(vim.g.ntc .. 'neotree')
 
   local icon = require('neviraide-ui.icons.utils').icon
   local fc = require('neo-tree.sources.filesystem.components')
 
   local function borders()
-    local b = vim.g.borders
+    local b = vim.g.b
     if b == 'none' or b == 'shadow' then return 'single' end
   end
 

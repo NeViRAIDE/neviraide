@@ -1,5 +1,5 @@
 return function()
-  dofile(vim.g.neviraide_themes_cache .. 'dap')
+  dofile(vim.g.ntc .. 'dap')
 
   local dap = require('dap')
   local dapui = require('dapui')

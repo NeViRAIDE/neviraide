@@ -2,7 +2,7 @@ local utils = require('neviraide.utils')
 
 require('plugins.which-key.mappings')()
 
-dofile(vim.g.neviraide_themes_cache .. 'whichkey')
+dofile(vim.g.ntc .. 'whichkey')
 
 return {
   plugins = {
@@ -103,7 +103,7 @@ return {
   popup_mappings = { scroll_down = '<c-j>', scroll_up = '<c-k>' },
   window = {
     winblend = vim.g.blend,
-    border = vim.g.borders,
+    border = vim.g.b,
     margin = { 1, 5, 1, 5 },
   },
   layout = {

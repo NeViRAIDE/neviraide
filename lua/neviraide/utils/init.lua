@@ -139,7 +139,7 @@ function M.check_missing(plugin, link)
 end
 
 M.icons = function()
-  if vim.g.nonicons then
+  if vim.g.n then
     return {
       global = require('neviraide-ui.icons.nonicons'),
       lspkind = require('neviraide-ui.icons.nonicons.lspkind'),
@@ -160,7 +160,7 @@ M.opt = function(plugin_name)
 end
 
 M.latest = function()
-  if vim.g.latest_plugins then return '*' end
+  if vim.g.lp then return '*' end
   return false
 end
 

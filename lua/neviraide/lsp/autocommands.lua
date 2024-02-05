@@ -1,4 +1,9 @@
 local utils = require('neviraide.utils')
+local diagnostic = require('neviraide.lsp.diagnostic')
+local diagnostic_mappings = require('plugins.which-key.mappings.diagnostic')
+local g = vim.g
+local vl = vim.lsp
+local vlb = vim.lsp.buf
 
 utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
   callback = function(args)
@@ -6,17 +11,19 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
     ---@type number
     local buffer = args.buf
 
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local client = vl.get_client_by_id(args.data.client_id)
 
     if client ~= nil then
       -- utils.mappings('lsp')(buffer)
 
-      require('neviraide.lsp.diagnostic').setup()
-      require('plugins.which-key.mappings.diagnostic')(buffer)
+      diagnostic()
+      diagnostic_mappings(buffer)
 
-      -- enable inlay hints
-      if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(args.buf, true)
+      if g.l_ih then
+        -- enable inlay hints
+        if client.server_capabilities.inlayHintProvider then
+          vl.inlay_hint.enable(args.buf, true)
+        end
       end
 
       -- enable document symbol highlighting
@@ -27,7 +34,7 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
             {
               buffer = buffer,
               desc = "Visual highlighting sybmol's references in document when cursor hold on it",
-              callback = function() vim.lsp.buf.document_highlight() end,
+              callback = function() vlb.document_highlight() end,
             },
           },
           {
@@ -35,45 +42,51 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
             {
               buffer = buffer,
               desc = "Reset visual highlighting sybmol's references in document when cursor moved",
-              callback = function() vim.lsp.buf.clear_references() end,
+              callback = function() vlb.clear_references() end,
             },
           },
         })
       end
 
-      -- enable codelenses
-      if client.server_capabilities.codeLensProvider then
-        utils.autocmd('NEVIRAIDE_codelens', { 'BufEnter', 'InsertLeave' }, {
-          buffer = buffer,
-          callback = function() vim.lsp.codelens.refresh() end,
-        })
+      if g.l_cl then
+        -- enable codelenses
+        if client.server_capabilities.codeLensProvider then
+          utils.autocmd('NEVIRAIDE_codelens', { 'BufEnter', 'InsertLeave' }, {
+            buffer = buffer,
+            callback = function() vl.codelens.refresh() end,
+          })
+        end
       end
     end
 
-    -- enable auto format file before save
-    utils.autocmd('NEVIRAIDE_auto_format', 'BufWritePre', {
-      buffer = buffer,
-      callback = function() vim.lsp.buf.format() end,
-    })
+    if g.l_fbs then
+      -- enable auto format file before save
+      utils.autocmd('NEVIRAIDE_auto_format', 'BufWritePre', {
+        buffer = buffer,
+        callback = function() vlb.format() end,
+      })
+    end
 
-    -- enable auto show diagnostics
-    utils.autocmd('NEVIRAIDE_auto_diag', 'CursorHold', {
-      buffer = buffer,
-      callback = function()
-        vim.diagnostic.open_float(nil, {
-          focusable = false,
-          close_events = {
-            'BufLeave',
-            'CursorMoved',
-            'InsertEnter',
-            'FocusLost',
-          },
-          border = vim.g.borders,
-          source = 'if_many',
-          prefix = ' ',
-          scope = 'cursor',
-        })
-      end,
-    })
+    if g.l_d_soh then
+      -- enable auto show diagnostics
+      utils.autocmd('NEVIRAIDE_auto_diag', 'CursorHold', {
+        buffer = buffer,
+        callback = function()
+          vim.diagnostic.open_float(nil, {
+            focusable = false,
+            close_events = {
+              'BufLeave',
+              'CursorMoved',
+              'InsertEnter',
+              'FocusLost',
+            },
+            border = g.b,
+            source = 'if_many',
+            prefix = ' ',
+            scope = 'cursor',
+          })
+        end,
+      })
+    end
   end,
 })

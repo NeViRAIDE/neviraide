@@ -41,8 +41,8 @@
 ---@field lsp NeviraideLSP
 ---NeviraideFont.
 ---@field font NeviraideFont
----Use latest plugins versions
----@field latest boolean
+---Using the latest plugins versions.
+---@field latest_plugins boolean
 
 ---@class NeviraideFont
 ---Using terminal font.
@@ -52,12 +52,19 @@
 
 ---@class NeviraideLSP
 ---@field inlay_hints boolean
+---@field code_lenses boolean
 ---@field diagnostic NeviraideDiagnostic
+---Automatically format file before saving.
+---@field format_before_save boolean
 
 ---@class NeviraideDiagnostic
 ---Signs are defined for each diagnostic severity.
----The default text for each sign is the first letter
----of the severity name (for example, "" ("E" in
----non UI environment) for ERROR).
+---(for example, "" ("E" in non UI environment)
+---for ERROR).
 ---@field signs boolean
+---Text contents of the error near
+---its location.
 ---@field virtual_text boolean
+---Show a floating diagnostic window
+---when hovering over a problem location.
+---@field show_on_hover boolean

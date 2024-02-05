@@ -1,5 +1,5 @@
 return function()
-  dofile(vim.g.neviraide_themes_cache .. 'cmp')
+  dofile(vim.g.ntc .. 'cmp')
 
   local cmp = require('cmp')
   local luasnip = require('luasnip')
@@ -10,10 +10,10 @@ return function()
     },
     window = {
       completion = {
-        border = vim.g.borders,
+        border = vim.g.b,
         winhighlight = 'Normal:CmpPmenu,CursorLine:CmpSel,Search:None',
       },
-      documentation = { border = vim.g.borders },
+      documentation = { border = vim.g.b },
     },
     select_behavior = cmp.SelectBehavior.Insert,
     mapping = cmp.mapping.preset.insert({

@@ -41,7 +41,7 @@ end
 
 M.reload_transparency = function()
   reload_plenary('NEVIRAIDE')
-  vim.g.transparency = NEVIRAIDE().transparency
+  vim.g.t = NEVIRAIDE().transparency
   reload_plenary({ 'plugins.config.telescope', 'plugins.config.whichkey' })
   refresh_highlights()
   reload_lazy({ 'nvim-web-devicons', 'telescope.nvim', 'which-key.nvim' })
@@ -51,7 +51,7 @@ end
 
 M.reload_borders = function()
   reload_plenary('NEVIRAIDE')
-  vim.g.borders = NEVIRAIDE().border
+  vim.g.b = NEVIRAIDE().border
   reload_plenary({
     'plugins.config.telescope',
     'plugins.config.whichkey',
@@ -70,7 +70,7 @@ end
 
 M.reload_icons = function()
   reload_plenary('NEVIRAIDE')
-  vim.g.nonicons = NEVIRAIDE().nonicons
+  vim.g.n = NEVIRAIDE().nonicons
 
   reload_plenary({
     'plugins.config.telescope',
@@ -101,10 +101,10 @@ M.reload_config = function()
   -- vim.g.blend = config.blend
   -- vim.o.pumblend = config.blend
 
-  vim.g.neviraide_theme = config.theme
-  vim.g.transparency = config.transparency
-  vim.g.borders = config.border
-  vim.g.nonicons = config.nonicons
+  vim.g.nt = config.theme
+  vim.g.t = config.transparency
+  vim.g.b = config.border
+  vim.g.n = config.nonicons
   vim.o.cursorline = config.cursor_line
   vim.o.cursorcolumn = config.cursor_column
   vim.o.number = config.numbers_enabled
