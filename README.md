@@ -1,8 +1,30 @@
 <div align="center">
+
 <img title="NEVIRAIDE" alt="NEoVIm Rozanov Andrei Integrated Development Environment" src="./.preview/logo.png">
 
----
+<hr>
 
+<!-- <img alt="GitHub Release" src="https://img.shields.io/github/v/release/RAprogramm/NEVIRAIDE"> -->
+<img alt="GitHub issues" src="https://img.shields.io/github/issues/RAprogramm/NEVIRAIDE">
+<img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/RAprogramm/NEVIRAIDE">
+
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/RAprogramm/NEVIRAIDE">
+
+<!-- <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/RAprogramm/NEVIRAIDE/total"> -->
+
+<!-- <img alt="AUR Version" src="https://img.shields.io/aur/version/neviraide"> -->
+<!-- <img alt="AUR Votes" src="https://img.shields.io/aur/votes/neviraide"> -->
+<!-- <img alt="AUR Last Modified" src="https://img.shields.io/aur/last-modified/neviraide"> -->
+
+<!-- <img alt="GitHub Tag" src="https://img.shields.io/github/v/tag/RAprogramm/NEVIRAIDE"> -->
+<img alt="GitHub License" src="https://img.shields.io/github/license/RAprogramm/NEVIRAIDE">
+
+<!-- <img alt="GitHub watchers" src="https://img.shields.io/github/watchers/RAprogramm/NEVIRAIDE"> -->
+<img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/RAprogramm/NEVIRAIDE">
+<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/RAprogramm/NEVIRAIDE">
+<!-- <img alt="GitHub forks" src="https://img.shields.io/github/forks/RAprogramm/NEVIRAIDE"> -->
+
+<hr>
 <br>
 
 &ensp;[<kbd> <br> Participation <br> </kbd>](#participation)&ensp;
