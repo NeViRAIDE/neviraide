@@ -4,8 +4,6 @@ vim.api.nvim_create_autocmd('VimEnter', {
       require('neviraide.ui.neviraide-ui.config').options
     )
 
-    require('neviraide.ui.neviraide-ui.buftabline.lazyload')
-
     vim.defer_fn(function()
       local bufs = vim.api.nvim_list_bufs()
 
@@ -21,5 +19,14 @@ vim.api.nvim_create_autocmd('VimEnter', {
     require('neviraide.ui.autocommands_ui')
 
     require('neviraide.ui.neviraide-ui.themes').load_all_highlights()
+  end,
+})
+
+vim.api.nvim_create_autocmd('BufRead', {
+  callback = function()
+    require('neviraide.ui.neviraide-ui.buftabline.lazyload')
+
+    require('neviraide.ui.neviraide-ui.override_vim_ui.input')
+    require('neviraide.ui.neviraide-ui.override_vim_ui.select')
   end,
 })

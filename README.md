@@ -56,15 +56,17 @@ _*<p>"Remember, Neovim is your canvas for shaping a personalized IDE or a serene
 
 <div>
 
-<table>
-    <tr>
-        <td><img src="./.preview/startup/speed2.png"></td>
-        <td><img src="./.preview/startup/speed1.png"></td>
-    </tr>
-    <tr>
-        <img align="center" src="./.preview/startup/speed3.png">
-    </tr>
-</table>
+<p align="center">
+  <img src="./.preview/startup/speed3.png" width="800"/>
+</p>
+<p align="center">
+  <a href="https://github.com/RAprogramm">
+    <img src="./.preview/startup/speed2.png" width="400"/> 
+  </a>
+  <a href="https://github.com/RAprogramm">
+    <img src="./.preview/startup/speed1.png" width="400"/> 
+  </a>
+</p>
 
 </div>
 <hr>
