@@ -131,6 +131,11 @@ yay -S git nonicons ripgrep fd unzip wget curl gzip
 ```
 
 <h2 id='installation'  style="text-align: center;">INSTALLATION</h2>
+
+> ![IMPORTANT] I'M CURRENTLY TRYING TO FIND A BETTER WAY TO INSTALL AUTOMATICALLY.
+> NEVIRALLER DOES NOT WORK NOW. PLEASE INSTALL EVERYTHING MANUALLY.
+> I WILL BE HAPPY TO ANSWER ALL YOUR QUESTIONS
+
 <div>
 
 1. Download [NEVIRALLER](https://github.com/RAprogramm/neviraide-install/releases/download/v1.0.0/NEVIRALLER)
