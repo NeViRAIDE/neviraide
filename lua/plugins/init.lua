@@ -12,8 +12,8 @@ return {
   { 'wakatime/vim-wakatime', event = 'VeryLazy' },
 
   {
-    'RAprogramm/nekifoch',
-    -- dir = '~/GitHub/nvim_plugins/nekifoch.nvim',
+    -- 'RAprogramm/nekifoch',
+    dir = '~/GitHub/nvim_plugins/nekifoch.nvim',
     cmd = 'Nekifoch',
     opts = {},
   },
