@@ -136,6 +136,13 @@ yay -S git nonicons ripgrep fd unzip wget curl gzip
 > NEVIRALLER DOES NOT WORK NOW. PLEASE INSTALL EVERYTHING MANUALLY.
 > I WILL BE HAPPY TO ANSWER ALL YOUR QUESTIONS
 
+> ![TIP] NOW YOU CAN UPDATE NEVIRAIDE
+>
+> in `~/.config/nvim`
+> ```sh
+>lua update.lua
+> ```
+
 <div>
 
 1. Download [NEVIRALLER](https://github.com/RAprogramm/neviraide-install/releases/download/v1.0.0/NEVIRALLER)
