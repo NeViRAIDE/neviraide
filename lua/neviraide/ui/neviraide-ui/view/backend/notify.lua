@@ -175,7 +175,7 @@ function NotifyView:_notify(msg)
             },
           },
           title_pos = 'center',
-          border = vim.g.borders,
+          border = vim.g.b,
         })
       end
     end,

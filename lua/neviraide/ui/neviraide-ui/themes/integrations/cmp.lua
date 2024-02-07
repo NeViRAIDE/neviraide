@@ -53,11 +53,7 @@ highlights = vim.tbl_deep_extend(
 )
 highlights = vim.tbl_deep_extend('force', highlights, item_kinds)
 
-if
-  vim.g.borders == 'rounded'
-  or vim.g.borders == 'single'
-  or vim.g.borders == 'double'
-then
+if vim.g.b == 'rounded' or vim.g.b == 'single' or vim.g.b == 'double' then
   highlights.CmpPmenu = { bg = 'none' }
 end
 

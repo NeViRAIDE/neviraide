@@ -10,7 +10,7 @@ local border_chars_list = {
 
 ---@param border 'none'|'single'|'double'|'rounded'|'solid'|'shadow'
 M.set_borders = function(border)
-  vim.g.border = border
+  vim.g.b = border
 
   ---@type string
   local chars

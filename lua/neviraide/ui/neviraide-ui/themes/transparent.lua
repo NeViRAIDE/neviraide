@@ -41,11 +41,7 @@ for _, groups in ipairs(hl_groups) do
   }
 end
 
-if
-  vim.g.borders == 'rounded'
-  or vim.g.borders == 'single'
-  or vim.g.borders == 'double'
-then
+if vim.g.b == 'rounded' or vim.g.b == 'single' or vim.g.b == 'double' then
   for _, groups in ipairs(hl_borderless) do
     M[groups] = {
       bg = 'none',

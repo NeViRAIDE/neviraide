@@ -4,11 +4,7 @@ local accent = require('neviraide.ui.neviraide-ui.hyprland.utils').wb_colors
 
 ---@return string
 local function telescope_style()
-  if
-    vim.g.borders == 'none'
-    or vim.g.borders == 'shadow'
-    or vim.g.borders == 'solid'
-  then
+  if vim.g.b == 'none' or vim.g.b == 'shadow' or vim.g.b == 'solid' then
     return 'borderless'
   end
   return 'bordered'
