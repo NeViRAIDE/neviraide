@@ -8,7 +8,7 @@ end
 
 ---@return table
 local function popup_bg()
-  local vgb = vim.g.borders
+  local vgb = vim.g.b
   local opts = {
     winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
   }
@@ -22,7 +22,7 @@ end
 ---file and return table with border settings.
 ---@param text? table required for LSP rename
 local function nui_border(text)
-  local vgb = vim.g.borders
+  local vgb = vim.g.b
   local border = {
     style = vgb,
     padding = { 0, 1 },

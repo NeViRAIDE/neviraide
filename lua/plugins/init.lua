@@ -1,30 +1,14 @@
 local util = require('neviraide.utils')
 
 return {
-  {
-    'rcarriga/nvim-notify',
-    opts = function()
-      dofile(vim.g.ntc .. 'notify')
-      return { minimum_width = 10 }
-    end,
-  },
 
   { 'wakatime/vim-wakatime', event = 'VeryLazy' },
 
   {
-    -- 'RAprogramm/nekifoch',
-    dir = '~/GitHub/nvim_plugins/nekifoch.nvim',
+    'RAprogramm/nekifoch',
+    -- dir = '~/GitHub/nvim_plugins/nekifoch.nvim',
     cmd = 'Nekifoch',
     opts = {},
-  },
-
-  {
-    'nvim-tree/nvim-web-devicons',
-    opts = function() return { override = util.icons().global } end,
-    config = function(_, opts)
-      dofile(vim.g.ntc .. 'icons')
-      require('nvim-web-devicons').setup(opts)
-    end,
   },
 
   {
@@ -99,7 +83,7 @@ return {
 
   {
     'neovim/nvim-lspconfig',
-    version = false,
+    -- version = false,
     event = { 'BufReadPre', 'BufNewFile', 'BufAdd' },
     dependencies = {
       { 'Bekaboo/dropbar.nvim', opts = util.opt('dropbar') },
