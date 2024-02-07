@@ -1,7 +1,6 @@
 local util = require('neviraide.utils')
 
 return {
-
   { 'wakatime/vim-wakatime', event = 'VeryLazy' },
 
   {
@@ -9,13 +8,6 @@ return {
     -- dir = '~/GitHub/nvim_plugins/nekifoch.nvim',
     cmd = 'Nekifoch',
     opts = {},
-  },
-
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    event = { 'BufReadPost', 'BufNewFile' },
-    opts = util.opt('ui.indent-blankline'),
-    config = util.con('ui.indent-blankline'),
   },
 
   {
@@ -77,11 +69,6 @@ return {
   },
 
   {
-    'HiPhish/rainbow-delimiters.nvim',
-    event = { 'BufReadPost', 'BufNewFile' },
-  },
-
-  {
     'neovim/nvim-lspconfig',
     -- version = false,
     event = { 'BufReadPre', 'BufNewFile', 'BufAdd' },
@@ -115,8 +102,6 @@ return {
     dependencies = { 'williamboman/mason.nvim', 'nvimtools/none-ls.nvim' },
     config = require('plugins.lsp.null'),
   },
-
-  { 'olexsmir/gopher.nvim', ft = 'go', config = util.con('gopher') },
 
   { 'ggandor/lightspeed.nvim', event = { 'BufReadPost', 'BufNewFile' } },
 
@@ -172,16 +157,6 @@ return {
   },
 
   {
-    'folke/which-key.nvim',
-    keys = require('plugins.which-key.keys'),
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-    end,
-    opts = function() return require('plugins.which-key.options') end,
-  },
-
-  {
     'lewis6991/gitsigns.nvim',
     ft = { 'gitcommit', 'diff' },
     init = require('plugins.gitsigns.start'),
@@ -189,61 +164,9 @@ return {
   },
 
   {
-    'folke/todo-comments.nvim',
-    cmd = 'TodoTelescope',
-    event = { 'BufReadPost', 'BufNewFile' },
-    opts = require('plugins.todo-comments.options'),
-  },
-
-  {
     'nvim-neotest/neotest',
     ft = 'go, rust',
     dependencies = { 'nvim-neotest/neotest-go', 'rouge8/neotest-rust' },
     config = util.con('neotest'),
-  },
-
-  {
-    'mrcjkb/rustaceanvim',
-    ft = { 'rust' },
-    config = function()
-      vim.g.rustaceanvim = {
-        tools = {
-          hover_actions = { replace_builtin_hover = false },
-          reload_workspace_from_cargo_toml = true,
-        },
-        server = {
-          settings = {
-            ['rust-analyzer'] = {
-              cargo = {
-                buildScripts = { enable = true },
-              },
-            },
-          },
-        },
-      }
-    end,
-  },
-
-  {
-    'saecki/crates.nvim',
-    event = { 'BufRead Cargo.toml' },
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      local null_ls = require('null-ls')
-      require('crates').setup({
-        popup = {
-          border = vim.g.b,
-        },
-        null_ls = {
-          enabled = true,
-          name = 'crates.nvim',
-        },
-        src = {
-          cmp = {
-            enabled = true,
-          },
-        },
-      })
-    end,
   },
 }

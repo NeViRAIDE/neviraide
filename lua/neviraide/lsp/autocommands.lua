@@ -17,12 +17,19 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
       -- utils.mappings('lsp')(buffer)
 
       diagnostic()
-      diagnostic_mappings(buffer)
+      diagnostic_mappings(client, buffer)
 
       if g.l_ih then
         -- enable inlay hints
         if client.server_capabilities.inlayHintProvider then
-          vl.inlay_hint.enable(args.buf, true)
+          utils.autocmd(
+            'NEVIRAIDE_inlay_hints',
+            { 'BufEnter', 'InsertLeave' },
+            {
+              buffer = buffer,
+              callback = function() vl.inlay_hint.enable() end,
+            }
+          )
         end
       end
 

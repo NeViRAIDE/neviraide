@@ -1,4 +1,6 @@
-local capabilities = {
+local M = {}
+
+M.capabilities = {
   experimental = {
     serverStatusNotification = true,
   },
@@ -290,27 +292,42 @@ local capabilities = {
   },
 }
 
-return {
-  capabilities = capabilities,
-  flags = { debounce_text_changes = 150 },
-  single_file_support = true,
-  cargo = {
-    allFeatures = true,
-    loadOutDirsFromCheck = true,
-    runBuildScripts = true,
-  },
-  -- Add clippy lints for Rust.
-  checkOnSave = {
-    allFeatures = true,
-    command = 'clippy',
-    extraArgs = { '--no-deps' },
-  },
-  procMacro = {
-    enable = true,
-    ignored = {
-      ['async-trait'] = { 'async_trait' },
-      ['napi-derive'] = { 'napi' },
-      ['async-recursion'] = { 'async_recursion' },
+-- capabilities = capabilities,
+-- flags = { debounce_text_changes = 150 },
+-- single_file_support = true,
+-- settings = {
+M.settings = {
+  ['rust-analyzer'] = {
+    imports = {
+      granularity = {
+        group = 'module',
+      },
+      prefix = 'self',
+    },
+    cargo = {
+      allFeatures = true,
+      loadOutDirsFromCheck = true,
+      runBuildScripts = true,
+      buildScripts = {
+        enable = true,
+      },
+    },
+    -- Add clippy lints for Rust.
+    checkOnSave = {
+      allFeatures = true,
+      command = 'clippy',
+      extraArgs = { '--no-deps' },
+    },
+    procMacro = {
+      enable = true,
+      ignored = {
+        ['async-trait'] = { 'async_trait' },
+        ['napi-derive'] = { 'napi' },
+        ['async-recursion'] = { 'async_recursion' },
+      },
     },
   },
+  -- },
 }
+
+return M

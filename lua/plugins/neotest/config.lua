@@ -16,7 +16,7 @@ return function()
 
   require('neotest').setup({
     adapters = {
-      require('neotest-rust'),
+      require('rustaceanvim.neotest'),
       require('neotest-go')({
         status = {
           enabled = true,

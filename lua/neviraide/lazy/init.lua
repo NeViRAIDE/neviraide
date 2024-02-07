@@ -1,9 +1,14 @@
 vim.g.mapleader = ' '
 
-require('lazy').setup({
+local imports = {
   { import = 'neviraide.lazy.deps' },
+  { import = 'neviraide.lazy.ui' },
   { import = 'plugins' },
-}, {
+  { import = 'languages.rust' },
+  { import = 'languages.golang' },
+}
+
+require('lazy').setup(imports, {
   defaults = { lazy = true, version = require('neviraide.utils').latest() },
   dev = { path = '~/GitHub/nvim_plugins' },
   ui = { border = vim.g.b },
