@@ -41,7 +41,7 @@
 ---@field lsp NeviraideLSP
 ---NeviraideFont.
 ---@field font NeviraideFont
----Using the latest plugins versions.
+---Using the latest stable plugins versions.
 ---@field latest_plugins boolean
 
 ---@class NeviraideFont

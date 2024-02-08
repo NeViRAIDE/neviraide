@@ -1,5 +1,3 @@
-local util = require('neviraide.utils')
-
 return {
   {
     'rcarriga/nvim-notify',
@@ -10,7 +8,9 @@ return {
   },
   {
     'nvim-tree/nvim-web-devicons',
-    opts = function() return { override = util.icons().global } end,
+    opts = function()
+      return { override = require('neviraide.utils').icons().global }
+    end,
     config = function(_, opts)
       dofile(vim.g.ntc .. 'icons')
       require('nvim-web-devicons').setup(opts)
@@ -19,8 +19,8 @@ return {
   {
     'lukas-reineke/indent-blankline.nvim',
     event = { 'BufReadPost', 'BufNewFile' },
-    opts = util.opt('ui.indent-blankline'),
-    config = util.con('ui.indent-blankline'),
+    opts = require('plugins.ui.indent-blankline.options'),
+    config = require('plugins.ui.indent-blankline.config'),
   },
   {
     'HiPhish/rainbow-delimiters.nvim',
@@ -31,6 +31,12 @@ return {
     cmd = 'TodoTelescope',
     event = { 'BufReadPost', 'BufNewFile' },
     opts = require('plugins.todo-comments.options'),
+  },
+  {
+    'lewis6991/gitsigns.nvim',
+    ft = { 'gitcommit', 'diff' },
+    init = require('plugins.gitsigns.start'),
+    opts = require('plugins.gitsigns.options'),
   },
   {
     'folke/which-key.nvim',
