@@ -21,6 +21,14 @@ return function()
     },
     sources = { 'filesystem', 'buffers', 'git_status', 'document_symbols' },
     default_component_configs = {
+      diagnostics = {
+        symbols = {
+          hint = icon('', 'light-bulb', 0, 1),
+          info = icon('', 'info', 0, 1),
+          warn = icon('', 'alert', 0, 1),
+          error = icon('', 'x-circle', 0, 1),
+        },
+      },
       git_status = {
         symbols = {
           added = icon('', 'diff-added'),
@@ -53,7 +61,23 @@ return function()
       use_libuv_file_watcher = true,
     },
     nesting_rules = {
-      ['js'] = { 'js.map' },
+      ['package.json'] = {
+        pattern = '^package%.json$',
+        files = { 'package-lock.json', 'yarn*' },
+      },
+      ['go'] = {
+        pattern = '(.*)%.go$',
+        files = { '%1_test.go' },
+      },
+      ['js-extended'] = {
+        pattern = '(.+)%.js$',
+        files = { '%1.js.map', '%1.min.js', '%1.d.ts' },
+      },
+      ['docker'] = {
+        pattern = '^dockerfile$',
+        ignore_case = true,
+        files = { '.dockerignore', 'docker-compose.*', 'dockerfile*' },
+      },
     },
   }
 end

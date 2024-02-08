@@ -14,14 +14,16 @@ return {
   border = 'rounded',
   borderchars = '{ "─", "│", "─", "│", "╭", "╮", "╯", "╰" }',
   nonicons = true,
-  gitsigns_current_line_blame = false,
-  gitsigns_signs = true,
+  gitsigns = {
+    enable_g_signs = true,
+    enable_current_line_blame = false,
+  },
   lsp = {
     format_before_save = true,
     inlay_hints = true,
     code_lenses = true,
     diagnostic = {
-      signs = true,
+      enable_d_signs = true,
       virtual_text = false,
       show_on_hover = true,
     },
