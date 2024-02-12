@@ -1,5 +1,5 @@
 return function()
-  local icon = require('neviraide.ui.neviraide-ui.icons.utils').icon
+  local icon = require('neviraide-ui.icons.utils').icon
 
   return {
     keywords = {

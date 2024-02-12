@@ -1,17 +1,13 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    version = false,
     event = { 'BufReadPost', 'BufNewFile' },
-    build = ':TSUpdate',
+    build = function()
+      require('nvim-treesitter.install').update({ with_sync = true })()
+    end,
     dependencies = { 'windwp/nvim-ts-autotag' },
     opts = require('plugins.treesitter.opts'),
     config = require('plugins.treesitter.config'),
-  },
-  {
-    'luckasRanarison/tree-sitter-hypr',
-    enabled = require('plugins.treesitter-hypr.enabled'),
-    event = 'BufRead */hypr/*.conf',
-    build = ':TSUpdate hypr',
-    config = require('plugins.treesitter-hypr.config'),
   },
 }

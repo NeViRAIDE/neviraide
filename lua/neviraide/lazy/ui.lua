@@ -1,18 +1,25 @@
 return {
   {
-    -- TODO: remove from here and implement in ui module or something else
-    'rcarriga/nvim-notify',
-    init = function()
-      -- when noice is not enabled, install notify on VeryLazy
-      local util = require('neviraide.utils')
-      if not util.has('noice.nvim') then
-        util.on_very_lazy(function() vim.notify = require('notify') end)
-      end
-    end,
-    opts = function()
-      dofile(vim.g.ntc .. 'notify')
-      return { minimum_width = 10 }
-    end,
+    'RAprogramm/neviraide-ui.nvim',
+    dev = true,
+    event = 'VeryLazy',
+    dependencies = {
+      {
+        -- TODO: remove from here and implement in ui module or something else
+        'rcarriga/nvim-notify',
+        init = function()
+          -- when noice is not enabled, install notify on VeryLazy
+          local util = require('neviraide.utils')
+          if not util.has('noice.nvim') then
+            util.on_very_lazy(function() vim.notify = require('notify') end)
+          end
+        end,
+        opts = function()
+          dofile(vim.g.ntc .. 'notify')
+          return { minimum_width = 10 }
+        end,
+      },
+    },
   },
   {
     'nvim-tree/nvim-web-devicons',

@@ -1,6 +1,7 @@
 return {
   {
     'neovim/nvim-lspconfig',
+    version = false,
     event = { 'BufReadPre', 'BufNewFile', 'BufAdd' },
     dependencies = {
       { 'Bekaboo/dropbar.nvim', opts = require('plugins.dropbar.options') },

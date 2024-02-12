@@ -1,39 +1,33 @@
-local i = require('neviraide.ui.neviraide-ui.icons.utils').icon
+local i = require('neviraide-ui.icons.utils').icon
 
 return {
   name = 'Buffers' .. i('b', 'tmux', 1),
   d = {
     name = 'Delete' .. i('', 'trash', 1),
     c = {
-      function() require('neviraide.ui.neviraide-ui.buftabline').close_buffer() end,
+      function() require('neviraide-ui.buftabline').close_buffer() end,
       'Current',
     },
     a = {
-      function()
-        require('neviraide.ui.neviraide-ui.buftabline').closeOtherBufs()
-      end,
+      function() require('neviraide-ui.buftabline').closeOtherBufs() end,
       'All, except current',
     },
     A = {
       function()
-        require('neviraide.ui.neviraide-ui.buftabline').closeAllBufs()
-        require('neviraide.ui.neviraide-ui.buftabline').close_buffer()
+        require('neviraide-ui.buftabline').closeAllBufs()
+        require('neviraide-ui.buftabline').close_buffer()
       end,
       'All',
     },
     l = {
       function()
-        require('neviraide.ui.neviraide-ui.buftabline').closeBufs_at_direction(
-          'left'
-        )
+        require('neviraide-ui.buftabline').closeBufs_at_direction('left')
       end,
       'All to the left of the current one',
     },
     r = {
       function()
-        require('neviraide.ui.neviraide-ui.buftabline').closeBufs_at_direction(
-          'right'
-        )
+        require('neviraide-ui.buftabline').closeBufs_at_direction('right')
       end,
       'All to the right of the current one',
     },
@@ -41,11 +35,11 @@ return {
   m = {
     name = 'Move',
     l = {
-      function() require('neviraide.ui.neviraide-ui.buftabline').move_buf(-1) end,
+      function() require('neviraide-ui.buftabline').move_buf(-1) end,
       'Move to the left',
     },
     r = {
-      function() require('neviraide.ui.neviraide-ui.buftabline').move_buf(1) end,
+      function() require('neviraide-ui.buftabline').move_buf(1) end,
       'Move to the right',
     },
   },
@@ -54,11 +48,11 @@ return {
     'Toggle buffers list (Neotree)' .. i('', 'list-unordered', 1),
   },
   n = {
-    function() require('neviraide.ui.neviraide-ui.buftabline').tabuflineNext() end,
+    function() require('neviraide-ui.buftabline').tabuflineNext() end,
     'Go to the next',
   },
   p = {
-    function() require('neviraide.ui.neviraide-ui.buftabline').tabuflinePrev() end,
+    function() require('neviraide-ui.buftabline').tabuflinePrev() end,
     'Go to the previous',
   },
 }

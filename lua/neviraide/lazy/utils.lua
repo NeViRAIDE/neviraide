@@ -22,7 +22,7 @@ return {
       },
     },
     config = function(_, opts)
-      require('neviraide.ui.neviraide-ui.themes.term')
+      require('neviraide-ui.themes.term')
       require('nvterm').setup(opts)
     end,
   },

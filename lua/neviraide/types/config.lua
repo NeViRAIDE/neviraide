@@ -1,5 +1,5 @@
 ---@alias BorderType 'none'|'single'|'double'|'rounded'|'solid'|'shadow'
----@alias HyprlandThemes "Gruvbox-Retro"|"Decay-Green"|"Catppuccin-Latte"|"Catppuccin-Mocha"|"Cyberpunk-Egde"|"Frosted-Glass"|"Graphite-Mono"|"Material-Sakura"|"Rose-Pine"|"Tokyo-Night"|"Synth-Wave"
+---@alias HyprlandThemes "Gruvbox-Retro"|"Decay-Green"|"Catppuccin-Latte"|"Catppuccin-Mocha"|"Cyberpunk-Egde"|"Frosted-Glass"|"Graphite-Mono"|"Material-Sakura"|"Rose-Pine"|"Tokyo-Night"|"One-Dark"|"Synth-Wave"
 
 ---@class NeviraideConfig
 ---Using programming languages.
@@ -48,7 +48,7 @@
 ---NeviraideFont.
 ---@field font NeviraideFont
 ---Using the latest stable plugins versions.
----@field latest_plugins boolean
+---@field latest_stable_plugins boolean
 
 ---@class NeviraideFont
 ---Using terminal font.

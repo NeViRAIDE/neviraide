@@ -1,5 +1,5 @@
 local wk = require('which-key')
-local icon = require('neviraide.ui.neviraide-ui.icons.utils').icon
+local icon = require('neviraide-ui.icons.utils').icon
 
 return function(bufnr)
   wk.register({
