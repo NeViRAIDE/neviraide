@@ -415,6 +415,7 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 - [ ] more comfartable working with diffs
 - [ ] dynamic sizing
 - [ ] working with sessions
+- [ ] add `symbol_map U+f101-U+f25c nonicons` in kitty.conf when installing 
 
 ---
 <div align="center">
