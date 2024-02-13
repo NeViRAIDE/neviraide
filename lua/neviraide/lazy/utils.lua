@@ -2,8 +2,8 @@ return {
   { 'wakatime/vim-wakatime', event = 'VeryLazy' },
   { 'ggandor/lightspeed.nvim', event = { 'BufReadPost', 'BufNewFile' } },
   {
-    -- 'RAprogramm/nekifoch',
-    dir = '~/GitHub/nvim_plugins/nekifoch.nvim',
+    'RAprogramm/nekifoch',
+    dev = true,
     cmd = 'Nekifoch',
     opts = {},
   },
@@ -35,14 +35,7 @@ return {
   {
     'uga-rosa/ccc.nvim',
     event = { 'BufReadPost', 'BufNewFile' },
-    opts = function()
-      return {
-        highlighter = {
-          auto_enable = true,
-          excludes = { 'neo-tree' },
-        },
-      }
-    end,
+    opts = require('plugins.ccc.options'),
   },
   {
     'nvim-neotest/neotest',

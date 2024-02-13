@@ -5,31 +5,16 @@ return {
     event = 'VeryLazy',
     dependencies = {
       {
-        -- TODO: remove from here and implement in ui module or something else
         'rcarriga/nvim-notify',
-        init = function()
-          -- when noice is not enabled, install notify on VeryLazy
-          local util = require('neviraide.utils')
-          if not util.has('noice.nvim') then
-            util.on_very_lazy(function() vim.notify = require('notify') end)
-          end
-        end,
-        opts = function()
-          dofile(vim.g.ntc .. 'notify')
-          return { minimum_width = 10 }
-        end,
+        init = require('plugins.ui.notify'),
+        opts = require('plugins.ui.notify.options'),
       },
     },
   },
   {
     'nvim-tree/nvim-web-devicons',
-    opts = function()
-      return { override = require('neviraide.utils').icons().global }
-    end,
-    config = function(_, opts)
-      dofile(vim.g.ntc .. 'icons')
-      require('nvim-web-devicons').setup(opts)
-    end,
+    opts = require('plugins.ui.devicons.options'),
+    config = require('plugins.ui.devicons.config'),
   },
   {
     'lukas-reineke/indent-blankline.nvim',
@@ -56,10 +41,7 @@ return {
   {
     'folke/which-key.nvim',
     keys = require('plugins.which-key.keys'),
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-    end,
-    opts = function() return require('plugins.which-key.options') end,
+    init = require('plugins.which-key'),
+    opts = require('plugins.which-key.options'),
   },
 }
