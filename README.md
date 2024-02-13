@@ -1,8 +1,30 @@
 <div align="center">
+
 <img title="NEVIRAIDE" alt="NEoVIm Rozanov Andrei Integrated Development Environment" src="./.preview/logo.png">
 
----
+<hr>
 
+<!-- <img alt="GitHub Release" src="https://img.shields.io/github/v/release/RAprogramm/NEVIRAIDE"> -->
+<img alt="GitHub issues" src="https://img.shields.io/github/issues/RAprogramm/NEVIRAIDE">
+<img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/RAprogramm/NEVIRAIDE">
+
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/RAprogramm/NEVIRAIDE">
+
+<!-- <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/RAprogramm/NEVIRAIDE/total"> -->
+
+<!-- <img alt="AUR Version" src="https://img.shields.io/aur/version/neviraide"> -->
+<!-- <img alt="AUR Votes" src="https://img.shields.io/aur/votes/neviraide"> -->
+<!-- <img alt="AUR Last Modified" src="https://img.shields.io/aur/last-modified/neviraide"> -->
+
+<!-- <img alt="GitHub Tag" src="https://img.shields.io/github/v/tag/RAprogramm/NEVIRAIDE"> -->
+<img alt="GitHub License" src="https://img.shields.io/github/license/RAprogramm/NEVIRAIDE">
+
+<!-- <img alt="GitHub watchers" src="https://img.shields.io/github/watchers/RAprogramm/NEVIRAIDE"> -->
+<img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/RAprogramm/NEVIRAIDE">
+<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/RAprogramm/NEVIRAIDE">
+<!-- <img alt="GitHub forks" src="https://img.shields.io/github/forks/RAprogramm/NEVIRAIDE"> -->
+
+<hr>
 <br>
 
 &ensp;[<kbd> <br> Participation <br> </kbd>](#participation)&ensp;
@@ -56,15 +78,17 @@ _*<p>"Remember, Neovim is your canvas for shaping a personalized IDE or a serene
 
 <div>
 
-<table>
-    <tr>
-        <td><img src="./.preview/startup/speed2.png"></td>
-        <td><img src="./.preview/startup/speed1.png"></td>
-    </tr>
-    <tr>
-        <img align="center" src="./.preview/startup/speed3.png">
-    </tr>
-</table>
+<p align="center">
+  <img src="./.preview/startup/speed3.png" width="800"/>
+</p>
+<p align="center">
+  <a href="https://github.com/RAprogramm">
+    <img src="./.preview/startup/speed2.png" width="400"/> 
+  </a>
+  <a href="https://github.com/RAprogramm">
+    <img src="./.preview/startup/speed1.png" width="400"/> 
+  </a>
+</p>
 
 </div>
 <hr>
@@ -295,6 +319,7 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 [![Frosted-Glass](https://placehold.co/130x30/7ed6ff/1e4c84?text=Frosted-Glass&font=Oswald)](#-Frosted-Glass)
 [![Gruvbox-Retro](https://placehold.co/130x30/475437/B5CC97?text=Gruvbox-Retro&font=Oswald)](#-Gruvbox-Retro)
 [![Synth-Wave](https://placehold.co/130x30/ff7edb/241B2F?text=Synth-Wave&font=Oswald)](#-Synth-Wave)
+[![One-Dark](https://placehold.co/130x30/98c379/241B2F?text=One-Dark&font=Oswald)](#-One-Dark)
 
 </div><br><table><td><br>
 
@@ -364,6 +389,12 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 
 <hr>
 
+> #### **_<div align = right>// One-Dark</div>_**
+>
+> ![One-Dark#1](./.preview/themes/one-dark.png)
+
+<hr>
+
 </td></table>
 
 </div>
@@ -391,6 +422,7 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 - [ ] more comfartable working with diffs
 - [ ] dynamic sizing
 - [ ] working with sessions
+- [ ] add `symbol_map U+f101-U+f25c nonicons` in kitty.conf when installing 
 
 ---
 <div align="center">

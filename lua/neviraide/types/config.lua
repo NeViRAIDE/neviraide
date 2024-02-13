@@ -1,10 +1,10 @@
 ---@alias BorderType 'none'|'single'|'double'|'rounded'|'solid'|'shadow'
----@alias HyprlandThemes "Gruvbox-Retro"|"Decay-Green"|"Catppuccin-Latte"|"Catppuccin-Mocha"|"Cyberpunk-Egde"|"Frosted-Glass"|"Graphite-Mono"|"Material-Sakura"|"Rose-Pine"|"Tokyo-Night"
+---@alias HyprlandThemes "Gruvbox-Retro"|"Decay-Green"|"Catppuccin-Latte"|"Catppuccin-Mocha"|"Cyberpunk-Egde"|"Frosted-Glass"|"Graphite-Mono"|"Material-Sakura"|"Rose-Pine"|"Tokyo-Night"|"One-Dark"|"Synth-Wave"
 
 ---@class NeviraideConfig
 ---Using programming languages.
 ---@field lang string[]
----WIN+SHIFT+T - list of available hyprland themes.
+---<WIN+SHIFT+T> - list of available hyprland themes.
 ------
 ---Already configured Hyprland themes.
 ---@field theme HyprlandThemes
@@ -34,21 +34,32 @@
 ---@field border BorderType
 ---Symbols for rendering border.
 ---@field borderchars string
+---Render Nonicons instead of Devicons.
+------
+---Nonicons package must be installed in your system.
+------
+---[*GitHub*](https://github.com/yamatsum/nonicons)
+---[*AUR*](https://aur.archlinux.org/packages/nonicons-git)
 ---@field nonicons boolean
----@field gitsigns_current_line_blame boolean
----@field gitsigns_signs boolean
+---Neviraide Git Signs.
+---@field gitsigns GitSigns
 ---Neviraide LSP.
 ---@field lsp NeviraideLSP
 ---NeviraideFont.
 ---@field font NeviraideFont
----Using the latest plugins versions.
----@field latest_plugins boolean
+---Using the latest stable plugins versions.
+---@field latest_stable_plugins boolean
 
 ---@class NeviraideFont
 ---Using terminal font.
 ---@field family string
 ---Terminal font size.
 ---@field size integer
+
+---@class GitSigns
+---Git signs in front of each line number
+---@field enable_g_signs boolean
+---@field enable_current_line_blame boolean
 
 ---@class NeviraideLSP
 ---@field inlay_hints boolean
@@ -61,7 +72,7 @@
 ---Signs are defined for each diagnostic severity.
 ---(for example, "" ("E" in non UI environment)
 ---for ERROR).
----@field signs boolean
+---@field enable_d_signs boolean
 ---Text contents of the error near
 ---its location.
 ---@field virtual_text boolean

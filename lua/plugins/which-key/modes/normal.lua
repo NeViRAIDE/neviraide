@@ -18,7 +18,7 @@ return {
       if vim.bo.modified then
         vim.api.nvim_exec2('silent! w', { output = false })
         vim.notify(
-          'File "' .. vim.fn.expand('%:t') .. '" was saved',
+          'File "' .. vim.fn.expand('%:t') .. '" has been saved',
           2,
           { title = 'Saved', icon = i('✓', 'check', 0, 1) }
         )
@@ -93,14 +93,12 @@ return {
 
     S = {
       function()
-        if vim.bo.modified then
-          vim.api.nvim_exec2('silent! wa', { output = false })
-          vim.notify(
-            'All modified files were saved',
-            2,
-            { title = 'Saved', icon = i('✓', 'check', 0, 1) }
-          )
-        end
+        vim.api.nvim_exec2('silent! wa', { output = false })
+        vim.notify(
+          'All open files has been saved',
+          2,
+          { title = 'Saved', icon = i('✓', 'check', 0, 1) }
+        )
       end,
       'Save all files',
     },

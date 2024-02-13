@@ -1,7 +1,7 @@
 dofile(vim.g.ntc .. 'git')
 
 return {
-  signcolumn = NEVIRAIDE().gitsigns_signs,
+  signcolumn = vim.g.g_gs,
   -- TODO: add nonicons
   signs = {
     add = { text = '│' },
@@ -12,7 +12,7 @@ return {
     untracked = { text = '│' },
   },
   preview_config = { border = vim.g.b },
-  current_line_blame = NEVIRAIDE().gitsigns_current_line_blame,
+  current_line_blame = vim.g.g_eclb,
   current_line_blame_opts = {
     virt_text = true,
     virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'

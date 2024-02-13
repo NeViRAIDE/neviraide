@@ -342,4 +342,4 @@ function M.goTestAll()
   vim.fn.execute('TermExec direction=float cmd="go test -v  ./..."')
 end
 
-return M
+-- return M

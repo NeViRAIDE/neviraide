@@ -17,12 +17,13 @@ return function(_, opts)
       ['.*/waybar/config'] = 'jsonc',
       ['.*/mako/config'] = 'dosini',
       ['.*/kitty/*.conf'] = 'bash',
+      ['.*/hypr/.*%.conf'] = 'hypr',
     },
   })
 
   add('git_config')
 
+  if utils.have('hypr') then add('hyprlang') end
   if utils.have('fish') then add('fish') end
-
   if utils.have('rofi') or utils.have('wofi') then add('rasi') end
 end
