@@ -319,6 +319,7 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 [![Frosted-Glass](https://placehold.co/130x30/7ed6ff/1e4c84?text=Frosted-Glass&font=Oswald)](#-Frosted-Glass)
 [![Gruvbox-Retro](https://placehold.co/130x30/475437/B5CC97?text=Gruvbox-Retro&font=Oswald)](#-Gruvbox-Retro)
 [![Synth-Wave](https://placehold.co/130x30/ff7edb/241B2F?text=Synth-Wave&font=Oswald)](#-Synth-Wave)
+[![One-Dark](https://placehold.co/130x30/98c379/241B2F?text=One-Dark&font=Oswald)](#-One-Dark)
 
 </div><br><table><td><br>
 
@@ -385,6 +386,12 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 > #### **_<div align = right>// Synth-Wave</div>_**
 >
 > ![Synth-Wave#1](./.preview/themes/synth-wave.png)
+
+<hr>
+
+> #### **_<div align = right>// One-Dark</div>_**
+>
+> ![One-Dark#1](./.preview/themes/one-dark.png)
 
 <hr>
 
