@@ -1,7 +1,7 @@
 return function()
   vim.cmd([[
         function OpenMarkdownPreview (url)
-          execute "silent ! firefox-developer-edition --new-window " . a:url
+          execute "silent ! firefox --new-window " . a:url
         endfunction
       ]])
   vim.g.mkdp_browserfunc = 'OpenMarkdownPreview'

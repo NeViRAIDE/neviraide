@@ -1,5 +1,5 @@
 require('neviraide.settings.global')
-local conf = NEVIRAIDE()
+local N = NEVIRAIDE()
 local o = vim.opt
 
 o.whichwrap:append('<>[]hl')
@@ -18,13 +18,13 @@ o.showmatch = true
 o.expandtab = true
 o.smartindent = true
 o.smoothscroll = true
-o.cursorline = conf.cursor_line
-o.cursorcolumn = conf.cursor_column
-o.number = conf.numbers_enabled
-o.relativenumber = conf.relative_numbers
-o.shiftwidth = conf.indents
-o.tabstop = conf.indents
-o.softtabstop = conf.indents
+o.cursorline = N.cursor_line
+o.cursorcolumn = N.cursor_column
+o.number = N.numbers_enabled
+o.relativenumber = N.relative_numbers
+o.shiftwidth = N.indents
+o.tabstop = N.indents
+o.softtabstop = N.indents
 o.ignorecase = true
 o.smartcase = true
 o.mouse = 'a'

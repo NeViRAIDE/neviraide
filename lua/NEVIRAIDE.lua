@@ -4,7 +4,7 @@
 return {
   latest_stable_plugins = true,
   lang = { 'lua', 'rust', 'go' },
-  theme = 'One-Dark',
+  theme = 'Decay-Green',
   transparency = false,
   numbers_enabled = true,
   relative_numbers = true,
