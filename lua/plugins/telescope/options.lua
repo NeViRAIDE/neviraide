@@ -2,7 +2,7 @@ return function()
   dofile(vim.g.ntc .. 'telescope')
 
   ---@type table
-  local border = load('return ' .. NEVIRAIDE().borderchars)()
+  local border = load('return ' .. NEVIRAIDE().ui.borderchars)()
 
   local icon = require('neviraide-ui.icons.utils').icon
 

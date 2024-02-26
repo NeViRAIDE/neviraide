@@ -4,6 +4,22 @@
 ---@class NeviraideConfig
 ---Using programming languages.
 ---@field lang string[]
+---Neviraide Git Signs.
+---@field git NeviraideGit
+---Neviraide User Inerface.
+---@field ui NeviraideUi
+---Neviraide LSP.
+---@field lsp NeviraideLSP
+---Using the latest stable plugins versions.
+---@field latest_stable_plugins boolean
+
+---@class NeviraideFont
+---Using terminal font.
+---@field family string
+---Terminal font size.
+---@field size integer
+
+---@class NeviraideUi
 ---<WIN+SHIFT+T> - list of available hyprland themes.
 ------
 ---Already configured Hyprland themes.
@@ -41,20 +57,12 @@
 ---[*GitHub*](https://github.com/yamatsum/nonicons)
 ---[*AUR*](https://aur.archlinux.org/packages/nonicons-git)
 ---@field nonicons boolean
----Neviraide Git Signs.
----@field gitsigns GitSigns
----Neviraide LSP.
----@field lsp NeviraideLSP
 ---NeviraideFont.
 ---@field font NeviraideFont
----Using the latest stable plugins versions.
----@field latest_stable_plugins boolean
 
----@class NeviraideFont
----Using terminal font.
----@field family string
----Terminal font size.
----@field size integer
+---@class NeviraideGit
+---Neviraide Git Signs.
+---@field gitsigns GitSigns
 
 ---@class GitSigns
 ---Git signs in front of each line number

@@ -4,8 +4,13 @@ return {
   {
     'RAprogramm/nekifoch',
     dev = true,
-    cmd = 'Nekifoch',
-    opts = {},
+    event = 'VeryLazy',
+    -- cmd = 'Nekifoch',
+    opts = {
+      which_key = {
+        enable = true,
+      },
+    },
   },
   {
     'numToStr/Comment.nvim',

@@ -27,4 +27,12 @@ return {
   R = { ':lua vim.lsp.buf.rename()<cr>', 'Rename' },
   s = { ':lua vim.lsp.buf.signature_help()<cr>', 'Signature help' },
   t = { ':Telescope lsp_type_definitions<cr>', 'Type definition' },
+  S = {
+    name = 'Server' .. icon('', 'server', 1),
+    r = { ':LspRestart<cr>', 'Restart server' },
+    i = { ':LspInfo<cr>', 'Server information' },
+    l = { ':LspLog<cr>', 'Server logs' },
+    s = { ':LspStart<cr>', 'Start server' },
+    S = { ':LspStop<cr>', 'Stopserver' },
+  },
 }
