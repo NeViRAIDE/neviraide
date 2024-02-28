@@ -4,8 +4,8 @@ return {
   {
     'RAprogramm/nekifoch',
     dev = true,
-    event = 'VeryLazy',
     -- cmd = 'Nekifoch',
+    event = 'VeryLazy',
     opts = {
       which_key = {
         enable = true,

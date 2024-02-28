@@ -14,6 +14,11 @@ return {
         server = {
           capabilities = require('neviraide.lsp.servers.rs').capabilities,
           settings = require('neviraide.lsp.servers.rs').settings,
+          -- init_options = {
+          --   userLanguages = {
+          --     rust = 'html',
+          --   },
+          -- },
         },
       }
     end,

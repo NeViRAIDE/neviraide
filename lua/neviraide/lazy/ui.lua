@@ -10,6 +10,10 @@ return {
         opts = require('plugins.ui.notify.options'),
       },
     },
+    -- opts = {
+    --   hyprdots = true,
+    --   -- cmdline = { enabled = false },
+    -- },
   },
   {
     'nvim-tree/nvim-web-devicons',

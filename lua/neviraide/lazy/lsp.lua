@@ -17,13 +17,6 @@ return {
       },
       { 'williamboman/mason-lspconfig.nvim' },
     },
-    init_options = {
-      userLanguages = {
-        eelixir = 'html-eex',
-        eruby = 'erb',
-        rust = 'html',
-      },
-    },
     config = require('plugins.lsp.lspconfig.config'),
   },
   {
