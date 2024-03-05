@@ -33,7 +33,6 @@
 &ensp;[<kbd> <br> Installation <br> </kbd>](#installation)&ensp;
 &ensp;[<kbd> <br> Used plugins <br> </kbd>](#plugins)&ensp;
 &ensp;[<kbd> <br> Themes <br> </kbd>](#themes)&ensp;
-&ensp;[<kbd> <br> Contributing <br> </kbd>](#contributing)&ensp;
 &ensp;[<kbd> <br> Todo <br> </kbd>](#todo)&ensp;
 &ensp;[<kbd> <br> Donations <br> </kbd>](#donations)&ensp;
 <br><br>
@@ -56,6 +55,7 @@ _*<p>"Remember, Neovim is your canvas for shaping a personalized IDE or a serene
 
 
 <ul>
+<li>Read <a href="./VISION.md">VISION</a> for better understanding what NEVIRAIDE will be.</li>
 <li>Issues</li>
 
 > [!TIP]
@@ -399,32 +399,8 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 
 </div>
 
-<div align="center">
-<h2 id='contributing'>Contributing</h2>
-</div>
-
-> [!TIP]
-> Feel free to contribute by opening issues or creating pull requests.
-
-<h3 id='todo'>Todo</h3>
-
-- [ ] make ui for non UI interfaces (for example servers or fresh installed arch)
-- dynamic settings
-  - [ ] color schemes auto changing
-  - [ ] setting all needed language tools when language added in NEVIRAIDE conf
-- modern IDE features
-  - [ ] settings ui (for example, nui window with parsed NEVIRAIDE conf)
-  - statusline
-    - [ ] todos counter
-    - [ ] version of language interpreter
-- colorschemes
-  - [ ] make colors better (more readable on a different backgrounds)
-- [ ] more comfartable working with diffs
-- [ ] dynamic sizing
-- [ ] working with sessions
-- [ ] add `symbol_map U+f101-U+f25c nonicons` in kitty.conf when installing 
-
 ---
+
 <div align="center">
 <h2 id='donations'  style="text-align: center;">DONATIONS</h2>
 </div>

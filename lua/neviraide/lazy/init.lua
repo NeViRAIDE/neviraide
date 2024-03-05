@@ -1,5 +1,7 @@
 vim.g.mapleader = ' '
 
+-- TODO: separte neviraide ui
+
 local imports = {
   { import = 'neviraide.lazy.dependencies' },
   { import = 'neviraide.lazy.ui' },
@@ -7,6 +9,7 @@ local imports = {
   { import = 'neviraide.lazy.utils' },
   { import = 'neviraide.lazy.treesitter' },
   { import = 'neviraide.lazy.lsp' },
+  { import = 'neviraide.lazy.git' },
   { import = 'neviraide.lazy.debug' },
   { import = 'languages.rust' },
   { import = 'languages.golang' },

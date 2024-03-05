@@ -1,9 +1,12 @@
+local border_chars = {
+  single = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+  none = { '', '', '', '', '', '', '', '' },
+  rounded = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+  solid = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+  double = { '═', '║', '═', '║', '╔', '╗', '╝', '╚' },
+}
+
 return function()
-  dofile(vim.g.ntc .. 'telescope')
-
-  ---@type table
-  local border = load('return ' .. NEVIRAIDE().ui.borderchars)()
-
   local icon = require('neviraide-ui.icons.utils').icon
 
   local action = require('telescope.actions')
@@ -22,7 +25,7 @@ return function()
           preview_width = 0.6,
           scroll_speed = 2,
         },
-        borderchars = border,
+        borderchars = border_chars[vim.g.b],
         find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
       },
       live_grep = {
@@ -34,7 +37,7 @@ return function()
           preview_width = 0.5,
           scroll_speed = 2,
         },
-        borderchars = border,
+        borderchars = border_chars[vim.g.b],
       },
       oldfiles = {
         initial_mode = 'normal',
@@ -44,7 +47,7 @@ return function()
           width = 0.6,
           height = 14,
         },
-        borderchars = border,
+        borderchars = border_chars[vim.g.b],
       },
       help_tags = {
         layout_strategy = 'horizontal',
@@ -55,7 +58,7 @@ return function()
           scroll_speed = 2,
           preview_width = 0.6,
         },
-        borderchars = border,
+        borderchars = border_chars[vim.g.b],
       },
       man_pages = {
         layout_strategy = 'vertical',
@@ -66,7 +69,7 @@ return function()
           mirror = true,
           scroll_speed = 2,
         },
-        borderchars = border,
+        borderchars = border_chars[vim.g.b],
       },
       lsp_references = {
         initial_mode = 'normal',
@@ -75,7 +78,7 @@ return function()
           bottom_pane = { height = 12 },
           preview_width = 0.4,
         },
-        borderchars = border,
+        borderchars = border_chars[vim.g.b],
       },
       diagnostics = {
         initial_mode = 'normal',
@@ -84,10 +87,43 @@ return function()
         layout_config = {
           bottom_pane = { height = 12 },
         },
-        borderchars = border,
+        borderchars = border_chars[vim.g.b],
       },
     },
     defaults = {
+      preview = {
+        mime_hook = function(filepath, bufnr, opts)
+          local is_image = function(filepath)
+            local image_extensions = { 'png', 'jpg' } -- Supported image formats
+            local split_path =
+              vim.split(filepath:lower(), '.', { plain = true })
+            local extension = split_path[#split_path]
+            return vim.tbl_contains(image_extensions, extension)
+          end
+          if is_image(filepath) then
+            local term = vim.api.nvim_open_term(bufnr, {})
+            local function send_output(_, data, _)
+              for _, d in ipairs(data) do
+                vim.api.nvim_chan_send(term, d .. '\r\n')
+              end
+            end
+            vim.fn.jobstart({
+              'catimg',
+              filepath, -- Terminal image viewer command
+            }, {
+              on_stdout = send_output,
+              stdout_buffered = true,
+              pty = true,
+            })
+          else
+            require('telescope.previewers.utils').set_preview_message(
+              bufnr,
+              opts.winid,
+              'Binary cannot be previewed'
+            )
+          end
+        end,
+      },
       vimgrep_arguments = {
         'rg',
         '-L',
@@ -122,8 +158,9 @@ return function()
       file_ignore_patterns = { 'node_modules' },
       generic_sorter = sorters.get_generic_fuzzy_sorter,
       path_display = { 'truncate' },
-      winblend = vim.g.blend,
-      borderchars = border,
+      -- winblend = vim.g.blend,
+      winblend = 0,
+      borderchars = border_chars[vim.g.b],
       color_devicons = true,
       set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
       file_previewer = previewers.vim_buffer_cat.new,

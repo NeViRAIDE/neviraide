@@ -3,17 +3,15 @@ return {
     'RAprogramm/neviraide-ui.nvim',
     dev = true,
     event = 'VeryLazy',
-    dependencies = {
-      {
-        'rcarriga/nvim-notify',
-        init = require('plugins.ui.notify'),
-        opts = require('plugins.ui.notify.options'),
-      },
+    dependencies = {},
+    opts = {
+      hyprdots = true,
     },
-    -- opts = {
-    --   hyprdots = true,
-    --   -- cmdline = { enabled = false },
-    -- },
+  },
+  {
+    'rcarriga/nvim-notify',
+    init = require('plugins.ui.notify'),
+    opts = require('plugins.ui.notify.options'),
   },
   {
     'nvim-tree/nvim-web-devicons',
@@ -23,7 +21,7 @@ return {
   {
     'lukas-reineke/indent-blankline.nvim',
     event = { 'BufReadPost', 'BufNewFile' },
-    opts = require('plugins.ui.indent-blankline.options'),
+    -- opts = require('plugins.ui.indent-blankline.options'),
     config = require('plugins.ui.indent-blankline.config'),
   },
   {
@@ -35,12 +33,6 @@ return {
     cmd = 'TodoTelescope',
     event = { 'BufReadPost', 'BufNewFile' },
     opts = require('plugins.todo-comments.options'),
-  },
-  {
-    'lewis6991/gitsigns.nvim',
-    ft = { 'gitcommit', 'diff' },
-    init = require('plugins.gitsigns.start'),
-    opts = require('plugins.gitsigns.options'),
   },
   {
     'folke/which-key.nvim',

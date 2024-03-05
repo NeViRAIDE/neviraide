@@ -49,7 +49,7 @@ o.fillchars = {
   --   -- fold = "⸱",
   --   fold = ' ',
   --   foldsep = ' ',
-  --   diff = '╱',
+  diff = '╱',
   eob = ' ',
 }
 -- vim.opt.foldmethod = 'expr'

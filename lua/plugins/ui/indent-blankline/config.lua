@@ -1,11 +1,24 @@
-return function(_, opts)
-  -- dofile(vim.g.neviraide_themes_cache .. 'blankline')
-  vim.g.rainbow_delimiters = { highlight = opts.highlight }
+local highlight = {
+  'RainbowDelimiterRed',
+  'RainbowDelimiterOrange',
+  'RainbowDelimiterYellow',
+  'RainbowDelimiterGreen',
+  'RainbowDelimiterCyan',
+  'RainbowDelimiterBlue',
+  'RainbowDelimiterViolet',
+}
+
+return function()
+  dofile(vim.g.ntc .. 'ibl_rd')
 
   local hooks = require('ibl.hooks')
+
+  vim.g.rainbow_delimiters = { highlight = highlight }
+
+  require('ibl').setup({ scope = { highlight = highlight } })
+
   hooks.register(
-    hooks.type.WHITESPACE,
-    hooks.builtin.hide_first_space_indent_level
+    hooks.type.SCOPE_HIGHLIGHT,
+    hooks.builtin.scope_highlight_from_extmark
   )
-  require('ibl').setup(opts)
 end

@@ -39,7 +39,12 @@ return {
   },
   {
     'uga-rosa/ccc.nvim',
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = { 'BufRead', 'BufNewFile' },
+    -- cmd = {
+    --   'CccHighlighterToggle',
+    --   'CccPick',
+    --   'CccConvert',
+    -- },
     opts = require('plugins.ccc.options'),
   },
   {
@@ -48,4 +53,19 @@ return {
     dependencies = { 'nvim-neotest/neotest-go', 'rouge8/neotest-rust' },
     config = require('plugins.neotest.config'),
   },
+  {
+    'epwalsh/pomo.nvim',
+    cmd = { 'TimerStart', 'TimerRepeat' },
+    opts = {
+      -- See below for full list of options 👇
+    },
+  },
+
+  {
+    'akinsho/toggleterm.nvim',
+    cmd = { 'ToggleTerm' },
+    opts = {--[[ things you want to change go here]]
+    },
+  },
 }
+-- TODO: add [translate.nvim](https://github.com/uga-rosa/translate.nvim)

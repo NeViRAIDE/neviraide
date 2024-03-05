@@ -21,9 +21,9 @@ return {
     },
   },
   ui = {
-    theme = 'Tokyo-Night',
+    theme = 'Catppuccin-Mocha',
     transparency = false,
-    border = 'single',
+    border = 'rounded',
     borderchars = '{ "─", "│", "─", "│", "╭", "╮", "╯", "╰" }',
     nonicons = true,
     numbers_enabled = true,

@@ -59,6 +59,11 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
         })
       end
 
+      -- if client.server_capabilities.colorProvider then
+      --   -- Attach document colour support
+      --   require('document-color').buf_attach(bufnr)
+      -- end
+
       if g.l_cl then
         -- enable codelenses
         if client.server_capabilities.codeLensProvider then
