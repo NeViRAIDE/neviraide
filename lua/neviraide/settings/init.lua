@@ -6,6 +6,7 @@ o.whichwrap:append('<>[]hl')
 o.shortmess:append({ W = true, I = true, c = true })
 o.laststatus = 3
 o.showmode = false
+o.cmdheight = 0
 o.concealcursor = 'nc'
 o.conceallevel = 3
 o.pumheight = 10
@@ -17,7 +18,6 @@ o.completeopt = 'menuone,noselect,noinsert'
 o.showmatch = true
 o.expandtab = true
 o.smartindent = true
-o.smoothscroll = true
 o.cursorline = N.ui.cursor_line
 o.cursorcolumn = N.ui.cursor_column
 o.number = N.ui.numbers_enabled
@@ -40,6 +40,8 @@ o.undofile = true
 o.updatetime = 250
 o.sessionoptions =
   'blank,buffers,curdir,folds,help,options,terminal,globals,localoptions,tabpages'
+
+if vim.fn.has('nvim-0.10') == 1 then o.smoothscroll = true end
 
 -- NOTE: folds or not?!
 

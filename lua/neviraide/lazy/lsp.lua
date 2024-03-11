@@ -13,6 +13,7 @@ return {
         'williamboman/mason.nvim',
         cmd = 'Mason',
         build = ':MasonUpdate',
+        opts = require('plugins.lsp.mason.opts'),
         config = require('plugins.lsp.mason.config'),
       },
       { 'williamboman/mason-lspconfig.nvim' },

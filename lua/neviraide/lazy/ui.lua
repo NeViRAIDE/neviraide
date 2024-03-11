@@ -6,12 +6,8 @@ return {
     dependencies = {},
     opts = {
       hyprdots = true,
+      notify = true,
     },
-  },
-  {
-    'rcarriga/nvim-notify',
-    init = require('plugins.ui.notify'),
-    opts = require('plugins.ui.notify.options'),
   },
   {
     'nvim-tree/nvim-web-devicons',
@@ -20,8 +16,8 @@ return {
   },
   {
     'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
     event = { 'BufReadPost', 'BufNewFile' },
-    -- opts = require('plugins.ui.indent-blankline.options'),
     config = require('plugins.ui.indent-blankline.config'),
   },
   {

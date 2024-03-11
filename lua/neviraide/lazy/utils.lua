@@ -67,5 +67,9 @@ return {
     opts = {--[[ things you want to change go here]]
     },
   },
+  {
+    'uga-rosa/translate.nvim',
+    cmd = 'Translate',
+  },
 }
 -- TODO: add [translate.nvim](https://github.com/uga-rosa/translate.nvim)

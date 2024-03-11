@@ -8,6 +8,7 @@ return {
     end,
     'Date/time style',
   },
+  -- FIX: problem
   i = {
     function()
       require('neviraide-ui.utils.change_settings.indents').set_indents()

@@ -24,7 +24,6 @@ return {
     theme = 'Catppuccin-Mocha',
     transparency = false,
     border = 'rounded',
-    borderchars = '{ "─", "│", "─", "│", "╭", "╮", "╯", "╰" }',
     nonicons = true,
     numbers_enabled = true,
     relative_numbers = true,

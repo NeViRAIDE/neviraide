@@ -26,6 +26,7 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
       if g.l_ih then
         -- enable inlay hints
         -- if client.server_capabilities.inlayHintProvider then
+        -- if client.supports_method('textDocument/inlayHint') then
         utils.autocmd(
           'NEVIRAIDE_inlay_hints',
           { 'BufEnter', 'InsertLeave', 'BufReadPost' },

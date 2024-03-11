@@ -15,8 +15,20 @@ return function()
     end
   end
 
+  -- TODO: customize
   return {
     minimum_width = 10,
-    -- TODO: customize
+    max_height = function() return math.floor(vim.o.lines * 0.75) end,
+    max_width = function() return math.floor(vim.o.columns * 0.75) end,
+    on_open = function(win)
+      vim.api.nvim_win_set_config(win, { zindex = 100, border = vim.g.b })
+    end,
+    icons = {
+      DEBUG = '',
+      ERROR = '',
+      INFO = '',
+      TRACE = '✎',
+      WARN = '',
+    },
   }
 end
