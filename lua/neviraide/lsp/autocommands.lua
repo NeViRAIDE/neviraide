@@ -5,6 +5,17 @@ local g = vim.g
 local vl = vim.lsp
 local vlb = vim.lsp.buf
 
+---@param on_attach fun(client, buffer)
+local function on_attach(on_attach)
+  vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+      local buffer = args.buf ---@type number
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      on_attach(client, buffer)
+    end,
+  })
+end
+
 utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
   callback = function(args)
     -- the buffer where the lsp attached
@@ -13,7 +24,9 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
 
     local client = vl.get_client_by_id(args.data.client_id)
 
-    if client ~= nil then
+    dofile(vim.g.ntc .. 'semantic_tokens')
+
+    if client then
       -- utils.mappings('lsp')(buffer)
 
       diagnostic()
@@ -25,17 +38,16 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
 
       if g.l_ih then
         -- enable inlay hints
-        -- if client.server_capabilities.inlayHintProvider then
-        -- if client.supports_method('textDocument/inlayHint') then
-        utils.autocmd(
-          'NEVIRAIDE_inlay_hints',
-          { 'BufEnter', 'InsertLeave', 'BufReadPost' },
-          {
-            buffer = buffer,
-            callback = function() vl.inlay_hint.enable(buffer, true) end,
-          }
-        )
-        -- end
+        if client.server_capabilities.inlayHintProvider then
+          utils.autocmd(
+            'NEVIRAIDE_inlay_hints',
+            { 'BufEnter', 'InsertLeave', 'BufReadPost' },
+            {
+              buffer = buffer,
+              callback = function() vim.lsp.inlay_hint.enable(buffer, true) end,
+            }
+          )
+        end
       end
 
       -- enable document symbol highlighting
@@ -68,20 +80,26 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
       if g.l_cl then
         -- enable codelenses
         if client.server_capabilities.codeLensProvider then
-          utils.autocmd('NEVIRAIDE_codelens', { 'BufEnter', 'InsertLeave' }, {
-            buffer = buffer,
-            callback = function() vl.codelens.refresh() end,
-          })
+          utils.autocmd(
+            'NEVIRAIDE_codelens',
+            { 'BufEnter', 'BufReadPost', 'InsertLeave' },
+            {
+              buffer = buffer,
+              callback = function() vl.codelens.refresh() end,
+            }
+          )
         end
       end
     end
 
     if g.l_fbs then
       -- enable auto format file before save
-      utils.autocmd('NEVIRAIDE_auto_format', 'BufWritePre', {
-        buffer = buffer,
-        callback = function() vlb.format() end,
-      })
+      if client.server_capabilities.documentFormattingProvider then
+        utils.autocmd('NEVIRAIDE_auto_format', 'BufWritePre', {
+          buffer = buffer,
+          callback = function() vlb.format() end,
+        })
+      end
     end
 
     if g.l_d_soh then

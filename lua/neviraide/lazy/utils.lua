@@ -40,11 +40,6 @@ return {
   {
     'uga-rosa/ccc.nvim',
     event = { 'BufRead', 'BufNewFile' },
-    -- cmd = {
-    --   'CccHighlighterToggle',
-    --   'CccPick',
-    --   'CccConvert',
-    -- },
     opts = require('plugins.ccc.options'),
   },
   {
@@ -56,20 +51,16 @@ return {
   {
     'epwalsh/pomo.nvim',
     cmd = { 'TimerStart', 'TimerRepeat' },
-    opts = {
-      -- See below for full list of options 👇
-    },
+    opts = require('plugins.pomo-timer.options'),
   },
 
   {
     'akinsho/toggleterm.nvim',
     cmd = { 'ToggleTerm' },
-    opts = {--[[ things you want to change go here]]
-    },
+    opts = {},
   },
   {
     'uga-rosa/translate.nvim',
     cmd = 'Translate',
   },
 }
--- TODO: add [translate.nvim](https://github.com/uga-rosa/translate.nvim)

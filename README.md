@@ -1,3 +1,12 @@
+> [!IMPORTANT]  
+> IN PROGRESS...
+> 
+> NOW COLORS GOOD ONLY IN `Catppuccin-Mocha` THEME
+>
+> PLEASE, HELP ME IF YOU HAVE A FREE TIME AND INTERESTING
+>
+> ALL TODO's IN [VISION](./VISION.md)
+
 <div align="center">
 
 <img title="NEVIRAIDE" alt="NEoVIm Rozanov Andrei Integrated Development Environment" src="./.preview/logo.png">

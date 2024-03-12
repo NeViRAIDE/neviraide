@@ -9,7 +9,30 @@ end
 
 return function()
   require('neviraide.lsp.autocommands')
+  -- LspInfo borders
   require('lspconfig.ui.windows').default_options.border = vim.g.b
+
+  vim.lsp.handlers['textDocument/hover'] =
+    vim.lsp.with(vim.lsp.handlers.hover, {
+      -- Use a sharp border with `FloatBorder` highlights
+      border = vim.g.b,
+      -- add the title in hover float window
+      -- title = ' hover ',
+    })
+
+  vim.lsp.handlers['textDocument/signatureHelp'] =
+    vim.lsp.with(vim.lsp.handlers.signature_help, {
+      -- Use a sharp border with `FloatBorder` highlights
+      border = vim.g.b,
+    })
+
+  vim.lsp.handlers['textDocument/hover'] =
+    vim.lsp.with(vim.lsp.handlers.hover, {
+      -- Use a sharp border with `FloatBorder` highlights
+      border = vim.g.b,
+      -- add the title in hover float window
+      -- title = ' hover ',
+    })
 
   local lspconfig = require('lspconfig')
   local mason_lsp_config = require('mason-lspconfig')

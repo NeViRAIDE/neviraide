@@ -1,13 +1,11 @@
--- FIX: rgb bars always grey
--- FIX: error: method textDocument/codeLens is not supported by any of the servers registered for the current buffer
-
 return function()
   return {
+    -- pickers = {
+    --   require('ccc').picker.custom_entries(
+    --     require('neviraide-ui.themes.colors').palette
+    --   ),
+    -- },
     win_opts = {
-      -- relative = 'cursor',
-      -- row = 1,
-      -- col = 1,
-      -- style = 'minimal',
       border = vim.g.b,
     },
     highlighter = {

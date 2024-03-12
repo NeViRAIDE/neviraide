@@ -2,11 +2,10 @@ dofile(vim.g.ntc .. 'git')
 
 return {
   signcolumn = vim.g.g_gs,
-  -- TODO: add nonicons
   signs = {
     add = { text = '│' },
     change = { text = '│' },
-    delete = { text = '󰍵' },
+    delete = { text = '│' },
     topdelete = { text = '‾' },
     changedelete = { text = '~' },
     untracked = { text = '│' },

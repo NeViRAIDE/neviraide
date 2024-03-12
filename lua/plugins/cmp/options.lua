@@ -13,7 +13,10 @@ return function()
         border = vim.g.b,
         winhighlight = 'Normal:CmpPmenu,CursorLine:CmpSel,Search:None',
       },
-      documentation = { border = vim.g.b },
+      documentation = {
+        border = vim.g.b,
+        winhighlight = 'Normal:CmpPmenu,CursorLine:CmpSel,Search:None',
+      },
     },
     select_behavior = cmp.SelectBehavior.Insert,
     mapping = cmp.mapping.preset.insert({
@@ -50,38 +53,6 @@ return function()
           fallback()
         end
       end, { 'i', 's' }),
-      --   ['<S-Tab>'] = cmp.mapping(function(fallback)
-      --     if cmp.visible() then
-      --       cmp.select_prev_item()
-      --     elseif require('luasnip').jumpable(-1) then
-      --       vim.fn.feedkeys(
-      --         vim.api.nvim_replace_termcodes(
-      --           '<Plug>luasnip-jump-prev',
-      --           true,
-      --           true,
-      --           true
-      --         ),
-      --         ''
-      --       )
-      --     else
-      --       fallback()
-      --     end
-      --   end, { 'i', 's' }),
-
-      -- ['<Tab>'] = cmp.mapping(function(fallback)
-      --   if cmp.visible() then
-      --     cmp.select_next_item()
-      --   -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-      --   -- that way you will only jump inside the snippet region
-      --   elseif luasnip.expand_or_jumpable() then
-      --     luasnip.expand_or_jump()
-      --   elseif has_words_before() then
-      --     cmp.complete()
-      --   else
-      --     fallback()
-      --   end
-      -- end, { 'i', 's' }),
-
       ['<S-Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
@@ -125,13 +96,6 @@ return function()
         cmp.ItemField.Menu,
       },
       format = function(_, item)
-        --     with_text = true,
-        --     maxwidth = 50,
-        --     menu = {
-        --       buffer = '[Buffer]',
-        --       nvim_lsp = '[LSP]',
-        --       luasnip = '[LuaSnip]',
-        --       path = '[path]',
         item.kind = string.format(
           '%s ',
           require('neviraide.utils').icons().lspkind[item.kind]

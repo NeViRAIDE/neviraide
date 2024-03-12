@@ -2,6 +2,11 @@ return function()
   local icon = require('neviraide-ui.icons.utils').icon
 
   return {
+    menu = {
+      win_configs = {
+        border = vim.g.b,
+      },
+    },
     sources = {
       path = {
         modified = function(sym)

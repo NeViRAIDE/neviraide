@@ -4,7 +4,7 @@ local i = require('neviraide-ui.icons.utils').icon
 return {
   d = {
     n = {
-      function() require('notify').dismiss({ silent = true, pending = true }) end,
+      '<cmd>NeviraideUINotifyClear<cr>',
       'Dismiss all Notifications' .. i('󰎟', 'inbox', 1),
     },
   },
@@ -18,7 +18,7 @@ return {
       if vim.bo.modified then
         vim.api.nvim_exec2('silent! w', { output = false })
         vim.notify(
-          'File "' .. vim.fn.expand('%:t') .. '" has been saved',
+          vim.fn.expand('%:t'),
           2,
           { title = 'Saved', icon = i('✓', 'check', 0, 1) }
         )
@@ -95,7 +95,7 @@ return {
       function()
         vim.api.nvim_exec2('silent! wa', { output = false })
         vim.notify(
-          'All open files has been saved',
+          'All modified files',
           2,
           { title = 'Saved', icon = i('✓', 'check', 0, 1) }
         )

@@ -21,9 +21,8 @@ return {
     },
   },
   ui = {
-    theme = 'Catppuccin-Mocha',
+    theme = 'Graphite-Mono',
     transparency = false,
-    border = 'rounded',
     nonicons = true,
     numbers_enabled = true,
     relative_numbers = true,

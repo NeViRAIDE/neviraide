@@ -1,10 +1,11 @@
 local g = vim.g
 local N = NEVIRAIDE()
 
+---@type BorderType
+g.b = 'rounded'
 g.ntc = vim.fn.stdpath('data') .. '/neviraide_ui/'
 g.nt = N.ui.theme
 g.t = N.ui.transparency
-g.b = N.ui.border
 g.n = N.ui.nonicons
 g.lp = N.latest_stable_plugins
 g.l_fbs = N.lsp.format_before_save
