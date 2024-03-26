@@ -21,4 +21,6 @@ return function()
     hooks.type.SCOPE_HIGHLIGHT,
     hooks.builtin.scope_highlight_from_extmark
   )
+
+  require('ibl').update()
 end

@@ -21,8 +21,7 @@ return {
     },
   },
   ui = {
-    theme = 'Graphite-Mono',
-    transparency = false,
+    theme = 'Tokyo-Night',
     nonicons = true,
     numbers_enabled = true,
     relative_numbers = true,

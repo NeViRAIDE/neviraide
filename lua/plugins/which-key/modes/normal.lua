@@ -85,6 +85,7 @@ return {
     n = require('plugins.which-key.mappings.notes'),
     s = require('plugins.which-key.mappings.settings'),
     t = require('plugins.which-key.mappings.tabs'),
+    u = require('plugins.which-key.mappings.utils'),
 
     Q = {
       '<cmd>qall<cr>',

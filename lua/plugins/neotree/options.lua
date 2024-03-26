@@ -56,7 +56,7 @@ return function()
         end,
       },
       filtered_items = {
-        always_show = { '.gitignore' },
+        always_show = { '.gitignore', '.env' },
       },
       use_libuv_file_watcher = true,
     },
@@ -77,6 +77,11 @@ return function()
         pattern = '^dockerfile$',
         ignore_case = true,
         files = { '.dockerignore', 'docker-compose.*', 'dockerfile*' },
+      },
+      ['cargo'] = {
+        pattern = '^cargo%.toml$',
+        ignore_case = true,
+        files = { 'cargo.lock' },
       },
     },
   }

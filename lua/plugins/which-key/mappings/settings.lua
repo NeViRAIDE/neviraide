@@ -8,17 +8,18 @@ return {
     end,
     'Date/time style',
   },
-  -- FIX: problem
   i = {
     function()
-      require('neviraide-ui.utils.change_settings.indents').set_indents()
+      require('neviraide-ui.utils.change_settings.indents').setIndents()
     end,
-    'Indents',
+    'Toggle nonicons/devicons',
   },
 
   I = {
-    function() require('neviraide-ui.utils.change_settings.icons').set_icons() end,
-    'Icons',
+    function()
+      require('neviraide-ui.utils.change_settings.icons').change_icons()
+    end,
+    'Change icons',
   },
 
   l = {
@@ -101,25 +102,10 @@ return {
       'Toggle relativenumbers',
     },
   },
-  t = {
-    name = 'Transparency',
-    e = {
-      function()
-        require('neviraide-ui.utils.change_settings.transparency').enable()
-      end,
-      'Enable transparency',
-    },
-    d = {
-      function()
-        require('neviraide-ui.utils.change_settings.transparency').disable()
-      end,
-      'Disable transparency',
-    },
-    t = {
-      function()
-        require('neviraide-ui.utils.change_settings.transparency').toggle()
-      end,
-      'Toggle transparency',
-    },
+  C = {
+    function()
+      require('neviraide-ui.utils.change_settings.theme').choose_theme()
+    end,
+    'Colorscheme',
   },
 }

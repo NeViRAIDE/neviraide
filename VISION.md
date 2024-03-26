@@ -28,7 +28,9 @@
 ### NeviraideUI:
 - Themes/Colorschemes:
     - [ ] fix all colors, borders and other visuals for themes (when follows hyprdots and not)
-    - [ ] make colors better (more readable on a different backgrounds)
+    - make colors better (more readable on a different backgrounds)
+        - [x] Catppuccin Mocha
+        - [ ] Catppuccin Latte
     - [ ] color schemes auto changing
     - [ ] choose theme if not hyprdots
 - Notifications:

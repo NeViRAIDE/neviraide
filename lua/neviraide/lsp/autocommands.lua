@@ -5,16 +5,16 @@ local g = vim.g
 local vl = vim.lsp
 local vlb = vim.lsp.buf
 
----@param on_attach fun(client, buffer)
-local function on_attach(on_attach)
-  vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(args)
-      local buffer = args.buf ---@type number
-      local client = vim.lsp.get_client_by_id(args.data.client_id)
-      on_attach(client, buffer)
-    end,
-  })
-end
+-- ---@param on_attach fun(client, buffer)
+-- local function on_attach(on_attach)
+--   vim.api.nvim_create_autocmd('LspAttach', {
+--     callback = function(args)
+--       local buffer = args.buf ---@type number
+--       local client = vim.lsp.get_client_by_id(args.data.client_id)
+--       on_attach(client, buffer)
+--     end,
+--   })
+-- end
 
 utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
   callback = function(args)
@@ -24,6 +24,7 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
 
     local client = vl.get_client_by_id(args.data.client_id)
 
+    -- FIX: add for semantic tokens if available
     dofile(vim.g.ntc .. 'semantic_tokens')
 
     if client then
@@ -38,16 +39,18 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
 
       if g.l_ih then
         -- enable inlay hints
-        if client.server_capabilities.inlayHintProvider then
-          utils.autocmd(
-            'NEVIRAIDE_inlay_hints',
-            { 'BufEnter', 'InsertLeave', 'BufReadPost' },
-            {
-              buffer = buffer,
-              callback = function() vim.lsp.inlay_hint.enable(buffer, true) end,
-            }
-          )
-        end
+        -- if client.server_capabilities.inlayHintProvider then
+        utils.autocmd(
+          'NEVIRAIDE_inlay_hints',
+          { 'BufEnter', 'InsertLeave', 'BufReadPost' },
+          {
+            buffer = buffer,
+            callback = function() vim.lsp.inlay_hint.enable(buffer, true) end,
+          }
+        )
+
+        -- vim.lsp.inlay_hint.enable(buffer, true)
+        -- end
       end
 
       -- enable document symbol highlighting
@@ -71,11 +74,6 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
           },
         })
       end
-
-      -- if client.server_capabilities.colorProvider then
-      --   -- Attach document colour support
-      --   require('document-color').buf_attach(bufnr)
-      -- end
 
       if g.l_cl then
         -- enable codelenses

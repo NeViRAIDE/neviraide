@@ -5,7 +5,6 @@ local N = NEVIRAIDE()
 g.b = 'rounded'
 g.ntc = vim.fn.stdpath('data') .. '/neviraide_ui/'
 g.nt = N.ui.theme
-g.t = N.ui.transparency
 g.n = N.ui.nonicons
 g.lp = N.latest_stable_plugins
 g.l_fbs = N.lsp.format_before_save
@@ -15,6 +14,7 @@ g.l_d_soh = N.lsp.diagnostic.show_on_hover
 g.l_cl = N.lsp.code_lenses
 g.g_gs = N.git.gitsigns.enable_g_signs
 g.g_eclb = N.git.gitsigns.enable_current_line_blame
+g.timer = false
 
 for _, provider in ipairs({ 'node', 'perl', 'python3', 'ruby' }) do
   g['loaded_' .. provider .. '_provider'] = 0
