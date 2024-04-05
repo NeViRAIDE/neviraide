@@ -79,11 +79,9 @@ return {
     name = 'Plugins and features' .. i('', 'rocket', 1),
 
     b = require('plugins.which-key.mappings.buffers'),
-    c = require('plugins.which-key.mappings.colorpicker'),
     f = require('plugins.which-key.mappings.find'),
     g = require('plugins.which-key.mappings.git'),
     l = require('plugins.which-key.mappings.lsp'),
-    n = require('plugins.which-key.mappings.notes'),
     s = require('plugins.which-key.mappings.settings'),
     t = require('plugins.which-key.mappings.tabs'),
     u = require('plugins.which-key.mappings.utils'),
@@ -102,7 +100,7 @@ return {
           { title = 'Saved', icon = i('✓', 'check', 0, 1) }
         )
       end,
-      'Save all files',
+      'Save all files  ',
     },
 
     N = {

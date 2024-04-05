@@ -25,7 +25,7 @@ return {
   name = 'TODO notes' .. icon('', 'tasklist', 1),
   l = {
     ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}}<cr>',
-    'Notes list',
+    'Notes list' .. icon('', 'tasklist', 1),
   },
   a = {
     name = 'Add',
