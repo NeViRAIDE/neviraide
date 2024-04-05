@@ -10,6 +10,18 @@ return {
     'Paste (dont copy replaced text)',
   },
   ['<leader>'] = {
-    t = { '<cmd>Translate ' .. vim.g.lang .. ' -output=split<cr>', 'Translate' },
+    t = {
+      name = 'Translate',
+      t = {
+        '<cmd>Translate ' .. vim.g.lang .. '<cr>',
+        'Current selection',
+      },
+      b = {
+        '<cmd>Translate '
+          .. vim.g.lang
+          .. ' -parse_before=trim -parse_after=window -output=split<cr>',
+        'Split (bottom)',
+      },
+    },
   },
 }

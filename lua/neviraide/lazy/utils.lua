@@ -62,22 +62,6 @@ return {
   {
     'uga-rosa/translate.nvim',
     cmd = 'Translate',
-    opts = {
-      preset = {
-        output = {
-          floating = {
-            relative = 'cursor',
-            style = 'minimal',
-            width = nil,
-            height = nil,
-            row = 1,
-            col = 1,
-            border = vim.g.b,
-            filetype = 'translate',
-            zindex = 50,
-          },
-        },
-      },
-    },
+    opts = require('plugins.translate.options'),
   },
 }
