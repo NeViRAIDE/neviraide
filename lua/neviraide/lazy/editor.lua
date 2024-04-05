@@ -1,5 +1,8 @@
 return {
   {
+    'miversen33/netman.nvim',
+  },
+  {
     'nvim-neo-tree/neo-tree.nvim',
     cmd = 'Neotree',
     opts = require('plugins.neotree.options'),

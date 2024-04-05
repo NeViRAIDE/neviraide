@@ -1,6 +1,9 @@
 return function()
   dofile(vim.g.ntc .. 'neotree')
 
+  local ok, _ = pcall(require, 'netman')
+  if ok then require('netman') end
+
   local icon = require('neviraide-ui.icons.utils').icon
   local fc = require('neo-tree.sources.filesystem.components')
 
@@ -19,7 +22,13 @@ return function()
         end,
       },
     },
-    sources = { 'filesystem', 'buffers', 'git_status', 'document_symbols' },
+    sources = {
+      'filesystem',
+      'buffers',
+      'git_status',
+      'document_symbols',
+      'netman.ui.neo-tree',
+    },
     default_component_configs = {
       diagnostics = {
         symbols = {
@@ -46,6 +55,18 @@ return function()
       },
     },
     filesystem = {
+      window = {
+        mappings = {
+          ['o'] = 'system_open',
+        },
+      },
+      commands = {
+        system_open = function(state)
+          local node = state.tree:get_node()
+          local path = node:get_id()
+          vim.fn.jobstart({ 'xdg-open', path }, { detach = true })
+        end,
+      },
       components = {
         name = function(config, node, state)
           local result = fc.name(config, node, state)

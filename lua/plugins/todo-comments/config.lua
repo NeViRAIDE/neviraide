@@ -5,7 +5,7 @@ return function(_, opts)
   local a = require('plenary.async')
   local todo_search = require('todo-comments.search')
 
-  vim.g.todo_counter = 0
+  vim.g.todo_counter = nil
 
   local countTodos = a.wrap(function(callback)
     todo_search.search(a.void(function(results) callback(#results) end), {

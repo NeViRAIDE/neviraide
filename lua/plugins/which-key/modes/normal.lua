@@ -70,6 +70,11 @@ return {
     'Toggle dashboard' .. i('󰕮', 'tmux', 1),
   },
 
+  ['<a-r>'] = {
+    '<cmd>Neotree float remote toggle<CR>',
+    'Toggle netman ',
+  },
+
   ['<a-g>'] = {
     '<cmd>Neotree position=right git_status toggle<cr>',
     'Toggle GIT status (Neotree)' .. i('', 'mark-github', 1),
