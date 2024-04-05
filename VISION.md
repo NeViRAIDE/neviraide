@@ -16,7 +16,7 @@
 - [ ] make UI for non DE interfaces (for example servers or fresh installed arch)
 - [ ] setting all needed language tools when language added in NEVIRAIDE conf
 - [ ] settings ui (for example, nui window with parsed NEVIRAIDE conf)
-- [x] more comfartable working with diffs 
+- [x] more comfartable working with diffs (Diffview for example)
 - [ ] dynamic sizing
 - [ ] working with sessions
 - [ ] add `symbol_map U+f101-U+f25c nonicons` in kitty.conf when installing 
@@ -32,10 +32,10 @@
         - [x] Catppuccin Mocha
         - [ ] Catppuccin Latte
     - [ ] color schemes auto changing
-    - [ ] choose theme if not hyprdots
+    - [x] choose theme if not hyprdots
 - Notifications:
     - [ ] add differnet colors to notifications
     - [ ] add another source to notifications (messages, etc...)
 - Statusline:
-    - [ ] todos counter
+    - [x] todos counter
     - [ ] version of language interpreter
