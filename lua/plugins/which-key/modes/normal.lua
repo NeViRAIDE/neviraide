@@ -81,6 +81,7 @@ return {
     b = require('plugins.which-key.mappings.buffers'),
     c = require('plugins.which-key.mappings.colorpicker'),
     f = require('plugins.which-key.mappings.find'),
+    g = require('plugins.which-key.mappings.git'),
     l = require('plugins.which-key.mappings.lsp'),
     n = require('plugins.which-key.mappings.notes'),
     s = require('plugins.which-key.mappings.settings'),
