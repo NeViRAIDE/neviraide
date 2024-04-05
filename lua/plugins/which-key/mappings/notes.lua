@@ -22,9 +22,9 @@ local function create_todo_comment(text)
 end
 
 return {
-  name = 'TODO notes' .. icon('', 'tasklist', 1),
+  name = 'TODO notes' .. icon('', 'tasklist', 1),
   l = {
-    ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=12}}<cr>',
+    ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=15}}<cr>',
     'Notes list' .. icon('', 'tasklist', 1),
   },
   a = {

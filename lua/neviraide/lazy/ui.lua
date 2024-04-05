@@ -29,6 +29,7 @@ return {
     cmd = 'TodoTelescope',
     event = { 'BufReadPost', 'BufNewFile' },
     opts = require('plugins.todo-comments.options'),
+    config = require('plugins.todo-comments.config'),
   },
   {
     'folke/which-key.nvim',
