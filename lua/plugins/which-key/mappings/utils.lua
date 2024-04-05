@@ -2,7 +2,8 @@ local icon = require('neviraide-ui.icons.utils').icon
 
 return {
   name = 'Utils' .. icon('', 'tools', 1),
-  t = {
+  t = { '<cmd>Translate ' .. vim.g.lang .. '<cr>', 'Translate' },
+  T = {
     name = 'Timer',
     s = {
       function()

@@ -2,8 +2,9 @@
 
 ---@type NeviraideConfig
 return {
+  language = 'ru',
   latest_stable_plugins = true,
-  lang = { 'lua', 'rust', 'go' },
+  programming = { 'lua', 'rust', 'go' },
   git = {
     gitsigns = {
       enable_g_signs = true,
@@ -21,7 +22,7 @@ return {
     },
   },
   ui = {
-    theme = 'Tokyo-Night',
+    theme = 'Catppuccin-Mocha',
     nonicons = true,
     numbers_enabled = true,
     relative_numbers = true,

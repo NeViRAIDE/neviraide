@@ -9,4 +9,7 @@ return {
     'p:let @+=@0<CR>:let @"=@0<CR>',
     'Paste (dont copy replaced text)',
   },
+  ['<leader>'] = {
+    t = { '<cmd>Translate ' .. vim.g.lang .. ' -output=split<cr>', 'Translate' },
+  },
 }
