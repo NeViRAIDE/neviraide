@@ -11,7 +11,7 @@ return {
   },
   ['<leader>'] = {
     t = {
-      name = 'Translate 󰊿 ',
+      name = 'Translate 󰗊 ',
       t = {
         '<cmd>Translate ' .. vim.g.lang .. '<cr>',
         'Current selection',
