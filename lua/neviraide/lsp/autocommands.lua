@@ -63,7 +63,7 @@ util.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
           vim.lsp.codelens.refresh()
           util.autocmd(
             'NEVIRAIDE_codelens',
-            { 'BufEnter', 'CursorHold', 'InsertLeave' },
+            { 'BufEnter', 'InsertLeave', 'BufWritePre' },
             {
               buffer = buffer,
               callback = vim.lsp.codelens.refresh,
