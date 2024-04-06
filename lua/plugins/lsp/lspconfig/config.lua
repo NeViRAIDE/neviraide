@@ -14,10 +14,7 @@ return function()
 
   vim.lsp.handlers['textDocument/hover'] =
     vim.lsp.with(vim.lsp.handlers.hover, {
-      -- Use a sharp border with `FloatBorder` highlights
       border = vim.g.b,
-      -- add the title in hover float window
-      -- title = ' hover ',
     })
 
   vim.lsp.handlers['textDocument/signatureHelp'] =
@@ -55,12 +52,5 @@ return function()
     end,
     ['lua_ls'] = function(_) lspconfig.lua_ls.setup(server('lua')) end,
     ['tsserver'] = function(_) lspconfig.tsserver.setup(server('ts_js')) end,
-    -- ['gopls'] = function(_) lspconfig.gopls.setup(server('go')) end,
-    -- ['rust_analyzer'] = function(_) lspconfig.rust_analyzer.setup(server('rs')) end,
-    -- ['volar'] = function(_) lspconfig.volar.setup(server('vue')) end,
-    -- ['html'] = function(_) lspconfig.html.setup(server('html')) end,
-    -- ['emmet_language_server'] = function(_)
-    -- lspconfig.emmet_language_server.setup(server('emmet'))
-    -- end,
   })
 end

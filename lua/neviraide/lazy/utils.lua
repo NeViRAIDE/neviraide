@@ -4,19 +4,16 @@ return {
   {
     'RAprogramm/nekifoch',
     dev = true,
-    -- cmd = 'Nekifoch',
-    event = 'VeryLazy',
+    -- event = { 'BufReadPost', 'BufNewFile' },
+    keys = { '<leader>sf', 'Nekifoch' },
     opts = {
       which_key = {
         enable = true,
       },
+      borders = vim.g.b,
     },
   },
-  {
-    'numToStr/Comment.nvim',
-    keys = require('plugins.comment.keys'),
-    config = function(_, opts) require('Comment').setup(opts) end,
-  },
+  { 'numToStr/Comment.nvim' },
   {
     'NvChad/nvterm',
     opts = {
@@ -63,5 +60,41 @@ return {
     'uga-rosa/translate.nvim',
     cmd = 'Translate',
     opts = require('plugins.translate.options'),
+  },
+
+  {
+    'folke/todo-comments.nvim',
+    cmd = 'TodoTelescope',
+    event = { 'BufReadPost', 'BufNewFile' },
+    opts = require('plugins.todo-comments.options'),
+    config = require('plugins.todo-comments.config'),
+  },
+  {
+    'dstein64/vim-startuptime',
+    cmd = 'StartupTime',
+    config = function() vim.g.startuptime_tries = 10 end,
+  },
+
+  {
+    'folke/persistence.nvim',
+    event = 'BufReadPre',
+    opts = { options = vim.opt.sessionoptions:get() },
+    keys = {
+      {
+        '<leader>qs',
+        function() require('persistence').load() end,
+        desc = 'Restore Session',
+      },
+      {
+        '<leader>ql',
+        function() require('persistence').load({ last = true }) end,
+        desc = 'Restore Last Session',
+      },
+      {
+        '<leader>qd',
+        function() require('persistence').stop() end,
+        desc = "Don't Save Current Session",
+      },
+    },
   },
 }

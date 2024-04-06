@@ -24,17 +24,4 @@ return {
     'HiPhish/rainbow-delimiters.nvim',
     event = { 'BufReadPost', 'BufNewFile' },
   },
-  {
-    'folke/todo-comments.nvim',
-    cmd = 'TodoTelescope',
-    event = { 'BufReadPost', 'BufNewFile' },
-    opts = require('plugins.todo-comments.options'),
-    config = require('plugins.todo-comments.config'),
-  },
-  {
-    'folke/which-key.nvim',
-    keys = require('plugins.which-key.keys'),
-    init = require('plugins.which-key'),
-    opts = require('plugins.which-key.options'),
-  },
 }

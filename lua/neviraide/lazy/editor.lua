@@ -37,4 +37,14 @@ return {
     },
     opts = require('plugins.cmp.options'),
   },
+  {
+    'folke/which-key.nvim',
+    event = 'VeryLazy',
+    opts = require('plugins.which-key.options'),
+    config = function(_, opts)
+      local wk = require('which-key')
+      wk.setup(opts)
+      wk.register(opts.defaults)
+    end,
+  },
 }

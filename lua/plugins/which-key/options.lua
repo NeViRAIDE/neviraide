@@ -7,8 +7,16 @@ return function()
   dofile(vim.g.ntc .. 'whichkey')
 
   return {
+    defaults = {
+      mode = { 'n', 'v' },
+      ['g'] = { name = 'GoTo' },
+      ['gs'] = { name = 'Surround' },
+      ['z'] = { name = 'Fold' },
+      [']'] = { name = 'Next' },
+      ['['] = { name = 'Prev' },
+    },
     icons = {
-      breadcrumb = i('»', 'chevron-right', 0, 1),
+      breadcrumb = i('»', 'chevron-right', 1),
       separator = i('➜', 'arrow-right', 0, 1),
       group = i('+', 'plus', 0, 1),
     },

@@ -13,16 +13,16 @@ return function(_, opts)
     })
   end, 2)
 
-  require('neviraide.utils').autocmd(
-    'NEVIRAIDE_TODOS_COUNTER',
-    { 'BufWritePost', 'BufEnter', 'BufWinEnter' },
-    {
-      pattern = '*',
-      callback = function()
-        a.run(function()
-          countTodos(function(result) vim.g.todo_counter = result end)
-        end)
-      end,
-    }
-  )
+  require('neviraide.utils').autocmd('NEVIRAIDE_TODOS_COUNTER', {
+    'BufWritePost',
+    'BufReadPost',
+    'BufNewFile',
+  }, {
+    pattern = '*',
+    callback = function()
+      a.run(function()
+        countTodos(function(result) vim.g.todo_counter = result end)
+      end)
+    end,
+  })
 end

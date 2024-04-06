@@ -108,4 +108,9 @@ return {
     end,
     'Colorscheme',
   },
+  p = {
+    name = 'Plugins',
+    s = { '<cmd>Lazy show<cr>', 'Show plugins' },
+    u = { '<cmd>Lazy update<cr>', 'Update plugins' },
+  },
 }
