@@ -8,14 +8,17 @@ local function server(filetype)
 end
 
 return function()
+  local lspconfig = require('lspconfig')
+  local mason_lsp_config = require('mason-lspconfig')
+
   require('neviraide.lsp.autocommands')
   -- LspInfo borders
   require('lspconfig.ui.windows').default_options.border = vim.g.b
 
-  vim.lsp.handlers['textDocument/hover'] =
-    vim.lsp.with(vim.lsp.handlers.hover, {
-      border = vim.g.b,
-    })
+  -- vim.lsp.handlers['textDocument/hover'] =
+  --   vim.lsp.with(vim.lsp.handlers.hover, {
+  --     border = vim.g.b,
+  --   })
 
   vim.lsp.handlers['textDocument/signatureHelp'] =
     vim.lsp.with(vim.lsp.handlers.signature_help, {
@@ -30,9 +33,6 @@ return function()
       -- add the title in hover float window
       -- title = ' hover ',
     })
-
-  local lspconfig = require('lspconfig')
-  local mason_lsp_config = require('mason-lspconfig')
 
   mason_lsp_config.setup({
     ensure_installed = {

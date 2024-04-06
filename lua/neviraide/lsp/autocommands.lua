@@ -1,67 +1,49 @@
-local utils = require('neviraide.utils')
+---@type NeviraideUtils
+local util = require('neviraide.utils')
 local diagnostic = require('neviraide.lsp.diagnostic')
 local diagnostic_mappings = require('plugins.which-key.mappings.diagnostic')
-local g = vim.g
-local vl = vim.lsp
-local vlb = vim.lsp.buf
 
--- ---@param on_attach fun(client, buffer)
--- local function on_attach(on_attach)
---   vim.api.nvim_create_autocmd('LspAttach', {
---     callback = function(args)
---       local buffer = args.buf ---@type number
---       local client = vim.lsp.get_client_by_id(args.data.client_id)
---       on_attach(client, buffer)
---     end,
---   })
--- end
+local function hints(buf, value)
+  local ih = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
+  if type(ih) == 'function' then
+    ih(buf, value)
+  elseif type(ih) == 'table' and ih.enable then
+    if value == nil then value = not ih.is_enabled(buf) end
+    ih.enable(buf, value)
+  end
+end
 
-utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
+util.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
   callback = function(args)
     -- the buffer where the lsp attached
     ---@type number
     local buffer = args.buf
 
-    local client = vl.get_client_by_id(args.data.client_id)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
 
     -- FIX: add for semantic tokens if available
     dofile(vim.g.ntc .. 'semantic_tokens')
 
     if client then
-      -- utils.mappings('lsp')(buffer)
-
       diagnostic()
       diagnostic_mappings(client, buffer)
 
-      -- print('inspect client:', vim.inspect(client))
-      -- print('provider: ', vim.inspect(client.server_capabilities))
-      -- print('is enabled: ', vim.lsp.inlay_hint.is_enabled(buffer))
-
-      if g.l_ih then
+      if NEVIRAIDE().lsp.inlay_hints then
         -- enable inlay hints
-        -- if client.server_capabilities.inlayHintProvider then
-        utils.autocmd(
-          'NEVIRAIDE_inlay_hints',
-          { 'BufEnter', 'InsertLeave', 'BufReadPost' },
-          {
-            buffer = buffer,
-            callback = function() vim.lsp.inlay_hint.enable(buffer, true) end,
-          }
-        )
-
-        -- vim.lsp.inlay_hint.enable(buffer, true)
-        -- end
+        if client.supports_method('textDocument/inlayHint') then
+          hints(buffer, true)
+        end
       end
 
       -- enable document symbol highlighting
       if client.server_capabilities.documentHighlightProvider then
-        utils.autocmd_multi('lsp_document_highlight', {
+        util.autocmd_multi('lsp_document_highlight', {
           {
-            'CursorHold',
+            { 'CursorHold', 'CursorHoldI' },
             {
               buffer = buffer,
               desc = "Visual highlighting sybmol's references in document when cursor hold on it",
-              callback = function() vlb.document_highlight() end,
+              callback = function() vim.lsp.buf.document_highlight() end,
             },
           },
           {
@@ -69,40 +51,43 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
             {
               buffer = buffer,
               desc = "Reset visual highlighting sybmol's references in document when cursor moved",
-              callback = function() vlb.clear_references() end,
+              callback = function() vim.lsp.buf.clear_references() end,
             },
           },
         })
       end
 
-      if g.l_cl then
+      if vim.g.l_cl and vim.lsp.codelens then
         -- enable codelenses
-        if client.server_capabilities.codeLensProvider then
-          utils.autocmd(
+        if client.supports_method('textDocument/codeLens') then
+          vim.lsp.codelens.refresh()
+          util.autocmd(
             'NEVIRAIDE_codelens',
-            { 'BufEnter', 'BufReadPost', 'InsertLeave' },
+            { 'BufEnter', 'CursorHold', 'InsertLeave' },
             {
               buffer = buffer,
-              callback = function() vl.codelens.refresh() end,
+              callback = vim.lsp.codelens.refresh,
             }
           )
         end
       end
     end
 
-    if g.l_fbs then
+    if vim.g.l_fbs then
       -- enable auto format file before save
-      if client.server_capabilities.documentFormattingProvider then
-        utils.autocmd('NEVIRAIDE_auto_format', 'BufWritePre', {
-          buffer = buffer,
-          callback = function() vlb.format() end,
-        })
+      if client then
+        if client.server_capabilities.documentFormattingProvider then
+          util.autocmd('NEVIRAIDE_auto_format', 'BufWritePre', {
+            buffer = buffer,
+            callback = function() vim.lsp.buf.format() end,
+          })
+        end
       end
     end
 
-    if g.l_d_soh then
+    if vim.g.l_d_soh then
       -- enable auto show diagnostics
-      utils.autocmd('NEVIRAIDE_auto_diag', 'CursorHold', {
+      util.autocmd('NEVIRAIDE_auto_diag', 'CursorHold', {
         buffer = buffer,
         callback = function()
           vim.diagnostic.open_float(nil, {
@@ -113,7 +98,7 @@ utils.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
               'InsertEnter',
               'FocusLost',
             },
-            border = g.b,
+            border = vim.g.b,
             source = 'if_many',
             prefix = ' ',
             scope = 'cursor',

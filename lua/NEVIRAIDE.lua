@@ -18,7 +18,7 @@ return {
     diagnostic = {
       enable_d_signs = true,
       virtual_text = false,
-      show_on_hover = true,
+      show_on_hover = false,
     },
   },
   ui = {
