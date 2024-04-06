@@ -33,10 +33,10 @@ return {
     'Document symbols',
   },
 
-  ['<c-/>'] = {
-    function() require('Comment.api').toggle.linewise.current() end,
-    'Toggle comment' .. i('', 'comment', 1),
-  },
+  -- ['<c-/>'] = {
+  --   function() require('Comment.api').toggle.linewise.current() end,
+  --   'Toggle comment' .. i('', 'comment', 1),
+  -- },
 
   ['<tab>'] = {
     function() require('neviraide-ui.buftabline').tabuflineNext() end,
