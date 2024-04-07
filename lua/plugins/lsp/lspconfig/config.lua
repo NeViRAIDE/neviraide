@@ -15,23 +15,31 @@ return function()
   -- LspInfo borders
   require('lspconfig.ui.windows').default_options.border = vim.g.b
 
-  -- vim.lsp.handlers['textDocument/hover'] =
-  --   vim.lsp.with(vim.lsp.handlers.hover, {
+  -- vim.lsp.handlers['textDocument/signatureHelp'] =
+  --   vim.lsp.with(vim.lsp.handlers.signature_help, {
+  --     -- Use a sharp border with `FloatBorder` highlights
   --     border = vim.g.b,
   --   })
 
-  vim.lsp.handlers['textDocument/signatureHelp'] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, {
-      -- Use a sharp border with `FloatBorder` highlights
-      border = vim.g.b,
-    })
+  -- vim.lsp.handlers['textDocument/hover'] = function(err, result, ctx, config)
+  --   if err or not result then return end
+  --   local bufnr, winnr = vim.lsp.util.open_floating_preview(
+  --     vim.lsp.util.convert_input_to_markdown_lines(result.contents),
+  --     'markdown',
+  --     {
+  --       border = vim.g.b, -- Или указать тип границы напрямую, например, "rounded"
+  --       max_width = 70, --Устанавливаем максимальную ширину окна
+  --     }
+  --   )
+  --
+  --   -- Включение переноса текста для созданного буфера
+  --   local current_win = vim.api.nvim_get_current_win()
+  --   vim.api.nvim_set_option_value('wrap', true, { win = current_win })
+  -- end
 
   vim.lsp.handlers['textDocument/hover'] =
     vim.lsp.with(vim.lsp.handlers.hover, {
-      -- Use a sharp border with `FloatBorder` highlights
       border = vim.g.b,
-      -- add the title in hover float window
-      -- title = ' hover ',
     })
 
   mason_lsp_config.setup({
