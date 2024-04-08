@@ -1,6 +1,7 @@
-local utils = require('neviraide.utils')
+---@type NeviraideUtils
+local util = require('neviraide.utils')
 
-utils.autocmd('Edit_folder', 'BufEnter', {
+util.autocmd('Edit_folder', 'BufEnter', {
   pattern = '*',
   desc = 'Open Neotree when trying to edit directories.',
   callback = function()
@@ -9,13 +10,13 @@ utils.autocmd('Edit_folder', 'BufEnter', {
   end,
 })
 
-utils.autocmd('NEVIRAIDE_Markdown', 'FileType', {
+util.autocmd('NEVIRAIDE_Markdown', 'FileType', {
   pattern = 'markdown',
   desc = 'Add markdown features',
   callback = function() require('plugins.which-key.mappings.md')() end,
 })
 
-utils.autocmd_multi('NEVIRAIDE_CONF', {
+util.autocmd_multi('NEVIRAIDE_CONF', {
   {
     'FileType',
     {
@@ -122,7 +123,7 @@ utils.autocmd_multi('NEVIRAIDE_CONF', {
   },
 })
 
-utils.autocmd_multi('NEVIRAIDE_CURSOR', {
+util.autocmd_multi('NEVIRAIDE_CURSOR', {
   {
     { 'BufEnter', 'WinEnter' },
     {
@@ -185,7 +186,26 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   group = augroup('auto_create_dir'),
   callback = function(event)
     if event.match:match('^%w%w+://') then return end
-    local file = vim.loop.fs_realpath(event.match) or event.match
+    local file = vim.uv.fs_realpath(event.match) or event.match
     vim.fn.mkdir(vim.fn.fnamemodify(file, ':p:h'), 'p')
   end,
 })
+
+util.autocmd_multi('NEVIRAIDE_NUMBERS', {
+  {
+    'InsertLeave',
+    {
+      pattern = '*',
+      desc = 'Enable relative numbers',
+      callback = function() vim.o.relativenumber = true end,
+    },
+  },
+  {
+    'InsertEnter',
+    {
+      pattern = '*',
+      desc = 'Disable relative numbers',
+      callback = function() vim.o.relativenumber = false end,
+    },
+  },
+}, true)

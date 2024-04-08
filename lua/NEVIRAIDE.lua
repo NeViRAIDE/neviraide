@@ -22,7 +22,9 @@ return {
     },
   },
   ui = {
+    hyprdots = true,
     theme = 'Catppuccin-Mocha',
+    notify = true,
     nonicons = true,
     numbers_enabled = true,
     relative_numbers = true,

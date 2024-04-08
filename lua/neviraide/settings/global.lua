@@ -16,6 +16,8 @@ g.g_gs = N.git.gitsigns.enable_g_signs
 g.g_eclb = N.git.gitsigns.enable_current_line_blame
 g.timer = false
 g.lang = N.language
+g.hypr = N.ui.hyprdots
+g.notif = N.ui.notify
 
 for _, provider in ipairs({ 'node', 'perl', 'python3', 'ruby' }) do
   g['loaded_' .. provider .. '_provider'] = 0

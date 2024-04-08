@@ -3,10 +3,9 @@ return {
     'RAprogramm/neviraide-ui.nvim',
     dev = true,
     event = 'VeryLazy',
-    dependencies = {},
     opts = {
-      hyprdots = true,
-      notify = true,
+      hyprdots = vim.g.hypr,
+      notify = vim.g.notif,
     },
   },
   {

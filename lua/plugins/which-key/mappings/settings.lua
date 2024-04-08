@@ -102,12 +102,6 @@ return {
       'Toggle relativenumbers',
     },
   },
-  C = {
-    function()
-      require('neviraide-ui.utils.change_settings.theme').choose_theme()
-    end,
-    'Colorscheme',
-  },
   p = {
     name = 'Plugins',
     s = { '<cmd>Lazy show<cr>', 'Show plugins' },
