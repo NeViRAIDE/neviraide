@@ -22,7 +22,7 @@ local function check_for_updates()
         print('Canceled')
       end
     else
-      print('NEVIRAIDE already up to date')
+      print('NEVIRAIDE already is up to date')
     end
   end
 end

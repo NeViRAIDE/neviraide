@@ -26,11 +26,14 @@ return {
     theme = 'Catppuccin-Mocha',
     notify = true,
     nonicons = true,
-    numbers_enabled = true,
-    relative_numbers = true,
     cursor_line = true,
     cursor_column = false,
     indents = 4,
+    line_numbers = {
+      auto_switch_relative = true,
+      numbers_enabled = true,
+      relative_numbers = true,
+    },
     font = {
       family = 'JetBrainsMono Nerd Font',
       size = 13,

@@ -191,21 +191,14 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   end,
 })
 
-util.autocmd_multi('NEVIRAIDE_NUMBERS', {
-  {
-    'InsertLeave',
-    {
-      pattern = '*',
-      desc = 'Enable relative numbers',
-      callback = function() vim.o.relativenumber = true end,
-    },
-  },
-  {
-    'InsertEnter',
-    {
-      pattern = '*',
-      desc = 'Disable relative numbers',
-      callback = function() vim.o.relativenumber = false end,
-    },
-  },
-}, true)
+if vim.g.asrln then
+  util.autocmd('NEVIRAIDE_NUMBERS', { 'InsertLeave', 'InsertEnter' }, {
+    pattern = '*',
+    desc = 'Toggle relative numbers',
+    callback = function()
+      if not require('neviraide.utils.ignored').ignored() then
+        vim.o.relativenumber = not vim.o.relativenumber
+      end
+    end,
+  }, true)
+end

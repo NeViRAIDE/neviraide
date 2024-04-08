@@ -18,6 +18,7 @@ g.timer = false
 g.lang = N.language
 g.hypr = N.ui.hyprdots
 g.notif = N.ui.notify
+g.asrln = N.ui.line_numbers.auto_switch_relative
 
 for _, provider in ipairs({ 'node', 'perl', 'python3', 'ruby' }) do
   g['loaded_' .. provider .. '_provider'] = 0
