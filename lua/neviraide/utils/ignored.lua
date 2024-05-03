@@ -21,6 +21,8 @@ local filetypes_list = {
   'neotest-output',
   'neotest-summary',
   'nekifoch',
+  'input',
+  'timer',
 }
 
 local function is_ignored_file_type()

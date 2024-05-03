@@ -3,35 +3,27 @@ local util = require('neviraide.utils')
 local diagnostic = require('neviraide.lsp.diagnostic')
 local diagnostic_mappings = require('plugins.which-key.mappings.diagnostic')
 
-local function hints(buf, value)
-  local ih = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
-  if type(ih) == 'function' then
-    ih(buf, value)
-  elseif type(ih) == 'table' and ih.enable then
-    if value == nil then value = not ih.is_enabled(buf) end
-    ih.enable(buf, value)
-  end
-end
-
 util.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
   callback = function(args)
-    -- the buffer where the lsp attached
+    ---The buffer where the lsp attached
     ---@type number
     local buffer = args.buf
 
+    ---Language server
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-    -- FIX: add for semantic tokens if available
-    dofile(vim.g.ntc .. 'semantic_tokens')
 
     if client then
       diagnostic()
       diagnostic_mappings(client, buffer)
 
+      if client.server_capabilities.semanticTokensProvider then
+        dofile(vim.g.ntc .. 'semantic_tokens')
+      end
+
       if NEVIRAIDE().lsp.inlay_hints then
         -- enable inlay hints
         if client.supports_method('textDocument/inlayHint') then
-          hints(buffer, true)
+          vim.lsp.inlay_hint.enable()
         end
       end
 
@@ -79,7 +71,11 @@ util.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
         if client.server_capabilities.documentFormattingProvider then
           util.autocmd('NEVIRAIDE_auto_format', 'BufWritePre', {
             buffer = buffer,
-            callback = function() vim.lsp.buf.format() end,
+            callback = function()
+              if client and client.name ~= 'null-ls' then
+                vim.lsp.buf.format()
+              end
+            end,
           })
         end
       end

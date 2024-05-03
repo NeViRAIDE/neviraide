@@ -17,9 +17,12 @@ return function(_, opts)
       ['.*/waybar/config'] = 'jsonc',
       ['.*/mako/config'] = 'dosini',
       ['.*/kitty/*.conf'] = 'bash',
-      ['.*/hypr/.*%.conf'] = 'hypr',
+      ['.*/hypr/.*%.conf'] = 'hyprlang',
     },
   })
+
+  local ft = require('Comment.ft')
+  ft.hyprlang = '#%s'
 
   add('git_config')
 

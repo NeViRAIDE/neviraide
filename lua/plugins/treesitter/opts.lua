@@ -1,6 +1,6 @@
 return function()
   return {
-    ensure_installed = { 'lua' },
+    ensure_installed = { 'lua', 'hyprlang', 'rust', 'rasi' },
     auto_install = true,
     highlight = {
       enable = true,

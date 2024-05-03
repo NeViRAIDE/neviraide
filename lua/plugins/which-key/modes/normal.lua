@@ -96,6 +96,7 @@ return {
       'Quit' .. i('', 'sign-out', 1),
     },
 
+    -- TODO: silent when no language server
     S = {
       function()
         vim.api.nvim_exec2('silent! wa', { output = false })

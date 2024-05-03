@@ -4,8 +4,13 @@ return {
     dev = true,
     event = 'VeryLazy',
     opts = {
-      hyprdots = vim.g.hypr,
-      notify = vim.g.notif,
+      kitty = {
+        enable = true,
+      },
+      ui = {
+        hyde = vim.g.hypr,
+        notify = vim.g.notif,
+      },
     },
   },
   {

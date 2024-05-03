@@ -4,7 +4,7 @@ return {
   {
     'RAprogramm/nekifoch',
     dev = true,
-    -- event = { 'BufReadPost', 'BufNewFile' },
+    event = { 'BufReadPost', 'BufNewFile' },
     keys = { '<leader>sf', 'Nekifoch' },
     opts = {
       which_key = {
