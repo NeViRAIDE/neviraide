@@ -22,8 +22,8 @@ return {
     },
   },
   ui = {
-    hyprdots = true,
-    theme = 'Catppuccin-Mocha',
+    hyde = true,
+    theme = 'Dracula',
     notify = true,
     nonicons = true,
     cursor_line = true,

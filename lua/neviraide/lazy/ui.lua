@@ -8,7 +8,7 @@ return {
         enable = true,
       },
       ui = {
-        hyde = vim.g.hypr,
+        hyde = vim.g.hyde,
         notify = vim.g.notif,
       },
     },

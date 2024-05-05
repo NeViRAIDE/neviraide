@@ -16,7 +16,7 @@ g.g_gs = N.git.gitsigns.enable_g_signs
 g.g_eclb = N.git.gitsigns.enable_current_line_blame
 g.timer = false
 g.lang = N.language
-g.hypr = N.ui.hyprdots
+g.hyde = N.ui.hyde
 g.notif = N.ui.notify
 g.asrln = N.ui.line_numbers.auto_switch_relative
 
