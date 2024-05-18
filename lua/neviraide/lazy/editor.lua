@@ -1,7 +1,5 @@
 return {
-  {
-    'miversen33/netman.nvim',
-  },
+  { 'miversen33/netman.nvim' },
   {
     'nvim-neo-tree/neo-tree.nvim',
     cmd = 'Neotree',
