@@ -1,12 +1,3 @@
-> [!IMPORTANT]  
-> IN PROGRESS...
-> 
-> NOW COLORS GOOD ONLY IN `Catppuccin-Mocha` THEME
->
-> PLEASE, HELP ME IF YOU HAVE A FREE TIME AND INTERESTING
->
-> ALL TODO's IN [VISION](./VISION.md)
-
 <div align="center">
 
 <img title="NEVIRAIDE" alt="NEoVIm Rozanov Andrei Integrated Development Environment" src="./.preview/logo.png">
@@ -14,24 +5,11 @@
 <hr>
 
 <!-- <img alt="GitHub Release" src="https://img.shields.io/github/v/release/RAprogramm/NEVIRAIDE"> -->
-<img alt="GitHub issues" src="https://img.shields.io/github/issues/RAprogramm/NEVIRAIDE">
-<img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/RAprogramm/NEVIRAIDE">
-
+[![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.10-blueviolet.svg?style=flat&logo=Neovim&color=90E59A&logoColor=white)](https://github.com/neovim/neovim)
+[![GitHub Issues](https://img.shields.io/github/issues/NvChad/NvChad.svg?style=flat&label=Issues&color=d77982)](https://github.com/NvChad/NvChad/issues)
 <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/RAprogramm/NEVIRAIDE">
-
-<!-- <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/RAprogramm/NEVIRAIDE/total"> -->
-
-<!-- <img alt="AUR Version" src="https://img.shields.io/aur/version/neviraide"> -->
-<!-- <img alt="AUR Votes" src="https://img.shields.io/aur/votes/neviraide"> -->
-<!-- <img alt="AUR Last Modified" src="https://img.shields.io/aur/last-modified/neviraide"> -->
-
-<!-- <img alt="GitHub Tag" src="https://img.shields.io/github/v/tag/RAprogramm/NEVIRAIDE"> -->
 <img alt="GitHub License" src="https://img.shields.io/github/license/RAprogramm/NEVIRAIDE">
-
-<!-- <img alt="GitHub watchers" src="https://img.shields.io/github/watchers/RAprogramm/NEVIRAIDE"> -->
 <img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/RAprogramm/NEVIRAIDE">
-<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/RAprogramm/NEVIRAIDE">
-<!-- <img alt="GitHub forks" src="https://img.shields.io/github/forks/RAprogramm/NEVIRAIDE"> -->
 
 <hr>
 <br>
@@ -165,22 +143,12 @@ yay -S git nonicons ripgrep fd unzip wget curl gzip
 
 <h2 id='installation'  style="text-align: center;">INSTALLATION</h2>
 
-> [!IMPORTANT]
-> I'M CURRENTLY TRYING TO FIND A BETTER WAY TO INSTALL AUTOMATICALLY.
-> 
-> NEVIRALLER DOES NOT WORK NOW.
-> 
-> PLEASE INSTALL EVERYTHING MANUALLY.
-> 
-> I WILL BE HAPPY TO ANSWER ALL YOUR QUESTIONS
 
-> [!TIP]
-> NOW YOU CAN UPDATE NEVIRAIDE
->
-> in `~/.config/nvim`
-> ```sh
->lua update.lua
-> ```
+> [!IMPORTANT]
+> NEVIRALLER NOT COMPLETED NOW!
+> 
+> INFO ABOUT INSTALLATION YOU CAN FIND [HERE](https://github.com/RAprogramm/NEVIRAIDE/issues/5)
+
 
 <div>
 

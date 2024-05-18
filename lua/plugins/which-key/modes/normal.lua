@@ -52,6 +52,7 @@ return {
   ['<C-j>'] = { '<C-w>j', 'Go to the bottom window' },
   ['<C-k>'] = { '<C-w>k', 'Go to the top window' },
 
+  -- TODO: check if, for example, neotree => go to main window and then open terminals
   ['<a-h>'] = {
     function() term_util('horizontal') end,
     'Toggle horizontal terminal' .. i('', 'terminal', 1),
