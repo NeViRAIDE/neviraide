@@ -22,6 +22,7 @@ local filetypes_list = {
   'neotest-summary',
   'nekifoch',
   'input',
+  'indents',
   'timer',
 }
 
