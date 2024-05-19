@@ -1,6 +1,6 @@
 return {
   {
-    'RAprogramm/neviraide-ui.nvim',
+    'NeViRAIDE/neviraide-ui',
     dev = true,
     event = 'VeryLazy',
     opts = {

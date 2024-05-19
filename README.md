@@ -4,12 +4,11 @@
 
 <hr>
 
-<!-- <img alt="GitHub Release" src="https://img.shields.io/github/v/release/RAprogramm/NEVIRAIDE"> -->
 [![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.10-blueviolet.svg?style=flat&logo=Neovim&color=90E59A&logoColor=white)](https://github.com/neovim/neovim)
 [![GitHub Issues](https://img.shields.io/github/issues/NvChad/NvChad.svg?style=flat&label=Issues&color=d77982)](https://github.com/NvChad/NvChad/issues)
-<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/RAprogramm/NEVIRAIDE">
-<img alt="GitHub License" src="https://img.shields.io/github/license/RAprogramm/NEVIRAIDE">
-<img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/RAprogramm/NEVIRAIDE">
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/NeViRAIDE/neviraide">
+<img alt="GitHub License" src="https://img.shields.io/github/license/NeViRAIDE/neviraide">
+<img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/NeViRAIDE/neviraide">
 
 <hr>
 <br>
@@ -50,10 +49,10 @@ _*<p>"Remember, Neovim is your canvas for shaping a personalized IDE or a serene
 > 
 > [Installation](https://github.com/RAprogramm/neviraide-install/issues) (Everything related to installation process).
 > 
-> [Neivraide functions, workings and other](https://github.com/RAprogramm/NEVIRAIDE/issues)
+> [Neivraide functions, workings and other](https://github.com/NeViRAIDE/neviraide/issues)
 
 <li><a href='#contributing'>Contributing</a></li>
-<li><a href='https://github.com/RAprogramm/NEVIRAIDE/discussions'>Discussions</a></li>
+<li><a href='https://github.com/NeViRAIDE/neviraide/discussions'>Discussions</a></li>
 
 <li><a href='#donations'>Donations<a/></li>
 </ul>
@@ -147,7 +146,7 @@ yay -S git nonicons ripgrep fd unzip wget curl gzip
 > [!IMPORTANT]
 > NEVIRALLER NOT COMPLETED NOW!
 > 
-> INFO ABOUT INSTALLATION YOU CAN FIND [HERE](https://github.com/RAprogramm/NEVIRAIDE/issues/5)
+> INFO ABOUT INSTALLATION YOU CAN FIND [HERE](https://github.com/NeViRAIDE/neviraide/issues/5)
 
 
 <div>

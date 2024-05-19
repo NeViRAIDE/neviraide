@@ -2,7 +2,7 @@ return {
   { 'wakatime/vim-wakatime', event = 'VeryLazy' },
   { 'ggandor/lightspeed.nvim', event = { 'BufReadPost', 'BufNewFile' } },
   {
-    'RAprogramm/nekifoch',
+    'NeViRAIDE/nekifoch',
     dev = true,
     event = { 'BufReadPost', 'BufNewFile' },
     keys = { '<leader>sf', 'Nekifoch' },
