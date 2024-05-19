@@ -26,6 +26,7 @@
   "neotest-go": { "branch": "main", "commit": "27c80deab9cf5cb30b20ee407b3a6c7285518128" },
   "neotest-rust": { "branch": "main", "commit": "0418811e1e3499b2501593f2e131d02f5e6823d4" },
   "netman.nvim": { "branch": "main", "commit": "d0ec9d4ca195b2c87bf46ab050130a2c806310c4" },
+  "neviraide-ui": { "branch": "main", "commit": "43c95e1ebfc898a9cb3a71916f0206d09f1070cd" },
   "none-ls.nvim": { "branch": "main", "commit": "37671797d6e5f9bd0ee3ab965ab2e6de251e1930" },
   "nui.nvim": { "branch": "main", "commit": "a0fd35fcbb4cb479366f1dc5f20145fd718a3733" },
   "nvim-autopairs": { "branch": "master", "commit": "b0b79e42a28f09719a7da9534c3731fa37319d9b" },

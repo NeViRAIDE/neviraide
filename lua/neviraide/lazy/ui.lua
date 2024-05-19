@@ -28,9 +28,4 @@ return {
     'HiPhish/rainbow-delimiters.nvim',
     event = { 'BufReadPost', 'BufNewFile' },
   },
-  -- {
-  --   'chikko80/error-lens.nvim',
-  --   event = 'LspAttach',
-  --   config = true,
-  -- },
 }

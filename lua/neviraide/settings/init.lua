@@ -5,6 +5,7 @@ local o = vim.opt
 o.whichwrap:append('<>[]hl')
 o.shortmess:append({ W = true, I = true, c = true })
 o.laststatus = 3
+o.wrap = false
 o.showmode = false
 o.cmdheight = 0
 o.concealcursor = 'nc'
@@ -38,10 +39,9 @@ o.termguicolors = true
 o.timeoutlen = 500
 o.undofile = true
 o.updatetime = 250
+o.smoothscroll = true
 o.sessionoptions =
   'blank,buffers,curdir,folds,help,options,terminal,globals,localoptions,tabpages'
-
-if vim.fn.has('nvim-0.10') == 1 then o.smoothscroll = true end
 
 -- NOTE: folds or not?!
 

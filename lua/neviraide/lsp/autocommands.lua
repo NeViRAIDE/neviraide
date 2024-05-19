@@ -13,9 +13,6 @@ util.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
     if client then
-      diagnostic()
-      diagnostic_mappings(client, buffer)
-
       if client.server_capabilities.semanticTokensProvider then
         dofile(vim.g.ntc .. 'semantic_tokens')
       end
@@ -26,6 +23,9 @@ util.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
           vim.lsp.inlay_hint.enable()
         end
       end
+
+      diagnostic()
+      diagnostic_mappings(client, buffer)
 
       -- enable document symbol highlighting
       if client.server_capabilities.documentHighlightProvider then
