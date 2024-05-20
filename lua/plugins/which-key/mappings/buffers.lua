@@ -1,45 +1,41 @@
-local i = require('neviraide-ui.icons.utils').icon
+local i = require('stigmata.utils').icon
 
 return {
   name = 'Buffers' .. i('b', 'tmux', 1),
   d = {
     name = 'Delete' .. i('', 'trash', 1),
     c = {
-      function() require('neviraide-ui.buftabline').close_buffer() end,
+      function() require('nevitabs').close_buffer() end,
       'Current',
     },
     a = {
-      function() require('neviraide-ui.buftabline').closeOtherBufs() end,
+      function() require('nevitabs').closeOtherBufs() end,
       'All, except current',
     },
     A = {
       function()
-        require('neviraide-ui.buftabline').closeAllBufs()
-        require('neviraide-ui.buftabline').close_buffer()
+        require('nevitabs').closeAllBufs()
+        require('nevitabs').close_buffer()
       end,
       'All',
     },
     l = {
-      function()
-        require('neviraide-ui.buftabline').closeBufs_at_direction('left')
-      end,
+      function() require('nevitabs').closeBufs_at_direction('left') end,
       'All to the left of the current one',
     },
     r = {
-      function()
-        require('neviraide-ui.buftabline').closeBufs_at_direction('right')
-      end,
+      function() require('nevitabs').closeBufs_at_direction('right') end,
       'All to the right of the current one',
     },
   },
   m = {
     name = 'Move',
     l = {
-      function() require('neviraide-ui.buftabline').move_buf(-1) end,
+      function() require('nevitabs').move_buf(-1) end,
       'Move to the left',
     },
     r = {
-      function() require('neviraide-ui.buftabline').move_buf(1) end,
+      function() require('nevitabs').move_buf(1) end,
       'Move to the right',
     },
   },
@@ -48,11 +44,11 @@ return {
     'Toggle buffers list (Neotree)' .. i('', 'list-unordered', 1),
   },
   n = {
-    function() require('neviraide-ui.buftabline').tabuflineNext() end,
+    function() require('nevitabs').tabuflineNext() end,
     'Go to the next',
   },
   p = {
-    function() require('neviraide-ui.buftabline').tabuflinePrev() end,
+    function() require('nevitabs').tabuflinePrev() end,
     'Go to the previous',
   },
 }

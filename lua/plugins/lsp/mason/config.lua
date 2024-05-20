@@ -1,5 +1,5 @@
 return function(_, opts)
-  local icon = require('neviraide-ui.icons.utils').icon
+  local icon = require('stigmata.utils').icon
 
   dofile(vim.g.ntc .. 'mason')
 

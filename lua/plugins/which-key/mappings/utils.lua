@@ -1,4 +1,4 @@
-local icon = require('neviraide-ui.icons.utils').icon
+local icon = require('stigmata.utils').icon
 
 return {
   name = 'Utils' .. icon('', 'tools', 1),

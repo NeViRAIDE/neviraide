@@ -1,4 +1,4 @@
-local icon = require('neviraide-ui.icons.utils').icon
+local icon = require('stigmata.utils').icon
 
 return function(bufnr)
   require('neviraide.utils').wk_reg({

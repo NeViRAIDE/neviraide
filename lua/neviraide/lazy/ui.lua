@@ -1,19 +1,5 @@
 return {
   {
-    'NeViRAIDE/neviraide-ui',
-    dev = true,
-    event = 'VeryLazy',
-    opts = {
-      kitty = {
-        enable = true,
-      },
-      ui = {
-        hyde = vim.g.hyde,
-        notify = vim.g.notif,
-      },
-    },
-  },
-  {
     'nvim-tree/nvim-web-devicons',
     opts = require('plugins.ui.devicons.options'),
     config = require('plugins.ui.devicons.config'),

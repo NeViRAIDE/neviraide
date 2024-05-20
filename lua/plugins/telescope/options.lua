@@ -7,7 +7,7 @@ local border_chars = {
 }
 
 return function()
-  local icon = require('neviraide-ui.icons.utils').icon
+  local icon = require('stigmata.utils').icon
 
   local action = require('telescope.actions')
   local action_layout = require('telescope.actions.layout')

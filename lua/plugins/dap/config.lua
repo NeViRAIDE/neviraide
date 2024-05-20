@@ -30,28 +30,28 @@ return function()
   dap.listeners.before.event_exited['dapui_config'] = function() dapui.close() end
 
   -- TODO: add icons from neviraideUI
-  vim.fn.sign_define('DapBreakpoint', {
-    text = ' ',
-    texthl = 'NotifyERRORIcon',
-    linehl = 'NotifyERRORIcon',
-    numhl = 'NotifyERRORIcon',
-  })
-  vim.fn.sign_define('DapBreakpointCondition', {
-    text = ' ',
-    texthl = 'NotifyTRACEIcon',
-    linehl = 'NotifyTRACEIcon',
-    numhl = 'NotifyTRACEIcon',
-  })
-  vim.fn.sign_define('DapLogPoint', {
-    text = ' ',
-    texthl = 'NotifyINFOIcon',
-    linehl = 'NotifyINFOIcon',
-    numhl = 'NotifyINFOIcon',
-  })
-  vim.fn.sign_define('DapStopped', {
-    text = ' ',
-    texthl = 'NotifyWARNIcon',
-    linehl = 'NotifyWARNIcon',
-    numhl = 'NotifyWARNIcon',
-  })
+  -- vim.fn.sign_define('DapBreakpoint', {
+  --   text = ' ',
+  --   texthl = 'NotifyERRORIcon',
+  --   linehl = 'NotifyERRORIcon',
+  --   numhl = 'NotifyERRORIcon',
+  -- })
+  -- vim.fn.sign_define('DapBreakpointCondition', {
+  --   text = ' ',
+  --   texthl = 'NotifyTRACEIcon',
+  --   linehl = 'NotifyTRACEIcon',
+  --   numhl = 'NotifyTRACEIcon',
+  -- })
+  -- vim.fn.sign_define('DapLogPoint', {
+  --   text = ' ',
+  --   texthl = 'NotifyINFOIcon',
+  --   linehl = 'NotifyINFOIcon',
+  --   numhl = 'NotifyINFOIcon',
+  -- })
+  -- vim.fn.sign_define('DapStopped', {
+  --   text = ' ',
+  --   texthl = 'NotifyWARNIcon',
+  --   linehl = 'NotifyWARNIcon',
+  --   numhl = 'NotifyWARNIcon',
+  -- })
 end

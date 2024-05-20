@@ -1,7 +1,5 @@
 ---@type NeviraideUtils
 local util = require('neviraide.utils')
-local diagnostic = require('neviraide.lsp.diagnostic')
-local diagnostic_mappings = require('plugins.which-key.mappings.diagnostic')
 
 util.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
   callback = function(args)
@@ -23,9 +21,6 @@ util.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
           vim.lsp.inlay_hint.enable()
         end
       end
-
-      diagnostic()
-      diagnostic_mappings(client, buffer)
 
       -- enable document symbol highlighting
       if client.server_capabilities.documentHighlightProvider then
@@ -79,28 +74,6 @@ util.autocmd('NEVIRAIDE_lsp_features', 'LspAttach', {
           })
         end
       end
-    end
-
-    if vim.g.l_d_soh then
-      -- enable auto show diagnostics
-      util.autocmd('NEVIRAIDE_auto_diag', 'CursorHold', {
-        buffer = buffer,
-        callback = function()
-          vim.diagnostic.open_float(nil, {
-            focusable = false,
-            close_events = {
-              'BufLeave',
-              'CursorMoved',
-              'InsertEnter',
-              'FocusLost',
-            },
-            border = vim.g.b,
-            source = 'if_many',
-            prefix = ' ',
-            scope = 'cursor',
-          })
-        end,
-      })
     end
   end,
 })

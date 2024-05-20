@@ -1,7 +1,7 @@
 local mappings = require('plugins.which-key.mappings')
 
 return function()
-  local i = require('neviraide-ui.icons.utils').icon
+  local i = require('stigmata.utils').icon
 
   mappings()
   dofile(vim.g.ntc .. 'whichkey')

@@ -2,7 +2,7 @@ return function()
   require('Comment').setup()
 
   local ok, wk = pcall(require, 'which-key')
-  local i = require('neviraide-ui.icons.utils').icon
+  local i = require('stigmata.utils').icon
 
   if ok then
     wk.register({

@@ -2,18 +2,6 @@ return {
   { 'wakatime/vim-wakatime', event = 'VeryLazy' },
   { 'ggandor/lightspeed.nvim', event = { 'BufReadPost', 'BufNewFile' } },
   {
-    'NeViRAIDE/nekifoch',
-    dev = true,
-    event = { 'BufReadPost', 'BufNewFile' },
-    keys = { '<leader>sf', 'Nekifoch' },
-    opts = {
-      which_key = {
-        enable = true,
-      },
-      borders = vim.g.b,
-    },
-  },
-  {
     'numToStr/Comment.nvim',
     config = require('plugins.comment.config'),
   },
@@ -27,7 +15,7 @@ return {
       },
     },
     config = function(_, opts)
-      require('neviraide-ui.themes.term')
+      require('chameleon.term')
       require('nvterm').setup(opts)
     end,
   },

@@ -4,6 +4,7 @@ vim.g.mapleader = ' '
 
 local imports = {
   { import = 'neviraide.lazy.dependencies' },
+  { import = 'neviraide.lazy.neviraide' },
   { import = 'neviraide.lazy.ui' },
   { import = 'neviraide.lazy.editor' },
   { import = 'neviraide.lazy.utils' },
@@ -20,7 +21,10 @@ require('lazy').setup(imports, {
     lazy = true,
     version = require('neviraide.utils').latest(),
   },
-  dev = { path = '~/GitHub/nvim_plugins', fallback = true },
+  dev = {
+    path = '~/neviraide',
+    fallback = true,
+  },
   ui = { border = vim.g.b },
   checker = { enabled = true },
   performance = {

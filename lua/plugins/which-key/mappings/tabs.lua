@@ -1,4 +1,4 @@
-local i = require('neviraide-ui.icons.utils').icon
+local i = require('stigmata.utils').icon
 
 return {
   name = 'Tabs' .. i('t', 'tab-external', 1),
@@ -46,9 +46,7 @@ return {
     'Rename',
   },
   t = {
-    function()
-      require('neviraide-ui.buftabline.modules.components').toggle_tabs()
-    end,
+    function() require('nevitabs.modules.components').toggle_tabs() end,
     'Toggle tabs panel',
   },
 }

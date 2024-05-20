@@ -4,7 +4,7 @@ return function()
   local ok, _ = pcall(require, 'netman')
   if ok then require('netman') end
 
-  local icon = require('neviraide-ui.icons.utils').icon
+  local icon = require('stigmata.utils').icon
   local fc = require('neo-tree.sources.filesystem.components')
 
   local function borders()
