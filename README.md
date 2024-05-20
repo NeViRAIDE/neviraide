@@ -6,9 +6,9 @@
 
 [![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.10-blueviolet.svg?style=flat&logo=Neovim&color=90E59A&logoColor=white)](https://github.com/neovim/neovim)
 [![GitHub Issues](https://img.shields.io/github/issues/NeViRAIDE/neviraide.svg?style=flat&label=Issues&color=d77982)](https://github.com/NeViRAIDE/neviraide/issues)
-<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/NeViRAIDE/neviraide">
-<img alt="GitHub License" src="https://img.shields.io/github/license/NeViRAIDE/neviraide">
-<img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/NeViRAIDE/neviraide">
+<a href="https://github.com/NeViRAIDE/neviraide/commits/core/"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/NeViRAIDE/neviraide"></a>
+<a href="https://github.com/NeViRAIDE/neviraide/blob/core/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/NeViRAIDE/neviraide"></a>
+<a href="https://github.com/NeViRAIDE/neviraide/discussions"><img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/NeViRAIDE/neviraide"></a>
 
 <hr>
 <br>
