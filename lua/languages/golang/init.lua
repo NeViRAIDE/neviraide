@@ -1,9 +1,18 @@
-local config = require('neviraide.utils').con
-
 return {
   {
     'olexsmir/gopher.nvim',
     ft = 'go',
-    config = config('gopher'),
+    config = function()
+      require('gopher').setup({
+        commands = {
+          go = 'go',
+          gomodifytags = 'gomodifytags',
+          gotests = 'gotests',
+          impl = 'impl',
+          iferr = 'iferr',
+        },
+      })
+      require('gopher.dap').setup()
+    end,
   },
 }

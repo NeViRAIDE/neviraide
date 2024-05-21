@@ -1,9 +1,0 @@
--- return function()
---   dofile(vim.g.ntc .. 'ibl')
---   dofile(vim.g.ntc .. 'rainbowdelimiters')
---
---   return {
---     indent = { highlight = 'IblChar' },
---     scope = { highlight = 'IblScopeChar' },
---   }
--- end
