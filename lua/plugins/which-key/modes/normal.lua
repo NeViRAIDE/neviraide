@@ -2,12 +2,6 @@ local term_util = require('neviraide.utils').term_toggle
 local i = require('stigmata.utils').icon
 
 return {
-  d = {
-    n = {
-      '<cmd>NeviraideUINotifyClear<cr>',
-      'Dismiss all Notifications' .. i('󰎟', 'inbox', 1),
-    },
-  },
 
   ['<ScrollWheelUp>'] = { '<C-y>', 'Scroll up' },
   ['<ScrollWheelDown>'] = { '<C-e>', 'Scroll down' },
@@ -33,20 +27,6 @@ return {
     'Document symbols',
   },
 
-  -- ['<c-/>'] = {
-  --   function() require('Comment.api').toggle.linewise.current() end,
-  --   'Toggle comment' .. i('', 'comment', 1),
-  -- },
-
-  ['<tab>'] = {
-    function() require('nevitabs').tabuflineNext() end,
-    'Goto to the next buffer',
-  },
-  ['<S-tab>'] = {
-    function() require('nevitabs').tabuflinePrev() end,
-    'Goto to the previous buffer',
-  },
-
   ['<C-h>'] = { '<C-w>h', 'Go to the left window' },
   ['<C-l>'] = { '<C-w>l', 'Go to the right window' },
   ['<C-j>'] = { '<C-w>j', 'Go to the bottom window' },
@@ -66,11 +46,6 @@ return {
     'Toggle vertical terminal' .. i('', 'terminal', 1),
   },
 
-  ['<a-d>'] = {
-    '<cmd>NeviraideUIDashboard<CR>',
-    'Toggle dashboard' .. i('󰕮', 'tmux', 1),
-  },
-
   ['<a-r>'] = {
     '<cmd>Neotree float remote toggle<CR>',
     'Toggle netman ',
@@ -84,12 +59,10 @@ return {
   ['<leader>'] = {
     name = 'Plugins and features' .. i('', 'rocket', 1),
 
-    b = require('plugins.which-key.mappings.buffers'),
     f = require('plugins.which-key.mappings.find'),
     g = require('plugins.which-key.mappings.git'),
     l = require('plugins.which-key.mappings.lsp'),
     s = require('plugins.which-key.mappings.settings'),
-    t = require('plugins.which-key.mappings.tabs'),
     u = require('plugins.which-key.mappings.utils'),
 
     Q = {

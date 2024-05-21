@@ -1,6 +1,6 @@
 local M = {}
 
-local function refresh_highlights() require('chameleon').load_all_highlights() end
+local function refresh_highlights() require('chameleon.utils').load_all_highlights() end
 
 ---Reload module with plenary
 ---@param module string|table

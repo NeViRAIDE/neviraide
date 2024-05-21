@@ -8,24 +8,26 @@ return {
         enable = true,
       },
       ui = {
-        hyde = vim.g.hyde,
+        -- hyde = vim.g.hyde,
         notify = vim.g.notif,
       },
     },
   },
   {
     'NeViRAIDE/chameleon.nvim',
-    event = 'UIEnter',
+    -- event = 'UIEnter',
+    event = 'VeryLazy',
     dev = true,
+    opts = { hyde = vim.g.hyde },
   },
   {
     'NeViRAIDE/stigmata.nvim',
-    event = 'UIEnter',
+    -- event = 'UIEnter',
     dev = true,
   },
   {
-    'NeViRAIDE/stigmata.nvim',
-    event = 'UIEnter',
+    'NeViRAIDE/whisper.nvim',
+    event = 'VeryLazy',
     dev = true,
   },
   {
@@ -40,7 +42,7 @@ return {
   },
   {
     'NeViRAIDE/nevitabs.nvim',
-    event = 'UIEnter',
+    event = { 'TabNew', 'TabClosed', 'BufRead' },
     dev = true,
   },
   {
