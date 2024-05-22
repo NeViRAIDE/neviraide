@@ -1,6 +1,8 @@
 local M = {}
 
-local function refresh_highlights() require('chameleon.utils').load_all_highlights() end
+local function refresh_highlights()
+  require('chameleon.utils').load_all_highlights()
+end
 
 ---Reload module with plenary
 ---@param module string|table
@@ -37,19 +39,9 @@ local function info(type)
   )
 end
 
-M.reload_transparency = function()
-  reload_plenary('NEVIRAIDE')
-  vim.g.t = NEVIRAIDE().transparency
-  reload_plenary({ 'plugins.config.telescope', 'plugins.config.whichkey' })
-  refresh_highlights()
-  reload_lazy({ 'nvim-web-devicons', 'telescope.nvim', 'which-key.nvim' })
-  vim.opt.tabline = "%!v:lua.require('nevitabs.modules')()"
-  info('transparency')
-end
-
 M.reload_borders = function()
   reload_plenary('NEVIRAIDE')
-  vim.g.b = NEVIRAIDE().border
+  -- vim.g.b = NEVIRAIDE().border
   reload_plenary({
     'plugins.config.telescope',
     'plugins.config.whichkey',
@@ -68,7 +60,7 @@ end
 
 M.reload_icons = function()
   reload_plenary('NEVIRAIDE')
-  vim.g.n = NEVIRAIDE().nonicons
+  vim.g.n = NEVIRAIDE().ui.nonicons
 
   reload_plenary({
     'plugins.config.telescope',
@@ -99,17 +91,17 @@ M.reload_config = function()
   -- vim.g.blend = config.blend
   -- vim.o.pumblend = config.blend
 
-  vim.g.nt = config.theme
-  vim.g.t = config.transparency
-  vim.g.b = config.border
-  vim.g.n = config.nonicons
-  vim.o.cursorline = config.cursor_line
-  vim.o.cursorcolumn = config.cursor_column
-  vim.o.number = config.numbers_enabled
-  vim.o.relativenumber = config.relative_numbers
-  vim.o.shiftwidth = config.indents
-  vim.o.tabstop = config.indents
-  vim.o.softtabstop = config.indents
+  vim.g.nt = config.ui.theme
+  -- vim.g.t = config.transparency
+  -- vim.g.b = config.border
+  vim.g.n = config.ui.nonicons
+  vim.o.cursorline = config.ui.cursor_line
+  vim.o.cursorcolumn = config.ui.cursor_column
+  vim.o.number = config.ui.line_numbers.numbers_enabled
+  vim.o.relativenumber = config.ui.line_numbers.relative_numbers
+  vim.o.shiftwidth = config.ui.indents
+  vim.o.tabstop = config.ui.indents
+  vim.o.softtabstop = config.ui.indents
 
   reload_plenary({
     'plugins.config.telescope',

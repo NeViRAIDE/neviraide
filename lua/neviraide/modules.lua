@@ -15,15 +15,10 @@ return {
   },
   {
     'NeViRAIDE/chameleon.nvim',
-    -- event = 'UIEnter',
+    dependencies = { { 'NeViRAIDE/stigmata.nvim', dev = true } },
     event = 'VeryLazy',
     dev = true,
     opts = { hyde = vim.g.hyde },
-  },
-  {
-    'NeViRAIDE/stigmata.nvim',
-    -- event = 'UIEnter',
-    dev = true,
   },
   {
     'NeViRAIDE/whisper.nvim',

@@ -3,7 +3,7 @@ return {
   version = false,
   event = 'InsertEnter',
   dependencies = {
-    require('plugins.luasnip'),
+    require('plugins.luasnippets'),
     require('plugins.autopairs'),
     { 'saadparwaiz1/cmp_luasnip' },
     { 'hrsh7th/cmp-nvim-lsp' },
