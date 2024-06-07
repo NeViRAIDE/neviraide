@@ -81,6 +81,10 @@ return {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         {
+          name = 'lazydev',
+          group_index = 0,
+        },
+        {
           name = 'buffer',
           option = {
             get_bufnrs = function() return { vim.api.nvim_get_current_buf() } end,

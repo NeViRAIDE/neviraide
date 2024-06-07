@@ -145,7 +145,7 @@ return {
 
     mason_lsp_config.setup({
       ensure_installed = {
-        'lua_ls',
+        -- 'lua_ls',
       },
       automatic_installation = true,
     })
@@ -159,7 +159,7 @@ return {
           })
         end
       end,
-      ['lua_ls'] = function(_) lspconfig.lua_ls.setup(server('lua')) end,
+      -- ['lua_ls'] = function(_) lspconfig.lua_ls.setup(server('lua')) end,
       ['tsserver'] = function(_) lspconfig.tsserver.setup(server('ts_js')) end,
     })
   end,

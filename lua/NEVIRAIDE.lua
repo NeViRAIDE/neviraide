@@ -12,7 +12,7 @@ return {
     },
   },
   lsp = {
-    format_before_save = true,
+    format_before_save = false,
     inlay_hints = true,
     code_lenses = true,
     diagnostic = {
@@ -23,7 +23,7 @@ return {
   },
   ui = {
     hyde = true,
-    theme = 'One-Dark',
+    theme = 'Dracula',
     notify = true,
     nonicons = true,
     cursor_line = true,

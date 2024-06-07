@@ -4,7 +4,7 @@ local imports = {
   { import = 'neviraide.modules' },
   { import = 'plugins' },
   { import = 'languages.rust' },
-  { import = 'languages.golang' },
+  -- { import = 'languages.golang' },
 }
 
 require('lazy').setup(imports, {
@@ -13,7 +13,7 @@ require('lazy').setup(imports, {
     version = require('neviraide.utils').latest(),
   },
   dev = {
-    path = '~/neviraide',
+    path = '~/GitHub/neviraide',
     fallback = true,
   },
   ui = { border = vim.g.b },

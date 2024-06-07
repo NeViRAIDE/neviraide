@@ -27,12 +27,15 @@ return {
   },
   {
     'NeViRAIDE/harbinger.nvim',
-    event = 'UIEnter',
+    -- event = 'UIEnter',
+    event = 'VeryLazy',
+    config = true,
     dev = true,
   },
   {
     'NeViRAIDE/neviline.nvim',
-    event = 'UIEnter',
+    -- event = 'UIEnter',
+    event = 'VeryLazy',
     dev = true,
   },
   {
