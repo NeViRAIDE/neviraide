@@ -23,7 +23,7 @@ return {
   },
   ui = {
     hyde = true,
-    theme = 'Dracula',
+    theme = 'One-Dark',
     notify = true,
     nonicons = true,
     cursor_line = true,
