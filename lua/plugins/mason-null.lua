@@ -30,6 +30,13 @@ return {
           diagnostics.fish,
           formatting.fish_indent,
 
+          diagnostics.cfn_lint, -- yaml cloud aws
+
+          diagnostics.checkmake, -- Makefile
+          diagnostics.hadolint, -- dockerimages
+
+          formatting.yamlfix,
+
           formatting.stylua.with({
             extra_args = {
               '--quote-style',

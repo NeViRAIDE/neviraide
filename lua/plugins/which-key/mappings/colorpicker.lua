@@ -1,8 +1,12 @@
 local icon = require('stigmata.utils').icon
 
 return {
-  name = 'Color Picker' .. icon('', 'paintbrush', 1),
-  p = { ':CccPick<cr>', 'Pick color' },
-  c = { ':CccConvert<cr>', 'Conver color' },
-  t = { ':CccHighlighterToggle<cr>', 'Toggle highlights' },
+  { '<leader>uc', group = 'Color Picker', icon = icon('', 'paintbrush') },
+  { '<leader>ucp', '<cmd>CccPick<cr>', desc = 'Pick color' },
+  { '<leader>ucc', '<cmd>CccConvert<cr>', desc = 'Conver color' },
+  {
+    '<leader>uct',
+    '<cmd>CccHighlighterToggle<cr>',
+    desc = 'Toggle highlights',
+  },
 }

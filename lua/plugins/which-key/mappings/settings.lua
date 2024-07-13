@@ -1,108 +1,111 @@
 local icon = require('stigmata.utils').icon
 
 return {
-  name = 'Settings' .. icon('', 'gear', 1),
-  d = {
+  { '<leader>s', group = 'Settings', icon = icon('', 'gear') },
+  {
+    '<leader>sd',
     function() require('nevitabs.modules.components').toggle_datetime() end,
-    'Date/time style',
+    desc = 'Date/time style',
   },
-  i = {
+  {
+    '<leader>si',
     function()
       require('neviraide-ui.utils.change_settings.indents').setIndents()
     end,
-    'Toggle nonicons/devicons',
+    desc = 'Toggle nonicons/devicons',
   },
 
-  I = {
+  {
+    '<leader>sI',
     function()
       require('neviraide-ui.utils.change_settings.icons').change_icons()
     end,
-    'Change icons',
+    desc = 'Change icons',
   },
 
-  l = {
-    name = 'Cursor line',
-    e = {
-      function()
-        require('neviraide-ui.utils.change_settings.cursorline').enable()
-      end,
-      'Enable cursorline',
-    },
-    d = {
-      function()
-        require('neviraide-ui.utils.change_settings.cursorline').disable()
-      end,
-      'Disable cursorline',
-    },
-    t = {
-      function()
-        require('neviraide-ui.utils.change_settings.cursorline').toggle()
-      end,
-      'Toggle cursorline',
-    },
+  { '<leader>sl', group = 'Cursor line' },
+  {
+    '<leader>sle',
+    function()
+      require('neviraide-ui.utils.change_settings.cursorline').enable()
+    end,
+    desc = 'Enable cursorline',
   },
-  c = {
-    name = 'Cursor column',
-    e = {
-      function()
-        require('neviraide-ui.utils.change_settings.cursorcolumn').enable()
-      end,
-      'Enable cursorcolumn',
-    },
-    d = {
-      function()
-        require('neviraide-ui.utils.change_settings.cursorcolumn').disable()
-      end,
-      'Disable cursorcolumn',
-    },
-    t = {
-      function()
-        require('neviraide-ui.utils.change_settings.cursorcolumn').toggle()
-      end,
-      'Toggle cursorcolumn',
-    },
+  {
+    '<leader>sld',
+    function()
+      require('neviraide-ui.utils.change_settings.cursorline').disable()
+    end,
+    desc = 'Disable cursorline',
   },
-  n = {
-    name = 'Numbers',
-    e = {
-      function() require('neviraide-ui.utils.change_settings.numbers').enable() end,
-      'Enable numbers',
-    },
-    d = {
-      function()
-        require('neviraide-ui.utils.change_settings.numbers').disable()
-      end,
-      'Disable numbers',
-    },
-    t = {
-      function() require('neviraide-ui.utils.change_settings.numbers').toggle() end,
-      'Toggle numbers',
-    },
+  {
+    '<leader>slt',
+    function()
+      require('neviraide-ui.utils.change_settings.cursorline').toggle()
+    end,
+    desc = 'Toggle cursorline',
   },
-  r = {
-    name = 'Relative numbers',
-    e = {
-      function()
-        require('neviraide-ui.utils.change_settings.relativenumbers').enable()
-      end,
-      'Enable relativenumbers',
-    },
-    d = {
-      function()
-        require('neviraide-ui.utils.change_settings.relativenumbers').disable()
-      end,
-      'Disable relativenumbers',
-    },
-    t = {
-      function()
-        require('neviraide-ui.utils.change_settings.relativenumbers').toggle()
-      end,
-      'Toggle relativenumbers',
-    },
+  { '<leader>sc', group = 'Cursor column' },
+  {
+    '<leader>sce',
+    function()
+      require('neviraide-ui.utils.change_settings.cursorcolumn').enable()
+    end,
+    desc = 'Enable cursorcolumn',
   },
-  p = {
-    name = 'Plugins',
-    s = { '<cmd>Lazy show<cr>', 'Show plugins' },
-    u = { '<cmd>Lazy update<cr>', 'Update plugins' },
+  {
+    '<leader>scd',
+    function()
+      require('neviraide-ui.utils.change_settings.cursorcolumn').disable()
+    end,
+    desc = 'Disable cursorcolumn',
   },
+  {
+    '<leader>sct',
+    function()
+      require('neviraide-ui.utils.change_settings.cursorcolumn').toggle()
+    end,
+    desc = 'Toggle cursorcolumn',
+  },
+  { '<leader>sn', group = 'Numbers' },
+  {
+    '<leader>sne',
+    function() require('neviraide-ui.utils.change_settings.numbers').enable() end,
+    desc = 'Enable numbers',
+  },
+  {
+    '<leader>snd',
+    function() require('neviraide-ui.utils.change_settings.numbers').disable() end,
+    desc = 'Disable numbers',
+  },
+  {
+    '<leader>snt',
+    function() require('neviraide-ui.utils.change_settings.numbers').toggle() end,
+    desc = 'Toggle numbers',
+  },
+  { '<leader>sr', group = 'Relative numbers' },
+  {
+    '<leader>sre',
+    function()
+      require('neviraide-ui.utils.change_settings.relativenumbers').enable()
+    end,
+    desc = 'Enable relativenumbers',
+  },
+  {
+    '<leader>srd',
+    function()
+      require('neviraide-ui.utils.change_settings.relativenumbers').disable()
+    end,
+    desc = 'Disable relativenumbers',
+  },
+  {
+    '<leader>srt',
+    function()
+      require('neviraide-ui.utils.change_settings.relativenumbers').toggle()
+    end,
+    desc = 'Toggle relativenumbers',
+  },
+  { '<leader>sp', group = 'Plugins' },
+  { '<leader>spm', '<cmd>Lazy show<cr>', desc = 'Plugins manager' },
+  { '<leader>spu', '<cmd>Lazy update<cr>', desc = 'Update plugins' },
 }

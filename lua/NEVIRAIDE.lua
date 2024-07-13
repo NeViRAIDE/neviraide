@@ -23,7 +23,7 @@ return {
   },
   ui = {
     hyde = true,
-    theme = 'One-Dark',
+    theme = 'Gruvbox-Retro',
     notify = true,
     nonicons = true,
     cursor_line = true,

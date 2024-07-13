@@ -1,14 +1,5 @@
 return {
-  j = {
-    j = {
-      '<ESC>',
-      'Return to Normal mode',
-    },
-  },
-  k = {
-    k = {
-      '<ESC>',
-      'Return to Normal mode',
-    },
-  },
+  mode = { 'i' },
+  { 'jj', '<ESC>', desc = 'Return to Normal mode' },
+  { 'kk', '<ESC>', desc = 'Return to Normal mode' },
 }

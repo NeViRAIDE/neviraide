@@ -16,23 +16,55 @@ local function show_documentation()
 end
 
 return {
-  name = 'LSP' .. icon('', 'server', 1),
-  a = { ':lua vim.lsp.buf.code_action()<cr>', 'Code action' },
-  c = { ':lua vim.lsp.codelens.run()<cr>', 'Codelens action' },
-  d = { ':Telescope lsp_definitions<cr>', 'Definition' },
-  D = { ':lua vim.lsp.buf.declaration()<cr>', 'Declaration' },
-  f = { ':lua vim.lsp.buf.format()<cr>', 'Format file' },
-  h = { show_documentation, 'Hover' },
-  r = { ':Telescope lsp_references<cr>', 'References' },
-  R = { ':lua vim.lsp.buf.rename()<cr>', 'Rename' },
-  s = { ':lua vim.lsp.buf.signature_help()<cr>', 'Signature help' },
-  t = { ':Telescope lsp_type_definitions<cr>', 'Type definition' },
-  S = {
-    name = 'Server' .. icon('', 'server', 1),
-    r = { ':LspRestart<cr>', 'Restart server' },
-    i = { ':LspInfo<cr>', 'Server information' },
-    l = { ':LspLog<cr>', 'Server logs' },
-    s = { ':LspStart<cr>', 'Start server' },
-    S = { ':LspStop<cr>', 'Stopserver' },
+  { '<leader>l', group = 'LSP', icon = icon('', 'server') },
+  {
+    '<leader>la',
+    '<cmd>lua vim.lsp.buf.code_action()<cr>',
+    desc = 'Code action',
+  },
+  {
+    '<leader>lc',
+    '<cmd>lua vim.lsp.codelens.run()<cr>',
+    desc = 'Codelens action',
+  },
+  { '<leader>ld', '<cmd>Telescope lsp_definitions<cr>', desc = 'Definition' },
+  {
+    '<leader>lD',
+    '<cmd>lua vim.lsp.buf.declaration()<cr>',
+    desc = 'Declaration',
+  },
+  {
+    '<leader>lf',
+    '<cmd>lua vim.lsp.buf.format()<cr>',
+    desc = 'Format file',
+  },
+  { '<leader>lh', show_documentation, desc = 'Hover' },
+  {
+    '<leader>lr',
+    '<cmd>Telescope lsp_references<cr>',
+    desc = 'References',
+  },
+  {
+    '<leader>lR',
+    '<cmd>lua vim.lsp.buf.rename()<cr>',
+    desc = 'Rename',
+  },
+  {
+    '<leader>ls',
+    '<cmd>lua vim.lsp.buf.signature_help()<cr>',
+    desc = 'Signature help',
+  },
+  {
+    '<leader>lt',
+    '<cmd>Telescope lsp_type_definitions<cr>',
+    desc = 'Type definition',
+  },
+  {
+    { '<leader>lS', group = 'Server' .. icon('', 'server') },
+    { '<leader>lSr', '<cmd>LspRestart<cr>', desc = 'Restart server' },
+    { '<leader>lSi', '<cmd>LspInfo<cr>', desc = 'Server information' },
+    { '<leader>lSl', '<cmd>LspLog<cr>', desc = 'Server logs' },
+    { '<leader>lSs', '<cmd>LspStart<cr>', desc = 'Start server' },
+    { '<leader>lSS', '<cmd>LspStop<cr>', desc = 'Stopserver' },
   },
 }

@@ -2,12 +2,13 @@ local wk = require('which-key')
 local icon = require('stigmata.utils').icon
 
 return function(bufnr)
-  wk.register({
-    ['<leader>'] = {
-      M = {
-        '<cmd>MarkdownPreviewToggle<cr>',
-        'Markdown preview' .. icon('', 'browser', 1),
-      },
+  wk.add({
+    {
+      '<leader>M',
+      '<cmd>MarkdownPreviewToggle<cr>',
+      desc = 'Markdown preview',
+      icon = icon('', 'browser'),
+      buffer = bufnr,
     },
-  }, { buffer = bufnr, mode = 'n' })
+  })
 end

@@ -1,25 +1,32 @@
 local icon = require('stigmata.utils').icon
 
 return {
-  name = 'Utils' .. icon('', 'tools', 1),
-  c = require('plugins.which-key.mappings.colorpicker'),
-  n = require('plugins.which-key.mappings.notes'),
-  t = { '<cmd>Translate ' .. vim.g.lang .. '<cr>', 'Translate 󰗊 ' },
-  T = {
-    name = 'Timer' .. icon('󰔛', 'stopwatch', 1, 1),
-    s = {
-      function()
-        require('neviraide-ui.utils.change_settings.timer').startTimer()
-      end,
-      'Start',
-    },
-    p = {
-      '<cmd>TimerPause<cr>',
-      'Pause',
-    },
-    S = {
-      '<cmd>TimerStop<cr>',
-      'Stop',
-    },
+  require('plugins.which-key.mappings.colorpicker'),
+  require('plugins.which-key.mappings.notes'),
+
+  { '<leader>u', group = 'Utils', icon = icon('', 'tools') },
+  {
+    '<leader>ut',
+    '<cmd>Translate ' .. vim.g.lang .. '<cr>',
+    desc = 'Translate',
+    icon = '󰗊 ',
+  },
+  { '<leader>uT', group = 'Timer', icon = icon('󰔛', 'stopwatch') },
+  {
+    '<leader>uTs',
+    rhs = function()
+      require('neviraide-ui.utils.change_settings.timer').startTimer()
+    end,
+    desc = 'Start',
+  },
+  {
+    '<leader>uTp',
+    '<cmd>TimerPause<cr>',
+    desc = 'Pause',
+  },
+  {
+    '<leader>uTS',
+    '<cmd>TimerStop<cr>',
+    desc = 'Stop',
   },
 }

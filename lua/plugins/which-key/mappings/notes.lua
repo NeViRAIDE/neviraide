@@ -22,49 +22,91 @@ local function create_todo_comment(text)
 end
 
 return {
-  name = 'TODO notes' .. icon('', 'tasklist', 1),
-  l = {
-    ':TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=15}}<cr>',
-    'Notes list' .. icon('', 'tasklist', 1),
+  { '<leader>un', group = 'TODO notes', icon = icon('', 'tasklist') },
+  {
+    '<leader>unl',
+    '<cmd>TodoTelescope theme=ivy initial_mode=normal previewer=false layout_config={bottom_pane={height=15}}<cr>',
+    desc = 'Notes list',
+    icon = icon('', 'tasklist'),
   },
-  a = {
-    name = 'Add',
-    p = {
-      name = 'Found a problem' .. icon('', 'bug', 1),
-      b = { function() create_todo_comment('bug') end, 'Bug' },
-      f = { function() create_todo_comment('fix') end, 'Fix' },
-      I = { function() create_todo_comment('fixit') end, 'Fixit' },
-      M = { function() create_todo_comment('fixme') end, 'Fixme' },
-      i = { function() create_todo_comment('issue') end, 'Issue' },
-    },
-    t = {
-      function() create_todo_comment('todo') end,
-      'To do' .. icon('', 'check', 1),
-    },
-    h = {
-      function() create_todo_comment('hack') end,
-      'Hack' .. icon('', 'flame', 1),
-    },
-    a = {
-      name = 'Attention' .. icon('', 'alert', 1),
-      w = { function() create_todo_comment('warn') end, 'Warning' },
-      x = { function() create_todo_comment('xxx') end, 'XXX' },
-    },
-    b = {
-      name = 'Make it better' .. icon('', 'stopwatch', 1),
-      p = { function() create_todo_comment('perf') end, 'Performance' },
-      o = { function() create_todo_comment('optim') end, 'Optimize' },
-    },
-    f = {
-      name = 'To not forget' .. icon('', 'note', 1),
-      i = { function() create_todo_comment('info') end, 'Information' },
-      n = { function() create_todo_comment('note') end, 'Note' },
-    },
-    T = {
-      name = 'Test' .. icon('⏲', 'hourglass', 1),
-      t = { function() create_todo_comment('test') end, 'Testing' },
-      f = { function() create_todo_comment('failde') end, 'Failed' },
-      p = { function() create_todo_comment('passed') end, 'Passed' },
-    },
+  { '<leader>una', group = 'Add' },
+  { '<leader>unap', group = 'Found a problem', icon = icon('', 'bug') },
+  { '<leader>unapb', function() create_todo_comment('bug') end, desc = 'Bug' },
+  { '<leader>unapf', function() create_todo_comment('fix') end, desc = 'Fix' },
+  {
+    '<leader>unapI',
+    function() create_todo_comment('fixit') end,
+    desc = 'Fixit',
+  },
+  {
+    '<leader>unapM',
+    function() create_todo_comment('fixme') end,
+    desc = 'Fixme',
+  },
+  {
+    '<leader>unapi',
+    function() create_todo_comment('issue') end,
+    desc = 'Issue',
+  },
+  {
+    '<leader>unat',
+    function() create_todo_comment('todo') end,
+    desc = 'To do',
+    icon = icon('', 'check'),
+  },
+  {
+    '<leader>unah',
+    function() create_todo_comment('hack') end,
+    desc = 'Hack',
+    icon = icon('', 'flame'),
+  },
+  { '<leader>unaa', group = 'Attention', icon = icon('', 'alert') },
+  {
+    '<leader>unaaw',
+    function() create_todo_comment('warn') end,
+    desc = 'Warning',
+  },
+  { '<leader>unaax', function() create_todo_comment('xxx') end, desc = 'XXX' },
+  {
+    '<leader>unab',
+    group = 'Make it better',
+    icon = icon('', 'stopwatch'),
+  },
+  {
+    '<leader>unabp',
+    function() create_todo_comment('perf') end,
+    desc = 'Performance',
+  },
+  {
+    '<leader>unabo',
+    function() create_todo_comment('optim') end,
+    desc = 'Optimize',
+  },
+  { '<leader>unaf', group = 'To not forget', icon = icon('', 'note') },
+  {
+    '<leader>unafi',
+    function() create_todo_comment('info') end,
+    desc = 'Information',
+  },
+  {
+    '<leader>unafn',
+    function() create_todo_comment('note') end,
+    desc = 'Note',
+  },
+  { '<leader>unaT', group = 'Test', icon = icon('⏲', 'hourglass') },
+  {
+    '<leader>unaTt',
+    function() create_todo_comment('test') end,
+    desc = 'Testing',
+  },
+  {
+    '<leader>unaTf',
+    function() create_todo_comment('failde') end,
+    desc = 'Failed',
+  },
+  {
+    '<leader>unaTp',
+    function() create_todo_comment('passed') end,
+    desc = 'Passed',
   },
 }
