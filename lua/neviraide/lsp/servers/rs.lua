@@ -299,35 +299,23 @@ M.capabilities = {
 M.settings = {
   ['rust-analyzer'] = {
     imports = {
-      granularity = {
-        group = 'module',
-      },
-      prefix = 'self',
+      granularity = { group = 'module' },
+      prefix = 'crate',
     },
     cargo = {
       allFeatures = true,
       loadOutDirsFromCheck = true,
       runBuildScripts = true,
-      buildScripts = {
-        enable = true,
-      },
     },
-    -- Add clippy lints for Rust.
     checkOnSave = {
-      allFeatures = true,
       command = 'clippy',
       extraArgs = { '--no-deps' },
     },
-    procMacro = {
-      enable = true,
-      ignored = {
-        ['async-trait'] = { 'async_trait' },
-        ['napi-derive'] = { 'napi' },
-        ['async-recursion'] = { 'async_recursion' },
-      },
+    procMacro = { enable = true },
+    rustfmt = {
+      extraArgs = { '+nightly' },
     },
   },
-  -- },
 }
 
 return M

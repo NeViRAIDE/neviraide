@@ -12,6 +12,7 @@ return {
   { '<ScrollWheelDown>', '<C-e>', desc = 'Scroll down' },
 
   { '<Esc>', '<cmd>noh <CR>', desc = 'Clear highlights' },
+
   {
     '<c-s>',
     rhs = function()
@@ -26,6 +27,56 @@ return {
     end,
     desc = 'Save file',
   },
+ 
+  {
+    '<a-a>',
+    function()
+      vim.cmd('%y+')
+      vim.notify(
+        'Весь файл скопирован в буфер обмена',
+        vim.log.levels.INFO,
+        { title = 'Копирование' }
+      )
+    end,
+    desc = 'Копировать весь файл',
+    icon = i('📋', 'copy'),
+  },
+
+  {
+    '<a-x>',
+    function()
+      -- Получаем текущую позицию курсора
+      local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+      -- Получаем диагностические сообщения для текущей строки (нумерация строк начинается с 0)
+      local diagnostics = vim.diagnostic.get(0, { lnum = row - 1 })
+
+      if #diagnostics == 0 then
+        vim.notify(
+          'Диагностика не найдена на текущей строке',
+          vim.log.levels.WARN,
+          { title = 'Диагностика' }
+        )
+        return
+      end
+
+      -- Собираем сообщения диагностики
+      local messages = {}
+      for _, diag in ipairs(diagnostics) do
+        table.insert(messages, diag.message)
+      end
+      local text = table.concat(messages, '\n')
+
+      -- Копируем в системный буфер обмена
+      vim.fn.setreg('+', text)
+      vim.notify(
+        'Диагностика скопирована в буфер обмена',
+        vim.log.levels.INFO,
+        { title = 'Диагностика' }
+      )
+    end,
+    desc = 'Копировать диагностику текущей строки',
+    icon = i('🔍', 'pulse'), -- Вы можете заменить иконку на предпочитаемую
+  },
 
   {
     '<c-n>',
@@ -38,6 +89,12 @@ return {
     desc = 'Document symbols',
   },
 
+  {
+    '<a-c>',
+    '<cmd>CopilotChatToggle<cr>',
+    desc = 'Copilot Chat',
+  },
+
   { '<C-h>', '<C-w>h', desc = 'Go to the left window' },
   { '<C-l>', '<C-w>l', desc = 'Go to the right window' },
   { '<C-j>', '<C-w>j', desc = 'Go to the bottom window' },
@@ -48,19 +105,19 @@ return {
     '<a-h>',
     function() term_util('horizontal') end,
     desc = 'Toggle horizontal terminal',
-    icon = i('', 'terminal', 1),
+    icon = i('', 'terminal'),
   },
   {
     '<a-f>',
     function() term_util('float') end,
     desc = 'Toggle floating terminal',
-    icon = i('', 'terminal', 1),
+    icon = i('', 'terminal'),
   },
   {
     '<a-v>',
     function() term_util('vertical') end,
     desc = 'Toggle vertical terminal',
-    icon = i('', 'terminal', 1),
+    icon = i('', 'terminal'),
   },
 
   {
@@ -74,16 +131,16 @@ return {
     '<a-g>',
     '<cmd>Neotree position=right git_status toggle<cr>',
     desc = 'Toggle GIT status (Neotree)',
-    icon = i('', 'mark-github', 1),
+    icon = i('', 'mark-github'),
   },
 
-  { '<leader>', group = 'Plugins and features', icon = i('', 'rocket', 1) },
+  { '<leader>', group = 'Plugins and features', icon = i('', 'rocket') },
 
   {
     '<leader>Q',
     '<cmd>qall<cr>',
     desc = 'Quit',
-    icon = i('', 'sign-out', 1),
+    icon = i('', 'sign-out'),
   },
 
   -- TODO: silent when no language server
@@ -94,7 +151,7 @@ return {
       vim.notify(
         'All modified files',
         2,
-        { title = 'Saved', icon = i('✓', 'check', 0, 1) }
+        { title = 'Saved', icon = i('✓', 'check') }
       )
     end,
     desc = 'Save all files',
@@ -105,6 +162,6 @@ return {
     '<leader>N',
     '<cmd>lua require("neviraide-ui.utils.new_file")()<cr>',
     desc = 'New file',
-    icon = i('', 'plus-circle', 1),
+    icon = i('', 'plus-circle'),
   },
 }

@@ -10,6 +10,11 @@ return {
     { 'hrsh7th/cmp-buffer' },
     { 'lukas-reineke/cmp-under-comparator' },
     { 'FelipeLema/cmp-async-path' },
+    {
+      'zbirenbaum/copilot-cmp',
+      event = 'InsertEnter',
+      config = function() require('copilot_cmp').setup() end,
+    },
   },
   opts = function()
     dofile(vim.g.ntc .. 'cmp')
@@ -41,6 +46,7 @@ return {
           config = {
             sources = {
               { name = 'luasnip' },
+              { name = 'copilot' },
             },
           },
         }),
@@ -78,24 +84,27 @@ return {
       }),
 
       sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        {
-          name = 'lazydev',
-          group_index = 0,
-        },
+        { name = 'copilot', group_index = 2 },
+        { name = 'nvim_lsp', group_index = 2 },
         {
           name = 'buffer',
           option = {
             get_bufnrs = function() return { vim.api.nvim_get_current_buf() } end,
           },
         },
+        { name = 'luasnip', group_index = 2 },
         { name = 'nvim_lua' },
         { name = 'async_path' },
+        {
+          name = 'lazydev',
+          group_index = 0,
+        },
         { name = 'crates' },
       },
       sorting = {
+        priority_weight = 2,
         comparators = {
+          require('copilot_cmp.comparators').prioritize, -- Добавляем этот компаратор
           cmp.config.compare.offset,
           cmp.config.compare.exact,
           cmp.config.compare.score,

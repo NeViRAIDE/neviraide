@@ -27,6 +27,11 @@ return {
           formatting.golines,
           diagnostics.revive,
 
+          formatting.leptosfmt,
+
+          formatting.black,
+          formatting.isort,
+
           diagnostics.fish,
           formatting.fish_indent,
 

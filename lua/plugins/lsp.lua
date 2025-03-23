@@ -2,6 +2,13 @@ return {
   'neovim/nvim-lspconfig',
   version = false,
   event = { 'BufReadPre', 'BufNewFile', 'BufAdd' },
+  init_options = {
+    userLanguages = {
+      eelixir = 'html-eex',
+      eruby = 'erb',
+      rust = 'html',
+    },
+  },
   dependencies = {
     {
       'Bekaboo/dropbar.nvim',
@@ -158,9 +165,28 @@ return {
             single_file_support = true,
           })
         end
+        if server_name == 'sqls' then
+          lspconfig.sqls.setup({
+            capabilities = require('neviraide.lsp.capabilities'),
+            single_file_support = true,
+            on_attach = function(client, bufnr)
+              require('sqls').on_attach(client, bufnr)
+            end,
+            settings = {
+              sqls = {
+                connections = {
+                  {
+                    driver = 'postgresql',
+                    dataSourceName = 'host=127.0.0.1 port=5432 user=wonnie password=wononton1231 dbname=wonnie_db sslmode=disable',
+                  },
+                },
+              },
+            },
+          })
+        end
       end,
       -- ['lua_ls'] = function(_) lspconfig.lua_ls.setup(server('lua')) end,
-      ['tsserver'] = function(_) lspconfig.tsserver.setup(server('ts_js')) end,
+      ['vtsls'] = function(_) lspconfig.vtsls.setup(server('vtsls')) end,
     })
   end,
 }

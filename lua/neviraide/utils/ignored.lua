@@ -2,6 +2,7 @@ local filetypes_list = {
   'help',
   'TelescopePrompt',
   'neviraideDashboard',
+  'harbinger',
   'lazy',
   'mason',
   'lspinfo',
