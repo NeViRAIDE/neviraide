@@ -38,11 +38,6 @@ return {
           enabled = true,
           name = 'crates.nvim',
         },
-        completion = {
-          cmp = {
-            enabled = true,
-          },
-        },
       })
     end,
   },

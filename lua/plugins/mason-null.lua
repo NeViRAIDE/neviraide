@@ -1,6 +1,6 @@
 return {
   'jay-babu/mason-null-ls.nvim',
-  event = { 'BufReadPre', 'BufNewFile' },
+  -- event = { 'BufReadPre', 'BufNewFile' },
   dependencies = { 'williamboman/mason.nvim', 'nvimtools/none-ls.nvim' },
   config = function()
     local null_ls_status_ok, null_ls = pcall(require, 'null-ls')

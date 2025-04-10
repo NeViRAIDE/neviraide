@@ -15,8 +15,10 @@ o.clipboard = 'unnamedplus'
 o.confirm = true
 o.scrolloff = 7
 o.hlsearch = false
-o.completeopt = 'menuone,noselect,noinsert'
+-- o.completeopt = 'menuone,noselect,noinsert'
+o.completeopt = { 'menuone', 'noinsert', 'popup' }
 o.showmatch = true
+o.winborder = 'rounded'
 o.expandtab = true
 o.smartindent = true
 o.cursorline = N.ui.cursor_line
@@ -41,7 +43,7 @@ o.undofile = true
 o.updatetime = 250
 o.smoothscroll = true
 o.sessionoptions =
-  'blank,buffers,curdir,folds,help,options,terminal,globals,localoptions,tabpages'
+'blank,buffers,curdir,folds,help,options,terminal,globals,localoptions,tabpages'
 
 -- NOTE: folds or not?!
 

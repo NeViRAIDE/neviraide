@@ -210,12 +210,6 @@ https://github.com/RAprogramm/NEVIRAIDE/assets/70325462/b78eaba6-394b-4a28-aebd-
 
 <ul>
 <li>
-<a href="https://github.com/hrsh7th/nvim-cmp">nvim-cmp</a>: A fast completion plugin for Neovim.
-</li>
-<li>
-<a href="https://github.com/neovim/nvim-lspconfig">nvim-lspconfig</a>: Configuration for built-in LSP client in Neovim.
-</li>
-<li>
 <a href="https://github.com/williamboman/mason.nvim">mason.nvim</a>: Mason integration for Neovim.
 </li>
 <li>
