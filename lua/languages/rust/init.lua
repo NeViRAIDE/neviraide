@@ -8,8 +8,11 @@ return {
           highlight = 'NonText',
         },
         tools = {
-          hover_actions = { replace_builtin_hover = false },
+          -- hover_actions = { replace_builtin_hover = false },
           reload_workspace_from_cargo_toml = true,
+          float_win_config = {
+
+          }
         },
         server = {
           capabilities = require('neviraide.lsp.servers.rs').capabilities,

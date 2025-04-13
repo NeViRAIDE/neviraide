@@ -6,10 +6,10 @@ return {
       -- → vtsls.experimental.completion.enableServerSideFuzzyMatch                       default: false
       autoUseWorkspaceTsdk = true,
       experimental = {
-        completion = {
-          enableServerSideFuzzyMatch = true,
-          enableProjectDiagnostics = true,
-        },
+        -- completion = {
+          -- enableServerSideFuzzyMatch = true,
+          -- enableProjectDiagnostics = true,
+        -- },
       },
     },
     -- → typescript.implementationsCodeLens.enabled                                     default: false

@@ -68,6 +68,40 @@ M.mason_path = function()
   end
 end
 
+--- Auto-resolve cmd for LSP servers installed via Mason
+---@param name string
+---@return string[]|nil
+function M.get_cmd(name)
+  local mason_bin = vim.fn.expand("~/.local/share/nvim/mason/bin")
+  local bin = mason_bin .. "/" .. name
+
+  if vim.fn.executable(bin) == 1 then
+    return { name }
+  end
+
+  return nil
+end
+
+---Replicates `lspconfig.util.root_pattern` behavior
+---@param patterns string[]
+---@return fun(fname?: string): string|nil
+function M.root_pattern(patterns)
+  return function(startpath)
+    startpath = startpath or vim.api.nvim_buf_get_name(0)
+    local path = vim.fs.dirname(startpath)
+    if not path then return nil end
+    return vim.fs.find(patterns, {
+      upward = true,
+      path = path,
+      type = "file", -- could also allow "directory" if needed
+    })[1] and vim.fs.dirname(vim.fs.find(patterns, {
+      upward = true,
+      path = path,
+      type = "file",
+    })[1])
+  end
+end
+
 ---@param plugin string
 function M.has(plugin)
   return require('lazy.core.config').spec.plugins[plugin] ~= nil

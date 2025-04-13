@@ -4,7 +4,7 @@
 return {
   language = 'ru',
   latest_stable_plugins = true,
-  programming = { 'lua', 'rust', 'go' },
+  programming = { 'lua', 'rust' },
   git = {
     gitsigns = {
       enable_g_signs = true,
@@ -15,6 +15,9 @@ return {
     format_before_save = false,
     inlay_hints = true,
     code_lenses = true,
+    completion = {
+      auto = true
+    },
     diagnostic = {
       enable_d_signs = true,
       virtual_text = false,
@@ -36,7 +39,7 @@ return {
     },
     font = {
       family = 'JetBrainsMono Nerd Font',
-      size = 13,
+      size = 11,
     },
   },
 }

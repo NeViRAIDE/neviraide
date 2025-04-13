@@ -7,19 +7,22 @@ vim.api.nvim_create_autocmd('User', {
     local servers = {
       lua_ls = {
         package = 'lua-language-server',
-        config = require('neviraide.lsp.servers.lua').settings,
+        config = require('neviraide.lsp.servers.lua'),
         filetypes = { 'lua' },
-        root_markers = { '.luarc.json' }
+        root_markers = { '.luarc.json', '.git' }
       },
       vtsls = {
         package = 'vtsls',
-        config = require('neviraide.lsp.servers.vtsls').settings,
-        filetypes = { 'javascript', 'typescript' },
+        config = require('neviraide.lsp.servers.vtsls'),
+        filetypes = { 'javascriptreact', 'typescriptreact', 'javascript', 'typescript' },
+        root_markers = { 'tsconfig.json', 'package.json', '.git' },
+        cmd = { vim.fn.stdpath('data') .. '/mason/bin/vtsls', '--stdio' }
       },
       html = {
         package = 'html-lsp',
         config = require('neviraide.lsp.servers.html').init_options,
-        filetypes = { 'html' },
+        filetypes = { 'html', '.git' },
+        cmd = { vim.fn.stdpath("data") .. "/mason/bin/vscode-html-language-server", "--stdio" }
       },
     }
 
@@ -31,7 +34,8 @@ vim.api.nvim_create_autocmd('User', {
         capabilities = capabilities,
         filetypes = entry.filetypes,
         single_file_support = true,
-        cmd = { entry.package },
+        cmd = entry.cmd or { entry.package },
+        -- root_dir = require('neviraide.utils').root_pattern(entry.root_markers or { '.git' }),
       }, entry.config or {})
 
       vim.lsp.enable(name)
